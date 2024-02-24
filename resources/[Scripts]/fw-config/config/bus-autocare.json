@@ -1,0 +1,134 @@
+{
+  "partLabels": {
+    "Engine": "Motor",
+    "Axle": "Aandrijfas",
+    "Transmission": "Transmissie",
+    "FuelInjectors": "Brandstof injectoren",
+    "Clutch": "Koppelingsplaat",
+    "Brakes": "Remschijven"
+  },
+  "zones": [
+    {
+      "center": {"x": -1414.78, "y": -451.97, "z": 35.91},
+      "length": 0.6,
+      "width": 4.8,
+      "name": "hayes_stash",
+      "heading": 33,
+      "minZ": 34.91,
+      "maxZ": 37.16,
+      "options": ["stash", "craft"],
+      "data": {
+        "Business": "Hayes Repairs",
+        "Name": "Hayes"
+      }
+    },
+    {
+      "center": {"x":-1430.33, "y": -454.3, "z": 35.91},
+      "length": 0.6,
+      "width": 2.6,
+      "name": "hayes_tray",
+      "heading": 32,
+      "minZ": 35.91,
+      "maxZ": 36.21,
+      "options": ["tray"],
+      "data": {
+        "Name": "hayes"
+      }
+    },
+
+    {
+      "center": {"x": -223.76, "y": -1339.93, "z": 31.3},
+      "length": 0.7,
+      "width": 4.35,
+      "name": "bennys_stash",
+      "heading": 0,
+      "minZ": 30.3,
+      "maxZ": 33.1,
+      "options": ["stash"],
+      "data": {
+        "Business": "Bennys Motorworks",
+        "Name": "bennys"
+      }
+    },
+    {
+      "center": {"x": -217.55, "y": -1333.25, "z": 31.3},
+      "length": 2.0,
+      "width": 1.0,
+      "name": "bennys_craft_1",
+      "heading": 0,
+      "minZ": 30.3,
+      "maxZ": 31.7,
+      "options": ["craft"],
+      "data": {
+        "Business": "Bennys Motorworks"
+      }
+    },
+    {
+      "center": {"x": -211.39, "y": -1336.28, "z": 31.3},
+      "length": 1.2,
+      "width": 0.8,
+      "name": "bennys_craft_2",
+      "heading": 3,
+      "minZ": 30.3,
+      "maxZ": 31.5,
+      "options": ["craft"],
+      "data": {
+        "Business": "Bennys Motorworks"
+      }
+    },
+    {
+      "center": {"x": -198.06, "y": -1317.23, "z": 31.3},
+      "length": 2.2,
+      "width": 1.0,
+      "name": "bennys_craft_3",
+      "heading": 0,
+      "minZ": 30.3,
+      "maxZ": 31.5,
+      "options": ["craft"],
+      "data": {
+        "Business": "Bennys Motorworks"
+      }
+    },
+    {
+      "center": {"x": -200.56, "y": -1335.07, "z": 31.3},
+      "length": 3.0,
+      "width": 1.4,
+      "name": "bennys_tray",
+      "heading": 0,
+      "minZ": 30.3,
+      "maxZ": 31.1,
+      "options": ["craft"],
+      "data": {
+        "Name": "bennys"
+      }
+    },
+
+    {
+      "center": {"x": 1179.08, "y": 2635.23, "z": 37.75},
+      "length": 0.8,
+      "width": 1.8,
+      "name": "harmony_stash",
+      "heading": 350,
+      "minZ": 36.75,
+      "maxZ": 37.75,
+      "options": ["stash", "craft"],
+      "data": {
+        "Business": "Harmony Repairs",
+        "Name": "harmony"
+      }
+    },
+    {
+      "center": {"x": 1187.01, "y": 2638.12, "z": 38.4},
+      "length": 0.6,
+      "width": 0.6,
+      "name": "harmony_tray",
+      "heading": 0,
+      "minZ": 38.25,
+      "maxZ": 38.45,
+      "options": ["tray"],
+      "data": {
+        "Name": "harmony"
+      }
+    }
+  ]
+}

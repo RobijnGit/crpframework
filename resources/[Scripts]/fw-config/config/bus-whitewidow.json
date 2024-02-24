@@ -1,0 +1,214 @@
+{
+  "zones": [
+    {
+      "center": {"x": 180.23, "y": -252.43, "z": 54.07},
+      "length": 0.6,
+      "width": 1.05,
+      "name": "whitewidow_clock",
+      "heading": 340,
+      "minZ": 53.82,
+      "maxZ": 54.17,
+      "options": ["clock"],
+      "data": { "Business": "White Widow" }
+    },
+    {
+      "center": {"x": 188.94, "y": -241.11, "z": 54.07},
+      "length": 0.5,
+      "width": 0.5,
+      "name": "whitewidow_register_1",
+      "heading": 340,
+      "minZ": 54.12,
+      "maxZ": 54.47,
+      "options": ["payment"],
+      "data": { "Business": "White Widow", "RegisterId": 1 }
+    },
+    {
+      "center": {"x": 188.1, "y": -243.52, "z": 54.07},
+      "length": 0.5,
+      "width": 0.5,
+      "name": "whitewidow_register_2",
+      "heading": 340,
+      "minZ": 54.12,
+      "maxZ": 54.47,
+      "options": ["payment"],
+      "data": { "Business": "White Widow", "RegisterId": 2 }
+    },
+    {
+      "center": {"x": 188.52, "y": -239.7, "z": 54.07},
+      "length": 0.5,
+      "width": 0.9,
+      "name": "whitewidow_counter",
+      "heading": 340,
+      "minZ": 54.12,
+      "maxZ": 54.42,
+      "options": ["tray"],
+      "data": { "Type": "whitewidow" }
+    },
+    {
+      "center": {"x": 188.08, "y": -252.78, "z": 54.07},
+      "length": 1.0,
+      "width": 1.0,
+      "name": "whitewidow_counter2",
+      "heading": 0,
+      "minZ": 53.47,
+      "maxZ": 53.87,
+      "options": ["tray"],
+      "data": { "Type": "whitewidow2" }
+    },
+    {
+      "center": {"x": 197.46, "y": -253.02, "z": 54.07},
+      "length": 1.0,
+      "width": 1.0,
+      "name": "whitewidow_counter3",
+      "heading": 0,
+      "minZ": 53.47,
+      "maxZ": 53.87,
+      "options": ["tray"],
+      "data": { "Type": "whitewidow3" }
+    },
+    {
+      "center": {"x": 195.88, "y": -257.51, "z": 54.52},
+      "length": 1.0,
+      "width": 1.0,
+      "name": "whitewidow_counter4",
+      "heading": 0,
+      "minZ": 53.47,
+      "maxZ": 53.87,
+      "options": ["tray"],
+      "data": { "Type": "whitewidow4" }
+    },
+    {
+      "center": {"x": 193.69, "y": -263.14, "z": 54.52},
+      "length": 1.0,
+      "width": 1.0,
+      "name": "whitewidow_counter5",
+      "heading": 0,
+      "minZ": 53.47,
+      "maxZ": 53.87,
+      "options": ["tray"],
+      "data": { "Type": "whitewidow5" }
+    },
+    {
+      "center": {"x": 192.11, "y": -267.69, "z": 54.52},
+      "length": 1.0,
+      "width": 1.0,
+      "name": "whitewidow_counter6",
+      "heading": 0,
+      "minZ": 53.47,
+      "maxZ": 53.87,
+      "options": ["tray"],
+      "data": { "Type": "whitewidow6" }
+    },
+    {
+      "center": {"x": 183.81, "y": -264.74, "z": 54.52},
+      "length": 1.0,
+      "width": 1.0,
+      "name": "whitewidow_counter7",
+      "heading": 0,
+      "minZ": 53.47,
+      "maxZ": 53.87,
+      "options": ["tray"],
+      "data": { "Type": "whitewidow7" }
+    },
+    {
+      "center": {"x": 186.03, "y": -258.38, "z": 54.66},
+      "length": 1.0,
+      "width": 1.0,
+      "name": "whitewidow_counter8",
+      "heading": 0,
+      "minZ": 53.47,
+      "maxZ": 53.87,
+      "options": ["tray"],
+      "data": { "Type": "whitewidow8" }
+    },
+    {
+      "center": {"x": 185.42, "y": -242.12, "z": 54.07},
+      "length": 3.4,
+      "width": 0.6,
+      "name": "whitewidow_storage",
+      "heading": 340,
+      "minZ": 53.07,
+      "maxZ": 54.07,
+      "options": ["stash"],
+      "data": { "Type": "whitewidow", "Business": "White Widow"
+      }
+    },
+    {
+      "center": {"x": 184.14, "y": -244.71, "z": 54.07},
+      "length": 0.2,
+      "width": 0.8,
+      "name": "whitewidow_craft",
+      "heading": 340,
+      "minZ": 53.07,
+      "maxZ": 54.57,
+      "options": ["craft"],
+      "data": { "Business": "White Widow" }
+    },
+    {
+      "center": {"x": -1546.43, "y": -430.7, "z": 35.89},
+      "length": 0.95,
+      "width": 0.6,
+      "name": "puffpuffpass_clock",
+      "heading": 50,
+      "minZ": 35.89,
+      "maxZ": 36.44,
+      "options": ["clock"],
+      "data": { "Business": "Puff Puff Pass" }
+    },
+    {
+      "center": {"x": -1548.75, "y": -428.94, "z": 35.89},
+      "length": 0.55,
+      "width": 0.55,
+      "name": "puffpuffpass_register_1",
+      "heading": 50,
+      "minZ": 35.89,
+      "maxZ": 36.29,
+      "options": ["payment"],
+      "data": { "Business": "Puff Puff Pass", "RegisterId": 1 }
+    },
+    {
+      "center": {"x": -1552.48, "y": -429.24, "z": 35.89},
+      "length": 0.55,
+      "width": 0.55,
+      "name": "puffpuffpass_register_2",
+      "heading": 50,
+      "minZ": 35.89,
+      "maxZ": 36.29,
+      "options": ["payment"],
+      "data": { "Business": "Puff Puff Pass", "RegisterId": 2 }
+    },
+    {
+      "center": {"x": -1547.62, "y": -429.79, "z": 35.89},
+      "length": 1.65,
+      "width": 0.65,
+      "name": "puffpuffpass_counter",
+      "heading": 50,
+      "minZ": 35.89,
+      "maxZ": 36.24,
+      "options": ["tray"],
+      "data": { "Type": "puffpuffpass-1" }
+    },
+    {
+      "center": {"x": -1553.48, "y": -430.34, "z": 35.89},
+      "length": 0.55,
+      "width": 1.75,
+      "name": "puffpuffpass_counter_2",
+      "heading": 50,
+      "minZ": 35.89,
+      "maxZ": 36.29,
+      "options": ["tray"],
+      "data": { "Type": "puffpuffpass-2" }
+    },
+    {
+      "center": {"x": -1555.72, "y": -455.33, "z": 35.89},
+      "length": 1.6,
+      "width": 1.9,
+      "name": "puffpuffpass_storage",
+      "heading": 50,
+      "minZ": 34.89,
+      "maxZ": 36.29,
+      "options": ["stash", "craft"],
+      "data": { "Type": "puffpuffpass", "Business": "Puff Puff Pass"}
+    }
+  ]
+}

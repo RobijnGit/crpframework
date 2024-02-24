@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Robijn Inventory</title>
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="inventory-hotbar"></div>
+    <div class="inventory-boxbar">
+        <div class="inventory-boxbar-slot">
+            <div class="inventory-slot-text">Added 3x</div>
+            <div class="inventory-slot-name">Sandwich</div>
+            <div class="inventory-slot-image" style="background-image: url('./images/f_sandwich.png')"></div>
+        </div>
+    </div>
+
+    <div class="inventory-wrapper">
+        <div class="logs"></div>
+        <div class="inventory-slot-hover"></div>
+
+        <div class="drag-item inventory-box-slot"></div>
+
+        <div class="containers-wrapper">
+            <div inventory-name="player" id="player-inventory" class="inventory-box">
+                <div class="inventory-box-header">
+                    <div class="inventory-box-header-name">Player</div>
+                    <div class="inventory-box-header-weight"><span>0</span>/250</div>
+                    <div class="inventory-box-header-weightbar"><div class="weightbar-fill" style="width: 0%;"></div></div>
+                </div>
+                <div class="inventory-box-slots"></div>
+            </div>
+
+            <div class="actions-wrapper">
+                <div class="inventory-actions">
+                    <input tabindex="-1" type="number" id="inventory-move-amount" max="9999" min="0" placeholder="Aantal">
+                    <button class="inventory-actions-btn" id="inventory-use" style="margin: 0.5vh 0;"></button>
+                    <button class="inventory-actions-btn" id="inventory-close">Sluiten</button>
+                </div>
+            </div>
+
+            <div inventory-name="other" id="secondary-inventory" class="inventory-box">
+                <div class="inventory-box-header">
+                    <div class="inventory-box-header-name">Ground</div>
+                    <div class="inventory-box-header-weight"><span>0</span>/250</div>
+                    <div class="inventory-box-header-weightbar"><div class="weightbar-fill" style="width: 0%;"></div></div>
+                </div>
+                <div class="inventory-box-cash">Je hebt <span>69</span> om te spenderen</div>
+                <div class="inventory-box-slots"></div>
+            </div>
+        </div>
+
+        <div class="inventory-bottom-actions">
+            <div id="inventory-action-help" class="inventory-bottom-actions-button">?</div>
+        </div>
+
+        <div class="inventory-help-menu">
+            <h3>Over:</h3>
+            <p>
+                Om een volle stack te verplaatsen, moet je ervoor zorgen dat "AANTAL" leeg of groter is dan de volledige stack.<br />
+                Gebruik je muiswiel om het bedrag in te stellen dat je wilt verplaatsen. Je kan dit doen tijdens het tijdens en vooraf het slepen.<br />
+                Om een item te <strong>GEBRUIKEN</strong> sleep je de item naar het "GEBRUIKEN" handje.<br />
+            </p>
+            <h3>Keybinds:</h3>
+            <ul>
+                <li>Shift + Click: Stuurt de helft van de stack naar de andere inventory.</li>
+                <li>Ctrl + Click: Stuur het aantal ingevuld in "AANTAL" naar de andere inventory</li>
+                <li>Left Click: Item Slepen</li>
+                <li>Middle Click: Fast-Use Item</li>
+                <hr />
+                <li>C: Zet "AANTAL" leeg.</li>
+                <li>Ctrl + C: Kopieer item data</li>
+            </ul>
+            <h3>Winkels:</h3>
+            <p>Zet het aantal dat je wilt kopen in "AANTAL" en sleep dan de item naar je inventory.</p>
+            <h3>Crafting:</h3>
+            <p>
+                Het is altijd handig om de benodigheden te onthouden.<br />
+                Bij het craften moet je het exacte aantal invoeren dat je kunt craften, als je meer wilt craften dan er in de crafting bench zit, zal het de maximale maken dat de crafting bench heeft.
+            </p>
+            <h3>Item Levensduur:</h3>
+            <p>
+                Bijna alle items zullen rotten <i>(inclusief wapens)</i>.<br />
+                De balk onder elk item wordt langzaam kleiner naarmate het meer vergaat en uiteindelijk vervaagt tot een roodachtige kleur. Zodra een item volledig is vernietigd, zal de gehele slot een rode achtergrond hebben.
+            </p>
+        </div>
+    </div>
+
+    <script src="./js/config.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/draghandler.js"></script>
+</body>
+</html>

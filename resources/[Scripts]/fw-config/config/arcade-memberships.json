@@ -1,0 +1,13 @@
+{
+    "membershipPrice": {
+        "GameNerd": 3500,
+        "GameNerd+": 5500
+    },
+    "subscriptions": [
+        {
+            "Cid": "2000",
+            "FirstPayment": 1700493335000,
+            "Type": "GameNerd+"
+        }
+    ]
+}

@@ -1,0 +1,85 @@
+.phone-misc-input {
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    margin-top: 3.6vh;
+    width: 90%;
+}
+
+.phone-misc-input2 {
+    position: absolute;
+    float: right;
+    left: unset;
+    right: 5%;
+    width: 76.5%;
+}
+
+.phone-misc-icons {
+    position: relative;
+    float: right;
+    right: 7%;
+    top: 2.8vh;
+    z-index: 20;
+    font-size: 2vh;
+    text-align: right;
+}
+
+.phone-misc-icons>i {
+    margin-left: 1.1vh;
+}
+
+.phone-misc-back {
+    position: absolute;
+    float: unset !important;
+    right: unset !important;
+    top: 4.7vh;
+    left: 8%;
+
+    z-index: 20;
+
+    font-size: 2vh;
+
+    text-align: left !important;
+}
+
+.phone-misc-back>i {
+    margin-left: 0;
+}
+
+.phone-misc-ripple-container>.phone-misc-ripple {
+    display: inline-block;
+    position: relative;
+    width: 8vh;
+    height: 8vh;
+}
+
+.phone-misc-ripple-container>.phone-misc-ripple>div {
+    position: absolute;
+    border: .4vh solid #cef;
+    opacity: 1;
+    border-radius: 50%;
+    animation: ripple-effect 1.5s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.phone-misc-ripple-container>.phone-misc-ripple>div:nth-child(2) {
+    animation-delay: -0.75s;
+}
+
+@keyframes ripple-effect {
+    0% {
+        top: 3.6vh;
+        left: 3.6vh;
+        width: 0;
+        height: 0;
+        opacity: 1
+    }
+
+    to {
+        top: 0;
+        left: 0;
+        width: 7.2vh;
+        height: 7.2vh;
+        opacity: 0
+    }
+}

@@ -1,0 +1,75 @@
+Config = {}
+
+Config.Webhooks = {
+    ["ooc"] = "",
+    ["chat"] = "",
+    ["bennysMenu"] = "",
+    ["characters"] = "",
+    ["joinleave"] = "",
+    ["scenes"] = "",
+    ["sellvehicle"] = "",
+    ["depot"] = "",
+    ["weed"] = "",
+    ["vehicleswaps"] = "",
+    ["anticheat"] = "",
+
+    ["screenshots"] = "",
+    ["reports"] = "",
+    ["admin"] = "",
+    ["bugs"] = "",
+
+    ["ems"] = "",
+    ["police"] = "",
+    ["police-raids"] = "",
+    ["mayor"] = "",
+
+    ["money"] = "",
+    ["addmoney"] = "",
+    ["removemoney"] = "",
+    ["transfermoney"] = "",
+    ["setmoney"] = "",
+    ["moneycase"] = "",
+
+    ["twitter"] = "",
+    ["yellowpages"] = "",
+    ["conversations"] = "",
+    ["debt"] = "",
+    ["wenmo"] = "",
+    ["crypto"] = "",
+    ["crypto-temp"] = "",
+
+    ["laptopConversations"] = "",
+    ["market"] = "",
+
+    ["additem"] = "",
+    ["removeitem"] = "",
+    ["moveitem"] = "",
+    ["store"] = "",
+    ["crafting"] = "",
+    ["notepads"] = "",
+
+    ["lostmc"] = "",
+    ["darkwolves"] = "",
+    ["losmuertos"] = "",
+    ["pdm"] = "",
+    ["bennys"] = "",
+    ["flightschool"] = "",
+    ["casino"] = "",
+    ["menuManagement"] = "",
+    ["musictapes"] = "",
+}
+
+Config.Colors = {
+    ["default"] = 5793266,
+    ["blue"] = 25087,
+    ["green"] = 762640,
+    ["white"] = 16777215,
+    ["black"] = 0,
+    ["orange"] = 16743168,
+    ["lightgreen"] = 65309,
+    ["yellow"] = 15335168,
+    ["turqois"] = 62207,
+    ["pink"] = 16711900,
+    ["purple"] = 6950317,
+    ["red"] = 16711680,
+}

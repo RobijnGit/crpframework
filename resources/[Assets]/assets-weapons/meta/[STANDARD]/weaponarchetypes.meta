@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<CWeaponModelInfo__InitDataList>
+    <InitDatas>
+        <Item>
+            <modelName>w_at_pi_oil</modelName>
+            <txdName>w_at_pi_oil</txdName>
+            <ptfxAssetName>null</ptfxAssetName>
+            <lodDist value="1000"/>
+        </Item>
+    </InitDatas>
+</CWeaponModelInfo__InitDataList>

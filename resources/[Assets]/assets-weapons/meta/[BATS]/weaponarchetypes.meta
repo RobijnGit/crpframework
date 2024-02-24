@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CWeaponModelInfo__InitDataList>
+    <InitDatas>
+        <Item>
+            <modelName>W_ME_Baseball_Bat_Wood</modelName>
+            <txdName>W_ME_Baseball_Bat_Collection1</txdName>
+            <ptfxAssetName>null</ptfxAssetName>
+            <lodDist value="1000"/>
+        </Item>
+        <Item>
+            <modelName>W_ME_Baseball_Bat_Saw</modelName>
+            <txdName>W_ME_Baseball_Bat_Collection2</txdName>
+            <ptfxAssetName>null</ptfxAssetName>
+            <lodDist value="1000"/>
+        </Item>
+        <Item>
+            <modelName>W_ME_Baseball_Bat_Metal</modelName>
+            <txdName>W_ME_Baseball_Bat_Collection1</txdName>
+            <ptfxAssetName>null</ptfxAssetName>
+            <lodDist value="1000"/>
+        </Item>
+        <Item>
+            <modelName>W_ME_Baseball_Bat_Chain</modelName>
+            <txdName>W_ME_Baseball_Bat_Collection2</txdName>
+            <ptfxAssetName>null</ptfxAssetName>
+            <lodDist value="1000"/>
+        </Item>
+        <Item>
+            <modelName>W_ME_Baseball_Bat_Broken</modelName>
+            <txdName>W_ME_Baseball_Bat_Collection2</txdName>
+            <ptfxAssetName>null</ptfxAssetName>
+            <lodDist value="1000"/>
+        </Item>
+        <Item>
+            <modelName>W_ME_Baseball_Bat_Bolts</modelName>
+            <txdName>W_ME_Baseball_Bat_Collection1</txdName>
+            <ptfxAssetName>null</ptfxAssetName>
+            <lodDist value="1000"/>
+        </Item>
+        <Item>
+            <modelName>W_ME_Baseball_Bat_Barbed</modelName>
+            <txdName>W_ME_Baseball_Bat_Collection1</txdName>
+            <ptfxAssetName>null</ptfxAssetName>
+            <lodDist value="1000"/>
+        </Item>
+    </InitDatas>
+</CWeaponModelInfo__InitDataList>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<CWeaponComponentInfoBlob>
+    <Infos>
+        <Item type="CWeaponComponentSuppressorInfo">
+            <Name>COMPONENT_OIL_SUPP</Name>
+            <Model>w_at_pi_oil</Model>
+            <LocName>WCT_SUPP</LocName>
+            <LocDesc>WCD_PI_SUPP</LocDesc>
+            <AttachBone>AAPSupp</AttachBone>
+            <AccuracyModifier type="NULL" />
+            <bShownOnWheel value="true" />
+            <CreateObject value="true" />
+            <HudDamage value="-5" />
+            <HudSpeed value="0" />
+            <HudCapacity value="0" />
+            <HudAccuracy value="0" />
+            <HudRange value="-5" />
+            <MuzzleBone>Gun_SuMuzzle</MuzzleBone>
+            <FlashFx>muz_pistol_silencer</FlashFx>
+        </Item>
+    </Infos>
+    <InfoBlobName/>
+</CWeaponComponentInfoBlob>

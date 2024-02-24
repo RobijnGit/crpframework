@@ -1,0 +1,115 @@
+{
+  "allowDecayedScrap": true,
+  "scrapItems": [
+    { "Item": "stolen-tv", "Rewards": [16, 46] },
+    { "Item": "stolen-pc", "Rewards": [16, 46] },
+    { "Item": "stolen-micro", "Rewards": [16, 46] },
+    { "Item": "burnerphone", "Rewards": [3, 10] },
+    { "Item": "scales", "Rewards": [7, 13] },
+    { "Item": "metaldetector", "Rewards": [65, 115] }
+  ],
+  "zones": [
+    {
+      "center": {"x": -729.87, "y": -1123.74, "z": 10.83},
+      "length": 1.6,
+      "width": 0.2,
+      "name": "pawnhub-clock",
+      "heading": 35.0,
+      "minZ": 11.03,
+      "maxZ": 12.23,
+      "options": ["clock"]
+    },
+    {
+      "center": {"x": -724.83, "y": -1124.18, "z": 10.83},
+      "length": 0.7,
+      "width": 0.85,
+      "name": "pawnhub-storage",
+      "heading": 304,
+      "minZ": 9.83,
+      "maxZ": 11.23,
+      "options": ["stash"]
+    },
+    {
+      "center": {"x": -729.41, "y": -1123.44, "z": 10.83},
+      "length": 1.8,
+      "width": 0.7,
+      "name": "pawnhub-workbench",
+      "heading": 34,
+      "minZ": 10.43,
+      "maxZ": 11.03,
+      "options": ["craft", "scrap"]
+    },
+    {
+      "center": {"x": -732.76, "y": -1126.9, "z": 10.83},
+      "length": 3.2,
+      "width": 0.7,
+      "name": "pawnhub-tray",
+      "heading": 34,
+      "minZ": 10.58,
+      "maxZ": 10.93,
+      "options": ["tray"],
+      "data": {
+        "name": "PawnNGo_tray_1"
+      }
+    },
+    {
+      "center": {"x": -734.99, "y": -1131.21, "z": 10.83},
+      "length": 1.75,
+      "width": 0.6,
+      "name": "pawnhub-tray-2",
+      "heading": 34,
+      "minZ": 10.58,
+      "maxZ": 10.93,
+      "options": ["tray"],
+      "data": {
+        "name": "PawnNGo_tray_2"
+      }
+    },
+    {
+      "center": {"x": -727.83, "y": -1135.88, "z": 10.83},
+      "length": 4.4,
+      "width": 0.9,
+      "name": "pawnhub-tray-3",
+      "heading": 304,
+      "minZ": 10.63,
+      "maxZ": 10.93,
+      "options": ["tray"],
+      "data": {
+        "name": "PawnNGo_tray_3"
+      }
+    },
+    {
+      "center": {"x": -731.54, "y": -1128.9, "z": 10.83 },
+      "length": 0.8,
+      "width": 0.8,
+      "name": "pawnhub-payment",
+      "heading": 33,
+      "minZ": 10.83,
+      "maxZ": 11.43,
+      "options": ["payment"],
+      "data": { "Business": "PawnNGo", "RegisterId": 1 }
+    },
+    {
+      "center": {"x": -734.16, "y": -1132.44, "z": 10.83 },
+      "length": 0.8,
+      "width": 0.8,
+      "name": "pawnhub-payment-2",
+      "heading": 34,
+      "minZ": 10.78,
+      "maxZ": 11.18,
+      "options": ["payment"],
+      "data": { "Business": "PawnNGo", "RegisterId": 2 }
+    },
+    {
+      "center": {"x": -730.73, "y": -1137.7, "z": 10.83 },
+      "length": 0.8,
+      "width": 0.8,
+      "name": "pawnhub-payment-3",
+      "heading": 10,
+      "minZ": 10.88,
+      "maxZ": 11.23,
+      "options": ["payment"],
+      "data": { "Business": "PawnNGo", "RegisterId": 3 }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "ticketPrice": 249,
+  "ticketTypes": [
+    [
+      "tdm",
+      "TDM"
+    ],
+    [
+      "vehicleTag",
+      "Vehicle Tag"
+    ],
+    [
+      "propHunt",
+      "Prop Hunt"
+    ]
+  ],
+  "arcadeMachines": {
+    "tdm": 99.50000000000003,
+    "vehicleTag": 99.80000000000001
+  },
+  "arcadeStats": {
+    "tdm": {
+      "totalPlays": 5,
+      "lastRepair": 1700354359452
+    },
+    "vehicleTag": {
+      "totalPlays": 2,
+      "lastRepair": 0
+    }
+  }
+}

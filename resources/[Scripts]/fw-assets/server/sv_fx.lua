@@ -1,0 +1,5 @@
+RegisterNetEvent("fw-assets:Server:Fx:Thermite")
+AddEventHandler("fw-assets:Server:Fx:Thermite", function(Coords, Detcord)
+    Coords = vector3(Coords.x, Coords.y + 1.0, Coords.z)
+    TriggerClientEvent("fw-fx:Client:Thermite", -1, Coords, Detcord)
+end)

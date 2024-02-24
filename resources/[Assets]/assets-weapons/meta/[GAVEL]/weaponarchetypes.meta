@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<CWeaponModelInfo__InitDataList>
+	<InitDatas>
+		<Item>
+			<modelName>w_me_gavel</modelName>
+			<txdName>np_town_hall_details</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="1000"/>
+		</Item>
+	</InitDatas>
+</CWeaponModelInfo__InitDataList>

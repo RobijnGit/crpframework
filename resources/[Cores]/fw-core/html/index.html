@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Server Loadscreen</title>
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="main.css">
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js" integrity="sha512-xi/RZRIF/S0hJ+yJJYuZ5yk6/8pCiRlEXZzoguSMl+vk2i3m6UjUO/WcZ11blRL/O+rnj94JRGwt/CHbc9+6EA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+</head>
+<body>
+    <video width="100%" height="100%" class="video" autoplay>
+        <source src="" type="video/webm">
+    </video>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var video = document.querySelector(".video");
+            var source = document.querySelector("source");
+
+            var currentDate = new Date();
+            var currentMonth = currentDate.getMonth();
+
+            if (currentMonth === 11) { // December (months are 0-based, so December is 11)
+                source.src = "./loadingscreen-xmas.webm";
+            } else {
+                source.src = "./loadingscreen.webm";
+            }
+
+            video.load(); // Load the new source
+            setTimeout(() => {
+                video.play();
+            }, 100);
+        });
+    </script>
+</body>
+</html>

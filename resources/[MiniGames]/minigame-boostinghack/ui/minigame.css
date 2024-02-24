@@ -1,0 +1,210 @@
+body {
+    background-color: transparent;
+    font-family: sans-serif;
+}
+
+.title {
+    text-align: center;
+    color: white;
+}
+
+.description {
+    text-align: center;
+    color: gray;
+}
+
+
+/**
+    MINIGAME SQUARES
+*/
+
+.streaks {
+    display: block;
+    margin: 4vh auto;
+    text-align: center;
+    font-size: 3vh;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    width: -moz-fit-content;
+    width: fit-content;
+    background-color: #028000;
+    padding: 1.2vh;
+    border-radius: 1.8vh;
+}
+
+.best_time,
+.time {
+    display: inline-block;
+    width: 10vh;
+}
+
+.streaks .fa {
+    padding: 0 1vh;
+}
+
+.options {
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto 1vh;
+    cursor: default;
+    user-select: none;
+}
+
+.option {
+    display: inline-block;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 2vh;
+    background-color: #20282e;
+    padding: 1vh 2vh;
+    margin: 0 auto 1vh;
+    border-radius: .6vh;
+}
+
+.option.setting {
+    display: inline-flex;
+    height: 3.2vh;
+    padding: 0;
+}
+
+.option.setting label {
+    font-size: 1.2vh;
+    padding: .6vh 1vh .6vh .6vh;
+    cursor: pointer;
+}
+
+.option.setting input {
+    vertical-align: -.2vh;
+    cursor: pointer;
+}
+
+.option.timeout label {
+    padding: .9vh;
+}
+
+.option.timeout input {
+    vertical-align: text-top;
+}
+
+.timeout_value {
+    font-size: 1.2vh;
+    display: inline-block;
+    width: 1.8vh;
+    text-align: right;
+    padding: .9vh 1.2vh .9vh .5vh;
+}
+
+.minigame {
+    margin: 0 auto 2vh;
+    margin-top: 12%;
+    width: 54vh;
+    min-width: 54vh;
+    max-width: 54vh;
+    background-color: #232832;
+    padding: 3vh 0;
+}
+
+.splash {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 1.6vh;
+}
+
+.splash .hacker {
+    font-size: 6.5vh;
+    margin-bottom: 3vh;
+}
+
+.splash .text {
+    font-weight: bold;
+}
+
+.minigame .find {
+    text-align: center;
+    color: white;
+    font-size: 3vh;
+    user-select: none;
+    margin-top: 1vh;
+}
+
+.minigame .find>div {
+    display: inline-block;
+    transform: rotateX(180deg);
+}
+
+.minigame .timer {
+    text-align: center;
+    color: green;
+    font-size: 1.4vh;
+    margin-bottom: 1.5vh;
+}
+
+.minigame .codes {
+    display: flex;
+    flex-wrap: wrap;
+    width: 40vh;
+    margin: auto;
+}
+
+.minigame .codes>div {
+    flex: 1 0 10%;
+    margin: .7vh 0;
+    color: white;
+    text-align: center;
+    font-size: 1.8vh;
+    transform: rotateX(180deg);
+}
+
+.minigame .codes>div.red {
+    color: red;
+}
+
+.minigame .codes>div.green {
+    color: green;
+}
+
+.minigame .mirrored .find>div,
+.minigame .mirrored .codes>div {
+    -moz-transform: scale(-1, -1);
+    -o-transform: scale(-1, -1);
+    -webkit-transform: scale(-1, -1);
+    transform: scale(-1, -1);
+}
+
+.hidden {
+    display: none;
+}
+
+.restart {
+    text-align: center;
+}
+
+.btn_again {
+    padding: .6vh 1.5vh;
+    font-weight: bold;
+}
+
+.credits {
+    text-align: center;
+    color: gray;
+    margin-top: 4vh;
+}
+
+.credits a {
+    color: #ccc;
+}
+
+.credits b {
+    color: white;
+}
+
+.credits .fas {
+    color: red;
+}

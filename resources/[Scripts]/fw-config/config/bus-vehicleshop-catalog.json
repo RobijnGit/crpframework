@@ -1,0 +1,80 @@
+[
+  {
+    "shopId": "pdm",
+    "shopAbbvr": "PDM",
+    "shopLabel": "Premium Deluxe Motorsports",
+    "catalogZone": {
+      "center": {"x": -32.69, "y": -1095.65, "z": 27.27},
+      "length": 2.2,
+      "width": 1.4,
+      "heading": 340,
+      "minZ": 26.27,
+      "maxZ": 29.27
+    }
+  },
+  {
+    "shopId": "bennys",
+    "shopAbbvr": "Bennys",
+    "shopLabel": "Bennys Motorworks",
+    "catalogZone": {
+      "center": {"x": -211.16, "y": -1338.95, "z": 31.3},
+      "length": 1.2,
+      "width": 2.2,
+      "heading": 0,
+      "minZ": 30.3,
+      "maxZ": 32.9
+    }
+  },
+  {
+    "shopId": "darkwolves",
+    "shopAbbvr": "DWMC",
+    "shopLabel": "Dark Wolves MC",
+    "catalogZone": {
+      "center": {"x": 1714.92, "y": 4770.1, "z": 41.99},
+      "length": 1.8,
+      "width": 1.6,
+      "heading": 0,
+      "minZ": 40.99,
+      "maxZ": 44.99
+    }
+  },
+  {
+    "shopId": "losmuertos",
+    "shopAbbvr": "LMMC",
+    "shopLabel": "Muertos Motorcycles",
+    "catalogZone": {
+      "center": {"x": 1245.03, "y": 3606.02, "z": 33.82},
+      "length": 1.6,
+      "width": 1.6,
+      "heading": 10,
+      "minZ": 32.82,
+      "maxZ": 35.22
+    }
+  },
+  {
+    "shopId": "bearlymc",
+    "shopAbbvr": "BLMC",
+    "shopLabel": "Bearly Legal MC",
+    "catalogZone": {
+      "center": {"x": 136.04, "y": 325.71, "z": 116.61},
+      "length": 1.5,
+      "width": 1.65,
+      "heading": 23,
+      "minZ": 115.61,
+      "maxZ": 118.01
+    }
+  },
+  {
+    "shopId": "lostmc",
+    "shopAbbvr": "Lost",
+    "shopLabel": "Lost MC Holland",
+    "catalogZone": {
+      "center": {"x": 986.71, "y": -120.65, "z": 74.06},
+      "length": 2.0,
+      "width": 2.0,
+      "heading": 330,
+      "minZ": 73.06,
+      "maxZ": 75.6
+    }
+  }
+]

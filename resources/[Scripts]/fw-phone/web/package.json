@@ -1,0 +1,38 @@
+{
+  "name": "svelte-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npm run prepare && rollup -c",
+    "dev": "rollup -c -w",
+    "start": "sirv public --no-clear",
+    "prepare": "smui-theme compile public/build/smui.css -i src/theme"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-node-resolve": "^11.0.0",
+    "@smui/checkbox": "^6.0.0-beta.16",
+    "@smui/form-field": "^6.0.0-beta.16",
+    "@smui/ripple": "^6.0.0-beta.16",
+    "@smui/slider": "^6.0.0",
+    "rollup": "^2.75.6",
+    "rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-livereload": "^2.0.0",
+    "rollup-plugin-svelte": "^7.0.0",
+    "rollup-plugin-terser": "^7.0.0",
+    "sass": "^1.53.0",
+    "smui-theme": "^6.0.0-beta.16",
+    "svelte": "^3.48.0",
+    "svelte-check": "^2.7.2",
+    "svelte-preprocess": "^4.10.7"
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-build-balloon": "^35.2.0",
+    "@ckeditor/ckeditor5-editor-balloon": "^35.2.0",
+    "jquery": "^3.6.0",
+    "luxon": "^3.3.0",
+    "sass": "^7.0.1",
+    "sirv-cli": "^1.0.0",
+    "tslib": "^2.5.0"
+  }
+}

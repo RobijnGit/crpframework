@@ -1,0 +1,105 @@
+.ui-checkbox-container {
+    border: 0;
+    margin: 0;
+    display: inline-flex;
+    padding: 0;
+    position: relative;
+    min-width: 0;
+    flex-direction: column;
+    vertical-align: top;
+}
+
+.ui-checkbox-container, hr { width: 100%; }
+
+.ui-checkbox-container, .ui-checkbox {
+    color: rgba(255, 255, 255, 0.7) !important;
+    border-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.ui-checkbox {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    margin-left: -1.1vh;
+    margin-right: 1.6vh;
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.ui-checkbox-root {
+    color: inherit;
+    border: 0;
+    cursor: pointer;
+    margin: 0;
+    display: inline-flex;
+    outline: 0;
+    padding: 0;
+    position: relative;
+    align-items: center;
+    user-select: none;
+    border-radius: 0;
+    vertical-align: middle;
+    -moz-appearance: none;
+    justify-content: center;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+
+    flex: 0 0 auto;
+    color: #fff;
+    padding: 1.2vh;
+    overflow: visible;
+    font-size: 2.4vh;
+    text-align: center;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border-radius: 50%;
+
+    padding: .9vh;
+
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.ui-checkbox-active {
+    color: #f2a365 !important;
+}
+
+.ui-checkbox-label {
+    width: 100%;
+    display: flex;
+    align-items: inherit;
+    justify-content: inherit;
+}
+
+.ui-checkbox-input {
+    top: 0;
+    left: 0;
+    width: 100%;
+    cursor: inherit;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    z-index: 1;
+    position: absolute;;
+}
+
+.ui-checkbox-icon {
+    fill: currentColor;
+    width: 2.3vh;
+    height: 2.3vh;
+    display: inline-block;
+    font-size: 2vh;
+    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.ui-checkbox-text {
+    font-size: 1.5vh;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+    margin: 0;
+}

@@ -1,0 +1,739 @@
+{
+    "ingredientCategories": {
+        "cream": ["Cream"],
+        "beans": ["Beans"],
+        "beef": ["Beef"],
+        "dairy": ["Dairy"],
+        "vegetables": ["Cabbage", "Carrot", "Cucumber", "Onion", "Potato", "Radish", "RedBeet", "Tomato"],
+        "grain": ["Corn", "Wheat"],
+        "seasoning": ["Garlic"],
+        "sugar": ["Pumpkin", "Watermelon"],
+        "oil": ["Sunflower"]
+    },
+    "categoryLabels": {
+        "cream": "Slagroom",
+        "beans": "Koffiebonen",
+        "beef": "Vlees",
+        "dairy": "Zuivel",
+        "vegetables": "Groenten",
+        "grain": "Graan",
+        "seasoning": "Kruiden",
+        "sugar": "Suiker",
+        "oil": "Olie"
+    },
+    "ingredientsPerDish": {
+        "Main": 5,
+        "Side": 4,
+        "Dessert": 3,
+        "Drink": 2
+    },
+    "foodchainIds": {
+        "UwU Café": "uwu",
+        "Burger Shot": "burger",
+        "Maldinis Pizza": "pizza",
+        "Dragons Den": "dragonsden",
+        "Prison": "prison",
+        "Kebab King": "kebabking"
+    },
+    "dishItems": {
+        "Main": "foodchain-food-item",
+        "Side": "foodchain-side-item",
+        "Dessert": "foodchain-dessert-item",
+        "Drink": "foodchain-drink-item"
+    },
+    "foodchainBuffs": {
+        "Dragons Den": ["Stress", "Health", "Strength", "Salary"],
+        "Burger Shot": ["Bank", "Beekeeping", "Hunting"],
+        "UwU Café": ["Stores", "Recoil", "Fishing", "Swimming"]
+    },
+    "zones": [
+        {
+            "center": {"x": -1177.7, "y": -897.55, "z": 13.8},
+            "length": 0.15,
+            "width": 1.2,
+            "name": "burgershot_clock",
+            "heading": 34,
+            "minZ": 13.65,
+            "maxZ": 14.8,
+            "data": { "Business": "Burger Shot" },
+            "options": ["clock", "employees"]
+        },
+        {
+            "center": {"x": -1189.0, "y": -897.52, "z": 13.8},
+            "length": 0.4,
+            "width": 0.8,
+            "name": "burgershot_grab_box",
+            "heading": 34,
+            "minZ": 12.8,
+            "maxZ": 14.0,
+            "data": {"Business": "Burger Shot", "Type": "burgershot"},
+            "options": ["bag"]
+        },
+        {
+            "center": {"x": -1187.53, "y": -893.6, "z": 13.8},
+            "length": 0.5,
+            "width": 0.5,
+            "name": "burgershot_cash_register_1",
+            "heading": 35,
+            "minZ": 13.95,
+            "maxZ": 14.45,
+            "data": { "Business": "Burger Shot", "RegisterId": 1 },
+            "options": ["payment"]
+        },
+        {
+            "center": {"x": -1189.06, "y": -894.64, "z": 13.8},
+            "length": 0.5,
+            "width": 0.5,
+            "name": "burgershot_cash_register_2",
+            "heading": 35,
+            "minZ": 13.95,
+            "maxZ": 14.45,
+            "data": { "Business": "Burger Shot", "RegisterId": 2 },
+            "options": ["payment"]
+        },
+        {
+            "center": {"x": -1188.32, "y": -894.08, "z": 13.8},
+            "length": 0.5,
+            "width": 0.5,
+            "name": "burgershot_foodtray_1",
+            "heading": 34,
+            "minZ": 13.9,
+            "maxZ": 14.4,
+            "data": { "Type": "burgershot" },
+            "options": ["tray"]
+        },
+        {
+            "center": {"x": -1189.79, "y": -895.12, "z": 13.8},
+            "length": 0.5,
+            "width": 0.5,
+            "name": "burgershot_foodtray_2",
+            "heading": 34,
+            "minZ": 13.85,
+            "maxZ": 14.2,
+            "data": { "Type": "burgershot2" },
+            "options": ["tray"]
+        },
+        {
+            "center": {"x": -1192.15, "y": -898.16, "z": 13.8},
+            "length": 2.0,
+            "width": 0.4,
+            "name": "burgershot_storage_cold",
+            "heading": 34,
+            "minZ": 12.8,
+            "maxZ": 15.2,
+            "data": { "Business": "Burger Shot", "Name": "burgershot" },
+            "options": ["storageCold"]
+        },
+        {
+            "center": {"x": -1187.64, "y": -896.96, "z": 13.8},
+            "length": 0.8,
+            "width": 1.5,
+            "name": "burgershot_storage_shelf",
+            "heading": 34,
+            "minZ": 13.95,
+            "maxZ": 15.1,
+            "data": { "Business": "Burger Shot", "Name": "burgershot" },
+            "options": ["storageShelf"]
+        },
+        {
+            "center": {"x": -1185.29, "y": -901.97, "z": 13.8},
+            "length": 0.4,
+            "width": 0.8,
+            "name": "burgershot_dessert_dish",
+            "heading": 34,
+            "minZ": 13.65,
+            "maxZ": 14.0,
+            "data": { "Business": "Burger Shot", "DishType": "Dessert" },
+            "options": ["prepareFood"]
+        },
+        {
+            "center": {"x": -1186.86, "y": -900.61, "z": 13.8},
+            "length": 0.9,
+            "width": 1.45,
+            "name": "burgershot_main_dish",
+            "heading": 34,
+            "minZ": 13.7,
+            "maxZ": 13.95,
+            "data": { "Business": "Burger Shot", "DishType": "Main" },
+            "options": ["prepareFood"]
+        },
+        {
+            "center": {"x": -1191.55, "y": -897.71, "z": 13.8},
+            "length": 1.3,
+            "width": 0.55,
+            "name": "burgershot_drink_dish",
+            "heading": 34,
+            "minZ": 13.95,
+            "maxZ": 14.5,
+            "data": { "Business": "Burger Shot", "DishType": "Drink" },
+            "options": ["prepareFood"]
+        },
+        {
+            "center": {"x": -1187.42, "y": -899.71, "z": 13.8},
+            "length": 0.75,
+            "width": 1.4,
+            "name": "burgershot_side_dish",
+            "heading": 34,
+            "minZ": 13.75,
+            "maxZ": 14.05,
+            "data": { "Business": "Burger Shot", "DishType": "Side" },
+            "options": ["prepareFood"]
+        },
+        {
+            "center": {"x": -1198.27, "y": -898.59, "z": 13.8},
+            "length": 1.0,
+            "width": 1.0,
+            "name": "burger_menu_management",
+            "heading": 305,
+            "minZ": 13.55,
+            "maxZ": 13.9,
+            "data": { "Business": "Burger Shot" },
+            "options": ["menuManagement"]
+        },
+    
+        {
+            "center": {"x": -594.36, "y": -1052.49, "z": 23.0},
+            "length": 1.6,
+            "width": 0.3,
+            "name": "uwucafe_clock",
+            "heading": 0.0,
+            "minZ": 22.39,
+            "maxZ": 23.69,
+            "data": { "Business": "UwU Café" },
+            "options": ["clock", "employees"]
+        },
+        {
+            "center": {"x": -585.46, "y": -1055.39, "z": 22.34},
+            "length": 0.4,
+            "width": 2.25,
+            "name": "uwucafe_grab_bag",
+            "heading": 0,
+            "minZ": 21.34,
+            "maxZ": 23.49,
+            "data": {"Business": "UwU Café", "Type": "uwucafe"},
+            "options": ["bag", "uwu_mystery"]
+        },
+        {
+            "center": {"x": -584.03, "y": -1061.45, "z": 22.34},
+            "length": 0.35,
+            "width": 0.45,
+            "name": "uwucafe_cash_register_1",
+            "heading": 347.0,
+            "minZ": 22.34,
+            "maxZ": 22.59,
+            "data": { "Business": "UwU Café", "RegisterId": 1 },
+            "options": ["payment"]
+        },
+        {
+            "center": {"x": -584.06, "y": -1058.75, "z": 22.34},
+            "length": 0.35,
+            "width": 0.45,
+            "name": "uwucafe_cash_register_2",
+            "heading": 10.0,
+            "minZ": 22.34,
+            "maxZ": 22.59,
+            "data": { "Business": "UwU Café", "RegisterId": 2 },
+            "options": ["payment"]
+        },
+        {
+            "center": {"x": -584.05, "y": -1062.02, "z": 22.34},
+            "length": 0.8,
+            "width": 0.55,
+            "name": "uwucafe_foodtray_1",
+            "heading": 0,
+            "minZ": 22.34,
+            "maxZ": 22.64,
+            "data": { "Type": "uwucafe" },
+            "options": ["tray"]
+        },
+        {
+            "center": {"x": -584.01, "y": -1059.29, "z": 22.34},
+            "length": 0.8,
+            "width": 0.55,
+            "name": "uwucafe_foodtray_2",
+            "heading": 0,
+            "minZ": 22.34,
+            "maxZ": 22.64,
+            "data": { "Type": "uwucafe2" },
+            "options": ["tray"]
+        },
+        {
+            "center": {"x": -573.54, "y": -1059.77, "z": 22.34},
+            "length": 0.9,
+            "width": 1.21,
+            "name": "uwucafe_table_1",
+            "heading": 0,
+            "minZ": 22.34,
+            "maxZ": 22.74,
+            "data": { "Type": "uwucafet1" },
+            "options": ["tray"]
+        },
+        {
+            "center": {"x": -573.47, "y": -1063.46, "z": 22.49},
+            "length": 0.9,
+            "width": 1.21,
+            "name": "uwucafe_table_2",
+            "heading": 0,
+            "minZ": 22.34,
+            "maxZ": 22.74,
+            "data": { "Type": "uwucafet2" },
+            "options": ["tray"]
+        },
+        {
+            "center": {"x": -573.48, "y": -1067.07, "z": 22.49},
+            "length": 0.9,
+            "width": 1.21,
+            "name": "uwucafe_table_3",
+            "heading": 0,
+            "minZ": 22.34,
+            "maxZ": 22.74,
+            "data": { "Type": "uwucafet3" },
+            "options": ["tray"]
+        },
+        {
+            "center": {"x": -590.57, "y": -1058.58, "z": 22.34},
+            "length": 1.05,
+            "width": 0.2,
+            "name": "uwucafe_storage_cold",
+            "heading": 0,
+            "minZ": 21.49,
+            "maxZ": 23.49,
+            "data": { "Business": "UwU Café", "Name": "uwu" },
+            "options": ["storageCold"]
+        },
+        {
+            "center": {"x": -587.34, "y": -1059.65, "z": 22.34},
+            "length": 2.4,
+            "width": 0.5,
+            "name": "uwucafe_storage_shelf",
+            "heading": 0,
+            "minZ": 22.24,
+            "maxZ": 22.64,
+            "data": { "Business": "UwU Café", "Name": "uwu" },
+            "options": ["storageShelf"]
+        },
+        {
+            "center": {"x": -590.65, "y": -1059.7, "z": 22.34},
+            "length": 1.05,
+            "width": 0.2,
+            "name": "uwucafe_dessert_dish",
+            "heading": 0,
+            "minZ": 21.49,
+            "maxZ": 23.49,
+            "data": { "Business": "UwU Café", "DishType": "Dessert" },
+            "options": ["prepareFood"]
+        },
+        {
+            "center": {"x": -591.08, "y": -1056.54, "z": 22.38},
+            "length": 1.05,
+            "width": 0.65,
+            "name": "uwucafe_main_dish",
+            "heading": 0.0,
+            "minZ": 22.21,
+            "maxZ": 22.56,
+            "data": { "Business": "UwU Café", "DishType": "Main" },
+            "options": ["prepareFood"]
+        },
+        {
+            "center": {"x": -587.82, "y": -1061.85, "z": 22.36},
+            "length": 0.5,
+            "width": 0.5,
+            "name": "uwucafe_drink_dish",
+            "heading": 0.0,
+            "minZ": 22.21,
+            "maxZ": 22.41,
+            "data": { "Business": "UwU Café", "DishType": "Drink" },
+            "options": ["prepareFood"]
+        },
+        {
+            "center": {"x": -591.09, "y": -1063.05, "z": 22.36},
+            "length": 0.6,
+            "width": 0.5,
+            "name": "uwucafe_side_dish",
+            "heading": 0.0,
+            "minZ": 22.26,
+            "maxZ": 22.56,
+            "data": { "Business": "UwU Café", "DishType": "Side" },
+            "options": ["prepareFood"]
+        },
+        {
+            "center": {"x": -596.09, "y": -1052.68, "z": 22.34},
+            "length": 1.0,
+            "width": 1.0,
+            "name": "uwu_menu_management",
+            "heading": 0,
+            "minZ": 22.19,
+            "maxZ": 22.84,
+            "data": { "Business": "UwU Café" },
+            "options": ["menuManagement"]
+        },
+    
+        {
+            "center": {"x": -173.98, "y": 304.67, "z": 98.53},
+            "length": 0.55,
+            "width": 0.5,
+            "name": "dragonsden_clock",
+            "heading": 0,
+            "minZ": 98.48,
+            "maxZ": 99.03,
+            "data": { "Business": "Dragons Den" },
+            "options": ["clock", "employees"]
+        },
+        {
+            "center": {"x": -170.99, "y": 304.6, "z": 98.53},
+            "length": 0.5,
+            "width": 0.3,
+            "name": "dragonsden_cash_register_1",
+            "heading": 3.0,
+            "minZ": 98.58,
+            "maxZ": 98.98,
+            "data": { "Business": "Dragons Den", "RegisterId": 1 },
+            "options": ["payment"]
+        },
+        {
+            "center": {"x": -171.27, "y": 291.81, "z": 99.2},
+            "length": 1.1,
+            "width": 0.5,
+            "name": "dragonsden_foodtray_1",
+            "heading": 0.0,
+            "minZ": 99.15,
+            "maxZ": 99.35,
+            "data": { "Type": "dragonsden" },
+            "options": ["tray"]
+        },
+        {
+            "center": {"x": -171.53, "y": 295.62, "z": 99.2},
+            "length": 0.4,
+            "width": 1.5,
+            "name": "dragonsden_storage_cold",
+            "heading": 90.0,
+            "minZ": 98.2,
+            "maxZ": 99.15,
+            "data": { "Business": "Dragons Den", "Name": "dragonsden" },
+            "options": ["storageCold"]
+        },
+        {
+            "center": {"x": -173.84, "y": 292.55, "z": 99.2},
+            "length": 1.4,
+            "width": 1.0,
+            "name": "dragonsden_main_dish",
+            "heading": 0,
+            "minZ": 99.2,
+            "maxZ": 99.6,
+            "data": { "Business": "Dragons Den", "DishType": "Main" },
+            "options": ["prepareFood"]
+        },
+        {
+            "center": {"x": -173.79, "y": 291.04, "z": 99.2},
+            "length": 1.45,
+            "width": 0.55,
+            "name": "dragonsden_dessert_dish",
+            "heading": 0,
+            "minZ": 99.2,
+            "maxZ": 99.6,
+            "data": { "Business": "Dragons Den", "DishType": "Dessert" },
+            "options": ["prepareFood"]
+        },
+        {
+            "center": {"x": -172.64, "y": 289.84, "z": 99.2},
+            "length": 0.4,
+            "width": 1.5,
+            "name": "dragonsden_side_dish",
+            "heading": 0,
+            "minZ": 99.15,
+            "maxZ": 99.95,
+            "data": { "Business": "Dragons Den", "DishType": "Side" },
+            "options": ["prepareFood"]
+        },
+        {
+            "center": {"x": -173.98, "y": 295.12, "z": 99.2},
+            "length": 0.8,
+            "width": 0.65,
+            "name": "dragonsden_drink_dish",
+            "heading": 0,
+            "minZ": 99.15,
+            "maxZ": 99.6,
+            "data": { "Business": "Dragons Den", "DishType": "Drink" },
+            "options": ["prepareFood"]
+        },
+        {
+            "center": {"x": -177.9, "y": 302.37, "z": 101.07},
+            "length": 0.6,
+            "width": 0.6,
+            "name": "dragonsden_menu_management",
+            "heading": 25,
+            "minZ": 100.82,
+            "maxZ": 101.27,
+            "data": { "Business": "Dragons Den" },
+            "options": ["menuManagement"]
+        },
+        {
+            "center": {"x": -171.39, "y": 297.75, "z": 99.2},
+            "length": 1.3,
+            "width": 0.6,
+            "name": "dragonsden_grab_box",
+            "heading": 0,
+            "minZ": 98.2,
+            "maxZ": 99.1,
+            "data": {"Business": "Dragons Den", "Type": "dragonsden"},
+            "options": ["bag"]
+        },
+
+        {
+            "center": {"x": 336.33, "y": -811.76, "z": 29.28},
+            "length":0.2,
+            "width":1.55,
+            "name": "kebabking_clock",
+            "heading": 340,
+            "minZ": 29.38,
+            "maxZ": 30.63,
+            "data": { "Business": "Kebab King" },
+            "options": ["clock", "employees", "menuManagement"]
+        },
+        {
+            "center": {"x": 335.04, "y": -806.51, "z": 29.27},
+            "length": 0.6,
+            "width": 0.8,
+            "name": "kebabking_cash_register_1",
+            "heading": 340,
+            "minZ": 29.17,
+            "maxZ": 29.77,
+            "data": { "Business": "Kebab King", "RegisterId": 1 },
+            "options": ["payment"]
+        },
+        {
+            "center": {"x": 335.43, "y": -805.6, "z": 29.27},
+            "length": 0.75,
+            "width": 0.8,
+            "name": "kebabking_foodtray_1",
+            "heading": 70,
+            "minZ": 29.17,
+            "maxZ": 29.67,
+            "data": { "Type": "kebabking" },
+            "options": ["tray"]
+        },
+        {
+            "center": {"x": 339.5, "y": -804.21, "z": 29.28},
+            "length":  0.4,
+            "width":  0.8,
+            "name": "kebabking_storage_cold",
+            "heading":  340,
+            "minZ":  28.28,
+            "maxZ":  30.33,
+            "data": { "Business": "Kebab King", "Name": "kebabking" },
+            "options": ["storageCold"]
+        },
+        {
+            "center": {"x": 336.1, "y": -804.57, "z": 29.27},
+            "length": 1.2,
+            "width": 0.65,
+            "name": "kebabking_dessert_dish",
+            "heading": 340,
+            "minZ": 29.22,
+            "maxZ": 29.52,
+            "data": { "Business": "Kebab King", "DishType": "Dessert" },
+            "options": ["prepareFood"]
+        },
+        {
+            "center": {"x": 337.08, "y": -802.91, "z": 29.27},
+            "length": 0.4,
+            "width": 0.6,
+            "name": "kebabking_main_dish",
+            "heading": 30,
+            "minZ": 29.17,
+            "maxZ": 30.07,
+            "data": { "Business": "Kebab King", "DishType": "Main" },
+            "options": ["prepareFood"]
+        },
+        {
+            "center": {"x": 338.56, "y": -803.42, "z": 29.28},
+            "length": 0.8,
+            "width": 1.2,
+            "name": "kebabking_drink_dish",
+            "heading": 340,
+            "minZ": 28.88,
+            "maxZ": 29.48,
+            "data": { "Business": "Kebab King", "DishType": "Drink" },
+            "options": ["prepareFood"]
+        },
+        {
+            "center": {"x": 338.5, "y": -806.39, "z": 29.28},
+            "length": 1.4,
+            "width": 0.8,
+            "name": "kebabking_side_dish",
+            "heading": 340,
+            "minZ": 28.28,
+            "maxZ": 29.83,
+            "data": { "Business": "Kebab King", "DishType": "Side" },
+            "options": ["prepareFood"]
+        },
+
+        {
+            "center": {"x": -1382.95, "y": -594.45, "z": 30.32},
+            "length": 2.2,
+            "width": 0.65,
+            "name": "bahamamamas_clock",
+            "heading": 304,
+            "minZ": 30.12,
+            "maxZ": 30.72,
+            "data": { "Business": "Bahama Mamas" },
+            "options": ["clock", "employees"]
+        },
+        {
+            "center": {"x": -1398.85, "y": -600.13, "z": 30.32},
+            "length": 0.4,
+            "width": 0.55,
+            "name": "bahamamamas_cash_register_1",
+            "heading": 12,
+            "minZ": 30.37,
+            "maxZ": 30.92,
+            "data": { "Business": "Bahama Mamas", "RegisterId": 1 },
+            "options": ["payment"]
+        },
+        {
+            "center": {"x": -1402.86, "y": -602.58, "z": 30.32},
+            "length": 0.55,
+            "width": 0.45,
+            "name": "bahamamamas_cash_register_2",
+            "heading": 323,
+            "minZ": 30.37,
+            "maxZ": 30.77,
+            "data": { "Business": "Bahama Mamas", "RegisterId": 2 },
+            "options": ["payment"]
+        },
+        {
+            "center": {"x": -1398.77, "y": -601.45, "z": 30.32},
+            "length": 1.0,
+            "width": 0.8,
+            "name": "bahamamamas_foodtray_1",
+            "heading": 345,
+            "minZ": 30.32,
+            "maxZ": 30.67,
+            "data": { "Type": "bahamamamas" },
+            "options": ["tray"]
+        },
+        {
+            "center": {"x": -1401.52,"y": -603.35, "z": 30.32},
+            "length": 1.0,
+            "width": 0.8,
+            "name": "bahamamamas_foodtray_2",
+            "heading": 265,
+            "minZ": 30.37,
+            "maxZ": 30.62,
+            "data": { "Type": "bahamamamas2" },
+            "options": ["tray"]
+        },
+        {
+            "center": {"x": -1402.97, "y": -598.07, "z": 30.32},
+            "length": 4.0,
+            "width": 0.4,
+            "name": "bahamamamas_storage_cold",
+            "heading": 303,
+            "minZ": 29.32,
+            "maxZ": 30.27,
+            "data": { "Business": "Bahama Mamas", "Name": "bahamamamas" },
+            "options": ["storageCold"]
+        },
+        {
+            "center": {"x": -1400.08, "y": -602.5, "z": 30.32},
+            "length": 0.8,
+            "width": 2.6,
+            "name": "bahamamamas_storage_shelf",
+            "heading": 32,
+            "minZ": 29.32,
+            "maxZ": 30.27,
+            "data": { "Business": "Bahama Mamas", "Name": "bahamamamas" },
+            "options": ["storageShelf"]
+        },
+
+        {
+            "center": {"x": 53.86, "y": -132.72, "z": 55.46},
+            "length": 0.6,
+            "width": 0.6,
+            "name": "petitcroissant_cash_register_1",
+            "heading": 340,
+            "minZ": 55.31,
+            "maxZ": 56.01,
+            "data": { "Business": "De petit croissant", "RegisterId": 1 },
+            "options": ["clock", "employees", "payment", "menuManagement"]
+        },
+        {
+            "center": {"x": 54.25, "y": -131.94, "z": 55.46},
+            "length": 0.6,
+            "width": 0.6,
+            "name": "petitcroissant_foodtray_1",
+            "heading": 340,
+            "minZ": 55.41,
+            "maxZ": 55.66,
+            "data": { "Type": "petitcroissant" },
+            "options": ["tray"]
+        },
+        {
+            "center": {"x": 57.08, "y": -133.36, "z": 55.46},
+            "length": 1.4,
+            "width": 0.2,
+            "name": "petitcroissant_storage_cold",
+            "heading": 340,
+            "minZ": 54.46,
+            "maxZ": 57.16,
+            "data": { "Business": "De petit croissant", "Name": "petitcroissant" },
+            "options": ["storageCold"]
+        },
+        {
+            "center": {"x": 55.42, "y": -134.28, "z": 55.46},
+            "length": 2.2,
+            "width": 0.6,
+            "name": "petitcroissant_storage_shelf",
+            "heading": 340,
+            "minZ": 54.46,
+            "maxZ": 55.51,
+            "data": { "Business": "De petit croissant", "Name": "petitcroissant", "Type": "petitcroissant" },
+            "options": ["storageShelf", "bag"]
+        },
+        {
+            "center": {"x": 60.9, "y": -135.08, "z": 55.46},
+            "length": 0.6,
+            "width": 1.0,
+            "name": "petitcroissant_dessert_dish",
+            "heading": 340,
+            "minZ": 55.26,
+            "maxZ": 55.66,
+            "data": { "Business": "De petit croissant", "DishType": "Dessert" },
+            "options": ["prepareFood"]
+        },
+        {
+            "center": {"x": 61.99, "y": -129.15, "z": 55.46},
+            "length": 0.6,
+            "width": 1.2,
+            "name": "petitcroissant_main_dish",
+            "heading": 340,
+            "minZ": 55.31,
+            "maxZ": 56.46,
+            "data": { "Business": "De petit croissant", "DishType": "Main" },
+            "options": ["prepareFood"]
+        },
+        {
+            "center": {"x": 56.5, "y": -131.3, "z": 55.46},
+            "length": 0.75,
+            "width": 0.5,
+            "name": "petitcroissant_drink_dish",
+            "heading": 340,
+            "minZ": 55.46,
+            "maxZ": 56.06,
+            "data": { "Business": "De petit croissant", "DishType": "Drink" },
+            "options": ["prepareFood"]
+        },
+        {
+            "center": {"x": 59.48, "y": -134.56, "z": 55.46},
+            "length": 0.7,
+            "width": 1.0,
+            "name": "petitcroissant_side_dish",
+            "heading": 340,
+            "minZ": 55.26,
+            "maxZ": 55.66,
+            "data": { "Business": "De petit croissant", "DishType": "Side" },
+            "options": ["prepareFood"]
+        }
+
+    ]
+}

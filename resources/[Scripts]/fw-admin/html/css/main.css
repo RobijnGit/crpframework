@@ -1,0 +1,402 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    position: absolute;
+
+    width: 100vw;
+    height: 100vh;
+
+    margin: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+
+    background-color: transparent;
+}
+
+.admin-wrapper {
+    width: 100vw;
+    height: 100vh;
+    user-select: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.admin-menu-container {
+    display: none;
+    position: absolute;
+    
+    top: 7.5vh;
+    right: 3.5vh;
+
+    width: 37.5vh;
+    height: 86vh;
+
+    background-color: #30475e;
+}
+
+.admin-menu-search {
+    padding-top: 1vh;
+    width: 100%;
+    height: 5vh;
+    background-color: #222831;
+}
+
+.admin-menu-search > .ui-styles-input {
+    left: 1vh;
+    width: 93%;
+}
+
+.admin-menu-items {
+    position: relative;
+    
+    width: 95%;
+    height: 100%;
+
+    max-height: 73.5vh;
+    overflow-y: auto;
+    
+    margin: 0 auto;
+    margin-top: 3%;
+    margin-bottom: 2.95%;
+}
+
+.admin-menu-items::-webkit-scrollbar {
+    display: none;
+}
+
+.admin-menu-item {
+    position: relative;
+
+    width: 100%;
+    min-height: 3.6vh;
+    height: 3.6vh;
+    
+    font-size: 1.3vh;
+
+    line-height: 3.6vh;
+
+    overflow: hidden;
+
+    cursor: pointer;
+    
+    margin-bottom: .6vh;
+}
+
+.admin-menu-item-favorited {
+    float: left;
+    margin-left: 2%;
+}
+
+.admin-menu-item.enabled {
+    background-color: #6f987a !important;
+}
+
+.admin-menu-item.favorited i { color: #eeee41; }
+
+.admin-menu-item-name {
+    padding-left: 2vw;
+    width: 85%;
+}
+
+.admin-menu-item.odd { background-color: #cecfd1; }
+.admin-menu-item.even { background-color: #8d98a3; }
+
+.admin-menu-item:hover {
+    background-color: hsla(0, 0%, 44.7%, .644);
+}
+
+.admin-menu-navbar {
+    width: 100%;
+    height: 4vh;
+
+    font-size: 1.35vh;
+
+    color: white;
+    line-height: 4vh;
+    text-align: center;
+
+    background-color: #222831;
+    box-shadow: .5vh .1vh 2.1vh -.5vh #000;
+}
+
+.admin-menu-navbar-item {
+    float: left;
+    cursor: pointer;
+
+    height: 4vh;
+    width: fit-content;
+
+    padding-left: 2.365vh;
+    padding-right: 2.365vh;
+
+    transition: background-color 250ms;
+}
+
+.admin-menu-navbar-item.active { 
+    background-color: #141414;
+}
+
+.admin-menu-navbar-item:hover {
+    background-color: #141414;
+}
+
+.admin-menu-item-options {
+    height: max-content;
+    padding: 1vh;
+    background-color: #546473;
+}
+
+.admin-menu-execute {
+    left: -0.35vw;
+}
+
+.admin-menu-items-option-input > .ui-styles-input {
+    width: 83%;
+}
+
+/* Input */
+.ui-styles-input {
+    position: relative;
+    width: 50%;
+    height: max-content;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1vh;
+}
+
+.ui-styles-input > p {
+    position: relative;
+    top: 0;
+    left: 0;
+
+    margin: 0 0 .3vh 0;
+
+    line-height: 1.2vh;
+
+    font-size: 1.2vh;
+    font-family: 'Roboto';
+}
+
+.ui-styles-input > input {
+    margin: 0;
+    border: none;
+    outline: none;
+    border-bottom: 0.2vh solid transparent;
+
+    padding-left: .5vh;
+    
+    background-color: #81898f;
+    transition: border-bottom 0ms;
+
+    color: white;
+    
+    width: calc(100% - 1vh);
+    padding: .5vh;
+}
+
+.ui-styles-input > input:focus {
+    border-color: #26a69a;
+}
+
+.admin-menu-execute {
+    background-color: white;
+    
+    width: max-content;
+    
+    margin-bottom: 0.6vh;
+    
+    padding: .5vh 1vh;
+    
+    box-shadow: 0.0vh 0.3vh 0.1vh -0.2vh rgb(0 0 0 / 20%), 0.0vh 0.2vh 0.2vh 0.0vh rgb(0 0 0 / 14%), 0.0vh 0.1vh 0.5vh 0.0vh rgb(0 0 0 / 12%);
+    transition: background-color 250ms ease-in-out;
+
+    cursor: pointer;
+}
+
+.admin-menu-execute:hover {
+    background-color: #9e9e9e;
+}
+
+.ui-styles-collapsible {
+    margin-bottom: 1.5vh;
+}
+
+.ui-styles-collapsible > .dropdown {
+    width: 70%;
+}
+
+.ui-styles-collapsible > p {
+    margin: 0;
+    color: white;
+}
+
+.admin-menu-sidebar {
+    position: absolute;
+    top: 0;
+    left: -4.5vh;
+    
+    width: 4.5vh;
+    height: 100%;
+
+    background-color: #1e3a56;
+}
+
+.admin-menu-sidebar-item {
+    position: relative;
+
+    top: 4vh;
+    left: 0;
+    right: 0;
+
+    margin: 0 auto;
+    margin-bottom: .5vh;
+
+    cursor: pointer;
+
+    width: 4vh;
+    height: 4vh;
+
+    color: white;
+    font-size: 1.5vh;
+    line-height: 4vh;
+    text-align: center;
+
+    box-shadow: 0 0 1.4vh -.4vh rgba(0, 0, 0, .76);
+    border-radius: 0.3vh;
+
+    background-color: #848486;
+}
+
+.admin-menu-sidebar-item.active {
+    color: #01e2c0;
+}
+
+/* Player List */
+.admin-menu-players {
+    display: none;
+
+    position: relative;
+    
+    width: 95%;
+    height: 100%;
+
+    max-height: 78vh;
+    overflow-y: auto;
+
+    margin: 0 auto;
+    margin-top: 3%;
+    margin-bottom: 2.95%; /* -0.5% cuz menu-item has .5% bottom margin, my ocd can't handle that difference. */
+}
+
+.admin-menu-players::-webkit-scrollbar {
+    display: none;
+}
+
+.admin-player-item {
+    position: relative;
+
+    width: 100%;
+    min-height: 3.6vh;
+    height: 3.6vh;
+    
+    font-size: 1.3vh;
+
+    line-height: 3.6vh;
+
+    overflow: hidden;
+
+    cursor: pointer;
+    
+    margin-bottom: .6vh;
+
+    background-color: #cecfd1;
+}
+
+.admin-player-item:nth-child(even) {
+    background-color: #8d98a3;
+}
+
+.admin-player-name {
+    float: left;
+    padding-left: 1vh;
+}
+
+.admin-player-steam {
+    position: relative;
+    top: .7vh;
+    margin-right: .5vh;
+
+    height: 2vh;
+
+    float: right;
+    padding: 0 1vh;
+    
+    border: 0.1vh solid black;
+    background-color: rgba(0, 0, 0, 0.1);
+
+    line-height: 2vh !important;
+}
+
+.admin-player-collapsible {
+    clear: both;
+    display: none;
+    background-color: #546473;
+    padding: 1vh;
+    color: white;
+}
+
+.admin-player-collapsible.extended {
+    display: block;
+}
+
+.admin-player-collapsible-entry {
+    display: flex;
+    justify-content: space-between;
+    clear: both;
+
+    font-family: Roboto;
+        
+    background-color: rgba(0, 0, 0, 0.1);
+    margin-bottom: .5vh;
+}
+
+.admin-player-collapsible-entry > p {
+    margin: 0;
+    padding: 0;
+
+    margin-left: 1vh;
+    margin-right: 1vh;
+    
+    font-size: 1.3vh;
+}
+
+.admin-player-collapsible-entry > p:last-child {
+    font-weight: 500;
+}
+
+/* Settings */
+.admin-menu-settings {
+    display: none;
+
+    position: relative;
+    
+    width: 95%;
+    height: 100%;
+
+    max-height: 84vh;
+    overflow-y: auto;
+
+    margin: 0 auto;
+    margin-top: 3%;
+    margin-bottom: 2.95%; /* -0.5% cuz menu-item has .5% bottom margin, my ocd can't handle that difference. */
+}
+
+.admin-menu-settings::-webkit-scrollbar {
+    display: none;
+}
+
+.admin-menu-settings-item > p {
+    font-size: 1.3vh;
+    font-family: Roboto;
+    color: white;
+    margin-bottom: .5vh;
+}

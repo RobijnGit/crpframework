@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CWeaponModelInfo__InitDataList>
+    <InitDatas>
+        <Item>
+            <modelName>w_am_banana</modelName>
+            <txdName>w_am_banana</txdName>
+            <ptfxAssetName>null</ptfxAssetName>
+            <lodDist value="50"/>
+        </Item>
+
+        <Item>
+            <modelName>w_am_banana_rock</modelName>
+            <txdName>w_am_banana</txdName>
+            <ptfxAssetName>null</ptfxAssetName>
+            <lodDist value="50"/>
+        </Item>
+    </InitDatas>
+</CWeaponModelInfo__InitDataList>

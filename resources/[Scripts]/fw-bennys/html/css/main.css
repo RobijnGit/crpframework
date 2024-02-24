@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+.menu-wrapper {
+    margin: 1.5vh 0 0 1.5vh;
+
+    user-select: none;
+
+    background-color: #222831be;
+
+    display: none;
+    flex-flow: column;
+    
+    width: 39.8vh;
+    height: max-content;
+    max-height: 58.3vh;
+
+    font-family: 'Oswald';
+    font-size: 1vh;
+
+    user-select: none;
+    color: white;
+}
+
+.menu-banner {
+    background-size: cover;
+    background-position: center;
+
+    width: 39.8vh;
+    height: 10.6vh;
+
+    border-top-left-radius: 0.5vh;
+    border-top-right-radius: 0.5vh;
+}
+
+.menu-directions {
+    font-size: 2vh;
+
+    line-height: 3vh;
+
+    height: 3vh;
+
+    color: white;
+    text-align: center;
+
+    background-color: #191e25be;
+}
+
+.menu-header {
+    text-align: center;
+    color: rgb(236, 240, 241);
+
+    font-family: Oswald, sans-serif;
+    font-size: 1.97vh;
+    font-style: oblique;
+    font-weight: 400;
+
+    background-color: #191e25be;
+
+    width: 39.8vh;
+}
+
+.menu-subheader {
+    text-align: center;
+    color: rgb(236, 240, 241);
+
+    font-family: Oswald, sans-serif;
+    font-size: 1.5vh;
+    font-weight: 300;
+
+    background-color: #191e25be;
+
+    width: 39.8vh;
+}
+
+.menu-items {
+    margin: 0;
+    padding: 0;
+
+    font-family: Oswald;
+    font-size: 1.73vh;
+    font-style: normal;
+    font-weight: 300;
+
+    color: rgb(236, 240, 241);
+
+    list-style-type: none;
+    text-align: left;
+    line-height: 3.05vh;
+
+    width: 39.8vh;
+}
+
+.menu-item {
+    /* display: flex; */
+    /* justify-content: space-between; */
+    height: 3.24vh;
+    padding-left: 1.4vh;
+    padding-right: 1.4vh;
+}
+
+.menu-item > i {
+    font-size: 0vh;
+}
+
+.menu-item:nth-child(odd) {
+    background-color: #30475ebe;
+}
+
+.menu-item.selected {
+    background-color: rgb(236, 240, 241) !important;
+    color: black;
+    font-weight: 500;
+}
+
+.menu-item.selected > i {
+    font-size: 1.73vh;
+}
+
+.menu-item > .price {
+    float: right;
+}

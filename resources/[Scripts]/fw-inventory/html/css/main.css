@@ -1,0 +1,720 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    width: 100vw;
+    height: 100vh;
+
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+
+    user-select: none;
+}
+
+*:focus {
+    outline: none;
+}
+
+.inventory-wrapper {
+    display: none;
+
+    width: 100%;
+    height: 100%;
+
+    align-items: center;
+    overflow: hidden;
+    z-index: 12211;
+
+    background-color: rgba(1, 1, 1, 0.5);
+    box-shadow: 0 0 2.5vh 2.5vh rgba(1, 1, 1, 0.6);
+}
+
+.inventory-wrapper > .logs {
+    position: absolute;
+    left: 56.8%;
+    bottom: 0%;
+
+    color: #fafafa;
+    text-decoration: none;
+    text-shadow: -.1vh -.1vh 0 #000, .1vh -.1vh 0 #000, -.1vh .1vh 0 #000, .1vh .1vh 0 #000;
+
+    font-family: 'Roboto';
+    font-size: 1.3vh;
+    font-weight: 0;
+
+    height: 12%;
+    max-height: 20%;
+    width: 30%;
+
+    overflow: hidden;
+    
+    transition: all 0.2s ease;
+    
+}
+
+/* Inventories */
+.containers-wrapper {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    padding: 10% 5%;
+}
+
+.inventory-box {
+    width: 40%;
+    max-height: 65vh;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 2.1vh;
+    background-color: rgba(34, 35, 51, 0.8);
+}
+
+.inventory-box-cash > span {
+    color: #95ef77;
+}
+
+.inventory-box-cash {
+    display: none;
+    color: #fff;
+    font-size: 1.3vh; 
+    font-family: 'Roboto';
+}
+
+.inventory-box-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.inventory-box-header-name {
+    padding: 0;
+    margin: 0;
+    
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 2vh;
+
+    text-transform: capitalize;
+    color: white;
+    line-height: 2vh;
+}
+
+.inventory-box-header-weight {
+    padding: 0;
+    margin: 0;
+
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 1.5vh;
+
+    line-height: 1.6vh;
+    color: white;
+}
+
+.inventory-box-header-weightbar {
+    position: absolute;
+    margin-top: 2%;
+    
+    width: 36%;
+    height: 0.5vh;
+    
+    overflow: hidden;
+    display: block;
+    background-color: #1114199f;
+}
+
+.inventory-box-header-weightbar > .weightbar-fill {
+    display: inline-block;
+    position: absolute;
+    
+    height: 100%;
+    max-width: 100%;
+
+    line-height: 2.2vh;
+    margin-right: 1%;
+        
+    background-color: #00f8b9;
+    transition: width 1s, background-color 1s;
+}
+
+/* Normal Slots */
+
+.inventory-box-slots {
+    margin-top: 1.5vh;
+
+    display: grid;
+    grid-column-gap: .1vh;
+    grid-row-gap: .1vh;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    flex: auto;
+    direction: ltr;
+
+    position: relative;
+    float: left;
+}
+
+.inventory-box-slots::-webkit-scrollbar { width: .5vh }
+.inventory-box-slots::-webkit-scrollbar-track { background: #1114199f }
+.inventory-box-slots::-webkit-scrollbar-thumb { background: #ffffff25 }
+
+.inventory-box-slot {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+
+    width: 98%;
+    height: 12.5vh;
+    
+    margin: 1%;
+
+    cursor: pointer;
+
+    position: relative;
+    float: left;
+
+    transition: background-color 0.2s ease;
+
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: inset -.1vh 0 .1vh rgba(255, 255, 255, 0.04), inset 0 0 .6vh rgba(255, 255, 255, 0.03);
+}
+
+.inventory-box-slot:hover {
+    background-color: rgba(55, 55, 55, 0.15);
+}
+
+.inventory-slot-bind {
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    font-size: 7vh;
+
+    margin: 0 auto;
+
+    font-family: 'Roboto';
+    font-weight: 300;
+
+    text-align: center;
+    color: white;
+
+    pointer-events: none;
+
+    opacity: 0.15;
+}
+
+.inventory-slot-name {
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 1.25vh;
+    
+    position: absolute;
+    top: 5%;
+    left: 5%;
+
+    width: 80%;
+    
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    color: white;
+
+    pointer-events: none;
+}
+
+.inventory-slot-image {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background-size: 100%;
+    background-image: url(../image/f_sandwich.png);
+    background-repeat: no-repeat;
+
+    pointer-events: none;
+
+    width: 60%;
+    height: 60%;
+}
+
+.inventory-slot-info {
+    position: absolute;
+    bottom: .7vh;
+
+    font-size: 1.12vh;
+    font-family: 'Roboto';
+
+    color: rgb(222, 222, 222);
+    text-align: center;
+    text-transform: none;
+
+    width: 79%;
+    display: flex;
+    justify-content: space-between;
+
+    pointer-events: none;
+}
+
+.inventory-slot-price {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    
+    font-size: 1.25vh;
+    font-family: 'Roboto';
+    
+    color: #95ef77;
+    text-align: center;
+    
+	z-index: 3;
+    padding: 2% 1%;
+    pointer-events: none;
+    background-color: #1114199f;
+}
+
+.inventory-slot-quality {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    background: linear-gradient(to bottom, #00f8b9, #1b1844 100%);
+    background-size: 1000% 1000%;
+    background-color: #00f8b9;
+    background-position: 0% 0%;
+
+    pointer-events: none;
+
+    height: 0.5vh;
+    width: 50%;
+}
+
+.inventory-slot-quality.broken {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    
+    background: transparent;
+    pointer-events: none;
+    height: 0.5vh;
+    width: 100% !important;
+}
+
+.inventory-slot-quality.broken::before {
+    content: '';    
+    position: absolute;
+    
+    left: 0;
+    top: -12vh;
+
+    height: 12.5vh;
+    width: 100% !important;
+
+    opacity: 0.2;
+    
+    z-index: 1;
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: #632323;
+}
+
+.inventory-slot-cost {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    padding: 2% 1%; 
+
+    background-color: #1114199f;
+
+    font-family: 'Roboto';
+    font-size: 1.25vh;
+
+    color: #95ef77;
+
+    text-align: center;
+
+    pointer-events: none;
+    
+	z-index: 3;
+}
+
+/* Crafing Slots */
+.inventory-craft-slots {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    grid-column-gap: 0 !important;
+    grid-row-gap: 0 !important;
+    justify-content: space-between;
+}
+
+.inventory-craft-slot {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+
+    width: 17.7vw;
+    height: 14.5vh;
+    
+    margin-bottom: 0.5vh;
+
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.inventory-craft-slot-item {
+    margin: 3%;
+
+    max-width: 39.6%;
+    width: 100%;
+
+    white-space: normal;
+    text-overflow: none;
+}
+
+.inventory-craft-slot-requirements {
+    position: relative;
+    top: 0.9vh;
+
+    font-size: 1.2vh;
+    font-family: 'Roboto';
+
+    color: white;
+
+    padding-top: .1vh;
+    padding-right: 1vh;
+}
+
+.inventory-craft-slot-requirements > .inventory-craft-requirement {
+    width: 15%;
+    margin-left: .3vh;
+    vertical-align: middle;
+}
+
+.inventory-craft-requirements { overflow: auto }
+.inventory-craft-requirements::-webkit-scrollbar { display: none }
+
+/* Drag Item CSS */
+.drag-item {
+    position: absolute;
+
+    width: 6.9vw;
+    height: 12.5vh;
+
+    z-index: 80;
+    opacity: 0;
+
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.drag-item > img {
+    max-width: 10.8vh;
+    max-height: 10.8vh;
+}
+
+/* Center Actions */
+.actions-wrapper {
+    display: flex;
+
+    align-items: center;
+    
+    width: 12%;
+    min-height: 65vh;
+}
+
+.inventory-actions {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    padding: 1.5vh;
+
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(34, 35, 51, 0.8);
+    z-index: 5;
+}
+
+#inventory-move-amount {
+    width: 100%;
+    height: 4.5vh;
+
+    border: none;
+
+    padding: 0vh;
+
+    font-size: 1.5vh;
+
+    text-align: center;
+    text-transform: none;
+    color: rgb(220, 220, 220);
+
+    background-color: #444555;
+}
+
+#inventory-use {
+    background-image: url("../img/hand-use.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    
+    height: 2vh;
+    width: max-content;
+
+    opacity: 0.5;
+
+    padding: 6vh 0 !important;
+
+    background-size: 50%;
+
+    background-color: transparent !important;
+    transition: opacity linear 250ms;
+}
+
+#inventory-use:hover { opacity: 1.0 }
+
+#inventory-use, #inventory-close, #steal-money {
+    width: 100%;
+    height: 4.5vh;
+
+    font-size: 1.5vh;
+
+    border: none;
+    outline: none;
+    
+    text-transform: none;
+    color: rgb(220, 220, 220);
+
+    cursor: pointer;
+    
+    background-color: #444555;
+}
+
+#inventory-move-amount::-webkit-outer-spin-button, #inventory-move-amount::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+#inventory-move-amount:focus, #inventory-use:focus, #inventory-close:focus, #steal-money:focus {
+    border: none;
+    outline: none;
+}
+
+/* Hotbar */
+
+.inventory-hotbar {
+    position: absolute;
+    bottom: 5vh;
+
+    display: flex;
+
+    width: 100vw;
+    height: max-content;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.inventory-hotbar-slot, .inventory-boxbar-slot {
+    display: flex;
+	flex-direction: column;
+	position: relative;
+
+	height: 8.5vh;
+	width: 5vw;
+    
+	margin-right: 0.5vw;
+
+	align-items: center;
+	justify-content: space-evenly;
+
+	border-bottom: .2vh solid #00f8b9;
+	background: rgba(34, 35, 51, 0.80);
+}
+
+.inventory-boxbar-slot > .inventory-slot-image {
+    margin: 0 !important;
+    width: 55%;
+    height: 55%;
+}
+
+.inventory-boxbar-slot > .inventory-slot-name,
+.inventory-hotbar-slot > .inventory-slot-name {
+    position: absolute;
+    bottom: .5vh;
+    top: unset;
+    left: 0;
+    right: 0;
+
+    margin: 0 auto;
+
+    width: 95%;
+    height: max-content;
+
+    font-size: 1.2vh;
+
+    color: white;
+    text-align: center;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.inventory-hotbar-slot > .inventory-slot-image {
+    margin: 0 !important;
+    width: 60%;
+}
+
+/* Box Bar */
+.inventory-boxbar {
+    display: flex;
+    position: absolute;
+    bottom: 17vh;
+
+    width: 100vw;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.inventory-boxbar-slot {
+    display: none;
+}
+
+.inventory-boxbar > .inventory-boxbar-slot > .inventory-slot-text {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+
+    width: 100%;
+    height: auto;
+
+    color: white;
+    text-transform: none;
+
+    font-family: 'Roboto';
+    font-size: 1.2vh;
+    
+    opacity: 0.9;
+    margin-left: 0.2vh;
+}
+
+/* Slot Hover */
+.inventory-slot-hover {
+    position: absolute;
+    top: 78%;
+    left: 41%;
+
+    opacity: 0.0;
+
+    width: 15%;
+    max-height: 25%;
+    min-height: 5vh;
+    
+    padding: 1%;
+    overflow: hidden;
+    pointer-events: none;
+
+    color: white;
+    text-decoration: none;
+
+    font-size: 1.35vh;
+    font-family: 'Roboto';
+    
+    z-index: 10;
+    transition: opacity 0.6s ease;
+    background-color: rgba(34, 35, 51, 0.8);
+}
+
+.inventory-slot-hover > h2 {
+    font-size: 2.5vh;
+    margin: 1% 0;
+    text-transform: capitalize;
+}
+
+.inventory-slot-hover > .inventory-hover-info {
+    font-size: 1.2vh;
+    margin: .5vh;
+}
+
+/* Help Menu */
+.inventory-help-menu {
+    display: none;
+    position: absolute;
+    left: 59%;
+    top: 7%;
+
+    width: 30%;
+    height: max-content;
+
+    border-radius: 1vh;
+
+    background-color: rgba(34, 35, 51, 0.80);
+    
+    color: rgb(220, 220, 220);
+
+    font-family: 'Roboto';
+    font-size: 1.5vh;
+
+    padding: 2%;
+    z-index: 4;
+}
+
+/* Bottom Buttons */
+.inventory-bottom-actions {
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 25%;
+
+    margin: 0 auto;
+
+    justify-content: center;
+    column-gap: 2vh;
+
+    height: 3%;
+    width: 10%;
+}
+
+.inventory-bottom-actions > .inventory-bottom-actions-button {
+    display: inline-block;
+
+    color: white;
+    text-align: center;
+
+    font-family: 'Roboto';
+    font-size: 2vh;
+    font-weight: 700;
+
+    width: 18%;
+    height: 100%;
+
+    border-radius: .5vh;
+
+    background-color: rgba(34, 35, 51, 0.8);
+}
+
+.inventory-bottom-actions > .inventory-bottom-actions-button#inventory-action-help {
+    font-size: 2.35vh;
+    line-height: 3vh;
+}

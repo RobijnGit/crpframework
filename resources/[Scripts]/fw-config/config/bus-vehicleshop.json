@@ -1,0 +1,117 @@
+{
+  "ShopData": {
+    "pdm": {
+      "BusinessName": "Premium Deluxe Motorsports",
+      "TestPos": {"x": -23.62, "y": -1094.14, "z": 26.68, "w": 339.04},
+      "MaxPositions": 5
+    },
+    "bennys": {
+      "BusinessName": "Bennys Motorworks",
+      "TestPos": {"x": -234.26, "y": -1315.14, "z": 30.7, "w": 181.02},
+      "MaxPositions": 2
+    },
+    "lostmc": {
+      "BusinessName": "The Lost Holland",
+      "TestPos": {"x": 953.84, "y": -125.06, "z": 73.7, "w": 217.22},
+      "MaxPositions": 3
+    },
+    "bearlymc": {
+      "BusinessName": "Bearly Legal MC",
+      "TestPos": {"x": 118.82, "y": 321.22, "z": 111.49, "w": 19.42},
+      "MaxPositions": 3
+    },
+    "losmuertos": {
+      "BusinessName": "Muertos Motorcycle Shop",
+      "TestPos": {"x": 1207.2, "y": 3608.07, "z": 32.95, "w": 7.54},
+      "MaxPositions": 3
+    },
+    "darkwolves": {
+      "BusinessName": "Dark Wolves MC",
+      "TestPos": {"x": 1711.08, "y": 4801.05, "z": 41.12, "w": 83.8},
+      "MaxPositions": 3
+    },
+    "flightschool": {
+      "BusinessName": "Los Santos Vliegschool",
+      "TestPos": {"x": -960.1, "y": -3010.43, "z": 13.95, "w": 59.78},
+      "MaxPositions": 2
+    }
+  },
+  "pdm": {
+    "area": {
+      "center": {"x": -51.58, "y": -1105.09, "z": 27.72},
+      "length": 80.4,
+      "width": 80,
+      "heading": 340,
+      "minZ": 25.72,
+      "maxZ": 44.92
+    },
+    "quicksell": {
+      "center": {"x": -9.54, "y": -1081.85, "z": 27.05},
+      "length": 6.4,
+      "width": 12.6,
+      "heading": 340,
+      "minZ": 26.05,
+      "maxZ": 30.65
+    }
+  },
+  "bennys": {
+    "area": {
+      "center": {"x": -212.61, "y": -1324.76, "z": 31.3},
+      "length": 70,
+      "width": 90,
+      "heading": 0,
+      "minZ": 29.1,
+      "maxZ": 50.7
+    }
+  },
+  "flightschool": {
+    "area": {
+      "center": {"x": -950.99, "y": -2993.16, "z": 13.95},
+      "length": 118.2,
+      "width": 150,
+      "heading": 241,
+      "minZ": 12.35,
+      "maxZ": 42.95
+    }
+  },
+  "lostmc": {
+    "area": {
+      "center": {"x": 974.63, "y": -120.53, "z": 74.35},
+      "length": 80.0,
+      "width": 80.0,
+      "heading": 320,
+      "minZ": 71.55,
+      "maxZ": 84.15
+    }
+  },
+  "bearlymc": {
+    "area": {
+      "center": {"x": 142.94, "y": 321.93, "z": 112.14},
+      "length": 80.0,
+      "width": 80.0,
+      "heading": 10,
+      "minZ": 107.14,
+      "maxZ": 130.54
+    }
+  },
+  "darkwolves": {
+    "area": {
+      "center": {"x": 1712.73, "y": 4781.29, "z": 43.67},
+      "length": 80,
+      "width": 80,
+      "heading": 0,
+      "minZ": 40.27,
+      "maxZ": 65.27
+    }
+  },
+  "losmuertos": {
+    "area": {
+      "center": {"x": 1232.86, "y": 3593.99, "z": 33.83},
+      "length": 80,
+      "width": 80,
+      "heading": 15,
+      "minZ": 31.83,
+      "maxZ": 46.83
+    }
+  }
+}

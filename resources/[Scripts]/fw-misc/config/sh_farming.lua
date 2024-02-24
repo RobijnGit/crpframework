@@ -1,0 +1,156 @@
+Config = Config or {}
+
+Config.FarmingGardens = {
+    vector3(1443.27, 1106.43, 113.53),
+    vector3(1443.27, 1119.36, 113.53),
+    vector3(1448.31, 1106.43, 113.53),
+    vector3(1448.31, 1119.36, 113.53),
+    vector3(1457.63, 1102.26, 113.58),
+    vector3(1457.63, 1107.32, 113.57),
+    vector3(1457.63, 1112.42, 113.54),
+    vector3(1457.63, 1117.86, 113.56),
+    vector3(1457.63, 1123.43, 113.55),
+    vector3(1471.46, 1123.43, 113.61),
+    vector3(1471.46, 1117.86, 113.59),
+    vector3(1471.46, 1112.42, 113.55),
+    vector3(1471.46, 1107.32, 113.54),
+    vector3(1471.46, 1102.26, 113.59),
+}
+
+Config.FarmTypes = {
+    ["cream"] = "Slagroom",
+    ["beans"] = "Koffiebonen",
+    ["dairy"] = "Zuivel",
+    ["vegetables"] = "Groenten",
+    ["grain"] = "Graan",
+    ["seasoning"] = "Kruiden",
+    ["sugar"] = "Suiker",
+    ["oil"] = "Olie",
+}
+
+Config.FarmRentingPrices = {
+    { Hours = 3, Price = 250 },
+    { Hours = 6, Price = 500 },
+    { Hours = 12, Price = 1000 },
+}
+
+Config.CropLabels = {
+    Cabbage = "Kool",
+    Carrot = "Wortels",
+    Corn = "Maïs",
+    Cucumber = "Komkommers",
+    Garlic = "Knoflook",
+    Onion = "Uien",
+    Potato = "Aardappelen",
+    Pumpkin = "Pompoenen",
+    Radish = "Radijs",
+    RedBeet = "Rode bieten",
+    Sunflower = "Zonnebloemen",
+    Tomato = "Tomaten",
+    Watermelon = "Watermeloenen",
+    Wheat = "Tarwe",
+}
+
+Config.FarmCrops = {
+    ["Cabbage"] = {
+        "SM_CabbageSeed_01",
+        "SM_Cabbage_01",
+        "SM_Cabbage_02",
+        "SM_Cabbage_03",
+        "SM_Cabbage_04",
+        -- "SM_Cabbage_05",
+        -- "SM_Cabbage_06",
+    },
+    ["Carrot"] = {
+        "SM_CarrotSeed_01",
+        "SM_Carrot_01",
+        "SM_Carrot_02",
+        "SM_Carrot_03",
+        "SM_Carrot_04",
+    },
+    ["Corn"] = {
+        "SM_CornSeed_01",
+        "SM_CornPlant_01",
+        "SM_CornPlant_02",
+        "SM_CornPlant_03",
+        "SM_CornPlant_04",
+    },
+    ["Cucumber"] = {
+        "SM_CucumberSeed_01",
+        "SM_Cucumber_01",
+        "SM_Cucumber_02",
+        "SM_Cucumber_03",
+        "SM_Cucumber_04",
+    },
+    ["Garlic"] = {
+        "SM_GarlicSeed_01",
+        "SM_Garlic_01",
+        "SM_Garlic_02",
+        "SM_Garlic_03",
+        "SM_Garlic_04",
+    },
+    ["Onion"] = {
+        "SM_OnionSeed_01",
+        "SM_Onion_01",
+        "SM_Onion_02",
+        "SM_Onion_03a",
+        "SM_Onion_03b",
+        "SM_Onion_04",
+    },
+    ["Potato"] = {        
+        "SM_PotatoSeed_01",
+        "SM_Potato_01",
+        "SM_Potato_02",
+        "SM_Potato_03",
+        "SM_Potato_04",
+    },
+    ["Pumpkin"] = {
+        "SM_PumpkinSeed_01",
+        "SM_Pumpkin_01",
+        "SM_Pumpkin_02",
+        "SM_Pumpkin_03",
+        "SM_Pumpkin_04",
+    },
+    ["Radish"] = {
+        "SM_RadishSeed_01",
+        "SM_Radish_01",
+        "SM_Radish_02",
+        "SM_Radish_03",
+        "SM_Radish_04",
+    },
+    ["RedBeet"] = {
+        "SM_RedBeetSeed_01",
+        "SM_RedBeet_01",
+        "SM_RedBeet_02",
+        "SM_RedBeet_03",
+        "SM_RedBeet_04",
+    },
+    ["Sunflower"] = {
+        "SM_SunflowerSeed_01",
+        "SM_Sunflower_01",
+        "SM_Sunflower_02",
+        "SM_Sunflower_03",
+        "SM_Sunflower_04",
+    },
+    ["Tomato"] = {
+        "SM_TomatoSeed_01",
+        "SM_Tomato_01a",
+        "SM_Tomato_02a",
+        "SM_Tomato_03a",
+        "SM_Tomato_04a",
+    },
+    ["Watermelon"] = {
+        "SM_WatermelonSeed_01",
+        "SM_Watermelon_01",
+        "SM_Watermelon_02",
+        "SM_Watermelon_03",
+        "SM_Watermelon_04",
+    },
+    ["Wheat"] = {
+        "SM_WheatSeed_02",
+        "SM_Wheat_01a",
+        "SM_Wheat_02a",
+        "SM_Wheat_03a",
+        "SM_Wheat_04a",
+    },
+}

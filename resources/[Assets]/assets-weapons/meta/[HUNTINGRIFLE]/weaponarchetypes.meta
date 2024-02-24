@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<CWeaponModelInfo__InitDataList>
+	<InitDatas>
+		<Item>
+			<modelName>w_sr_huntingrifle</modelName>
+			<txdName>w_sr_huntingrifle</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="1000"/>
+		</Item>
+	</InitDatas>
+</CWeaponModelInfo__InitDataList>

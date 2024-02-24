@@ -1,0 +1,208 @@
+@import url('https://use.fontawesome.com/releases/v5.6.3/css/all.css');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+/* .color-0{color: #ffffff;}
+.color-1{color: #ff4444;}
+.color-2{color: #99cc00;}
+.color-3{color: #ffbb33;}
+.color-4{color: #0099cc;}
+.color-5{color: #33b5e5;}
+.color-6{color: #aa66cc;}
+.color-8{color: #cc0000;}
+.color-9{color: #cc0068;} */
+
+:root {
+  /* Error (Red) */
+  --errorR: 147;
+  --errorG: 62;
+  --errorB: 47;
+
+  /* Normal (Blue) */
+  --normalR: 51;
+  --normalG: 112;
+  --normalB: 165;
+
+  /* Warning (Orange) */
+  --warningR: 190;
+  --warningG: 97;
+  --warningB: 18;
+  
+  /* Purple */
+  --purpleR: 77;
+  --purpleG: 36;
+  --purpleB: 92;
+
+  /* Green */
+  --greenR: 0;
+  --greenG: 128;
+  --greenB: 128;
+
+  /* Blue */
+  --blueR: 36;
+  --blueG: 59;
+  --blueB: 129;
+}
+
+.color-0{color: #ffffff;}
+.color-1{color: #ffffff;}
+.color-2{color: #ffffff;}
+.color-3{color: #ffffff;}
+.color-4{color: #ffffff;}
+.color-5{color: #ffffff;}
+.color-6{color: #ffffff;}
+.color-8{color: #ffffff;}
+.color-9{color: #ffffff;}
+
+* {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+.no-grow {
+  flex-grow: 0;
+}
+
+em {
+  font-style: normal;
+}
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: white;
+  background-color: transparent;
+}
+
+.chat-window {
+  position: absolute;
+  left: 0.8%;
+  width: 38%;
+  height: 30%;
+  max-width: 1000px;
+  background-color: rgba(52, 73, 94, 0.0);
+  top: 1.5%;
+  -webkit-animation-duration: 2s;
+}
+
+.chat-messages {
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  padding: 0.8vh 0;
+}
+
+.chat-input {
+  position: absolute;
+  font-size: 1.3vh;
+  top: 27vh;
+  left: 15px;
+  width: 28vw;
+  box-sizing: border-box;
+}
+
+textarea {
+  font-family: 'Roboto', sans-serif!important;
+  font-size: 1.3vh;
+  display: block;
+  box-sizing: border-box;
+  padding: 0.65vw;
+  color: #ffffff;
+  width: 100%;
+  min-height: 3.7vh;
+  max-height: 3.7vh;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  resize: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  outline: none;
+}
+
+textarea:focus, input:focus {
+    outline: none;
+}
+
+.msg {
+  margin-bottom: 0;
+}
+
+.suggestions {
+  list-style-type: none;
+  padding: 0.5%;
+  padding-left: 1.4%;
+  font-size: 1.3vh;
+  box-sizing: border-box;
+  color: rgba(255,255,255,0.8);
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  text-shadow: 0px 0px 2px rgba(0,0,0,0.5);
+}
+
+.help {
+  margin-top: -10px;
+  color: #ffffffe7;
+}
+
+.disabled {
+  margin-top: -10px;
+  color: #ffffff93;
+}
+
+.suggestion {
+  margin-bottom: 5px;
+  color: #ffffffec;
+}
+
+.chat-message {
+  display: inline-block !important;
+  overflow: hidden;
+  word-break: break-word;
+  padding: 1vh;
+  font-size: 16px;
+  width: fit-content;
+  margin: .5vh;
+  border-radius: 4px;
+  text-shadow: 0px 0px 2px rgba(0,0,0,0.5);
+  background-color: rgba(var(--normalR), var(--normalG), var(--normalB), 0.6);
+  border-right: 3px solid rgba(44,134,199, 1.0);
+  border-bottom: 3px solid rgba(44,134,199, 1.0);
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+}
+
+.chat-message strong {
+  font-weight: 700;
+}
+
+.warning {
+  border-color: rgba(calc(var(--warningR) / 2), calc(var(--warningG) / 2), calc(var(--warningB) / 2), 0.4);
+  background-color: rgba(var(--warningR), var(--warningG), var(--warningB), 0.6);
+}
+
+.report {
+  border-color: rgba(calc(var(--greenR) / 2), calc(var(--greenG) / 2), calc(var(--greenB) / 2), 0.4);
+  background-color: rgba(var(--greenR), var(--greenG), var(--greenB), 0.6);
+}
+
+.reportr {
+  border-color: rgba(calc(var(--purpleR) / 2), calc(var(--purpleG) / 2), calc(var(--purpleB) / 2), 0.4);
+  background-color: rgba(var(--purpleR), var(--purpleG), var(--purpleB), 0.6);
+}
+
+.normal {
+  border-color: rgba(calc(var(--normalR) / 2), calc(var(--normalG) / 2), calc(var(--normalB) / 2), 0.4);
+  background-color: rgba(var(--normalR), var(--normalG), var(--normalB), 0.6);
+}
+
+.error {
+  border-color: rgba(calc(var(--errorR) / 2), calc(var(--errorG) / 2), calc(var(--errorB) / 2), 0.4);
+  background-color: rgba(var(--errorR), var(--errorG), var(--errorB), 0.6);
+}
+
+.banking {
+  border-color: rgba(calc(var(--blueR) / 2), calc(var(--blueG) / 2), calc(var(--blueB) / 2), 0.4);
+  background-color: rgba(var(--blueR), var(--blueG), var(--blueB), 0.6);
+}

@@ -1,0 +1,179 @@
+{
+  "allowDecayedScrap": true,
+  "scrapItems": [
+    { "Item": "phone", "Label": "Telefoon", "Rewards": [4, 8] },
+    { "Item": "laptop", "Label": "Laptop", "Rewards": [26, 38] },
+    { "Item": "radio", "Label": "Radio", "Rewards": [4, 8] },
+    { "Item": "megaphone", "Label": "Megafoon", "Rewards": [2, 4] },
+    { "Item": "walkman", "Label": "Walkman", "Rewards": [1, 3] }
+  ],
+  "zones": [
+    {
+      "center": {"x": 1134.87, "y": -466.62, "z": 66.49},
+      "length": 0.55,
+      "width": 0.4,
+      "name": "digitalden_crafting",
+      "heading": 345,
+      "minZ": 66.34,
+      "maxZ": 66.94,
+      "options": ["craft", "scrap"],
+      "data": { "Business": "Digital Den", "Type": "DigitalDen" }
+    },
+    {
+      "center": {"x": 1133.27, "y": -468.55, "z": 66.49},
+      "length": 0.5,
+      "width": 0.5,
+      "name": "digitalden_cash_register_1",
+      "heading": 340,
+      "minZ": 66.44,
+      "maxZ": 67.19,
+      "options": ["payment"],
+      "data": { "Business": "Digital Den", "RegisterId": 1 }
+    },
+    {
+      "center": {"x": 1134.78, "y": -468.9, "z": 66.49},
+      "length": 0.8,
+      "width": 2.2,
+      "name": "digitalden_counter",
+      "heading": 345,
+      "minZ": 66.24,
+      "maxZ": 66.49,
+      "options": ["tray"],
+      "data": { "Type": "digitalden" }
+    },
+    {
+      "center": {"x": 1131.17, "y": -467.03, "z": 66.49},
+      "length": 2.0,
+      "width": 0.4,
+      "name": "digitalden_stash",
+      "heading": 346.0,
+      "minZ": 65.49,
+      "maxZ": 66.69,
+      "options": ["stash"],
+      "data": { "Business": "Digital Den", "Type": "digital_den" }
+    },
+    {
+      "center": {"x": 1133.73, "y": -466.41, "z": 66.49},
+      "length": 0.7,
+      "width": 0.7,
+      "name": "digitalden_clock",
+      "heading": 345,
+      "minZ": 66.44,
+      "maxZ": 66.74,
+      "options": ["clock"],
+      "data": { "Business": "Digital Den" }
+    },
+
+    {
+      "center": {"x": -1207.7, "y": -1496.82, "z": 4.37},
+      "length": 0.8,
+      "width": 0.8,
+      "name": "mattronics_crafting",
+      "heading": 305,
+      "minZ": 4.17,
+      "maxZ": 4.57,
+      "options": ["craft", "scrap", "addMusic", "manageMusic", "createTape"],
+      "data": {"Business": "Mattronics", "Type": "Mattronics"}
+    },
+    {
+      "center": {"x": -1208.99, "y": -1502.31, "z": 4.37},
+      "length": 0.6,
+      "width": 0.6,
+      "name": "mattronics_cash_register_1",
+      "heading": 35,
+      "minZ": 4.22,
+      "maxZ": 4.92,
+      "options": ["payment"],
+      "data": { "Business": "Mattronics", "RegisterId": 1 }
+    },
+    {
+      "center": {"x": -1208.31, "y": -1503.13, "z": 4.37},
+      "length": 1.2,
+      "width": 0.8,
+      "name": "mattronics_counter",
+      "heading": 35,
+      "minZ": 4.22,
+      "maxZ": 4.77,
+      "options": ["tray"],
+      "data": { "Type": "mattronics" }
+    },
+    {
+      "center": {"x": -1204.84, "y": -1500.91, "z": 4.37},
+      "length": 0.2,
+      "width": 0.6,
+      "name": "mattronics_stash_1",
+      "heading": 35,
+      "minZ": 4.27,
+      "maxZ": 4.97,
+      "options": ["stash"],
+      "data": { "Business": "Mattronics", "Type": "mattronics" }
+    },
+    {
+      "center": {"x": -1207.93, "y": -1499.11, "z": 4.37},
+      "length": 0.1,
+      "width": 1.65,
+      "name": "mattronics_clock",
+      "heading": 305,
+      "minZ": 4.57,
+      "maxZ": 5.72,
+      "options": ["clock"],
+      "data": { "Business": "Mattronics" }
+    },
+
+    {
+      "center": {"x": -662.2, "y": -857.94, "z": 24.52},
+      "length": 0.6,
+      "width": 0.6,
+      "name": "digitaldean_crafting",
+      "heading": 0,
+      "minZ": 24.32,
+      "maxZ": 24.92,
+      "options": ["craft", "scrap"],
+      "data": { "Business": "Digital Dean", "Type": "DigitalDean" }
+    },
+    {
+      "center": {"x": -659.88, "y": -857.97, "z": 24.52},
+      "length": 0.45,
+      "width": 0.6,
+      "name": "digitaldean_cash_register_1",
+      "heading": 0,
+      "minZ": 24.42,
+      "maxZ": 24.92,
+      "options": ["payment"],
+      "data": { "Business": "Digital Dean", "RegisterId": 1 }
+    },
+    {
+      "center": {"x": -659.92, "y": -856.84, "z": 24.54},
+      "length": 1.8,
+      "width": 0.7,
+      "name": "digitaldean_counter",
+      "heading": 0,
+      "minZ": 24.24,
+      "maxZ": 24.49,
+      "options": ["tray"],
+      "data": { "Type": "digitaldean" }
+    },
+    {
+      "center": {"x": -660.89, "y": -855.87, "z": 24.69},
+      "length": 0.7,
+      "width": 0.15,
+      "name": "digitaldean_stash",
+      "heading": 90,
+      "minZ": 23.69,
+      "maxZ": 24.69,
+      "options": ["stash"],
+      "data": { "Business": "Digital Dean", "Type": "digital_dean" }
+    },
+    {
+      "center": {"x": -663.25, "y": -856.03, "z": 24.52},
+      "length": 0.15,
+      "width": 1.2,
+      "name": "digitaldean_clock",
+      "heading": 270,
+      "minZ": 24.52,
+      "maxZ": 25.82,
+      "options": ["clock"],
+      "data": { "Business": "Digital Dean" }
+    }
+  ]
+}

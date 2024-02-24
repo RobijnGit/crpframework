@@ -1,0 +1,2 @@
+// "BLIZZARD" | "NEUTRAL" | "SNOWLIGHT"
+export type Weather = "CLEAR" | "CLEARING" | "CLOUDS" | "EXTRASUNNY" | "FOGGY" | "HALLOWEEN" | "OVERCAST" | "RAIN" | "SMOG" | "SNOW" | "THUNDER" | "XMAS";

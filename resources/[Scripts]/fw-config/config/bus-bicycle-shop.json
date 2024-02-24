@@ -1,0 +1,25 @@
+{
+  "npcs": [
+    {
+      "id": "beach", 
+      "isRental": false,
+      "ped": {"x": -1108.23, "y": -1693.9, "z": 3.37, "w": 303.9},
+      "spawn": {"x": -1106.3, "y": -1694.41, "z": 4.37, "w": 278.78}
+    },
+    {
+      "id": "prison", 
+      "isRental": true,
+      "ped": {"x": 1635.10, "y": 2588.52, "z": 44.55, "w": 6.46},
+      "spawn": {"x": 1631.38, "y": 2590.45, "z": 44.94, "w": 0.04}
+    }
+  ],
+  "bicycles": [
+    { "model": "cruiser", "label": "Cruiser", "price": 600 },
+    { "model": "scorcher", "label": "Scorcher", "price": 675 },
+    { "model": "fixter", "label": "Fixter", "price": 750 },
+    { "model": "bmx", "label": "BMX", "price": 825 },
+    { "model": "tribike", "label": "Whippet Race Bike", "price": 900 },
+    { "model": "tribike2", "label": "Endurex Race Bike", "price": 975 },
+    { "model": "tribike3", "label": "Tri-Cycles Race Bike", "price": 1050 }
+  ]
+}

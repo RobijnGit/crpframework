@@ -1,0 +1,62 @@
+.rangeslider, .rangeslider__fill {
+    display: block;
+    box-shadow: inset 0 .1vh .3vh rgba(0, 0, 0, 0.3);
+    border-radius: 1vh;
+}
+
+.rangeslider {
+    background: rgba(148, 239, 118, 0.24);
+    position: relative;
+    margin: 1vh 1.5vh;
+}
+
+.rangeslider--horizontal {
+    height: 2vh;
+    width: 100%;
+}
+
+.rangeslider--vertical {
+    width: .4vh;
+    min-height: 30vh;
+    max-height: 100%;
+    height: 100%;
+}
+
+.rangeslider__fill {
+    background: #95ef77;
+    position: absolute;
+}
+
+.rangeslider--horizontal .rangeslider__fill {
+    top: 0;
+    height: 100%;
+}
+
+.rangeslider--vertical .rangeslider__fill {
+    bottom: 0;
+    width: 100%;
+}
+
+.rangeslider__handle {
+    background: #95ef77;
+    cursor: pointer;
+    display: inline-block;
+    width: 1.5vh;
+    height: 1.5vh;
+    position: absolute;
+    box-shadow: 0 0 .8vh rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+}
+
+.rangeslider--horizontal .rangeslider__handle {
+    top: -1vh;
+}
+
+.rangeslider--vertical .rangeslider__handle {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+input[type="range"]:focus + .rangeslider .rangeslider__handle {
+    outline: .7vh solid rgba(148, 239, 118, 0.15);
+}

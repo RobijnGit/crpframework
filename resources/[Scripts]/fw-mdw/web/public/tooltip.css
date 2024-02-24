@@ -1,0 +1,118 @@
+.tooltip-css {
+    position: absolute;
+    padding: .5vh;
+    z-index: 100000;
+    pointer-events: none;
+}
+
+.tooltip-css-inner {
+    background-color: rgba(97, 97, 97, 0.9);
+
+    padding: 0.3vh 0.4vw;
+
+    width: max-content;
+    max-width: 41.7vw;
+    
+    color: #FFF;
+    text-align: center;
+    line-height: 2.07vh;
+    
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 1.4vh;
+
+    border-radius: 0.37vh;
+}
+
+.tooltip-object .tooltip-css-inner.tooltip-css-inner-html {
+    max-width: 41.7vw;
+}
+
+.tooltip-css-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    border: .5vh dashed rgba(97, 97, 97, 0.9);
+}
+
+.tooltip-css-arrow-n { border-bottom-color: rgba(97, 97, 97, 0.9); }
+.tooltip-css-arrow-s { border-top-color: rgba(97, 97, 97, 0.9); }
+.tooltip-css-arrow-e { border-left-color: rgba(97, 97, 97, 0.9); }
+.tooltip-css-arrow-w { border-right-color: rgba(97, 97, 97, 0.9); }
+
+.tooltip-css-n .tooltip-css-arrow {
+    top: 0;
+    left: 50%;
+    margin-left: -.26vw;
+    border-bottom-style: solid;
+    border-top: none;
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
+
+.tooltip-css-nw .tooltip-css-arrow {
+    top: 0;
+    left: .52vw;
+    border-bottom-style: solid;
+    border-top: none;
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
+
+.tooltip-css-ne .tooltip-css-arrow {
+    top: 0;
+    right: .52vw;
+    border-bottom-style: solid;
+    border-top: none;
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
+
+.tooltip-css-s .tooltip-css-arrow {
+    bottom: 0;
+    left: 50%;
+    margin-left: -.26vw;
+    border-top-style: solid;
+    border-bottom: none;
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
+
+.tooltip-css-sw .tooltip-css-arrow {
+    bottom: 0;
+    left: .52vw;
+    border-top-style: solid;
+    border-bottom: none;
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
+
+.tooltip-css-se .tooltip-css-arrow {
+    bottom: 0;
+    right: .52vw;
+    border-top-style: solid;
+    border-bottom: none;
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
+
+.tooltip-css-e .tooltip-css-arrow {
+    right: 0;
+    top: 50%;
+    margin-top: -.26vw;
+    border-left-style: solid;
+    border-right: none;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+}
+
+.tooltip-css-w .tooltip-css-arrow {
+    left: 0;
+    top: 50%;
+    margin-top: -.26vw;
+    border-right-style: solid;
+    border-left: none;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+}

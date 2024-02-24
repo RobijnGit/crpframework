@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    user-select: none;
+    font-family: 'Lato', sans-serif;
+    overflow-y: hidden;
+    overflow-x: hidden;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    margin: 0;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+.ui-button {
+    user-select: none;
+    
+    position: relative;
+    float: left;
+
+    width: max-content;
+    height: max-content;
+
+    padding: .8vh 1vh;
+    border-radius: 0.4vh;
+
+    margin: 0.5vh;
+
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 1.2vh;
+    
+    box-shadow: 0.0vh 0.3vh 0.1vh -0.2vh rgb(0 0 0 / 20%), 0.0vh 0.2vh 0.2vh 0.0vh rgb(0 0 0 / 14%), 0.0vh 0.1vh 0.5vh 0.0vh rgb(0 0 0 / 12%);
+
+    letter-spacing: 0.01vh;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.87);
+
+    cursor: pointer;
+
+    transition: background-color 250ms;
+}
+
+.ui-button.success { background-color: #95ef77 }
+.ui-button.success:hover { background-color: rgb(104, 167, 83) }
+
+.ui-button.warning { background-color: #f2a365 }
+.ui-button.warning:hover { background-color: rgb(169, 114, 70) }
+
+::-webkit-scrollbar-track { background-color: transparent; }
+::-webkit-scrollbar { width: 0vh; background-color: transparent; }
+::-webkit-scrollbar-thumb { background-color: transparent; }
+
+.ui-input {
+    position: relative;
+    width: 100%;
+    height: auto;
+
+    margin-bottom: 1.25vh;
+}
+
+.ui-input > .ui-input-bottom-border { border-bottom: 0.15vh solid rgb(200, 200, 200) }
+
+.ui-input > p {
+    margin: 0;
+
+    font-size: 1.2vh;
+    font-family: "Roboto";
+    font-weight: 500;
+
+    color: rgba(200, 200, 200);
+}
+
+.ui-input > i {
+    position: relative;
+    left: 0;
+    top: 0;
+
+    text-align: center;
+    width: 2vh;
+
+    font-size: 1.6vh;
+    color: rgba(200, 200, 200);
+}
+
+.ui-input > i.right {
+    position: relative;
+    float: right;
+    top: 0.8vh;
+}
+
+.ui-input > input {
+    margin: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+    font-family: 'Roboto';
+    font-size: 1.5vh;
+
+    color: rgba(200, 200, 200);
+
+    margin-top: .3vh;
+
+    height: 2.5vh;
+    width: calc(100% - 2.9vh);
+    
+    transition: border-color ease 250ms;
+}
+
+.ui-input:focus-within .ui-input-bottom-border { border-color: white }
+
+.ui-input > input::-webkit-outer-spin-button, .ui-input > input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

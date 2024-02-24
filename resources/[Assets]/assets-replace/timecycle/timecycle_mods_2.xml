@@ -1,0 +1,1685 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Fuck weather XML files -->
+<timecycle_modifier_data version="1">
+<modifier name="polluted" numMods="14" userFlags="0">
+<light_ray_mult>8 0.48</light_ray_mult>
+<dof_far>500 0</dof_far>
+<dof_blur_far>0.5 0</dof_blur_far>
+<fog_start>-900 150</fog_start>
+<fog_near_col_r>0.137 0.1</fog_near_col_r>
+<fog_near_col_g>0.102 0.1</fog_near_col_g>
+<fog_near_col_b>0.016 0.1</fog_near_col_b>
+<fog_near_col_a>1 0.1</fog_near_col_a>
+<fog_east_col_r>0.137 0.1</fog_east_col_r>
+<fog_east_col_g>0.102 0.1</fog_east_col_g>
+<fog_east_col_b>0.016 0.1</fog_east_col_b>
+<fog_east_col_a>1 0.1</fog_east_col_a>
+<fog_density>5 900</fog_density>
+<fog_falloff>0 7</fog_falloff>
+</modifier>
+<modifier name="lightning" numMods="24" userFlags="0">
+<light_dir_col_r>0.486 1</light_dir_col_r>
+<light_dir_col_g>0.584 1</light_dir_col_g>
+<light_dir_col_b>1 1</light_dir_col_b>
+<light_dir_mult>16 1</light_dir_mult>
+<light_ray_col_r>0.302 1</light_ray_col_r>
+<light_ray_col_g>0.424 1</light_ray_col_g>
+<light_ray_col_b>1 1</light_ray_col_b>
+<light_ray_mult>3.9 1</light_ray_mult>
+<light_ray_blit_size>10 0</light_ray_blit_size>
+<light_ray_length>8 0</light_ray_length>
+<postfx_intensity_bloom>2 0</postfx_intensity_bloom>
+<sky_hdr>255 0</sky_hdr>
+<fog_start>0 0</fog_start>
+<fog_near_col_r>0.21 0.95</fog_near_col_r>
+<fog_near_col_g>0.22 0.95</fog_near_col_g>
+<fog_near_col_b>0.23 0.95</fog_near_col_b>
+<fog_near_col_a>1 0.95</fog_near_col_a>
+<fog_col_r>0.67 0.1</fog_col_r>
+<fog_col_g>0.68 0.1</fog_col_g>
+<fog_col_b>0.69 0.1</fog_col_b>
+<fog_col_a>1 0.1</fog_col_a>
+<fog_hdr>32 0.05</fog_hdr>
+<reflection_tweak_directional>0 0</reflection_tweak_directional>
+<particle_light_intensity_mult>0.6 1</particle_light_intensity_mult>
+</modifier>
+<modifier name="torpedo" numMods="12" userFlags="0">
+<postfx_exposure>0 0</postfx_exposure>
+<postfx_bright_pass_thresh>3 0</postfx_bright_pass_thresh>
+<postfx_intensity_bloom>0.05 0</postfx_intensity_bloom>
+<postfx_desaturation>1 0</postfx_desaturation>
+<postfx_noise>0.05 0</postfx_noise>
+<postfx_vignetting_intensity>1 0</postfx_vignetting_intensity>
+<postfx_vignetting_radius>8 0</postfx_vignetting_radius>
+<postfx_vignetting_col_r>0 0</postfx_vignetting_col_r>
+<postfx_vignetting_col_g>1 0</postfx_vignetting_col_g>
+<postfx_vignetting_col_b>0.765 0</postfx_vignetting_col_b>
+<postfx_grad_top_middle_midpoint>0.83 0</postfx_grad_top_middle_midpoint>
+<postfx_grad_middle_bottom_midpoint>0.81 0</postfx_grad_middle_bottom_midpoint>
+</modifier>
+<modifier name="NEW_shrinksOffice" numMods="55" userFlags="0">
+<light_directional_amb_bounce_enabled>0 0</light_directional_amb_bounce_enabled>
+<light_amb_down_wrap>0.2 0</light_amb_down_wrap>
+<light_artificial_int_down_col_r>1 1</light_artificial_int_down_col_r>
+<light_artificial_int_down_col_g>0.8 1</light_artificial_int_down_col_g>
+<light_artificial_int_down_col_b>0.224 1</light_artificial_int_down_col_b>
+<light_artificial_int_down_intensity>0.1 0</light_artificial_int_down_intensity>
+<light_artificial_int_up_col_r>0.878 1</light_artificial_int_up_col_r>
+<light_artificial_int_up_col_g>0.961 1</light_artificial_int_up_col_g>
+<light_artificial_int_up_col_b>0.682 1</light_artificial_int_up_col_b>
+<light_artificial_int_up_intensity>0.3 0</light_artificial_int_up_intensity>
+<ped_light_col_r>0.878 1</ped_light_col_r>
+<ped_light_col_g>1 1</ped_light_col_g>
+<ped_light_col_b>0.502 1</ped_light_col_b>
+<ped_light_mult>0.07 0.5</ped_light_mult>
+<light_amb_occ_mult_ped>1 0</light_amb_occ_mult_ped>
+<light_amb_volumes_in_diffuse>1 0</light_amb_volumes_in_diffuse>
+<ssao_inten>1 0</ssao_inten>
+<ssao_type>0 0</ssao_type>
+<light_ped_rim_mult>0.97 0</light_ped_rim_mult>
+<light_direction_override>1 0</light_direction_override>
+<sun_direction_x>-1 0</sun_direction_x>
+<sun_direction_y>-0.38 0</sun_direction_y>
+<sun_direction_z>0.4 0</sun_direction_z>
+<postfx_exposure_min>-0.88 0</postfx_exposure_min>
+<postfx_bright_pass_thresh_width>0.6 0</postfx_bright_pass_thresh_width>
+<postfx_bright_pass_thresh>0.7 0</postfx_bright_pass_thresh>
+<postfx_intensity_bloom>0.05 0</postfx_intensity_bloom>
+<postfx_vignetting_contrast>0 0</postfx_vignetting_contrast>
+<dir_shadow_num_cascades>3 0</dir_shadow_num_cascades>
+<dir_shadow_distance_multiplier>0.3 0</dir_shadow_distance_multiplier>
+<water_reflection_far_clip>0 0</water_reflection_far_clip>
+<water_foam_intensity_mult>0 0</water_foam_intensity_mult>
+<fog_start>73 73</fog_start>
+<fog_haze_density>7 7.003</fog_haze_density>
+<fog_haze_alpha>1 1</fog_haze_alpha>
+<fog_shadow_amount>0 0</fog_shadow_amount>
+<reflection_lod_range_start>-1 0</reflection_lod_range_start>
+<reflection_lod_range_end>-1 0</reflection_lod_range_end>
+<reflection_slod_range_start>-1 0</reflection_slod_range_start>
+<reflection_slod_range_end>-1 0</reflection_slod_range_end>
+<reflection_interior_range>20 0</reflection_interior_range>
+<reflection_tweak_interior_amb>10 0</reflection_tweak_interior_amb>
+<reflection_tweak_emissive>12 0</reflection_tweak_emissive>
+<reflection_tweak_directional>0 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.6 0</reflection_hdr_mult>
+<far_clip>1500 1500</far_clip>
+<temperature>20 0</temperature>
+<natural_ambient_multiplier>0.1 0</natural_ambient_multiplier>
+<artificial_int_ambient_multiplier>1 0</artificial_int_ambient_multiplier>
+<light_falloff_mult>0.001 0</light_falloff_mult>
+<lodlight_range_mult>0.001 0</lodlight_range_mult>
+<lod_mult_slod1>0.308 0</lod_mult_slod1>
+<lod_mult_slod2>0.328 0</lod_mult_slod2>
+<lod_mult_slod3>0.1 0</lod_mult_slod3>
+<lod_mult_slod4>0.1 0</lod_mult_slod4>
+</modifier>
+<modifier name="Facebook_NEW" numMods="28" userFlags="0">
+<light_natural_amb_down_col_r>0.278 0.507</light_natural_amb_down_col_r>
+<light_natural_amb_down_col_g>0.812 0.507</light_natural_amb_down_col_g>
+<light_natural_amb_down_col_b>0.624 0.507</light_natural_amb_down_col_b>
+<light_natural_amb_up_col_r>0.278 0.5</light_natural_amb_up_col_r>
+<light_natural_amb_up_col_g>0.812 0.5</light_natural_amb_up_col_g>
+<light_natural_amb_up_col_b>0.624 0.5</light_natural_amb_up_col_b>
+<light_artificial_int_down_col_r>0.91 1</light_artificial_int_down_col_r>
+<light_artificial_int_down_col_g>0.831 1</light_artificial_int_down_col_g>
+<light_artificial_int_down_col_b>0.675 1</light_artificial_int_down_col_b>
+<light_artificial_int_down_intensity>0.7 0</light_artificial_int_down_intensity>
+<light_artificial_int_up_col_r>0.835 1</light_artificial_int_up_col_r>
+<light_artificial_int_up_col_g>0.859 1</light_artificial_int_up_col_g>
+<light_artificial_int_up_col_b>0.875 1</light_artificial_int_up_col_b>
+<light_artificial_int_up_intensity>0.3 0</light_artificial_int_up_intensity>
+<ssao_inten>5 0</ssao_inten>
+<light_ped_rim_mult>0.97 0</light_ped_rim_mult>
+<postfx_exposure_min>-0.88 0</postfx_exposure_min>
+<postfx_bright_pass_thresh_width>0.6 0</postfx_bright_pass_thresh_width>
+<postfx_bright_pass_thresh>0.9 0</postfx_bright_pass_thresh>
+<postfx_intensity_bloom>0.05 0</postfx_intensity_bloom>
+<postfx_vignetting_contrast>0 0</postfx_vignetting_contrast>
+<lens_artefacts_intensity>0.05 0</lens_artefacts_intensity>
+<fog_start>73 73</fog_start>
+<reflection_tweak_interior_amb>16 0</reflection_tweak_interior_amb>
+<reflection_tweak_directional>0 0</reflection_tweak_directional>
+<temperature>20 0</temperature>
+<natural_ambient_multiplier>0.2 0</natural_ambient_multiplier>
+<artificial_int_ambient_multiplier>1 0</artificial_int_ambient_multiplier>
+</modifier>
+<modifier name="NEW_trevorstrailer" numMods="31" userFlags="0">
+<light_amb_down_wrap>0.2 0</light_amb_down_wrap>
+<light_artificial_int_down_col_r>0.918 1</light_artificial_int_down_col_r>
+<light_artificial_int_down_col_g>0.792 1</light_artificial_int_down_col_g>
+<light_artificial_int_down_col_b>0.416 1</light_artificial_int_down_col_b>
+<light_artificial_int_down_intensity>1 0</light_artificial_int_down_intensity>
+<light_artificial_int_up_col_r>0.961 1</light_artificial_int_up_col_r>
+<light_artificial_int_up_col_g>0.875 1</light_artificial_int_up_col_g>
+<light_artificial_int_up_col_b>0.769 1</light_artificial_int_up_col_b>
+<light_artificial_int_up_intensity>0.3 0</light_artificial_int_up_intensity>
+<light_ped_rim_mult>0.97 0</light_ped_rim_mult>
+<postfx_bright_pass_thresh_width>0.6 0</postfx_bright_pass_thresh_width>
+<postfx_bright_pass_thresh>0.6 0</postfx_bright_pass_thresh>
+<postfx_intensity_bloom>0.05 0</postfx_intensity_bloom>
+<postfx_exposure_min>-3.5 0</postfx_exposure_min>
+<postfx_vignetting_contrast>0 0</postfx_vignetting_contrast>
+<fog_start>73 73</fog_start>
+<fog_density>0 10</fog_density>
+<reflection_lod_range_start>-1 0</reflection_lod_range_start>
+<reflection_lod_range_end>-1 0</reflection_lod_range_end>
+<reflection_slod_range_start>-1 0</reflection_slod_range_start>
+<reflection_slod_range_end>-1 0</reflection_slod_range_end>
+<far_clip>1000 1000</far_clip>
+<temperature>20 0</temperature>
+<natural_ambient_multiplier>0 0</natural_ambient_multiplier>
+<artificial_int_ambient_multiplier>0.8 0</artificial_int_ambient_multiplier>
+<lod_mult_hd>0.455 0</lod_mult_hd>
+<lod_mult_lod>0.455 0</lod_mult_lod>
+<lod_mult_slod1>0.455 0</lod_mult_slod1>
+<lod_mult_slod2>0.455 0</lod_mult_slod2>
+<lod_mult_slod3>0.455 0</lod_mult_slod3>
+<lod_mult_slod4>0.455 0</lod_mult_slod4>
+</modifier>
+<modifier name="New_sewers" numMods="55" userFlags="0">
+<light_amb_down_wrap>0.2 0</light_amb_down_wrap>
+<light_artificial_int_down_col_r>0.922 1</light_artificial_int_down_col_r>
+<light_artificial_int_down_col_g>0.824 1</light_artificial_int_down_col_g>
+<light_artificial_int_down_col_b>0.431 1</light_artificial_int_down_col_b>
+<light_artificial_int_down_intensity>1 0</light_artificial_int_down_intensity>
+<light_artificial_int_up_col_r>0.925 1</light_artificial_int_up_col_r>
+<light_artificial_int_up_col_g>0.667 1</light_artificial_int_up_col_g>
+<light_artificial_int_up_col_b>0.224 1</light_artificial_int_up_col_b>
+<light_artificial_int_up_intensity>0.2 0</light_artificial_int_up_intensity>
+<ped_light_col_r>0.733 1</ped_light_col_r>
+<ped_light_col_g>1 1</ped_light_col_g>
+<ped_light_col_b>0.502 1</ped_light_col_b>
+<ped_light_mult>0.1 1</ped_light_mult>
+<postfx_bright_pass_thresh_width>0.7 0</postfx_bright_pass_thresh_width>
+<postfx_bright_pass_thresh>0.7 0</postfx_bright_pass_thresh>
+<postfx_vignetting_contrast>0 0</postfx_vignetting_contrast>
+<sky_hdr>0 0</sky_hdr>
+<water_interior>1 0</water_interior>
+<fog_start>10 10</fog_start>
+<fog_near_col_r>0.012 1</fog_near_col_r>
+<fog_near_col_g>0.604 1</fog_near_col_g>
+<fog_near_col_b>1 1</fog_near_col_b>
+<fog_near_col_a>0 1</fog_near_col_a>
+<fog_col_r>0.412 1</fog_col_r>
+<fog_col_g>0.573 1</fog_col_g>
+<fog_col_b>0.773 1</fog_col_b>
+<fog_col_a>0 1</fog_col_a>
+<fog_east_col_r>0.412 1</fog_east_col_r>
+<fog_east_col_g>0.573 1</fog_east_col_g>
+<fog_east_col_b>0.773 1</fog_east_col_b>
+<fog_east_col_a>0 1</fog_east_col_a>
+<fog_density>100 100</fog_density>
+<fog_falloff>0.5 0.5</fog_falloff>
+<fog_base_height>0 0</fog_base_height>
+<fog_alpha>1 1</fog_alpha>
+<fog_horizon_tint_scale>4 4</fog_horizon_tint_scale>
+<fog_hdr>0 1</fog_hdr>
+<fog_haze_col_r>0.004 1</fog_haze_col_r>
+<fog_haze_col_g>0.012 1</fog_haze_col_g>
+<fog_haze_col_b>0.012 1</fog_haze_col_b>
+<fog_haze_density>0.5 0.5</fog_haze_density>
+<fog_haze_alpha>1 1</fog_haze_alpha>
+<fog_haze_hdr>1 1</fog_haze_hdr>
+<fog_haze_start>0 0</fog_haze_start>
+<fog_shadow_amount>0 0</fog_shadow_amount>
+<fog_shadow_falloff>1 0</fog_shadow_falloff>
+<fog_shadow_base_height>0 0</fog_shadow_base_height>
+<reflection_slod_range_end>100 0</reflection_slod_range_end>
+<reflection_interior_range>100 0</reflection_interior_range>
+<far_clip>0 200</far_clip>
+<natural_ambient_multiplier>0 0</natural_ambient_multiplier>
+<artificial_int_ambient_multiplier>0.3 0</artificial_int_ambient_multiplier>
+<no_weather_fx>1 0</no_weather_fx>
+<no_gpu_fx>1 0</no_gpu_fx>
+<entity_reject>6000 0</entity_reject>
+</modifier>
+<modifier name="facebook_serveroom" numMods="31" userFlags="0">
+<light_natural_amb_down_col_r>0.275 0.507</light_natural_amb_down_col_r>
+<light_natural_amb_down_col_g>0.812 0.507</light_natural_amb_down_col_g>
+<light_natural_amb_down_col_b>0.624 0.507</light_natural_amb_down_col_b>
+<light_natural_amb_up_col_r>0.275 0.5</light_natural_amb_up_col_r>
+<light_natural_amb_up_col_g>0.812 0.5</light_natural_amb_up_col_g>
+<light_natural_amb_up_col_b>0.624 0.5</light_natural_amb_up_col_b>
+<light_artificial_int_down_col_r>0.918 1</light_artificial_int_down_col_r>
+<light_artificial_int_down_col_g>0.718 1</light_artificial_int_down_col_g>
+<light_artificial_int_down_col_b>0.416 1</light_artificial_int_down_col_b>
+<light_artificial_int_down_intensity>0.5 0</light_artificial_int_down_intensity>
+<light_artificial_int_up_col_r>0.71 1</light_artificial_int_up_col_r>
+<light_artificial_int_up_col_g>0.627 1</light_artificial_int_up_col_g>
+<light_artificial_int_up_col_b>0.878 1</light_artificial_int_up_col_b>
+<light_artificial_int_up_intensity>0.3 0</light_artificial_int_up_intensity>
+<ssao_inten>5 0</ssao_inten>
+<light_ped_rim_mult>0.97 0</light_ped_rim_mult>
+<postfx_exposure_min>-0.88 0</postfx_exposure_min>
+<postfx_bright_pass_thresh_width>0.7 0</postfx_bright_pass_thresh_width>
+<postfx_bright_pass_thresh>0.7 0</postfx_bright_pass_thresh>
+<postfx_vignetting_contrast>0 0</postfx_vignetting_contrast>
+<lens_artefacts_intensity>0 0</lens_artefacts_intensity>
+<fog_start>73 73</fog_start>
+<reflection_tweak_interior_amb>32 0</reflection_tweak_interior_amb>
+<far_clip>500 500</far_clip>
+<temperature>20 0</temperature>
+<particle_light_intensity_mult>0 1</particle_light_intensity_mult>
+<natural_ambient_multiplier>0.2 0</natural_ambient_multiplier>
+<artificial_int_ambient_multiplier>0.8 0</artificial_int_ambient_multiplier>
+<no_weather_fx>0 0</no_weather_fx>
+<no_gpu_fx>0 0</no_gpu_fx>
+<wind_speed_mult>0 0</wind_speed_mult>
+</modifier>
+<modifier name="V_Office_smoke_Fire" numMods="19" userFlags="0">
+<light_directional_amb_col_r>0 1</light_directional_amb_col_r>
+<light_directional_amb_col_g>0 1</light_directional_amb_col_g>
+<light_directional_amb_col_b>0 1</light_directional_amb_col_b>
+<light_artificial_int_down_col_r>0.89 1</light_artificial_int_down_col_r>
+<light_artificial_int_down_col_g>0.89 1</light_artificial_int_down_col_g>
+<light_artificial_int_down_col_b>0.749 1</light_artificial_int_down_col_b>
+<light_artificial_int_down_intensity>0.15 0</light_artificial_int_down_intensity>
+<light_artificial_int_up_col_r>0.871 1</light_artificial_int_up_col_r>
+<light_artificial_int_up_col_g>0.843 1</light_artificial_int_up_col_g>
+<light_artificial_int_up_col_b>0.714 1</light_artificial_int_up_col_b>
+<light_artificial_int_up_intensity>0.17 0</light_artificial_int_up_intensity>
+<postfx_exposure_min>-0.88 0</postfx_exposure_min>
+<postfx_bright_pass_thresh_width>0 0</postfx_bright_pass_thresh_width>
+<postfx_bright_pass_thresh>0 0</postfx_bright_pass_thresh>
+<postfx_intensity_bloom>0.05 0</postfx_intensity_bloom>
+<postfx_vignetting_contrast>0 0</postfx_vignetting_contrast>
+<particle_light_intensity_mult>1 1</particle_light_intensity_mult>
+<natural_ambient_multiplier>0.1 0</natural_ambient_multiplier>
+<artificial_int_ambient_multiplier>0.275 0</artificial_int_ambient_multiplier>
+</modifier>
+<modifier name="V_FIB_IT3_alt5" numMods="25" userFlags="0">
+<light_directional_amb_col_r>0 1</light_directional_amb_col_r>
+<light_directional_amb_col_g>0 1</light_directional_amb_col_g>
+<light_directional_amb_col_b>0 1</light_directional_amb_col_b>
+<light_amb_down_wrap>0.8 0</light_amb_down_wrap>
+<light_artificial_int_down_col_r>0.98 1</light_artificial_int_down_col_r>
+<light_artificial_int_down_col_g>0.824 1</light_artificial_int_down_col_g>
+<light_artificial_int_down_col_b>0.416 1</light_artificial_int_down_col_b>
+<light_artificial_int_down_intensity>0.25 0</light_artificial_int_down_intensity>
+<light_artificial_int_up_col_r>0.98 1</light_artificial_int_up_col_r>
+<light_artificial_int_up_col_g>0.718 1</light_artificial_int_up_col_g>
+<light_artificial_int_up_col_b>0.408 1</light_artificial_int_up_col_b>
+<light_artificial_int_up_intensity>0.2 0</light_artificial_int_up_intensity>
+<ped_light_col_r>1 1</ped_light_col_r>
+<ped_light_col_g>0.259 1</ped_light_col_g>
+<ped_light_col_b>0.008 1</ped_light_col_b>
+<ped_light_mult>0.3 1</ped_light_mult>
+<postfx_exposure_min>-0.88 0</postfx_exposure_min>
+<postfx_bright_pass_thresh_width>1 0</postfx_bright_pass_thresh_width>
+<postfx_bright_pass_thresh>1 0</postfx_bright_pass_thresh>
+<postfx_intensity_bloom>0.05 0</postfx_intensity_bloom>
+<postfx_vignetting_contrast>0 0</postfx_vignetting_contrast>
+<reflection_interior_range>100 0</reflection_interior_range>
+<particle_light_intensity_mult>1 1</particle_light_intensity_mult>
+<natural_ambient_multiplier>0 0</natural_ambient_multiplier>
+<artificial_int_ambient_multiplier>0.375 0</artificial_int_ambient_multiplier>
+</modifier>
+<modifier name="int_Hospital_DM" numMods="23" userFlags="0">
+<light_directional_amb_col_r>0 1</light_directional_amb_col_r>
+<light_directional_amb_col_g>0 1</light_directional_amb_col_g>
+<light_directional_amb_col_b>0 1</light_directional_amb_col_b>
+<light_amb_down_wrap>0.531 0</light_amb_down_wrap>
+<light_artificial_int_down_col_r>0.875 1</light_artificial_int_down_col_r>
+<light_artificial_int_down_col_g>0.91 1</light_artificial_int_down_col_g>
+<light_artificial_int_down_col_b>0.894 1</light_artificial_int_down_col_b>
+<light_artificial_int_down_intensity>1.25 0</light_artificial_int_down_intensity>
+<light_artificial_int_up_col_r>0.839 1</light_artificial_int_up_col_r>
+<light_artificial_int_up_col_g>0.859 1</light_artificial_int_up_col_g>
+<light_artificial_int_up_col_b>0.875 1</light_artificial_int_up_col_b>
+<light_artificial_int_up_intensity>0.3 0</light_artificial_int_up_intensity>
+<ssao_inten>0 0</ssao_inten>
+<postfx_exposure>0.192 0</postfx_exposure>
+<postfx_exposure_min>-0.88 0</postfx_exposure_min>
+<postfx_bright_pass_thresh>1 0</postfx_bright_pass_thresh>
+<postfx_intensity_bloom>0.05 0</postfx_intensity_bloom>
+<postfx_vignetting_contrast>0 0</postfx_vignetting_contrast>
+<far_clip>0 200</far_clip>
+<temperature>20 0</temperature>
+<natural_ambient_multiplier>0.3 0</natural_ambient_multiplier>
+<artificial_int_ambient_multiplier>0 0</artificial_int_ambient_multiplier>
+</modifier>
+<modifier name="int_Hospital2_DM" numMods="32" userFlags="0">
+<light_directional_amb_col_r>0 1</light_directional_amb_col_r>
+<light_directional_amb_col_g>0 1</light_directional_amb_col_g>
+<light_directional_amb_col_b>0 1</light_directional_amb_col_b>
+<light_amb_down_wrap>0.358 0</light_amb_down_wrap>
+<light_artificial_int_down_col_r>0.875 1</light_artificial_int_down_col_r>
+<light_artificial_int_down_col_g>0.91 1</light_artificial_int_down_col_g>
+<light_artificial_int_down_col_b>0.89 1</light_artificial_int_down_col_b>
+<light_artificial_int_down_intensity>0 0</light_artificial_int_down_intensity>
+<light_artificial_int_up_col_r>0.835 1</light_artificial_int_up_col_r>
+<light_artificial_int_up_col_g>0.859 1</light_artificial_int_up_col_g>
+<light_artificial_int_up_col_b>0.875 1</light_artificial_int_up_col_b>
+<light_artificial_int_up_intensity>0.25 0</light_artificial_int_up_intensity>
+<ssao_inten>0 0</ssao_inten>
+<postfx_exposure>0.192 0</postfx_exposure>
+<postfx_exposure_min>-0.88 0</postfx_exposure_min>
+<postfx_bright_pass_thresh_width>1 0</postfx_bright_pass_thresh_width>
+<postfx_bright_pass_thresh>1 0</postfx_bright_pass_thresh>
+<postfx_intensity_bloom>0.05 0</postfx_intensity_bloom>
+<postfx_grad_top_col_r>0 0</postfx_grad_top_col_r>
+<postfx_grad_top_col_g>0.325 0</postfx_grad_top_col_g>
+<postfx_grad_top_col_b>1 0</postfx_grad_top_col_b>
+<postfx_grad_middle_col_r>0.561 0</postfx_grad_middle_col_r>
+<postfx_grad_middle_col_g>0.886 0</postfx_grad_middle_col_g>
+<postfx_grad_middle_col_b>1 0</postfx_grad_middle_col_b>
+<postfx_grad_midpoint>0 0</postfx_grad_midpoint>
+<postfx_grad_top_middle_midpoint>0.241 0</postfx_grad_top_middle_midpoint>
+<postfx_vignetting_contrast>0 0</postfx_vignetting_contrast>
+<reflection_tweak_interior_amb>64 0</reflection_tweak_interior_amb>
+<far_clip>0 200</far_clip>
+<temperature>20 0</temperature>
+<natural_ambient_multiplier>0.075 0</natural_ambient_multiplier>
+<artificial_int_ambient_multiplier>0.625 0</artificial_int_ambient_multiplier>
+</modifier>
+<modifier name="ss" numMods="8" userFlags="0">
+<lod_mult>2 0</lod_mult>
+<lod_mult_hd>2 0</lod_mult_hd>
+<lod_mult_orphanhd>2 0</lod_mult_orphanhd>
+<lod_mult_lod>2 0</lod_mult_lod>
+<lod_mult_slod1>2 0</lod_mult_slod1>
+<lod_mult_slod2>2 0</lod_mult_slod2>
+<lod_mult_slod3>2 0</lod_mult_slod3>
+<lod_mult_slod4>2 0</lod_mult_slod4>
+</modifier>
+<modifier name="bb" numMods="1" userFlags="0">
+<postfx_vignetting_col_r>0 0</postfx_vignetting_col_r>
+</modifier>
+<modifier name="pand" numMods="2" userFlags="0">
+<postfx_exposure_min>-2.3 0</postfx_exposure_min>
+<postfx_exposure_max>-2.3 0</postfx_exposure_max>
+</modifier>
+<modifier name="pann" numMods="2" userFlags="0">
+<postfx_exposure_min>2.8 0</postfx_exposure_min>
+<postfx_exposure_max>2.8 0</postfx_exposure_max>
+</modifier>
+<modifier name="b1" numMods="1" userFlags="0">
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+</modifier>
+<modifier name="b1e" numMods="2" userFlags="0">
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+</modifier>
+<modifier name="b2" numMods="1" userFlags="0">
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+</modifier>
+<modifier name="b2e" numMods="2" userFlags="0">
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+</modifier>
+<modifier name="b3" numMods="1" userFlags="0">
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+</modifier>
+<modifier name="b3e" numMods="2" userFlags="0">
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+</modifier>
+<modifier name="e" numMods="1" userFlags="0">
+<postfx_desaturation>1.2 0</postfx_desaturation>
+</modifier>
+<modifier name="c1" numMods="1" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+</modifier>
+<modifier name="b1c1" numMods="2" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+</modifier>
+<modifier name="b2c1" numMods="2" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+</modifier>
+<modifier name="b3c1" numMods="2" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+</modifier>
+<modifier name="c1e" numMods="2" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+</modifier>
+<modifier name="b1c1e" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+</modifier>
+<modifier name="b2c1e" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+</modifier>
+<modifier name="b3c1e" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+</modifier>
+<modifier name="c2" numMods="1" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+</modifier>
+<modifier name="b1c2" numMods="2" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+</modifier>
+<modifier name="b2c2" numMods="2" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+</modifier>
+<modifier name="b3c2" numMods="2" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+</modifier>
+<modifier name="c2e" numMods="2" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+</modifier>
+<modifier name="b1c2e" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+</modifier>
+<modifier name="b2c2e" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+</modifier>
+<modifier name="b3c2e" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+</modifier>
+<modifier name="r1" numMods="1" userFlags="0">
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b1r1" numMods="2" userFlags="0">
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b1er1" numMods="3" userFlags="0">
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b2r1" numMods="2" userFlags="0">
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b2er1" numMods="3" userFlags="0">
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b3r1" numMods="2" userFlags="0">
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b3er1" numMods="3" userFlags="0">
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="er1" numMods="2" userFlags="0">
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="c1r1" numMods="2" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b1c1r1" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b2c1r1" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b3c1r1" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="c1er1" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b1c1er1" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b2c1er1" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b3c1er1" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="c2r1" numMods="2" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b1c2r1" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b2c2r1" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b3c2r1" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="c2er1" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b1c2er1" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b2c2er1" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b3c2er1" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+</modifier>
+<modifier name="r1rh1" numMods="2" userFlags="0">
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1r1rh1" numMods="2" userFlags="0">
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1er1rh1" numMods="4" userFlags="0">
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2r1rh1" numMods="3" userFlags="0">
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2er1rh1" numMods="4" userFlags="0">
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3r1rh1" numMods="3" userFlags="0">
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3er1rh1" numMods="4" userFlags="0">
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="er1rh1" numMods="3" userFlags="0">
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c1r1rh1" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c1r1rh1" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c1r1rh1" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c1r1rh1" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c1er1rh1" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c1er1rh1" numMods="5" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c1er1rh1" numMods="5" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c1er1rh1" numMods="5" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c2r1rh1" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c2r1rh1" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c2r1rh1" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c2r1rh1" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c2er1rh1" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c2er1rh1" numMods="5" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c2er1rh1" numMods="5" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c2er1rh1" numMods="5" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="r1rh2" numMods="2" userFlags="0">
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1r1rh2" numMods="3" userFlags="0">
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1er1rh2" numMods="4" userFlags="0">
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2r1rh2" numMods="3" userFlags="0">
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2er1rh2" numMods="4" userFlags="0">
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3r1rh2" numMods="3" userFlags="0">
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3er1rh2" numMods="4" userFlags="0">
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="er1rh2" numMods="3" userFlags="0">
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c1r1rh2" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c1r1rh2" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c1r1rh2" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c1r1rh2" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c1er1rh2" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c1er1rh2" numMods="5" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c1er1rh2" numMods="5" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c1er1rh2" numMods="5" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c2r1rh2" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c2r1rh2" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c2r1rh2" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c2r1rh2" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c2er1rh2" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c2er1rh2" numMods="5" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c2er1rh2" numMods="5" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c2er1rh2" numMods="5" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.2 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="r2rh2" numMods="2" userFlags="0">
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1r2rh2" numMods="2" userFlags="0">
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1er2rh2" numMods="4" userFlags="0">
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2r2rh2" numMods="3" userFlags="0">
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2er2rh2" numMods="4" userFlags="0">
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3r2rh2" numMods="3" userFlags="0">
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3er2rh2" numMods="4" userFlags="0">
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="er2rh2" numMods="3" userFlags="0">
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c1r2rh2" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c1r2rh2" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c1r2rh2" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c1r2rh2" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c1er2rh2" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c1er2rh2" numMods="5" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c1er2rh2" numMods="5" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c1er2rh2" numMods="5" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c2r2rh2" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c2r2rh2" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c2r2rh2" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c2r2rh2" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c2er2rh2" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c2er2rh2" numMods="5" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c2er2rh2" numMods="5" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c2er2rh2" numMods="5" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="r2" numMods="1" userFlags="0">
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b1r2" numMods="2" userFlags="0">
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b1er2" numMods="3" userFlags="0">
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b2r2" numMods="2" userFlags="0">
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b2er2" numMods="3" userFlags="0">
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b3r2" numMods="2" userFlags="0">
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b3er2" numMods="3" userFlags="0">
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="er2" numMods="2" userFlags="0">
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="c1r2" numMods="2" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b1c1r2" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b2c1r2" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b3c1r2" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="c1er2" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b1c1er2" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b2c1er2" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b3c1er2" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="c2r2" numMods="2" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b1c2r2" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b2c2r2" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b3c2r2" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="c2er2" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b1c2er2" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b2c2er2" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="b3c2er2" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+</modifier>
+<modifier name="r2rh1" numMods="2" userFlags="0">
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1r2rh1" numMods="2" userFlags="0">
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1er2rh1" numMods="4" userFlags="0">
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2r2rh1" numMods="3" userFlags="0">
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2er2rh1" numMods="4" userFlags="0">
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3r2rh1" numMods="3" userFlags="0">
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3er2rh1" numMods="4" userFlags="0">
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="er2rh1" numMods="3" userFlags="0">
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c1r2rh1" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c1r2rh1" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c1r2rh1" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c1r2rh1" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c1er2rh1" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c1er2rh1" numMods="5" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c1er2rh1" numMods="5" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c1er2rh1" numMods="5" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c2r2rh1" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c2r2rh1" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c2r2rh1" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c2r2rh1" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c2er2rh1" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c2er2rh1" numMods="5" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c2er2rh1" numMods="5" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c2er2rh1" numMods="5" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_tweak_directional>0.8 0</reflection_tweak_directional>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="rh1" numMods="1" userFlags="0">
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1rh1" numMods="2" userFlags="0">
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1erh1" numMods="3" userFlags="0">
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2rh1" numMods="2" userFlags="0">
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2erh1" numMods="3" userFlags="0">
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3rh1" numMods="2" userFlags="0">
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3erh1" numMods="3" userFlags="0">
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="erh1" numMods="2" userFlags="0">
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c1rh1" numMods="2" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c1rh1" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c1rh1" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c1rh1" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c1erh1" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c1erh1" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c1erh1" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c1erh1" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c2rh1" numMods="2" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c2rh1" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c2rh1" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c2rh1" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c2erh1" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c2erh1" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c2erh1" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c2erh1" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_hdr_mult>0.8 0</reflection_hdr_mult>
+</modifier>
+<modifier name="rh2" numMods="1" userFlags="0">
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1rh2" numMods="2" userFlags="0">
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1erh2" numMods="3" userFlags="0">
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2rh2" numMods="2" userFlags="0">
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2erh2" numMods="3" userFlags="0">
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3rh2" numMods="2" userFlags="0">
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3erh2" numMods="3" userFlags="0">
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="erh2" numMods="2" userFlags="0">
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c1rh2" numMods="2" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c1rh2" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c1rh2" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c1rh2" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c1erh2" numMods="3" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c1erh2" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c1erh2" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c1erh2" numMods="4" userFlags="0">
+<sprite_brightness>0.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c2rh2" numMods="2" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c2rh2" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c2rh2" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c2rh2" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="c2erh2" numMods="3" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b1c2erh2" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.9 0</postfx_motionblurlength>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b2c2erh2" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.5 0</postfx_motionblurlength>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="b3c2erh2" numMods="4" userFlags="0">
+<sprite_brightness>1.1 0</sprite_brightness>
+<postfx_desaturation>1.2 0</postfx_desaturation>
+<postfx_motionblurlength>0.35 0</postfx_motionblurlength>
+<reflection_hdr_mult>2 0</reflection_hdr_mult>
+</modifier>
+<modifier name="int_Barber1" numMods="28" userFlags="0">
+<light_directional_amb_col_r>0 1</light_directional_amb_col_r>
+<light_directional_amb_col_g>0 1</light_directional_amb_col_g>
+<light_directional_amb_col_b>0 1</light_directional_amb_col_b>
+<light_artificial_int_down_col_r>0.918 1</light_artificial_int_down_col_r>
+<light_artificial_int_down_col_g>0.816 1</light_artificial_int_down_col_g>
+<light_artificial_int_down_col_b>0.502 1</light_artificial_int_down_col_b>
+<light_artificial_int_down_intensity>0.7 0</light_artificial_int_down_intensity>
+<light_artificial_int_up_col_r>1 1</light_artificial_int_up_col_r>
+<light_artificial_int_up_col_g>0.8 1</light_artificial_int_up_col_g>
+<light_artificial_int_up_col_b>0.471 1</light_artificial_int_up_col_b>
+<light_artificial_int_up_intensity>0.7 0</light_artificial_int_up_intensity>
+<ped_light_col_r>0.549 1</ped_light_col_r>
+<ped_light_col_g>0.761 1</ped_light_col_g>
+<ped_light_col_b>1 1</ped_light_col_b>
+<ped_light_mult>0.7 1</ped_light_mult>
+<postfx_bright_pass_thresh_width>1 0</postfx_bright_pass_thresh_width>
+<postfx_bright_pass_thresh>0.5 0</postfx_bright_pass_thresh>
+<postfx_intensity_bloom>0.05 0</postfx_intensity_bloom>
+<postfx_vignetting_contrast>0 0</postfx_vignetting_contrast>
+<dir_shadow_num_cascades>3 0</dir_shadow_num_cascades>
+<fog_start>73 73</fog_start>
+<reflection_lod_range_start>0 0</reflection_lod_range_start>
+<reflection_lod_range_end>0 0</reflection_lod_range_end>
+<reflection_slod_range_start>0 0</reflection_slod_range_start>
+<reflection_slod_range_end>0 0</reflection_slod_range_end>
+<temperature>20 0</temperature>
+<natural_ambient_multiplier>0.3 0</natural_ambient_multiplier>
+<artificial_int_ambient_multiplier>1 0</artificial_int_ambient_multiplier>
+</modifier>
+<modifier name="int_tattoo_B" numMods="33" userFlags="0">
+<light_directional_amb_col_r>1 0.91</light_directional_amb_col_r>
+<light_directional_amb_col_g>0.91 0.91</light_directional_amb_col_g>
+<light_directional_amb_col_b>0.455 0.91</light_directional_amb_col_b>
+<light_amb_down_wrap>0.641 0</light_amb_down_wrap>
+<light_artificial_int_down_col_r>0.89 1</light_artificial_int_down_col_r>
+<light_artificial_int_down_col_g>0.875 1</light_artificial_int_down_col_g>
+<light_artificial_int_down_col_b>0.675 1</light_artificial_int_down_col_b>
+<light_artificial_int_down_intensity>1.3 0</light_artificial_int_down_intensity>
+<light_artificial_int_up_col_r>1 1</light_artificial_int_up_col_r>
+<light_artificial_int_up_col_g>0.824 1</light_artificial_int_up_col_g>
+<light_artificial_int_up_col_b>0.522 1</light_artificial_int_up_col_b>
+<light_artificial_int_up_intensity>1.3 0</light_artificial_int_up_intensity>
+<ped_light_col_r>0.941 1</ped_light_col_r>
+<ped_light_col_g>1 1</ped_light_col_g>
+<ped_light_col_b>0.18 1</ped_light_col_b>
+<ped_light_mult>0.2 1</ped_light_mult>
+<postfx_exposure_min>-0.88 0</postfx_exposure_min>
+<postfx_bright_pass_thresh_width>0.4 0</postfx_bright_pass_thresh_width>
+<postfx_bright_pass_thresh>0.5 0</postfx_bright_pass_thresh>
+<postfx_intensity_bloom>0.05 0</postfx_intensity_bloom>
+<postfx_vignetting_contrast>0 0</postfx_vignetting_contrast>
+<dir_shadow_num_cascades>3 0</dir_shadow_num_cascades>
+<dir_shadow_distance_multiplier>0.7 0</dir_shadow_distance_multiplier>
+<fog_start>30 30</fog_start>
+<reflection_lod_range_start>0 0</reflection_lod_range_start>
+<reflection_lod_range_end>0 0</reflection_lod_range_end>
+<reflection_slod_range_start>0 0</reflection_slod_range_start>
+<reflection_slod_range_end>0 0</reflection_slod_range_end>
+<reflection_tweak_interior_amb>15 0</reflection_tweak_interior_amb>
+<far_clip>150 150</far_clip>
+<temperature>20 0</temperature>
+<natural_ambient_multiplier>0 0</natural_ambient_multiplier>
+<artificial_int_ambient_multiplier>0.5 0</artificial_int_ambient_multiplier>
+</modifier>
+<modifier name="glasses_black" numMods="5" userFlags="0">
+<postfx_vignetting_intensity>1 0</postfx_vignetting_intensity>
+<postfx_vignetting_radius>4 0</postfx_vignetting_radius>
+<postfx_vignetting_col_r>0.024 0</postfx_vignetting_col_r>
+<postfx_vignetting_col_g>0.024 0</postfx_vignetting_col_g>
+<postfx_vignetting_col_b>0.024 0</postfx_vignetting_col_b>
+</modifier>
+<modifier name="glasses_brown" numMods="5" userFlags="0">
+<postfx_vignetting_intensity>1 0</postfx_vignetting_intensity>
+<postfx_vignetting_radius>4 0</postfx_vignetting_radius>
+<postfx_vignetting_col_r>0.22 0</postfx_vignetting_col_r>
+<postfx_vignetting_col_g>0.09 0</postfx_vignetting_col_g>
+<postfx_vignetting_col_b>0.008 0</postfx_vignetting_col_b>
+</modifier>
+<modifier name="glasses_blue" numMods="5" userFlags="0">
+<postfx_vignetting_intensity>1 0</postfx_vignetting_intensity>
+<postfx_vignetting_radius>4 0</postfx_vignetting_radius>
+<postfx_vignetting_col_r>0 0</postfx_vignetting_col_r>
+<postfx_vignetting_col_g>0.03 0</postfx_vignetting_col_g>
+<postfx_vignetting_col_b>0.22 0</postfx_vignetting_col_b>
+</modifier>
+<modifier name="glasses_red" numMods="5" userFlags="0">
+<postfx_vignetting_intensity>1 0</postfx_vignetting_intensity>
+<postfx_vignetting_radius>4 0</postfx_vignetting_radius>
+<postfx_vignetting_col_r>0.255 0</postfx_vignetting_col_r>
+<postfx_vignetting_col_g>0 0</postfx_vignetting_col_g>
+<postfx_vignetting_col_b>0 0</postfx_vignetting_col_b>
+</modifier>
+<modifier name="glasses_green" numMods="5" userFlags="0">
+<postfx_vignetting_intensity>1 0</postfx_vignetting_intensity>
+<postfx_vignetting_radius>4 0</postfx_vignetting_radius>
+<postfx_vignetting_col_r>0.01 0</postfx_vignetting_col_r>
+<postfx_vignetting_col_g>0.255 0</postfx_vignetting_col_g>
+<postfx_vignetting_col_b>0 0</postfx_vignetting_col_b>
+</modifier>
+<modifier name="glasses_yellow" numMods="5" userFlags="0">
+<postfx_vignetting_intensity>1 0</postfx_vignetting_intensity>
+<postfx_vignetting_radius>4 0</postfx_vignetting_radius>
+<postfx_vignetting_col_r>0.247 0</postfx_vignetting_col_r>
+<postfx_vignetting_col_g>0.259 0</postfx_vignetting_col_g>
+<postfx_vignetting_col_b>0 0</postfx_vignetting_col_b>
+</modifier>
+<modifier name="glasses_purple" numMods="5" userFlags="0">
+<postfx_vignetting_intensity>1 0</postfx_vignetting_intensity>
+<postfx_vignetting_radius>4 0</postfx_vignetting_radius>
+<postfx_vignetting_col_r>0.024 0</postfx_vignetting_col_r>
+<postfx_vignetting_col_g>0 0</postfx_vignetting_col_g>
+<postfx_vignetting_col_b>0.259 0</postfx_vignetting_col_b>
+</modifier>
+<modifier name="glasses_pink" numMods="5" userFlags="0">
+<postfx_vignetting_intensity>1 0</postfx_vignetting_intensity>
+<postfx_vignetting_radius>4 0</postfx_vignetting_radius>
+<postfx_vignetting_col_r>1 0</postfx_vignetting_col_r>
+<postfx_vignetting_col_g>0.055 0</postfx_vignetting_col_g>
+<postfx_vignetting_col_b>0.055 0</postfx_vignetting_col_b>
+</modifier>
+<modifier name="glasses_orange" numMods="5" userFlags="0">
+<postfx_vignetting_intensity>1 0</postfx_vignetting_intensity>
+<postfx_vignetting_radius>4 0</postfx_vignetting_radius>
+<postfx_vignetting_col_r>1 0</postfx_vignetting_col_r>
+<postfx_vignetting_col_g>0.055 0</postfx_vignetting_col_g>
+<postfx_vignetting_col_b>0.055 0</postfx_vignetting_col_b>
+</modifier>
+<modifier name="WATER_ID2_21" numMods="2" userFlags="0">
+<water_reflection_height_override>55.3 0</water_reflection_height_override>
+<water_reflection_height_override_amount>1 0</water_reflection_height_override_amount>
+</modifier>
+<modifier name="WATER_RichmanStuntJump" numMods="2" userFlags="0">
+<water_reflection_height_override>62.71 0</water_reflection_height_override>
+<water_reflection_height_override_amount>1 0</water_reflection_height_override_amount>
+</modifier>
+<modifier name="CH3_06_water" numMods="2" userFlags="0">
+<water_reflection_height_override>53.4 0</water_reflection_height_override>
+<water_reflection_height_override_amount>1 0</water_reflection_height_override_amount>
+</modifier>
+<modifier name="WATER_refmap_hollywoodlake" numMods="2" userFlags="0">
+<water_reflection_height_override>196.4 0</water_reflection_height_override>
+<water_reflection_height_override_amount>1 0</water_reflection_height_override_amount>
+</modifier>
+<modifier name="WATER_CH2_06_01_03" numMods="2" userFlags="0">
+<water_reflection_height_override>231.5 0</water_reflection_height_override>
+<water_reflection_height_override_amount>1 0</water_reflection_height_override_amount>
+</modifier>
+<modifier name="WATER_CH2_06_02" numMods="2" userFlags="0">
+<water_reflection_height_override>225.67 0</water_reflection_height_override>
+<water_reflection_height_override_amount>1 0</water_reflection_height_override_amount>
+</modifier>
+<modifier name="WATER_CH2_06_04" numMods="2" userFlags="0">
+<water_reflection_height_override>230.38 0</water_reflection_height_override>
+<water_reflection_height_override_amount>1 0</water_reflection_height_override_amount>
+</modifier>
+</timecycle_modifier_data>
