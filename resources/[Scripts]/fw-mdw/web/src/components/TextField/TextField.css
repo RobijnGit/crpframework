@@ -1,0 +1,105 @@
+/* .textfield-component-container:focus-within .textfield-underline {
+    border-color: white;
+} */
+
+.textfield-component-container:focus-within input {
+    color: white;
+}
+
+.textfield-component-container {
+    position: relative;
+
+    width: 100%;
+    height: max-content;
+
+    margin-bottom: 1.25vh;
+
+    color: rgb(200, 200, 200);
+
+    font-family: 'Roboto';
+    font-size: 1.2vh;
+    font-weight: 500;
+}
+
+.textfield-component-container > i {
+    position: relative;
+    top: 0;
+    left: 0;
+
+    text-align: center;
+    width: 2vh;
+
+    font-size: 1.6vh;
+}
+
+.textfield-component-container > i.right {
+    position: relative;
+    float: right;
+    top: 0.8vh;
+}
+
+.textfield-component-container > .textfield-title {
+    margin: 0;
+    font-size: 1.2vh;
+
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.textfield-component-container > .textfield-sub {
+    font-size: 1.1vh;
+    margin-top: 0.5vh;
+    opacity: 0.8;
+
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.textfield-component-container > .textfield-underline {
+    position: absolute;
+    width: 100%;
+    height: 0.1vh;
+    background-color: rgb(180, 180, 180);
+}
+
+.textfield-component-container > .textfield-underline > .textfield-underline-fill {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    height: 0.2vh;
+    width: 100%;
+    transition: width ease 250ms;
+
+    background-color: white;
+}
+
+.textfield-component-container > input {
+    margin: 0;
+    border: none;
+    outline: none;
+
+    color: rgb(200, 200, 200);
+
+    font-family: 'Roboto';
+    font-size: 1.5vh;
+
+    margin-top: 0.3vh;
+    background-color: transparent;
+
+    height: 2.5vh;
+    width: calc(100% - 2.9vh);
+}
+
+.textfield-component-container > input::-webkit-outer-spin-button, input::-webkit-inner-spin-button, input::-webkit-calendar-picker-indicator {
+    display: none;
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.textfield-component-container > textarea::-webkit-scrollbar { display: none; }
