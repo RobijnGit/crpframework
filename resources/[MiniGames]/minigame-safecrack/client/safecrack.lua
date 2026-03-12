@@ -34,7 +34,7 @@ AddEventHandler("safecracking:loop", function(difficulty, functionName)
 	mybasepos = GetEntityCoords(PlayerPedId())
 	dicks = 1
 	local pinfall = false
-	FW.Functions.Notify("F [Rechts] | Shift + F [Links] | H [Bevestigen]", "success", 9500)
+	FW.Functions.Notify("F [Clockwise] | Shift + F [Counterclockwise] | H [Submit]", "success", 9500)
 	while Cracking do
 		DisableControlAction(38, 0, true)
 		DisableControlAction(44, 0, true)
@@ -71,7 +71,7 @@ AddEventHandler("safecracking:loop", function(difficulty, functionName)
 		if IsControlJustPressed(0, 322) then
 			Cracking = false
 			SafeCrackCallback('Escaped')
-		  end
+		end
 		if IsDisabledControlPressed(1, 74) and safelock ~= desirednum then
 			Citizen.Wait(1000)
 		end
