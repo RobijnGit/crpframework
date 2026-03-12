@@ -72,6 +72,7 @@ function IsPlayerAdmin()
     local Promise = promise:new()
     Citizen.SetTimeout(50, function() -- Is nodig, anders gaat het te snel en doet hij 't niet
         FW.Functions.TriggerCallback('fw-admin:Server:IsPlayerAdmin', function(IsAdmin)
+            print("isAdmin", isAdmin)
             Promise:resolve(IsAdmin)
         end)
     end)
@@ -116,8 +117,6 @@ AddEventHandler('fw-admin:Client:Try:Open:Menu', function()
                 end
             end)
         end)
-    else
-        FW.Functions.Notify("Nou, volgensmij ben jij niet zo god-achtig dan jij denkt dat jij bent...", "error")
     end
 end)
 
