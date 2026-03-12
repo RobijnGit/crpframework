@@ -221,14 +221,14 @@ end
 
 FW.Functions.HasPermission = function(source, permission)
     local retval = false
-    local licenseid = FW.Functions.GetIdentifier(source, "license")
+    local licenseId = FW.Functions.GetIdentifier(source, "license")
     local permission = tostring(permission:lower())
     if permission == "user" then
         retval = true
     else
-        if FW.Config.Server.PermissionList[license] ~= nil then 
-            if FW.Config.Server.PermissionList[license].license == license then
-                if FW.Config.Server.PermissionList[license].permission == permission or FW.Config.Server.PermissionList[license].permission == "god" then
+        if FW.Config.Server.PermissionList[licenseId] ~= nil then 
+            if FW.Config.Server.PermissionList[licenseId].license == licenseId then
+                if FW.Config.Server.PermissionList[licenseId].permission == permission or FW.Config.Server.PermissionList[licenseId].permission == "god" then
                     retval = true
                 end
             end
