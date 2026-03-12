@@ -1,2 +1,6 @@
 ### You are free to use this FiveM roleplay framework, as long as you follow the included license.
-As of January 2026, this project is officially no longer maintained and this repository is archived after 2 years of inactivity.
+---
+## You are viewing the LEGACY version of `crpframework`.
+If you wish to view the new version, please change to the `next` branch.
+
+Updates may slowly roll out, no guarantees. New version may _(will)_ include bugs and may _(will)_ not function properly, only use for development purposes.
