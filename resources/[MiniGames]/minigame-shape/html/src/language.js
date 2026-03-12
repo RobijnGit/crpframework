@@ -5,7 +5,7 @@ export default
     // lingua italiana = 'IT'
     // english language = 'EN'
     // svenska språk = 'SE'
-    SELECTED_LANGUAGE : 'NL',
+    SELECTED_LANGUAGE : 'EN',
 
     LANGUAGES : ['EN', 'ES', 'NL', 'IT', 'FR', 'SE'],
     EN : {
