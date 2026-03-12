@@ -32,7 +32,7 @@ Keystroke.StartMinigame = async Settings => {
     Keystroke.Stats = { Success: 0, Fail: 0 };
     Keystroke.Keys = [];
 
-    Keystroke.SetMessage('keyboard', 'Patroonherkenning vereist..');
+    Keystroke.SetMessage('keyboard', 'Pattern recognition required..');
     await Delay(2000);
     Keystroke.ClearMessage();
 
@@ -77,7 +77,7 @@ Keystroke.CheckForWin = async () => {
         Keystroke.Active = false;
         clearInterval(Keystroke.Interval)
 
-        Keystroke.SetMessage('keyboard', 'Toegang Geweigerd');
+        Keystroke.SetMessage('keyboard', 'Access Denied');
         await Delay(2000);
         Keystroke.ClearMessage();
         $('.keystroke-container').hide();
@@ -91,7 +91,7 @@ Keystroke.CheckForWin = async () => {
         Keystroke.Active = false;
         clearInterval(Keystroke.Interval)
 
-        Keystroke.SetMessage('keyboard', 'Toegang Verleend');
+        Keystroke.SetMessage('keyboard', 'Access Granted');
         await Delay(2000);
         Keystroke.ClearMessage();
         $('.keystroke-container').hide();
