@@ -20,7 +20,7 @@ RegisterNetEvent('fw-apartments:Server:SetApartmentLocked', function(RoomId)
     if Player == nil then return end
     
     UnlockedApartments[RoomId] = not UnlockedApartments[RoomId]
-    Player.Functions.Notify("Appartement " .. (UnlockedApartments[RoomId] and "ontgrendeld" or "vergrendeld"))
+    Player.Functions.Notify("Apartment " .. (UnlockedApartments[RoomId] and "unlocked" or "locked"))
 end)
 
 RegisterNetEvent("fw-apartments:Server:Logout")

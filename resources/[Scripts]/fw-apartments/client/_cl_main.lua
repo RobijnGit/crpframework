@@ -14,14 +14,14 @@ Citizen.CreateThread(function()
             return
         end
     
-        SetInteraction('[E] Appartement Betreden, [G] Meer Opties')
+        SetInteraction('[E] Enter Apartment, [G] More')
         
         Citizen.CreateThread(function()
             while InApartmentsZone do
                 if IsControlJustReleased(0, 38) then
                     local PlayerData = FW.Functions.GetPlayerData()
                     if exports['fw-cityhall']:IsLockdownActive("apartments-" .. PlayerData.metadata.apartmentid) then
-                        FW.Functions.Notify("Je kan dit nu niet doen..", "error")
+                        FW.Functions.Notify("You can't do this right now..", "error")
                     else
                         InApartmentsZone = false
                         EnterApartment('Player', false)
@@ -52,8 +52,8 @@ Citizen.CreateThread(function()
                     local ContextItems = {
                         {
                             Icon = LockedResult.Unlocked and 'lock' or 'unlock',
-                            Title = LockedResult.Unlocked and 'Vergrendelen' or 'Ontgrendelen',
-                            Desc = 'Vergrendel/Ontgrendel je appartement.',
+                            Title = LockedResult.Unlocked and 'Lock' or 'Unlock',
+                            Desc = 'Lock/Unlock your apartment',
                             Disabled = exports['fw-cityhall']:IsLockdownActive("apartments-" .. PlayerData.metadata.apartmentid),
                             Data = {
                                 Event = "fw-apartments:Client:LockApartment",
@@ -63,8 +63,8 @@ Citizen.CreateThread(function()
                         },
                         {
                             Icon = 'building',
-                            Title = 'Appartementen',
-                            Desc = 'Bekijk / Betreed ontgrendelde appartementen.',
+                            Title = 'Apartments',
+                            Desc = 'Enter unlocked apartments',
                             Data = { Event = '', Type = 'Client' },
                             SecondMenu = UnlockedApartmentsChildren
                         },
@@ -75,8 +75,8 @@ Citizen.CreateThread(function()
                         
                         ContextItems[#ContextItems + 1] = {
                             Icon = 'door-closed',
-                            Title = 'Lockdown Appartementen',
-                            Desc = 'Bekijk / Betreed appartementen die op lockdown staan.',
+                            Title = 'Apartments in Lockdown',
+                            Desc = 'Enter apartments in lockdown',
                             Data = { Event = '', Type = 'Client' },
                             SecondMenu = LockedRoomIds
                         }
@@ -100,7 +100,7 @@ RegisterNetEvent('fw-apartments:Client:EnterApartment', function(Data)
     local PlayerData = FW.Functions.GetPlayerData()
 
     if exports['fw-cityhall']:IsLockdownActive("apartments-" .. Data.RoomId) and PlayerData.job.name ~= 'police' and PlayerData.job.name ~= 'judge' then
-        FW.Functions.Notify("Je kan dit nu niet doen..", "error")
+        FW.Functions.Notify("You can't do this right now..", "error")
     else
         EnterApartment(Data.RoomId, false)
     end
@@ -142,7 +142,7 @@ function EnterApartment(RoomId, WakeUp)
     end
 
     InteriorData = exports['fw-interiors']:CreateInterior('gabz_pinkcage', vector3(Config.ApartmentCoords.x + ApartmentOffset.x, Config.ApartmentCoords.y + ApartmentOffset.y, -100.0))
-    if InteriorData == nil or InteriorData[1] == nil then return FW.Functions.Notify("Kan appartement interieur niet laden..", "error") end
+    if InteriorData == nil or InteriorData[1] == nil then return FW.Functions.Notify("Failed to load apartment..", "error") end
 
     DoScreenFadeOut(250)
     while not IsScreenFadedOut(250) do Citizen.Wait(4) end
@@ -224,16 +224,16 @@ function StartApartmentLoop()
             if NearAnything then
                 if not ShowingInteraction then
                     if InteractType == "Exit" then
-                        SetInteraction("[E] Verlaten", "primary")
+                        SetInteraction("[E] Exit", "primary")
                     end
                     if InteractType == "Storage" then
-                        SetInteraction("[E] Opslag", "primary")
+                        SetInteraction("[E] Storage", "primary")
                     end
                     if InteractType == "Closet" then
-                        SetInteraction("[E] Kledingkast", "primary")
+                        SetInteraction("[E] Wardrobe", "primary")
                     end
                     if InteractType == "Logout" then
-                        SetInteraction("[E] Slapen", "primary")
+                        SetInteraction("[E] Sleep", "primary")
                     end
                 end
 
@@ -242,7 +242,7 @@ function StartApartmentLoop()
                     if InteractType ~= "Exit" then
                         local PlayerData = FW.Functions.GetPlayerData()
                         if IsLockdownActive and PlayerData.job.name ~= 'police' and PlayerData.job.name ~= 'judge' then
-                            FW.Functions.Notify("Je kan dit nu niet doen..", "error")
+                            FW.Functions.Notify("You can't do this right now..", "error")
                             goto Skip
                         end
                     end
