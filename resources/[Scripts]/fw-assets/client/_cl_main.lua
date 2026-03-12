@@ -88,7 +88,7 @@ function InitAssets()
 
     -- Misc stuff
     DisablePlayerRadioStations()
-    SetDiscordRichPresenceAction(0, 'Discord', 'https://discord.gg/clarityrp')
+    -- SetDiscordRichPresenceAction(0, 'Discord', 'https://discord.gg/clarityrp')
 
     -- Config.SavedDuiData = FW.SendCallback("fw-assets:Server:GetDuiData")
 

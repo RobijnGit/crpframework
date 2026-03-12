@@ -47,12 +47,12 @@ FW.Functions.CreateCallback("fw-assets:Server:GetDuiData", function(Source, Cb)
 end)
 
 -- Commands
-FW.Commands.Add("me", "Karakter expresie", {}, false, function(source, args)
+FW.Commands.Add("me", "Express yourself", {}, false, function(source, args)
     local Text = table.concat(args, ' ')
     DrawMeText(source, Text)
 end)
 
-FW.Commands.Add("forceintrunk", "Duw speler in een kofferbak.", {}, false, function(Source, Args)
+FW.Commands.Add("forceintrunk", "Stuff someone in the trunk", {}, false, function(Source, Args)
     local Player = FW.Functions.GetPlayer(Source)
     if Player == nil then return end
 
@@ -73,14 +73,14 @@ FW.Commands.Add("forceintrunk", "Duw speler in een kofferbak.", {}, false, funct
     end
 
     if ClosestPlayer == nil then
-        return Player.Functions.Notify("Geen speler gevonden..", "error")
+        return Player.Functions.Notify("No players near..", "error")
     end
 
     local Target = FW.Functions.GetPlayer(ClosestPlayer)
     if Target == nil then return end
 
     if not Target.PlayerData.metadata['ishandcuffed'] then
-        return Player.Functions.Notify("Persoon is niet geboeid..", "error")
+        return Player.Functions.Notify("Player is not handcuffed..", "error")
     end
 
     TriggerClientEvent('fw-assets:client:getin:trunk', ClosestPlayer, { Forced = true })

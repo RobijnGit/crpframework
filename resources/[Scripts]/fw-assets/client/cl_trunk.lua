@@ -9,17 +9,17 @@ RegisterNetEvent('fw-assets:client:getin:trunk', function(Data, Entity)
     end
 
     if Entity == nil or not DoesEntityExist(Entity) then
-        FW.Functions.Notify("Geen voertuig gevonden..", "error")
+        FW.Functions.Notify("No vehicle found..", "error")
         return
     end
 
     local LockStatus = GetVehicleDoorLockStatus(Entity)
-    if LockStatus ~= 0 and LockStatus ~= 1 and LockStatus ~= 4 then return FW.Functions.Notify("Voertuig is op slot..", "error") end
-    if (not GetIsDoorValid(Entity, 5)) or Config.DisabledTrunk[GetEntityModel(Entity)] then return FW.Functions.Notify("Voertuig heeft geen kofferbak..", "error") end
-    if GetVehicleDoorAngleRatio(Entity, 5) == 0 then return FW.Functions.Notify("Kofferbak is dicht..", "error") end
+    if LockStatus ~= 0 and LockStatus ~= 1 and LockStatus ~= 4 then return FW.Functions.Notify("Vehicle is locked..", "error") end
+    if (not GetIsDoorValid(Entity, 5)) or Config.DisabledTrunk[GetEntityModel(Entity)] then return FW.Functions.Notify("Vehicle has no trunk..", "error") end
+    if GetVehicleDoorAngleRatio(Entity, 5) == 0 then return FW.Functions.Notify("Trunk is locked..", "error") end
 
     FW.Functions.TriggerCallback("fw-assets:Server:IsTrunkEmpty", function(IsEmpty)
-        if not IsEmpty then return FW.Functions.Notify("Lijkt erop dat er al iemand in de kofferbak ligt..", "error") end
+        if not IsEmpty then return FW.Functions.Notify("Somebody is already in the trunk..", "error") end
         StartTrunkLoop(Entity)
         TriggerServerEvent('fw-assets:Server:SetTrunkOccupied', GetVehicleNumberPlateText(Entity), true)
     end, GetVehicleNumberPlateText(Entity))
@@ -48,9 +48,9 @@ function StartTrunkLoop(Vehicle)
     SetCamFov(TrunkCam, 80.0)
 
     if not FW.Functions.GetPlayerData().metadata['ishandcuffed'] then
-        exports['fw-ui']:ShowInteraction("[H] Open/Sluiten, [F] Uit Kofferbak")
+        exports['fw-ui']:ShowInteraction("[H] Open/Close, [F] Exit Trunk")
     else
-        exports['fw-ui']:ShowInteraction("[F] Uit Kofferbak")
+        exports['fw-ui']:ShowInteraction("[F] Exit Trunk")
     end
     
     Citizen.CreateThread(function()
@@ -79,7 +79,7 @@ function StartTrunkLoop(Vehicle)
                 if GetVehicleDoorAngleRatio(Vehicle, 5) > 0.0 then
                     InTrunk = false
                 else
-                    FW.Functions.Notify("Kofferbak is dicht..", "error")
+                    FW.Functions.Notify("Trunk is closed..", "error")
                 end
             end
             

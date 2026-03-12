@@ -55,7 +55,7 @@ function InitChairs()
                     {
                         Name = 'chair_sit',
                         Icon = 'fas fa-chair',
-                        Label = 'Zit',
+                        Label = 'Sit',
                         EventType = 'Client',
                         EventName = 'fw-animations:Client:Sit:Chair',
                         EventParams = {Type = 'Entity', Id = k},

@@ -9,5 +9,5 @@ end
 
 RegisterNetEvent("setPlayerCount")
 AddEventHandler("setPlayerCount", function(c)
-    SetRichPresence(c .. " Speler(s)")
+    SetRichPresence(c .. " player(s)")
 end)

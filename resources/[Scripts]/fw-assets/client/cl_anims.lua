@@ -3,7 +3,7 @@ local HeistProps, ExplosiveAnimTwo = {}, nil
 local IsCrouching, IsPointing = false, false
 local TimerEnabled, InTackleCooldown = false, false
 
-FW.AddKeybind("toggleCrouch", "Spelers", "Hurken", "LCONTROL", function(IsPressed)
+FW.AddKeybind("toggleCrouch", "Players", "Crouch", "LCONTROL", function(IsPressed)
     if not IsPressed or exports['fw-clothes']:IsMenuActive() then return end
 
     if GetVehiclePedIsIn(PlayerPedId()) ~= 0 then return end
@@ -20,7 +20,7 @@ FW.AddKeybind("toggleCrouch", "Spelers", "Hurken", "LCONTROL", function(IsPresse
     end
 end)
 
-FW.AddKeybind("tackePlayer", "Spelers", "Tackle een speler", "", function(IsPressed)
+FW.AddKeybind("tackePlayer", "Players", "Tackle", "", function(IsPressed)
     if not IsPressed then return end
     TacklePlayer()
 end)
