@@ -2,16 +2,18 @@
 
 A FiveM resource to communicate with a MySQL database using [node-mysql2](https://github.com/sidorares/node-mysql2).
 
-## 📚 Documentation
+![](https://img.shields.io/github/downloads/communityox/oxmysql/total?logo=github)
+![](https://img.shields.io/github/downloads/communityox/oxmysql/latest/total?logo=github)
+![](https://img.shields.io/github/contributors/communityox/oxmysql?logo=github)
+![](https://img.shields.io/github/v/release/communityox/oxmysql?logo=github) 
 
-https://overextended.github.io/docs/oxmysql/
-
-## 💾 Download
-
-https://github.com/overextended/oxmysql/releases/latest/download/oxmysql.zip
-
-![](https://img.shields.io/github/downloads/overextended/oxmysql/total?logo=github)
-![](https://img.shields.io/github/downloads/overextended/oxmysql/latest/total?logo=github)
+## 🔗 Links
+- 💾 [Download](https://github.com/communityox/oxmysql/releases/latest/download/oxmysql.zip)
+  - Download the latest release directly.
+- 📚 [Documentation](https://coxdocs.dev/oxmysql)
+  - For installation, setup, and everything else.
+- 📦 [npm](https://www.npmjs.com/package/@communityox/oxmysql)
+  - Use our npm package for enhanced functionality and TypeScript support.
 
 ## ✨ Features
 
@@ -22,13 +24,11 @@ https://github.com/overextended/oxmysql/releases/latest/download/oxmysql.zip
 - Support for URI connection strings and semicolon separated values.
 - Improved parameter checking and error handling.
 
-## npm Package
+## 🧾 Logging
 
-https://www.npmjs.com/package/@overextended/oxmysql
+We have included a module for submitting error logs to [Fivemanage](https://fivemanage.com/?ref=overextended), a cloud management service tailored for game servers. Additional logging options and support for other services will be available in the future.
 
 ## Lua Language Server
 
 - Install [Lua Language Server](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) to ease development with annotations, type checking, diagnostics, and more.
-- Install [cfxlua-vscode](https://marketplace.visualstudio.com/items?itemName=overextended.cfxlua-vscode) to add natives and cfxlua runtime declarations to LLS.
-- You can load oxmysql into your global development environment by modifying workspace/user settings "Lua.workspace.library" with the resource path.
-  - e.g. "c:\\fxserver\\resources\\oxmysql\\lib\\define.lua"
+- See [ox_types](https://github.com/communityox/ox_types) for our Lua type definitions.
