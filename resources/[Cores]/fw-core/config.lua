@@ -7,7 +7,7 @@ Config.Server = {}
 Config.Player = {}
 Config.Server.PermissionList = {} 
 
-Config.IdentifierType = "steam"
+Config.IdentifierType = "license"
 
 Config.Money.MoneyTypes = { cash = 0, bank = 7500, casino = 0 }
 Config.Money.DontAllowMinus = {'cash', 'casino'}

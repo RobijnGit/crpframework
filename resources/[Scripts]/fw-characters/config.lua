@@ -23,9 +23,9 @@ Config.PedCoords = {
     vector3(2856.286, -1441.481, 13.92243),
 }
 
--- Array of STEAM IDs of players that may ingore character limit.
+-- Array of ROCKSTAR LICENSE IDs of players that may ingore character limit.
 Config.LimitOverride = {
-    ['STEAM_ID'] = true,
+    ['ROCKSTAR_LICENSE_ID'] = true,
 }
 
 -- Spawns

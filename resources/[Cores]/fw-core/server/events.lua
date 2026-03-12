@@ -76,7 +76,7 @@ AddEventHandler('chatMessage', function(source, n, message)
 				table.remove(args, 1)
 				if (FW.Functions.HasPermission(source, "god") or FW.Functions.HasPermission(source, FW.Commands.List[command].permission)) then
 					if (FW.Commands.List[command].argsrequired and #FW.Commands.List[command].arguments ~= 0 and args[#FW.Commands.List[command].arguments] == nil) then
-						TriggerClientEvent('chatMessage', source, "SYSTEM", "error", "Alle argumenten moeten ingevuld worden!")
+						TriggerClientEvent('chatMessage', source, "SYSTEM", "error", "Please fill in all arguments.")
 						local agus = ""
 						for name, help in pairs(FW.Commands.List[command].arguments) do
 							agus = agus .. " ["..help.name.."]"
@@ -86,7 +86,7 @@ AddEventHandler('chatMessage', function(source, n, message)
 						FW.Commands.List[command].callback(source, args)
 					end
 				else
-					TriggerClientEvent('chatMessage', source, "SYSTEM", "error", "Je hebt geen toegang tot dit commando..")
+					TriggerClientEvent('chatMessage', source, "SYSTEM", "error", "You do not have access to this command.")
 				end
 			end
 		end
@@ -100,7 +100,7 @@ AddEventHandler('FW:CallCommand', function(command, args)
 		if Player ~= nil then
 			if (FW.Functions.HasPermission(source, "god")) or (FW.Functions.HasPermission(source, FW.Commands.List[command].permission)) or (FW.Commands.List[command].permission == Player.PlayerData.job.name) then
 				if (FW.Commands.List[command].argsrequired and #FW.Commands.List[command].arguments ~= 0 and args[#FW.Commands.List[command].arguments] == nil) then
-					TriggerClientEvent('chatMessage', source, "SYSTEM", "error", "Alle argumenten moeten ingevuld worden!")
+					TriggerClientEvent('chatMessage', source, "SYSTEM", "error", "Please fill in all arguments.")
 					local agus = ""
 					for name, help in pairs(FW.Commands.List[command].arguments) do
 						agus = agus .. " ["..help.name.."]"
@@ -110,7 +110,7 @@ AddEventHandler('FW:CallCommand', function(command, args)
 					FW.Commands.List[command].callback(source, args)
 				end
 			else
-				TriggerClientEvent('chatMessage', source, "SYSTEM", "error", "Je hebt geen toegang tot dit commando..")
+				TriggerClientEvent('chatMessage', source, "SYSTEM", "error", "You do not have access to this command.")
 			end
 		end
 	end
@@ -127,7 +127,7 @@ AddEventHandler('FW:ToggleDuty', function(Source)
 	local Player = FW.Functions.GetPlayer(src)
 	if not Player.PlayerData.job.onduty then
 		Player.Functions.SetJobDuty(true)
-		TriggerClientEvent('FW:Notify', src, "Je bent nu in dienst!")
+		TriggerClientEvent('FW:Notify', src, "You are now on duty!")
 		TriggerClientEvent("FW:Client:SetDuty", src, true)
 		if Player.PlayerData.job.name == 'police' then
 			TriggerEvent("fw-police:server:UpdateCurrentCops")
@@ -136,7 +136,7 @@ AddEventHandler('FW:ToggleDuty', function(Source)
 		end
 	else
 		Player.Functions.SetJobDuty(false)
-		TriggerClientEvent('FW:Notify', src, "Je bent nu uit dienst!")
+		TriggerClientEvent('FW:Notify', src, "You are now off duty!")
 		TriggerClientEvent("FW:Client:SetDuty", src, false)
 		if Player.PlayerData.job.name == 'police' then
 			TriggerEvent("fw-police:server:UpdateCurrentCops")
@@ -153,7 +153,7 @@ AddEventHandler('FW:Server:Receive:paycheck', function()
 		Player.Functions.AddMoney('cash', Player.PlayerData.metadata['paycheck'])
 		Player.Functions.SetMetaData('paycheck', 0)
 	else
-		TriggerClientEvent('FW:Notify', source, "Je hebt geen salaris om op te halen..", "error")
+		TriggerClientEvent('FW:Notify', source, "You have no paycheck to claim.", "error")
 	end
 end)
 
@@ -161,8 +161,7 @@ Citizen.CreateThread(function()
 	exports['ghmattimysql']:execute("SELECT * FROM `server_extra`", {}, function(result)
 		if result[1] ~= nil then
 			for k, v in pairs(result) do
-				FW.Config.Server.PermissionList[v.steam] = {
-					steam = v.steam,
+				FW.Config.Server.PermissionList[v.license] = {
 					license = v.license,
 					permission = v.permission,
 					optin = true,

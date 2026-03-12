@@ -24,22 +24,22 @@ Citizen.CreateThread(function()
 
     local ServerCode = exports['fw-config']:GetServerCode()
     if ServerCode ~= "wl" then
-        return print("^1Disabling double steamid check!^7")
+        return print("^1Disabling double license check!^7")
     end
 
     while true do
         Citizen.Wait(60000 * 2) -- every 2 minutes
 
-        local UsedSteamIds = {}
+        local connectedLicenses = {}
 
         for k, v in pairs(FW.GetPlayers()) do
-            if UsedSteamIds[v.Steam] ~= nil and UsedSteamIds[v.Steam] > 0 then
-                TriggerEvent('fw-logs:Server:Log', 'anticheatDoubleConnection', 'Dupe-Player Kicked', ('%s (%s) was kicked from the server because another client is connected with the same steam id.'):format(v.Name, v.Steam), 'red')
-                DropPlayer(v.ServerId, "Je zit al op de server met een andere FiveM-client..")
-                DropPlayer(UsedSteamIds[v.Steam], "Je zit al op de server met een andere FiveM-client..")
+            if connectedLicenses[v.License] ~= nil and connectedLicenses[v.License] > 0 then
+                TriggerEvent('fw-logs:Server:Log', 'anticheatDoubleConnection', 'Dupe-Player Kicked', ('%s (%s) was kicked from the server because another client is connected with the same Rockstar License.'):format(v.Name, v.License), 'red')
+                DropPlayer(v.ServerId, "You can not play with the same Rockstar-account twice.")
+                DropPlayer(connectedLicenses[v.License], "You can not play with the same Rockstar-account twice.")
             end
 
-            UsedSteamIds[v.Steam] = v.ServerId
+            connectedLicenses[v.License] = v.ServerId
         end
     end
 end)

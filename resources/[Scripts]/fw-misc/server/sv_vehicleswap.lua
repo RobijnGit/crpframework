@@ -15,12 +15,12 @@ AddEventHandler("fw-misc:Server:SetVehicleSwap", function(Data)
     if Player == nil then return end
 
     if not Data.Vehicle or not Data.VIN or not Data.Plate or not Data.Swap then
-        print("[CHEATER]: Possible cheater tried to swap vehicle!", Player.PlayerData.steam)
+        print("[CHEATER]: Possible cheater tried to swap vehicle!", Player.PlayerData.license)
         return
     end
 
     if FW.Throttled("vehicleswap-" .. Player.PlayerData.citizenid, 5250) then
-        print("[CHEATER]: Possible cheater spamming swap vehicle!", Player.PlayerData.steam)
+        print("[CHEATER]: Possible cheater spamming swap vehicle!", Player.PlayerData.license)
         Player.Functions.Notify("Je gaat te snel..")
         return
     end

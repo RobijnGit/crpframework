@@ -22,12 +22,12 @@ end
 
 AddEventHandler("playerConnecting", function(Name, KickReason, Deferral)
     local Source = source
-    local Name, SteamId = GetPlayerName(Source), GetPlayerIdentifiers(Source)[1]
-    local SpecialMessage = Config.SpecialMessage[SteamId] ~= nil and Config.SpecialMessage[SteamId] or ('👋 Welkom %s, alles is gecontroleerd en we kijken voor een plekje...'):format(Name)
+    local Name, LicenseId = GetPlayerName(Source), GetPlayerIdentifiers(Source)[1]
+    local SpecialMessage = Config.SpecialMessage[LicenseId] ~= nil and Config.SpecialMessage[LicenseId] or ('👋 Welcome %s, please give us a moment while verify your connection...'):format(Name)
 
     Deferral.defer()
     
-    Config.ConnectCard.body[2].text = 'Je naam wordt gecontroleerd..'
+    Config.ConnectCard.body[2].text = 'Your name is being verified.'
     Deferral.presentCard(Config.ConnectCard, function(data, rawData) end)
     Deferral.update()
 
@@ -39,40 +39,39 @@ AddEventHandler("playerConnecting", function(Name, KickReason, Deferral)
         CancelEvent() return
     end
 
-    Config.ConnectCard.body[2].text = 'Je whitelist wordt gecontroleerd..'
-    Deferral.presentCard(Config.ConnectCard, function(data, rawData) end)
-    Deferral.update()
+    -- Config.ConnectCard.body[2].text = 'Your allowlist is being verified..'
+    -- Deferral.presentCard(Config.ConnectCard, function(data, rawData) end)
+    -- Deferral.update()
 
-    Citizen.Wait(1000)
+    -- Citizen.Wait(1000)
 
-    if not exports['fw-queue']:CheckDiscordRole(Source) then
-        Deferral.done('Het lijkt erop dat je geen whitelist hebt..')
-        CancelEvent() return
-    end
+    -- if not exports['fw-queue']:CheckDiscordRole(Source) then
+    --     Deferral.done('It seems you are not allowlisted, please contact an administrator for more information on how to apply for an allowlist.')
+    --     CancelEvent() return
+    -- end
 
-    Config.ConnectCard.body[2].text = 'Je steam wordt gecontroleerd..'
+    Config.ConnectCard.body[2].text = 'Your license is being verified..'
     Deferral.presentCard(Config.ConnectCard, function(data, rawData) end)
     Deferral.update()
 
     Citizen.Wait(1000)
     local Identifiers = GetPlayerIdentifiers(Source)[1]
 
-    if Identifiers == nil or (Identifiers:sub(1,6) == "steam:") == false then
-        Deferral.done('We konden geen steam vinden, je hebt steam nodig om te kunnen spelen..')
+    if Identifiers == nil or (Identifiers:sub(1,8) == "license:") == false then
+        Deferral.done('We failed to verify your license, it is required to play on this server.')
         CancelEvent() return
     end
 
-    Config.ConnectCard.body[2].text = 'We controleren de laatste dingen nog even..'
+    Config.ConnectCard.body[2].text = 'All good! Just some last checks...'
     Deferral.presentCard(Config.ConnectCard, function(data, rawData) end)
     Deferral.update()
 
     Citizen.Wait(math.random(1000, 5000))
-    local Steam = FW.Functions.GetIdentifier(Source, "steam")
     local License = FW.Functions.GetIdentifier(Source, "license")
 
-    if FW.AreLicensesUsed(Steam, License) then
-        TriggerEvent('fw-logs:Server:Log', 'anticheat', 'Player Join Canceled', ('%s (%s / %s) joined the server but has an client already active.'):format(Name, Steam, License), 'orange')
-        Deferral.done('Je zit al op de server met een andere FiveM-client..')
+    if FW.AreLicensesUsed(License) then
+        TriggerEvent('fw-logs:Server:Log', 'anticheat', 'Player Join Canceled', ('%s (%s / %s) joined the server but has an client already active.'):format(Name, License, License), 'orange')
+        Deferral.done('Oh-oh! It seems your Rockstar-account is already connected on an another client.')
         CancelEvent() return
     end
 

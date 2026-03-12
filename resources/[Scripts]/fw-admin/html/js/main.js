@@ -94,7 +94,7 @@ BuildPlayerList = () => {
         
         var PlyCard = `<div class="admin-player-item">
             <div class="admin-player-name">[${Ply.ServerId}] ${Ply.Name}</div>
-            <div class="admin-player-steam">${Ply.Steam}</div>
+            <div class="admin-player-steam">${Ply.License}</div>
             <div class="admin-player-collapsible">
                 <div class="admin-player-collapsible-entry">
                     <p>Character Name</p>
@@ -109,8 +109,8 @@ BuildPlayerList = () => {
                     <p>${Ply.ServerId}</p>
                 </div>
                 <div class="admin-player-collapsible-entry">
-                    <p>Steam ID</p>
-                    <p>${Ply.Steam}</p>
+                    <p>License ID</p>
+                    <p>${Ply.License}</p>
                 </div>
                 <div class="admin-player-collapsible-entry">
                     <p>Cash</p>

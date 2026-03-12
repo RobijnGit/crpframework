@@ -17,13 +17,13 @@ FW.Player.Login = function(Source, IsCharNew, CitizenId, newData)
             PlayerData.metadata = { islifer = newData.isLifer }
             PlayerData.skin = exports['fw-clothes']:GetDefaultClothes(newData.gender)
             FW.Player.CheckPlayerData(Source, PlayerData)
-            exports['fw-financials']:CreateFinancialAccount('Standaard', PlayerData.citizenid, 'Persoonlijke Rekening', 3500, PlayerData.charinfo.account)
+            exports['fw-financials']:CreateFinancialAccount('Default', PlayerData.citizenid, 'Personal Account', 3500, PlayerData.charinfo.account)
             return true
         else
             local Player = FW.Functions.GetPlayerByCitizenId(CitizenId)
             if Player then
-                TriggerEvent('fw-logs:Server:Log', 'anticheatDoubleConnection', 'Active Character Selected', ('%s (%s / %s) was kicked from the server because the loaded character is already active.'):format(GetPlayerName(Source), FW.Functions.GetIdentifier(Source, "steam"), CitizenId), 'blue')
-                DropPlayer(Source, "Je zit al op de server met een andere FiveM-client..")
+                TriggerEvent('fw-logs:Server:Log', 'anticheatDoubleConnection', 'Active Character Selected', ('%s (%s / %s) was kicked from the server because the loaded character is already active.'):format(GetPlayerName(Source), FW.Functions.GetIdentifier(Source, "license"), CitizenId), 'blue')
+                DropPlayer(Source, "You can not play with the same Rockstar-account twice.")
                 return false
             end
 
@@ -41,7 +41,7 @@ FW.Player.Login = function(Source, IsCharNew, CitizenId, newData)
                     PlayerData.skin = json.decode(PlayerData.skin)
 
                     if exports['fw-financials']:GetFinancialAccountById(PlayerData.charinfo.account) == nil then
-                        exports['fw-financials']:CreateFinancialAccount('Standaard', PlayerData.citizenid, 'Persoonlijke Rekening', 3500, PlayerData.charinfo.account)
+                        exports['fw-financials']:CreateFinancialAccount('Default', PlayerData.citizenid, 'Personal Account', 3500, PlayerData.charinfo.account)
                         print("Financial account did not exist for player, generating a fresh one.")
                     end
                 end    
@@ -63,8 +63,7 @@ FW.Player.CheckPlayerData = function(source, PlayerData)
     PlayerData = PlayerData ~= nil and PlayerData or {}
     PlayerData.source = source
     PlayerData.citizenid = tostring(PlayerData.citizenid ~= nil and PlayerData.citizenid or FW.Player.CreateCitizenId())
-    PlayerData.email = PlayerData.email ~= nil and PlayerData.email or PlayerData.charinfo.firstname:lower()..''..PlayerData.charinfo.lastname:lower()..'@lossantos.nl'
-    PlayerData.steam = PlayerData.steam ~= nil and PlayerData.steam or FW.Functions.GetIdentifier(source, "steam")
+    PlayerData.email = PlayerData.email ~= nil and PlayerData.email or PlayerData.charinfo.firstname:lower()..''..PlayerData.charinfo.lastname:lower()..'@lossantos.com'
     PlayerData.license = PlayerData.license ~= nil and PlayerData.license or FW.Functions.GetIdentifier(source, "license")
     PlayerData.name = GetPlayerName(source)
 
@@ -106,7 +105,7 @@ FW.Player.CheckPlayerData = function(source, PlayerData)
     -- // Reputations \\ --
     PlayerData.metadata["craftingrep"] = PlayerData.metadata["craftingrep"] ~= nil and PlayerData.metadata["craftingrep"] or 0
     -- // Work Shizzle \\ --
-    PlayerData.metadata["callsign"] = PlayerData.metadata["callsign"] ~= nil and PlayerData.metadata["callsign"] or "N.T.B"
+    PlayerData.metadata["callsign"] = PlayerData.metadata["callsign"] ~= nil and PlayerData.metadata["callsign"] or "T.B.D"
     PlayerData.metadata["pd-vehicles"] = PlayerData.metadata["pd-vehicles"] ~= nil and PlayerData.metadata["pd-vehicles"] or { STANDAARD = true, INTERCEPTOR = false, MOTORCYCLE = false, UNMARKED = false, AIRONE = false }
     PlayerData.metadata["ems-vehicle"] = PlayerData.metadata["ems-vehicle"] ~= nil and PlayerData.metadata["ems-vehicle"] or { SPEEDO = true, MOTOR = false, FLIGHT = false, WATER = false, COMMANDER = false, TAURUS = false }
     PlayerData.metadata["ishighcommand"] = PlayerData.metadata["ishighcommand"] ~= nil and PlayerData.metadata["ishighcommand"] or false
@@ -204,7 +203,7 @@ FW.Player.CreatePlayer = function(PlayerData)
             self.PlayerData.job.payment = jobgrade.payment or 30
         else
             self.PlayerData.job.grade = {}
-            self.PlayerData.job.grade.name = 'Onbekend'
+            self.PlayerData.job.grade.name = 'Unknown'
             self.PlayerData.job.grade.level = '0'
             self.PlayerData.job.payment = 30
         end
@@ -364,7 +363,7 @@ FW.Player.CreatePlayer = function(PlayerData)
         local Retval = exports['fw-inventory']:AddItemToInventory('ply-' .. self.PlayerData.citizenid, Item, Amount, Slot, Info, CustomType)
         if Retval then
             TriggerEvent("fw-logs:Server:Log", 'additem', "Item Added [" .. (GetInvokingResource() or "Unknown Resource") .. "]", ("User: [%s] - %s - %s\nItem: %s\nAmount: %s"):format(self.PlayerData.source, self.PlayerData.citizenid, self.PlayerData.charinfo.firstname .. " " .. self.PlayerData.charinfo.lastname, CustomType and #CustomType > 0 and (Item .. " [" .. CustomType .. "]") or Item, Amount), "green")
-            if Show then TriggerClientEvent("fw-inventory:Client:ShowActionBox", self.PlayerData.source, "Ontvangen", Item, Amount, CustomType) end
+            if Show then TriggerClientEvent("fw-inventory:Client:ShowActionBox", self.PlayerData.source, "Added", Item, Amount, CustomType) end
             TriggerClientEvent("fw-inventory:Client:Cock", self.PlayerData.source)
         end
         return Retval
@@ -396,7 +395,7 @@ FW.Player.CreatePlayer = function(PlayerData)
             TriggerEvent("fw-logs:Server:Log", 'removeitem', "Item Removed [" .. (GetInvokingResource() or "Unknown Resource") .. "]", ("User: [%s] - %s - %s\nItem: %s\nAmount: %s"):format(self.PlayerData.source, self.PlayerData.citizenid, self.PlayerData.charinfo.firstname .. " " .. self.PlayerData.charinfo.lastname, CustomType and #CustomType > 0 and (Item .. " [" .. CustomType .. "]") or Item, Amount), "red")
 
             if Show then
-                TriggerClientEvent("fw-inventory:Client:ShowActionBox", self.PlayerData.source, "Verwijderd", Item, Amount, CustomType)
+                TriggerClientEvent("fw-inventory:Client:ShowActionBox", self.PlayerData.source, "Removed", Item, Amount, CustomType)
             end
 
             TriggerClientEvent("fw-inventory:Client:Cock", self.PlayerData.source)
@@ -416,7 +415,7 @@ FW.Player.CreatePlayer = function(PlayerData)
             end
     
             if Show then
-                TriggerClientEvent("fw-inventory:Client:ShowActionBox", self.PlayerData.source, "Verwijderd", Item, Amount, CustomType)
+                TriggerClientEvent("fw-inventory:Client:ShowActionBox", self.PlayerData.source, "Removed", Item, Amount, CustomType)
             end
 
             TriggerClientEvent("fw-inventory:Client:Cock", self.PlayerData.source)
@@ -440,7 +439,7 @@ FW.Player.CreatePlayer = function(PlayerData)
         local Retval = exports['fw-inventory']:RemoveItemFromInventoryByKV('ply-' .. self.PlayerData.citizenid, Item, Amount, Value, CustomType)
         if Retval then
             if string.sub(Item, 1, 7) == 'weapon_' then TriggerClientEvent('fw-assets:Client:Attach:Items', self.PlayerData.source) end
-            if Show then TriggerClientEvent('fw-inventory:Client:ShowActionBox', self.PlayerData.source, 'Verwijderd', Item, Amount, CustomType) end
+            if Show then TriggerClientEvent('fw-inventory:Client:ShowActionBox', self.PlayerData.source, 'Removed', Item, Amount, CustomType) end
             TriggerClientEvent("fw-inventory:Client:Cock", self.PlayerData.source)
         end
         return true
@@ -528,10 +527,9 @@ FW.Player.Save = function(source)
             ['@Cid'] = PlayerData.citizenid,
         }, function(result)
             if result[1] == nil then
-                exports['ghmattimysql']:execute("INSERT INTO `players` (`citizenid`, `email`, `steam`, `license`, `name`, `money`, `charinfo`, `job`, `position`, `metadata`, `addiction`, `skin`) VALUES (@Citizenid, @Email, @Steam, @License, @Name, @Money, @CharInfo, @Job, @Position, @Metadata, @Addiction, @Skin)", {
+                exports['ghmattimysql']:execute("INSERT INTO `players` (`citizenid`, `email`, `license`, `name`, `money`, `charinfo`, `job`, `position`, `metadata`, `addiction`, `skin`) VALUES (@Citizenid, @Email, @License, @Name, @Money, @CharInfo, @Job, @Position, @Metadata, @Addiction, @Skin)", {
                     ["@Citizenid"] = PlayerData.citizenid,
                     ["@Email"] = PlayerData.email,
-                    ["@Steam"] = PlayerData.steam,
                     ["@License"] = PlayerData.license,
                     ["@Name"] = PlayerData.name,
                     ["@Money"] = json.encode(PlayerData.money),
@@ -543,9 +541,8 @@ FW.Player.Save = function(source)
                     ["@Skin"] = json.encode(PlayerData.skin),
                 })
             else
-                exports['ghmattimysql']:execute("UPDATE `players` SET `steam` = @Steam, `license` = @License, `name` = @Name, `money` = @Money, `charinfo` = @CharInfo, `job` = @Job, `position` = @Position, `metadata` = @Metadata, `addiction` = @Addiction, `skin` = @Skin WHERE `citizenid` = @Citizenid", {
+                exports['ghmattimysql']:execute("UPDATE `players` SET `license` = @License, `name` = @Name, `money` = @Money, `charinfo` = @CharInfo, `job` = @Job, `position` = @Position, `metadata` = @Metadata, `addiction` = @Addiction, `skin` = @Skin WHERE `citizenid` = @Citizenid", {
                     ["@Citizenid"] = PlayerData.citizenid,
-                    ["@Steam"] = PlayerData.steam,
                     ["@License"] = PlayerData.license,
                     ["@Name"] = PlayerData.name,
                     ["@Money"] = json.encode(PlayerData.money),
@@ -578,7 +575,7 @@ FW.Player.DeleteCharacter = function(source, citizenid)
 
     local result = exports['ghmattimysql']:executeSync("SELECT * FROM `players` WHERE `citizenid` = @citizenid", { ['@citizenid'] = citizenid })
     if result[1] ~= nil then
-        if result[1].steam == GetPlayerIdentifiers(source)[1] then
+        if result[1].license == GetPlayerIdentifiers(source)[1] then
             exports['ghmattimysql']:execute("DELETE FROM `phone_contacts` WHERE `citizenid` = @citizenid", { ['@citizenid'] = citizenid })
             exports['ghmattimysql']:execute("DELETE FROM `phone_debt` WHERE `citizenid` = @citizenid", { ['@citizenid'] = citizenid })
             exports['ghmattimysql']:execute("DELETE FROM `player_financials` WHERE `accountid` = @accountid", { ['@accountid'] = json.decode(result[1].charinfo).account })
@@ -603,7 +600,7 @@ end
 
 FW.Player.CreateCitizenId = function()
     local Result = exports['ghmattimysql']:executeSync("SELECT AUTO_INCREMENT AS `CitizenId` FROM information_schema.TABLES WHERE TABLE_SCHEMA = @Database AND TABLE_NAME = 'players'", {
-        ['@Database'] = 'fivem-clarity',
+        ['@Database'] = 'clarity-gta',
     })
     return Result[1].CitizenId
 end
@@ -684,7 +681,7 @@ FW.GetPlayers = function()
                 ['Name'] = GetPlayerName(v),
                 ['ServerId'] = tonumber(v),
                 ['Coords'] = GetEntityCoords(Ped),
-                ['Steam'] = GetPlayerIdentifiers(v)[1],
+                ['License'] = GetPlayerIdentifiers(v)[1],
                 ['ClientPlayerPed'] = nil,
                 ['ServerPlayerPed'] = Ped
             }

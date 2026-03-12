@@ -89,7 +89,7 @@ AddEventHandler("fw-cityhall:Server:SetLicense", function(Cid, License)
             Title = Config.LicensesLocales[License] .. ' - ' .. Target.PlayerData.citizenid,
             Content = Config.LicenseTemplate:format((Target.PlayerData.charinfo.firstname .. " " .. Target.PlayerData.charinfo.lastname), Target.PlayerData.citizenid, (Player.PlayerData.charinfo.gender == 0 and "Man" or "Vrouw"), (Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname), Date.day .. '/' .. Date.month .. '/' .. Date.year .. ' ' .. Date.hour .. ':' .. Date.min),
             Signatures = {
-                { Signed = true, Name = 'De Staat', Timestamp = os.time() * 1000, Cid = '1001' },
+                { Signed = true, Name = "The State", Timestamp = os.time() * 1000, Cid = '1001' },
             },
             Sharees = { Target.PlayerData.citizenid },
             Finalized = 1,

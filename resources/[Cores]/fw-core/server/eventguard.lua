@@ -40,19 +40,18 @@ FW.RegisterServer = function(Name, Callback)
             end
         else
             local TimeTable = os.date('*t', 3132036000)
-            exports['ghmattimysql']:execute('INSERT INTO server_bans (name, steam, license, reason, expire, bannedby) VALUES (@name, @steam, @license, @reason, @expire, @bannedby)', {
+            exports['ghmattimysql']:execute('INSERT INTO server_bans (name, license, reason, expire, bannedby) VALUES (@name, @license, @reason, @expire, @bannedby)', {
                 ['@name'] = GetPlayerName(Src),
-                ['@steam'] = GetPlayerIdentifiers(Src)[1],
-                ['@license'] = GetPlayerIdentifiers(Src)[2],
-                ['@reason'] = "Joe, cheaten doe je maar ergens anders dud",
+                ['@license'] = GetPlayerIdentifiers(Src)[1],
+                ['@reason'] = "Auto ban",
                 ['@expire'] = 3132036000,
                 ['@bannedby'] = 'CONSOLE'
             })
 
-            TriggerEvent('fw-logs:Server:Log', 'bans', 'Player Banned', GetPlayerName(Src)..' werd gebanned door ANTICHEAT met de reden: Joe, cheaten doe je maar ergens anders dud', 'red')
+            TriggerEvent('fw-logs:Server:Log', 'bans', 'Player Banned', GetPlayerName(Src)..' was banned by the anti cheat.', 'red')
             TriggerEvent('fw-logs:Server:Log', 'anticheat', 'Player Prebanned', ('Player (%s | %s) executed a server event with a incorrect token (%s, %s)..'):format(Src, GetPlayerName(Src), Name, Token), 'red')
 
-            DropPlayer(Src, 'Je werd verbannen met de reden:\nJoe, cheaten doe je maar ergens anders dud\n\nJouw ban is permanent.')
+            DropPlayer(Src, "You we're banned.")
             return
         end
     end)
@@ -77,19 +76,18 @@ function BanFakeEvent()
     local Src = source
     local TimeTable = os.date('*t', 3132036000)
 
-    exports['ghmattimysql']:execute('INSERT INTO server_bans (name, steam, license, reason, expire, bannedby) VALUES (@name, @steam, @license, @reason, @expire, @bannedby)', {
+    exports['ghmattimysql']:execute('INSERT INTO server_bans (name, license, reason, expire, bannedby) VALUES (@name, @license, @reason, @expire, @bannedby)', {
         ['@name'] = GetPlayerName(Src),
-        ['@steam'] = GetPlayerIdentifiers(Src)[1],
-        ['@license'] = GetPlayerIdentifiers(Src)[2],
-        ['@reason'] = "Joe, cheaten doe je maar ergens anders dud",
+        ['@license'] = GetPlayerIdentifiers(Src)[1],
+        ['@reason'] = "Auto ban",
         ['@expire'] = 3132036000,
         ['@bannedby'] = 'CONSOLE'
     })
 
-    TriggerEvent('fw-logs:Server:Log', 'bans', 'Player Banned', GetPlayerName(Src)..' werd gebanned door ANTICHEAT met de reden: Joe, cheaten doe je maar ergens anders dud', 'red')
+    TriggerEvent('fw-logs:Server:Log', 'bans', 'Player Banned', GetPlayerName(Src)..' was banned by the anti cheat.', 'red')
     TriggerEvent('fw-logs:Server:Log', 'anticheat', 'Player Prebanned', ('Player (%s | %s) executed a server event with a incorrect token (%s)..'):format(Src, GetPlayerName(Src), "Triggered a Bait Event"), 'red')
 
-    DropPlayer(Src, 'Je werd verbannen met de reden:\nJoe, cheaten doe je maar ergens anders dud\n\nJouw ban is permanent.')
+    DropPlayer(Src, "You we're banned.")
 end
 
 RegisterNetEvent("fw-items:Server:AddItem")

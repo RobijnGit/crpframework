@@ -31,12 +31,12 @@ FW.Functions.CreateCallback('fw-admin:Server:GetPlayers', function(Source, Cb)
                 Cid = Player.PlayerData.citizenid,
                 CharName = Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname,
                 ServerId = v,
-                Steam = Player.PlayerData.steam,
+                License = Player.PlayerData.license,
                 Cash = Player.PlayerData.money.cash,
                 Bank = exports['fw-financials']:GetAccountBalance(Player.PlayerData.charinfo.account),
                 Job = Player.PlayerData.job.name,
                 Grade = Player.PlayerData.job.grade.level,
-                GradeName = FW.Shared.Jobs[Player.PlayerData.job.name].grades[Player.PlayerData.job.grade.level] and FW.Shared.Jobs[Player.PlayerData.job.name].grades[Player.PlayerData.job.grade.level].name or "Ongeldige grade",
+                GradeName = FW.Shared.Jobs[Player.PlayerData.job.name].grades[Player.PlayerData.job.grade.level] and FW.Shared.Jobs[Player.PlayerData.job.name].grades[Player.PlayerData.job.grade.level].name or "Unknown",
                 Highcommand = Player.PlayerData.metadata.ishighcommand,
                 ApartmentId = Player.PlayerData.metadata.apartmentid,
                 Phone = Player.PlayerData.charinfo.phone,
@@ -81,7 +81,7 @@ end)
 
 RegisterServerEvent('Admin:Revive:In:Distance')
 AddEventHandler('Admin:Revive:In:Distance', function()
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
 
     local AllPlayers = FW.Functions.GetPlayers()
     local PlayerCoords = GetEntityCoords(GetPlayerPed(source))
@@ -96,7 +96,7 @@ end)
 
 RegisterServerEvent('fw-admin:Server:Teleport:Player')
 AddEventHandler('fw-admin:Server:Teleport:Player', function(Target, Type)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
 
     local TPlayer = FW.Functions.GetPlayer(tonumber(Target))
     if TPlayer ~= nil then
@@ -112,7 +112,7 @@ end)
 
 RegisterServerEvent('fw-admin:Server:Open:Clothing')
 AddEventHandler('fw-admin:Server:Open:Clothing', function(Target)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
 
     local TPlayer = FW.Functions.GetPlayer(tonumber(Target))
     if TPlayer ~= nil then
@@ -125,7 +125,7 @@ end)
 
 RegisterServerEvent('fw-admin:Server:Revive:Target')
 AddEventHandler('fw-admin:Server:Revive:Target', function(Target)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
 
     local TPlayer = FW.Functions.GetPlayer(tonumber(Target))
     if TPlayer ~= nil then
@@ -135,7 +135,7 @@ end)
 
 RegisterServerEvent('fw-admin:Server:Remove:Stress')
 AddEventHandler('fw-admin:Server:Remove:Stress', function(Target)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
 
     local TPlayer = FW.Functions.GetPlayer(tonumber(Target))
     if TPlayer ~= nil then
@@ -145,7 +145,7 @@ end)
 
 RegisterServerEvent('fw-admin:Server:Set:Model')
 AddEventHandler('fw-admin:Server:Set:Model', function(Target, Model)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
 
     local TPlayer = FW.Functions.GetPlayer(tonumber(Target))
     if TPlayer ~= nil then
@@ -155,7 +155,7 @@ end)
 
 RegisterServerEvent('fw-admin:Server:Reset:Skin')
 AddEventHandler('fw-admin:Server:Reset:Skin', function(Target)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
 
     local TPlayer = FW.Functions.GetPlayer(tonumber(Target))
     if TPlayer ~= nil then
@@ -165,7 +165,7 @@ end)
 
 RegisterServerEvent('fw-admin:Server:Set:Armor')
 AddEventHandler('fw-admin:Server:Set:Armor', function(Target)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
 
     local TPlayer = FW.Functions.GetPlayer(tonumber(Target))
     if TPlayer ~= nil then
@@ -175,7 +175,7 @@ end)
 
 RegisterServerEvent('fw-admin:Server:Set:Food:Drink')
 AddEventHandler('fw-admin:Server:Set:Food:Drink', function(Target)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
 
     local TPlayer = FW.Functions.GetPlayer(tonumber(Target))
     if TPlayer ~= nil then
@@ -186,18 +186,18 @@ end)
 
 RegisterServerEvent('fw-admin:Server:Request:Job')
 AddEventHandler('fw-admin:Server:Request:Job', function(Target, Job, Grade)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
 
     local TPlayer = FW.Functions.GetPlayer(tonumber(Target))
     if TPlayer ~= nil then
         TPlayer.Functions.SetJob(Job, Grade)
-        TriggerClientEvent('FW:Notify', source, GetPlayerName(Target) .. " zijn job veranderd naar: " .. Job .. " (Grade: " .. Grade .. ")", "success")
+        TriggerClientEvent('FW:Notify', source, ("You changed %s job to %s with grade %s!"):format(GetPlayerName(Target), Job, Grade), "success")
     end
 end)
 
 RegisterServerEvent('fw-admin:Server:Fling:Player')
 AddEventHandler('fw-admin:Server:Fling:Player', function(Target)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
 
     local TPlayer = FW.Functions.GetPlayer(tonumber(Target))
     if TPlayer ~= nil then
@@ -207,23 +207,23 @@ end)
 
 RegisterNetEvent('Admin:RequestMoney')
 AddEventHandler('Admin:RequestMoney', function(Result)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
 
     local TPlayer = FW.Functions.GetPlayer(tonumber(Result.player))
     if TPlayer == nil then return end
 
     if Result.action == 'give' then
         TPlayer.Functions.AddMoney(Result.type, tonumber(Result.amount))
-        TriggerClientEvent('FW:Notify', source, GetPlayerName(Result.player) .. " ontvangt €" .. Result.amount .. " " .. Result.type .. '!', "success")
+        TriggerClientEvent('FW:Notify', source, GetPlayerName(Result.player) .. " received $" .. Result.amount .. " " .. Result.type .. '!', "success")
     else
         TPlayer.Functions.SetMoney(Result.type, tonumber(Result.amount))
-        TriggerClientEvent('FW:Notify', source, "Geld van " .. GetPlayerName(Result.player) .. " gezet naar €" .. Result.amount .. " " .. Result.type .. '!', "success")
+        TriggerClientEvent('FW:Notify', source, "Balance of " .. GetPlayerName(Result.player) .. " has been set to $" .. Result.amount .. " " .. Result.type .. '!', "success")
     end
 end)
 
 RegisterNetEvent('Admin:Wipe:Inventory')
 AddEventHandler('Admin:Wipe:Inventory', function(Result)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
     
     local Player = FW.Functions.GetPlayer(source)
     if Player == nil then return end
@@ -232,31 +232,31 @@ AddEventHandler('Admin:Wipe:Inventory', function(Result)
     if TPlayer == nil then return end
     
     TPlayer.Functions.ClearInventory()
-    Player.Functions.Notify("Inventory van " .. GetPlayerName(Result.player) .. " is gewiped.", "success")
+    Player.Functions.Notify("Wiped the inventory of " .. GetPlayerName(Result.player) .. ".", "success")
 end)
 
 RegisterNetEvent('Admin:Spawn:Item')
 AddEventHandler('Admin:Spawn:Item', function(Result)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
     
     local TPlayer = FW.Functions.GetPlayer(tonumber(Result.player))
     if TPlayer == nil then return end
 
     local Amount = math.min(tonumber(Result.amount) or 1, 100)
     local ItemName = Result.item
-    TriggerClientEvent('FW:Notify', source, "Je gaf " .. Amount .. 'x ' .. ItemName .. ' (' .. Result.customType .. ') aan ' .. GetPlayerName(Result.player) .. "!", "success")
+    TriggerClientEvent('FW:Notify', source, "You gave " .. Amount .. 'x ' .. ItemName .. ' (' .. Result.customType .. ') to ' .. GetPlayerName(Result.player) .. "!", "success")
     TPlayer.Functions.AddItem(ItemName, Amount, false, nil, true, Result.customType)
 end)
 
 RegisterNetEvent('Admin:Remove:Item')
 AddEventHandler('Admin:Remove:Item', function(Result)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
     
     local TPlayer = FW.Functions.GetPlayer(tonumber(Result.player))
     if TPlayer == nil then return end
 
     if TPlayer.Functions.RemoveItemByName(Result.item, tonumber(Result.amount) or 1, true) then
-        TriggerClientEvent('FW:Notify', source, "Je verwijderde " .. Result.amount .. 'x ' .. Result.item .. ' van ' .. GetPlayerName(Result.player) .. "!", "success")
+        TriggerClientEvent('FW:Notify', source, "You removed " .. Result.amount .. 'x ' .. Result.item .. ' from ' .. GetPlayerName(Result.player) .. "!", "success")
     else
         TriggerClientEvent('FW:Notify', source, "Item " .. Result.item .. " was niet verwijderd.. (Amuunt: " .. Result.amount .. ' | Speler: ' .. GetPlayerName(Result.player) .. "!", "error")
     end
@@ -264,7 +264,7 @@ end)
 
 RegisterNetEvent('Admin:Set:High:Command')
 AddEventHandler('Admin:Set:High:Command', function(Result)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
 
     local Source = source
     local Player = FW.Functions.GetPlayer(Source)
@@ -275,20 +275,20 @@ AddEventHandler('Admin:Set:High:Command', function(Result)
 
     if Result.state:lower() == 'true' then
         TPlayer.Functions.SetMetaData("ishighcommand", true)
-        TriggerClientEvent('FW:Notify', TPlayer.PlayerData.source, 'Je bent nu een leiding gevende!', 'success')
-        TriggerClientEvent('FW:Notify', source, 'Speler is nu een leiding gevende!', 'success')
+        TriggerClientEvent('FW:Notify', TPlayer.PlayerData.source, 'You are now highcommand!', 'success')
+        TriggerClientEvent('FW:Notify', source, 'Player is now highcommand!', 'success')
         TriggerEvent('fw-logs:Server:Log', 'police', 'High Command Set', ("User: [%s] - %s - %s %s\nTarget: [%s] - %s - %s %s\nState: true"):format(Player.PlayerData.source, Player.PlayerData.citizenid, Player.PlayerData.charinfo.firstname, Player.PlayerData.charinfo.lastname, TPlayer.PlayerData.source, TPlayer.PlayerData.citizenid, TPlayer.PlayerData.charinfo.firstname, TPlayer.PlayerData.charinfo.lastname), 'green')
     else
         TPlayer.Functions.SetMetaData("ishighcommand", false)
-        TriggerClientEvent('FW:Notify', TPlayer.PlayerData.source, 'Je bent geen leiding gevende meer!', 'error')
-        TriggerClientEvent('FW:Notify', source, 'Speler is GEEN leiding gevende meer!', 'error')
+        TriggerClientEvent('FW:Notify', TPlayer.PlayerData.source, 'You are no longer highcommand!', 'error')
+        TriggerClientEvent('FW:Notify', source, 'Player is no longer highcommand!', 'error')
         TriggerEvent('fw-logs:Server:Log', 'police', 'High Command Set', ("User: [%s] - %s - %s %s\nTarget: [%s] - %s - %s %s\nState: false"):format(Player.PlayerData.source, Player.PlayerData.citizenid, Player.PlayerData.charinfo.firstname, Player.PlayerData.charinfo.lastname, TPlayer.PlayerData.source, TPlayer.PlayerData.citizenid, TPlayer.PlayerData.charinfo.firstname, TPlayer.PlayerData.charinfo.lastname), 'error')
     end
 end)
 
 RegisterNetEvent('Admin:Set:Ammo')
 AddEventHandler('Admin:Set:Ammo', function(Result)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
     
     local TPlayer = FW.Functions.GetPlayer(tonumber(Result.player))
     if TPlayer == nil then return end
@@ -298,7 +298,7 @@ end)
 
 RegisterNetEvent('Admin:Request:Gang')
 AddEventHandler('Admin:Request:Gang', function(Result)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
     
     local TPlayer = FW.Functions.GetPlayer(tonumber(Result.player))
     if TPlayer == nil then return end
@@ -309,7 +309,7 @@ end)
 
 RegisterNetEvent('Admin:Toggle:Cuffs')
 AddEventHandler('Admin:Toggle:Cuffs', function(Result)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
     
     local TPlayer = FW.Functions.GetPlayer(tonumber(Result.player))
     if TPlayer == nil then return end
@@ -319,7 +319,7 @@ end)
 
 RegisterNetEvent("Admin:Open:Inventory")
 AddEventHandler("Admin:Open:Inventory", function(Result)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
     
     local TPlayer = FW.Functions.GetPlayer(tonumber(Result.player))
     if TPlayer == nil then return end
@@ -329,28 +329,28 @@ end)
 
 RegisterNetEvent("Admin:Announce")
 AddEventHandler("Admin:Announce", function(Result)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
     
     local Player = FW.Functions.GetPlayer(source)
     if Player == nil then return end
 
-    TriggerClientEvent('chatMessage', -1, "Mededeling", "error", Result.msg)
+    TriggerClientEvent('chatMessage', -1, "Announcement", "error", Result.msg)
 end)
 
 RegisterNetEvent("Admin:Kick:Player")
 AddEventHandler("Admin:Kick:Player", function(Result)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
     
     local TPlayer = FW.Functions.GetPlayer(tonumber(Result.player))
     if TPlayer == nil then return end
 
-    DropPlayer(TPlayer.PlayerData.source, 'Je werd gekickt van de server, reden:\n' .. Result.reason .. '\n\n🔸 Indien je vragen hebt maak een ticket aan in onze discord: discord.gg/clarityrp')
-    TriggerClientEvent('FW:Notify', source, GetPlayerName(Result.player) .. " is gekickt voor " .. Result.reason .. "!", "success")
+    DropPlayer(TPlayer.PlayerData.source, 'You have been kicked with the reason:\n' .. Result.reason .. '\n\n🔸 Please contact an administrator for more information.')
+    TriggerClientEvent('FW:Notify', source, GetPlayerName(Result.player) .. " was kicked for: " .. Result.reason .. "!", "success")
 end)
 
 RegisterNetEvent("Admin:Ban:Player")
 AddEventHandler("Admin:Ban:Player", function(Result)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
 
     local TPlayer = FW.Functions.GetPlayer(tonumber(Result.player))
     if TPlayer == nil then return end
@@ -361,21 +361,20 @@ AddEventHandler("Admin:Ban:Player", function(Result)
 
     local TimeTable = os.date('*t', ExpireTime)
 
-    exports['ghmattimysql']:execute('INSERT INTO server_bans (name, steam, license, reason, expire, bannedby) VALUES (@name, @steam, @license, @reason, @expire, @bannedby)', {
+    exports['ghmattimysql']:execute('INSERT INTO server_bans (name, license, reason, expire, bannedby) VALUES (@name, @license, @reason, @expire, @bannedby)', {
         ['@name'] = GetPlayerName(TPlayer.PlayerData.source),
-        ['@steam'] = GetPlayerIdentifiers(TPlayer.PlayerData.source)[1],
-        ['@license'] = GetPlayerIdentifiers(TPlayer.PlayerData.source)[2],
+        ['@license'] = GetPlayerIdentifiers(TPlayer.PlayerData.source)[1],
         ['@reason'] = Result.reason,
         ['@expire'] = ExpireTime,
         ['@bannedby'] = GetPlayerName(source)
     })
 
-    TriggerEvent('fw-logs:Server:Log', 'bans', 'Player Banned', GetPlayerName(TPlayer.PlayerData.source)..' werd gebanned door '..GetPlayerName(source)..' met de reden '..Result.reason, 'red')
+    TriggerEvent('fw-logs:Server:Log', 'bans', 'Player Banned', GetPlayerName(TPlayer.PlayerData.source)..' was banned by '..GetPlayerName(source)..'. Reason: '..Result.reason, 'red')
 
     if ExpireTime >= 3132036000 then
-        DropPlayer(TPlayer.PlayerData.source, 'Je werd verbannen met de reden:\n' .. Result.reason .. '\n\nJouw ban is permanent.\n🔸 Indien mogelijk kan je nog een ticket aanmaken in onze discord: discord.gg/clarityrp')
+        DropPlayer(TPlayer.PlayerData.source, 'You are banned with the reason:\n' .. Result.reason .. '\n\nYour ban is indefinite, please contact an administrator for more information on how to appeal.')
     else
-        DropPlayer(TPlayer.PlayerData.source, 'Je werd verbannen met de reden:\n' .. Result.reason .. '\n\nBan vervalt over: ' .. TimeTable['day'] .. '/' .. TimeTable['month'] .. '/' .. TimeTable['year'] .. ' ' .. TimeTable['hour'] .. ':' .. TimeTable['min'] .. '\n🔸 Indien mogelijk kan je nog een ticket aanmaken in onze discord: discord.gg/clarityrp')
+        DropPlayer(TPlayer.PlayerData.source, 'You are banned with the reason:\n' .. Result.reason .. '\n\nYour ban expires in: ' .. TimeTable['day'] .. '/' .. TimeTable['month'] .. '/' .. TimeTable['year'] .. ' ' .. TimeTable['hour'] .. ':' .. TimeTable['min'] .. '\n🔸 Please contact an administrator for more information on how to appeal.')
     end
 end)
 
@@ -429,7 +428,7 @@ end)
 
 RegisterNetEvent("Admin:Blacklist:Scenes")
 AddEventHandler("Admin:Blacklist:Scenes", function(Result)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
     
     local TPlayer = FW.Functions.GetPlayer(tonumber(Result.player))
     if TPlayer == nil then return end
@@ -438,13 +437,13 @@ AddEventHandler("Admin:Blacklist:Scenes", function(Result)
     if Player == nil then return end
 
     if Result.state == 'true' then
-        Player.Functions.Notify("Speler (" .. TPlayer.PlayerData.name .. ") scenes geblacklisted voor " .. Result.reason .. "!", "error")
+        Player.Functions.Notify("Player (" .. TPlayer.PlayerData.name .. ") is no longer allowed to place scenes. Reason: " .. Result.reason .. "!", "error")
     else
-        Player.Functions.Notify("Speler (" .. TPlayer.PlayerData.name .. ") scene blacklist verwijderd!", "success")
+        Player.Functions.Notify("Player (" .. TPlayer.PlayerData.name .. ") scenes-ban has been lifted.", "success")
     end
 
     TriggerEvent('fw-scenes:Server:UpdateBlacklist', {
-        Steam = TPlayer.PlayerData.steam,
+        License = TPlayer.PlayerData.license,
         State = Result.state == 'true' and true or false,
         Reason = #Result.reason > 0 and Result.reason or 'Geen reden opgegeven.'
     })
@@ -452,7 +451,7 @@ end)
 
 RegisterNetEvent('Admin:Server:SpawnBadge')
 AddEventHandler('Admin:Server:SpawnBadge', function(Result)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
     
     local Player = FW.Functions.GetPlayer(source)
     if Player == nil then return end
@@ -472,7 +471,7 @@ end)
 
 RegisterNetEvent('Admin:Server:SpawnSpray')
 AddEventHandler('Admin:Server:SpawnSpray', function(Result)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
     
     local TPlayer = FW.Functions.GetPlayer(tonumber(Result.player))
     if TPlayer == nil then return end
@@ -483,7 +482,7 @@ end)
 
 RegisterNetEvent('Admin:Server:CreateBook')
 AddEventHandler('Admin:Server:CreateBook', function(Result)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
     
     local Player = FW.Functions.GetPlayer(source)
     if Player == nil then return end
@@ -494,7 +493,7 @@ end)
 
 RegisterNetEvent('Admin:Server:SetGangOwner')
 AddEventHandler('Admin:Server:SetGangOwner', function(Result)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
     
     local Player = FW.Functions.GetPlayer(source)
     if Player == nil then return end
@@ -503,13 +502,13 @@ AddEventHandler('Admin:Server:SetGangOwner', function(Result)
     if TPlayer == nil then return end
 
     if exports['fw-laptop']:SetGangLeader(Result.Gang, TPlayer.PlayerData.citizenid) then
-        Player.Functions.Notify("Leiding van " .. Result.Gang .. " gezet naar " .. TPlayer.PlayerData.citizenid, "success")
+        Player.Functions.Notify("Owner set for " .. Result.Gang .. " to " .. TPlayer.PlayerData.citizenid, "success")
     end
 end)
 
 RegisterNetEvent('Admin:Server:GiveStarterCar')
 AddEventHandler('Admin:Server:GiveStarterCar', function(Result)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
     
     local Player = FW.Functions.GetPlayer(source)
     if Player == nil then return end
@@ -523,7 +522,7 @@ AddEventHandler('Admin:Server:GiveStarterCar', function(Result)
     })
 
     if Vehicles[1].Count > 0 then
-        return Player.Functions.Notify("Speler heeft al een Gifted voertuig...", "error")
+        return Player.Functions.Notify("Player already owns a starter vehicle...", "error")
     end
 
     local SharedData = FW.Shared.HashVehicles[GetHashKey("rhapsody")]
@@ -553,22 +552,22 @@ AddEventHandler('Admin:Server:GiveStarterCar', function(Result)
     TriggerEvent('fw-phone:Server:Documents:AddDocument', '1001', {
         Type = 3,
         Title = SharedData.Name .. ' - ' .. Plate,
-        Content = (exports['fw-businesses']:GetVehicleRegistration()):format(SharedData.Name, "rhapsody", Plate, VIN, TPlayer.PlayerData.charinfo.firstname .. ' ' .. TPlayer.PlayerData.charinfo.lastname, "De Staat", Date.day .. '/' .. Date.month .. '/' .. Date.year .. ' ' .. Date.hour .. ':' .. Date.min, "Gratis"),
+        Content = (exports['fw-businesses']:GetVehicleRegistration()):format(SharedData.Name, "rhapsody", Plate, VIN, TPlayer.PlayerData.charinfo.firstname .. ' ' .. TPlayer.PlayerData.charinfo.lastname, "The State", Date.day .. '/' .. Date.month .. '/' .. Date.year .. ' ' .. Date.hour .. ':' .. Date.min, "Free of charge"),
         Signatures = {
-            { Signed = true, Name = 'De Staat', Timestamp = os.time() * 1000, Cid = '1001' },
+            { Signed = true, Name = "The State", Timestamp = os.time() * 1000, Cid = '1001' },
             { Signed = true, Name = TPlayer.PlayerData.charinfo.firstname .. ' ' .. TPlayer.PlayerData.charinfo.lastname, Timestamp = os.time() * 1000, Cid = TPlayer.PlayerData.citizenid },
         },
         Sharees = { TPlayer.PlayerData.citizenid },
         Finalized = 1,
     })
 
-    TPlayer.Functions.Notify("Je hebt een starters auto ontvangen!", "success")
-    Player.Functions.Notify("Je hebt een starters auto weggegeven!", "success")
+    TPlayer.Functions.Notify("You have been gifted a vehicle from The State!", "success")
+    Player.Functions.Notify("You gifted away a vehicle!", "success")
 end)
 
 RegisterNetEvent('Admin:Server:DeleteClosestSpray')
 AddEventHandler('Admin:Server:DeleteClosestSpray', function(Result)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
     
     local Player = FW.Functions.GetPlayer(source)
     if Player == nil then return end
@@ -578,7 +577,7 @@ end)
 
 RegisterNetEvent('Admin:Server:Jumpscare')
 AddEventHandler('Admin:Server:Jumpscare', function(Result)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
     
     local TPlayer = FW.Functions.GetPlayer(tonumber(Result.player))
     if TPlayer == nil then return end
@@ -588,7 +587,7 @@ end)
 
 RegisterNetEvent("Admin:Server:EditCharachterName")
 AddEventHandler("Admin:Server:EditCharachterName", function(Result)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
 
     local Player = FW.Functions.GetPlayer(source)
     if Player == nil then return end
@@ -599,13 +598,13 @@ AddEventHandler("Admin:Server:EditCharachterName", function(Result)
     TPlayer.Functions.SetCharData('firstname', Result.firstname)
     TPlayer.Functions.SetCharData('lastname', Result.lastname)
 
-    Player.Functions.Notify("Naam van " .. TPlayer.PlayerData.citizenid .. " veranderd naar " .. Result.firstname .. " " .. Result.lastname, "success")
-    TPlayer.Functions.Notify("Je karakter naam is veranderd naar " .. Result.firstname .. " " .. Result.lastname .. '!')
+    Player.Functions.Notify("Name of " .. TPlayer.PlayerData.citizenid .. " changed to " .. Result.firstname .. " " .. Result.lastname, "success")
+    TPlayer.Functions.Notify("Your character name was changed to " .. Result.firstname .. " " .. Result.lastname .. '!')
 end)
 
 RegisterNetEvent("Admin:Server:CreateSpray")
 AddEventHandler("Admin:Server:CreateSpray", function(Result)
-    if not IsPlayerAdmin(source) then print(source .. " probeerde een admin optie te executen, maar hij is geen admin... Cheaterrrrrrr") return end
+    if not IsPlayerAdmin(source) then print(source .. " tried to execute an admin option but does not have the permission level. ") return end
 
     local Player = FW.Functions.GetPlayer(source)
     if Player == nil then return end
@@ -630,16 +629,16 @@ RegisterNetEvent('qb-admin:server:SendReport', function(name, targetSrc, msg)
     end
 end)
 
-FW.Commands.Add("report", "Verstuur een report. Player Reports en Refunds gaan via een ticket. Gebruik dus alleen wanneer écht nodig.", {{name="bericht", help="Bericht die je wilt sturen"}}, true, function(source, args)
+FW.Commands.Add("report", "Send a message to an administrator.", {{name="message", help="Message you want to send."}}, true, function(source, args)
     local src = source
     local msg = table.concat(args, ' ')
     local Player = FW.Functions.GetPlayer(source)
-    TriggerClientEvent('FW:Notify', source, "Je report is ontvangen. Indien je geen antwoord krijgt maak dan een ticket aan!", "success")
+    TriggerClientEvent('FW:Notify', source, "Your report has been succesfully received.", "success")
     TriggerClientEvent('qb-admin:client:SendReport', -1, GetPlayerName(src), src, msg)
     TriggerEvent('fw-logs:Server:Log', 'reports', 'Report Sent', ("User: [%s] - %s - %s %s\nReply: %s"):format(Player.PlayerData.source, Player.PlayerData.citizenid, Player.PlayerData.charinfo.firstname, Player.PlayerData.charinfo.lastname, msg), 'green')
 end)
 
-FW.Commands.Add("reportr", "Reply op een report", {}, false, function(source, args)
+FW.Commands.Add("reportr", "Send a message to a player.", {}, false, function(source, args)
     local PlayerId = tonumber(args[1])
     table.remove(args, 1)
     local Message = table.concat(args, " ")
@@ -656,7 +655,7 @@ FW.Commands.Add("reportr", "Reply op een report", {}, false, function(source, ar
             end
         end
     else
-        TriggerClientEvent('FW:Notify', source, "Persoon is niet online", "error")
+        TriggerClientEvent('FW:Notify', source, "Target is not online.", "error")
     end
 end, "admin")
 
@@ -664,9 +663,9 @@ FW.Commands.Add('reporttoggle', 'Toggle Incoming Reports (Admin Only)', {}, fals
     local src = source
     FW.Functions.ToggleOptin(src)
     if FW.Functions.IsOptin(src) then
-        TriggerClientEvent('FW:Notify', source, "Je krijgt WEL reports", "success")
+        TriggerClientEvent('FW:Notify', source, "You are subscribed to reports.", "success")
     else
-        TriggerClientEvent('FW:Notify', source, "Je krijgt GEEN reports", "error")
+        TriggerClientEvent('FW:Notify', source, "You are no longer subscribed to reports.", "error")
     end
 end, 'admin')
 
@@ -694,7 +693,7 @@ end)
 RegisterNetEvent("txAdmin:events:announcement")
 AddEventHandler("txAdmin:events:announcement", function(eventData)
     for i = 1, 3, 1 do
-        TriggerClientEvent('chatMessage', -1, "Mededeling", "error", eventData.message)
+        TriggerClientEvent('chatMessage', -1, "Announcement", "error", eventData.message)
     end
 end)
 
@@ -714,5 +713,5 @@ end)
 
 RegisterNetEvent("txAdmin:events:playerWarned")
 AddEventHandler("txAdmin:events:playerWarned", function(eventData)
-    TriggerClientEvent('chatMessage', eventData.target, "WAARSCHUWING (#" .. eventData.actionId .. ")", "error", eventData.reason)
+    TriggerClientEvent('chatMessage', eventData.target, "Warning (#" .. eventData.actionId .. ")", "error", eventData.reason)
 end)

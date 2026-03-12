@@ -77,8 +77,10 @@ function HideSelector()
     FreezeEntityPosition(PlayerPedId(), false)
     SetEntityVisible(PlayerPedId(), true)
 
+    RenderScriptCams(false, false, 500, false, false)
     SetCamActive(SpawnCam, false)
     DestroyCam(SpawnCam)
+    SpawnCam = nil
 
     for i = 1, #Peds, 1 do
         DeletePed(Peds[i])

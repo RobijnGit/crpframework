@@ -38,21 +38,21 @@ AddEventHandler("fw-scenes:Server:AddScene", function(Data, Coords, Offset)
 
     for _, Word in pairs(Config.BannedWords) do
         if Data.Text:find(Word) then
-            TriggerEvent('fw-scenes:Server:UpdateBlacklist', {State = true, Steam = Player.PlayerData.steam, Reason = "Automatische Blacklist - Blacklisted Woord: " .. Word })
+            TriggerEvent('fw-scenes:Server:UpdateBlacklist', {State = true, License = Player.PlayerData.license, Reason = "Automatische Blacklist - Blacklisted Woord: " .. Word })
             TriggerEvent('fw-logs:Server:Log', 'scenes', 'Automatic Blacklist', ("User: [%s] - %s - %s\nUser was automatticly banned for using a banned word.. %s\nData: ```json\n%s```"):format(Player.PlayerData.source, Player.PlayerData.citizenid, Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname, Word, json.encode(Data, {indent = 2})), 'red')
             return
         end
     end
 
     local Blacklist = json.decode(LoadResourceFile(GetCurrentResourceName(), "data/blacklist.json"))
-    if Blacklist[Player.PlayerData.steam] then
-        Player.Functions.Notify("Jij kunt geen scenes plaatsen.. (Reden: " .. Blacklist[Player.PlayerData.steam] .. ")", "error")
+    if Blacklist[Player.PlayerData.license] then
+        Player.Functions.Notify("Jij kunt geen scenes plaatsen.. (Reden: " .. Blacklist[Player.PlayerData.license] .. ")", "error")
         return
     end
 
     local SceneId = #Config.Scenes + 1
     Config.Scenes[SceneId] = {
-        Creator = Player.PlayerData.steam,
+        Creator = Player.PlayerData.license,
         Coords = Coords,
         Offset = Offset,
         Text = RemoveSize(Data.Text),
@@ -73,7 +73,7 @@ AddEventHandler("fw-scenes:Server:RemoveScene", function(SceneId)
 
     local SceneData = Config.Scenes[SceneId]
 
-    if Player.PlayerData.job.name ~= "police" and (not FW.Functions.HasPermission(Src, "admin") and not FW.Functions.HasPermission(Src, "god")) and SceneData.Creator ~= Player.PlayerData.steam then
+    if Player.PlayerData.job.name ~= "police" and (not FW.Functions.HasPermission(Src, "admin") and not FW.Functions.HasPermission(Src, "god")) and SceneData.Creator ~= Player.PlayerData.license then
         Player.Functions.Notify("Deze scene kan jij niet verwijderen..", "error")
         return
     end
@@ -89,9 +89,9 @@ AddEventHandler("fw-scenes:Server:UpdateBlacklist", function(Data)
     local Blacklist = json.decode(LoadResourceFile(GetCurrentResourceName(), "data/blacklist.json"))
 
     if Data.State then
-        Blacklist[Data.Steam] = Data.Reason
+        Blacklist[Data.License] = Data.Reason
     else
-        Blacklist[Data.Steam] = nil
+        Blacklist[Data.License] = nil
     end
 
     SaveResourceFile(GetCurrentResourceName(), "data/blacklist.json", json.encode(Blacklist, {indent=2}), -1)

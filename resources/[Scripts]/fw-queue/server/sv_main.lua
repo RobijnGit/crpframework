@@ -1,4 +1,4 @@
-SteamIdToSource, ConnectingList, QueueList = {}, {}, {}
+LicenseToSource, ConnectingList, QueueList = {}, {}, {}
 local AnyoneJoining = false
 
 FW = exports['fw-core']:GetCoreObject()
@@ -11,13 +11,13 @@ Citizen.CreateThread(function()
     AddEventHandler('fw-queue:Server:Activate:Player', function()
         local Source = source
 
-        local SteamId = GetPlayerIdentifiers(Source)[1]
-        -- print('Reactivate the queue after loading or quiting..', SteamId, Source)
-        if SteamIdToSource[SteamId] ~= nil then 
-            local JoinSource = SteamIdToSource[SteamId]
+        local License = GetPlayerIdentifiers(Source)[1]
+        -- print('Reactivate the queue after loading or quiting..', License, Source)
+        if LicenseToSource[License] ~= nil then 
+            local JoinSource = LicenseToSource[License]
             RemovePlayerFromConnection(JoinSource)
             RemovePlayerFromQueue(JoinSource)
-            SteamIdToSource[SteamId] = nil
+            LicenseToSource[License] = nil
         end
     end)
 end)
@@ -51,26 +51,26 @@ end)
 
 AddEventHandler('playerDropped', function(Reason)
     local Source = source
-    local SteamId = GetPlayerIdentifiers(Source)[1]
-    if SteamIdToSource[SteamId] ~= nil then 
-        local JoinSource = SteamIdToSource[SteamId]
+    local License = GetPlayerIdentifiers(Source)[1]
+    if LicenseToSource[License] ~= nil then 
+        local JoinSource = LicenseToSource[License]
         RemovePlayerFromQueue(JoinSource)
         RemovePlayerFromConnection(JoinSource)
-        -- print('Reactivate the queue after loading or quiting..', SteamId, JoinSource)
-        SteamIdToSource[SteamId] = nil
+        -- print('Reactivate the queue after loading or quiting..', License, JoinSource)
+        LicenseToSource[License] = nil
     end
-    if SteamIdToSource[SteamId] == nil and Config.PriorityList[SteamId] == nil or Config.PriorityList[SteamId] < 75 then
-        Config.PriorityList[SteamId] = 75
+    if LicenseToSource[License] == nil and Config.PriorityList[License] == nil or Config.PriorityList[License] < 75 then
+        Config.PriorityList[License] = 75
         Citizen.SetTimeout(1000 * 60 * 3, function()
-            Config.PriorityList[SteamId] = nil
+            Config.PriorityList[License] = nil
         end)
     end
 end)
 
 RegisterServerEvent('fw-queue:Server:Player:Connect')
 AddEventHandler('fw-queue:Server:Player:Connect', function(Source, KickReason, Deferral)
-    local Source, SteamId, Connecting = Source, GetPlayerIdentifiers(Source)[1], true
-    local Priority = GetPlayerPriority(SteamId)
+    local Source, License, Connecting = Source, GetPlayerIdentifiers(Source)[1], true
+    local Priority = GetPlayerPriority(License)
 
     local HasPrioRole, PrioIncrease = HasDiscordPrioRole(Source)
     if HasPrioRole and Priority < 20 then
@@ -79,7 +79,7 @@ AddEventHandler('fw-queue:Server:Player:Connect', function(Source, KickReason, D
 
     Deferral.defer()
     AddPlayerToConnection(Source)
-    SteamIdToSource[SteamId] = Source
+    LicenseToSource[License] = Source
 
     Citizen.CreateThread(function()
         while ConnectingList[GetConnectionId(Source)] ~= nil and ConnectingList[GetConnectionId(Source)].Source ~= nil do

@@ -149,7 +149,7 @@ end
 
 FW.Functions.Kick = function(source, reason, setKickReason, deferrals)
     local src = source
-    reason = "\n"..reason.."\n🔸 Kijk op onze discord voor meer informatie!"
+    reason = "\n"..reason.."\n🔸 Check our Discord for more information."
     if(setKickReason ~=nil) then
         setKickReason(reason)
     end
@@ -183,24 +183,22 @@ end
 FW.Functions.AddPermission = function(source, permission)
     local Player = FW.Functions.GetPlayer(source)
     if Player ~= nil then 
-        FW.Config.Server.PermissionList[FW.Functions.GetIdentifier(source, "steam")] = {
-            steam = FW.Functions.GetIdentifier(source, "steam"),
+        FW.Config.Server.PermissionList[FW.Functions.GetIdentifier(source, "license")] = {
             license = FW.Functions.GetIdentifier(source, "license"),
             permission = permission:lower(),
         }
 
-        local Result = exports['ghmattimysql']:executeSync("SELECT * FROM `server_extra` WHERE `steam` = ?", {
-            FW.Functions.GetIdentifier(source, "steam")
+        local Result = exports['ghmattimysql']:executeSync("SELECT * FROM `server_extra` WHERE `license` = ?", {
+            FW.Functions.GetIdentifier(source, "license")
         })
 
         if Result[1] then
-            exports['ghmattimysql']:execute("UPDATE `server_extra` SET `permission` = @Permission WHERE `steam` = @Steam", {
+            exports['ghmattimysql']:execute("UPDATE `server_extra` SET `permission` = @Permission WHERE `license` = @license", {
                 ['@Permission'] = permission:lower(),
-                ['@Steam'] = FW.Functions.GetIdentifier(source, "steam")
+                ['@license'] = FW.Functions.GetIdentifier(source, "license")
             })
         else
-            exports['ghmattimysql']:execute("INSERT INTO `server_extra` (steam, license, name, permission, priority) VALUES (?, ? ,?, ?, ?)", {
-                FW.Functions.GetIdentifier(source, "steam"),
+            exports['ghmattimysql']:execute("INSERT INTO `server_extra` (license, name, permission, priority) VALUES (?, ? ,?, ?, ?)", {
                 FW.Functions.GetIdentifier(source, "license"),
                 GetPlayerName(source),
                 permission,
@@ -215,23 +213,22 @@ end
 FW.Functions.RemovePermission = function(source)
     local Player = FW.Functions.GetPlayer(source)
     if Player ~= nil then 
-        FW.Config.Server.PermissionList[FW.Functions.GetIdentifier(source, "steam")] = nil
-        exports['ghmattimysql']:executeSync("UPDATE `server_extra` SET `permission`= 'user' WHERE `steam` = @Steam", { ['@Steam'] = FW.Functions.GetIdentifier(source, "steam") })
+        FW.Config.Server.PermissionList[FW.Functions.GetIdentifier(source, "license")] = nil
+        exports['ghmattimysql']:executeSync("UPDATE `server_extra` SET `permission`= 'user' WHERE `license` = @license", { ['@license'] = FW.Functions.GetIdentifier(source, "license") })
         Player.Functions.UpdatePlayerData()
     end
 end
 
 FW.Functions.HasPermission = function(source, permission)
     local retval = false
-    local steamid = FW.Functions.GetIdentifier(source, "steam")
     local licenseid = FW.Functions.GetIdentifier(source, "license")
     local permission = tostring(permission:lower())
     if permission == "user" then
         retval = true
     else
-        if FW.Config.Server.PermissionList[steamid] ~= nil then 
-            if FW.Config.Server.PermissionList[steamid].steam == steamid then
-                if FW.Config.Server.PermissionList[steamid].permission == permission or FW.Config.Server.PermissionList[steamid].permission == "god" then
+        if FW.Config.Server.PermissionList[license] ~= nil then 
+            if FW.Config.Server.PermissionList[license].license == license then
+                if FW.Config.Server.PermissionList[license].permission == permission or FW.Config.Server.PermissionList[license].permission == "god" then
                     retval = true
                 end
             end
@@ -243,12 +240,11 @@ end
 FW.Functions.GetPermission = function(source)
     local retval = "user"
     Player = FW.Functions.GetPlayer(source)
-    local steamid = FW.Functions.GetIdentifier(source, "steam")
     local licenseid = FW.Functions.GetIdentifier(source, "license")
     if Player ~= nil then
-        if FW.Config.Server.PermissionList[Player.PlayerData.steam] ~= nil then 
-            if FW.Config.Server.PermissionList[Player.PlayerData.steam].steam == steamid and FW.Config.Server.PermissionList[Player.PlayerData.steam].license == licenseid then
-                retval = FW.Config.Server.PermissionList[Player.PlayerData.steam].permission
+        if FW.Config.Server.PermissionList[Player.PlayerData.license] ~= nil then 
+            if FW.Config.Server.PermissionList[Player.PlayerData.license].license == licenseid and FW.Config.Server.PermissionList[Player.PlayerData.license].license == licenseid then
+                retval = FW.Config.Server.PermissionList[Player.PlayerData.license].permission
             end
         end
     end
@@ -257,17 +253,17 @@ end
 
 FW.Functions.IsOptin = function(source)
     local retval = false
-    local steamid = FW.Functions.GetIdentifier(source, "steam")
+    local licenseId = FW.Functions.GetIdentifier(source, "license")
     if FW.Functions.HasPermission(source, "admin") then
-        retval = FW.Config.Server.PermissionList[steamid].optin
+        retval = FW.Config.Server.PermissionList[licenseId].optin
     end
     return retval
 end
 
 FW.Functions.ToggleOptin = function(source)
-    local steamid = FW.Functions.GetIdentifier(source, "steam")
+    local licenseId = FW.Functions.GetIdentifier(source, "license")
     if FW.Functions.HasPermission(source, "admin") then
-        FW.Config.Server.PermissionList[steamid].optin = not FW.Config.Server.PermissionList[steamid].optin
+        FW.Config.Server.PermissionList[licenseId].optin = not FW.Config.Server.PermissionList[licenseId].optin
     end
 end
 
@@ -276,8 +272,7 @@ FW.Functions.RefreshPerms = function()
     exports['ghmattimysql']:execute("SELECT * FROM `server_extra`", {}, function(result)
         if result[1] ~= nil then
             for k, v in pairs(result) do
-                FW.Config.Server.PermissionList[v.steam] = {
-                    steam = v.steam,
+                FW.Config.Server.PermissionList[v.license] = {
                     license = v.license,
                     permission = v.permission,
                     optin = true,
@@ -289,8 +284,7 @@ end
 
 FW.Functions.IsPlayerBanned = function(source)
     local Source, IsBanned, Message = source, nil, nil
-    local result = exports['ghmattimysql']:executeSync("SELECT * FROM `server_bans` WHERE `steam` = @Steam OR `license` = @License", {
-        ['@Steam'] = FW.Functions.GetIdentifier(source, "steam"),
+    local result = exports['ghmattimysql']:executeSync("SELECT * FROM `server_bans` WHERE `license` = @License", {
         ['@License'] = FW.Functions.GetIdentifier(source, "license"),
     })
 
@@ -298,9 +292,9 @@ FW.Functions.IsPlayerBanned = function(source)
         if os.time() < result[1].expire then
             local timeTable = os.date('*t', result[1].expire)
             if result[1].expire >= 3132036000 then
-                Message = "\n🔰 Je bent verbannen van de server. \n🛑 Reden: " ..result[1].reason.. '\n🛑 Verbannen Door: ' ..result[1].bannedby.. '\n🛑Ban vervalt over: permanent\n\n Voor een unban kan je een ticket openen in de discord.'
+                Message = "\n🔰 You are banned from this server. \n🛑 Reason: " ..result[1].reason.. '\n🛑 Banned by: ' ..result[1].bannedby.. '\n🛑Your ban is indefinite. Please contact an administrator for more information on how to appeal.'
             else
-                Message = "\n🔰 Je bent verbannen van de server. \n🛑 Reden: " ..result[1].reason.. '\n🛑 Verbannen Door: ' ..result[1].bannedby.. '\n🛑Ban vervalt over: ' .. timeTable['day'] .. '/' .. timeTable['month'] .. '/' .. timeTable['year'] .. ' ' .. timeTable['hour'] .. ':' .. timeTable['min'] .. '\n\n Voor een unban kan je een ticket openen in de discord.'
+                Message = "\n🔰 You are banned from this server. \n🛑 Reason: " ..result[1].reason.. '\n🛑 Banned by: ' ..result[1].bannedby.. '\n🛑Your ban expires in: ' .. timeTable['day'] .. '/' .. timeTable['month'] .. '/' .. timeTable['year'] .. ' ' .. timeTable['hour'] .. ':' .. timeTable['min'] .. '\n\n Please contact an administrator for more information on how to appeal.'
             end
             IsBanned = true
         else
@@ -375,12 +369,12 @@ FW.Functions.CreateCallback("FW:GetTax", function(Source, Cb)
     Cb(FW.Shared.Tax)
 end)
 
-function FW.AreLicensesUsed(SteamId, License)
+function FW.AreLicensesUsed(licenseId)
     local Players = GetPlayers()
     for k, v in pairs(Players) do
         local Identifiers = GetPlayerIdentifiers(v)
         for _, Id in pairs(Identifiers) do
-            if Id == SteamId or Id == License then
+            if Id == licenseId then
                 return true
             end
         end

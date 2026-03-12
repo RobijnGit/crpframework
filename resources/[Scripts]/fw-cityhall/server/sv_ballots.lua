@@ -20,18 +20,18 @@ FW.RegisterServer("fw-cityhall:Server:SaveBallotVote", function(Source, Data)
         if Player == nil then return end
 
         for i, j in pairs(v.Vote) do
-            local Voted = exports['ghmattimysql']:executeSync("SELECT `vote` FROM `ballots_votes` WHERE `ballot_id` = ? AND `steam_id` = ?", {
+            local Voted = exports['ghmattimysql']:executeSync("SELECT `vote` FROM `ballots_votes` WHERE `ballot_id` = ? AND `license` = ?", {
                 v.BallotId,
-                Player.PlayerData.steam
+                Player.PlayerData.license
             })
 
             -- if Voted[1] ~= nil then
             --     return Player.Functions.Notify("Stem is niet opgeslagen! (Je hebt al gestemd)")
             -- end
 
-            exports['ghmattimysql']:executeSync("INSERT INTO `ballots_votes` (ballot_id, steam_id, vote) VALUES (?, ?, ?)", {
+            exports['ghmattimysql']:executeSync("INSERT INTO `ballots_votes` (ballot_id, license, vote) VALUES (?, ?, ?)", {
                 v.BallotId,
-                Player.PlayerData.steam,
+                Player.PlayerData.license,
                 j
             })
         end
@@ -50,9 +50,9 @@ FW.Functions.CreateCallback("fw-cityhall:Server:GetActiveBallots", function(Sour
         local IsActive = CurrentTime > v.start_timestamp and CurrentTime < v.end_timestamp
 
         if IsActive then
-            local Voted = exports['ghmattimysql']:executeSync("SELECT `vote` FROM `ballots_votes` WHERE `ballot_id` = ? AND `steam_id` = ?", {
+            local Voted = exports['ghmattimysql']:executeSync("SELECT `vote` FROM `ballots_votes` WHERE `ballot_id` = ? AND `license` = ?", {
                 v.id,
-                Player.PlayerData.steam
+                Player.PlayerData.license
             })
     
             if Voted[1] == nil then

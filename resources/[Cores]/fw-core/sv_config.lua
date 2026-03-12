@@ -3,7 +3,7 @@ Config = Config or {}
 Config.ServerName = 'Clarity Roleplay'
 Config.DiscordServerBotToken = ''
 Config.SpecialMessage = {
-    ['STEAM_ID'] = 'SPECIAL CONNECTION MESSAGE',
+    ['ROCKSTAR_LICENSE_ID'] = 'SPECIAL CONNECTION MESSAGE',
 }
 
 Config.ConnectCard = {
