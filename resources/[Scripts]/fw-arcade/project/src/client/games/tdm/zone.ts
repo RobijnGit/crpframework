@@ -22,7 +22,7 @@ ZoneThread.addHook("active", (Data) => {
         if (!isOutsideZone) {
             outsideTime = GetGameTimer() + 5000;
             isOutsideZone = true;
-            FW.Functions.Notify("Ga terug in de zone, of je wordt over 5 seconden gekilled!", "error")
+            FW.Functions.Notify("Return to the zone or you will be eliminated in 5 seconds.", "error")
         };
 
         if (GetGameTimer() > outsideTime) {

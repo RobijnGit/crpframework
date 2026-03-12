@@ -16,7 +16,7 @@ onNet("fw-arcade:Client:OpenLobbyMenu", async ({Game}: {Game: string}) => {
         lobbyContext.push({
             Icon: 'users',
             Title: Name,
-            Desc: IsInLobby(Id) ? "Lobby bekijken" : "Lobby joinen",
+            Desc: IsInLobby(Id) ? "View lobby" : "Join lobby",
             Data: { Event: "fw-arcade:Client:ViewLobby", Game, Id },
             Disabled: InMatch
         });
@@ -26,8 +26,8 @@ onNet("fw-arcade:Client:OpenLobbyMenu", async ({Game}: {Game: string}) => {
         MainMenuItems: [
             {
                 Icon: "user-plus",
-                Title: "Nieuwe lobby aanmaken",
-                Desc: "Maak je eigen lobby aan!",
+                Title: "Create new lobby",
+                Desc: "Create your own lobby",
                 Data: { Event: "fw-arcade:Client:CreateLobby", Game },
                 Disabled: IsInAnyLobby()
             },
@@ -56,13 +56,13 @@ onNet("fw-arcade:Client:ViewLobby", async ({Game, Id}: {Game: string, Id: number
     // await Delay(10);
 
     const Result = await FW.SendCallback("fw-arcade:Server:GetLobby", Game, Id);
-    if (!Result) return FW.Functions.Notify("Lobby bestaat niet..", "error");
+    if (!Result) return FW.Functions.Notify("Lobby doesn't exist..", "error");
 
     if (!IsInLobby(Id)) {
         const Result = await exp['fw-ui'].CreateInput([
             {
                 Icon: 'user-lock',
-                Label: 'Wachtwoord',
+                Label: 'Password',
                 Name: 'Password',
                 Type: "password"
             },
@@ -81,29 +81,29 @@ onNet("fw-arcade:Client:ViewLobby", async ({Game, Id}: {Game: string, Id: number
         lobbyContext = [
             {
                 Icon: "cogs",
-                Title: "Verander lobby instellingen",
-                Desc: "Verander alles wat je wilt dud",
+                Title: "Adjust lobby settings",
+                Desc: "Change all you want",
                 Data: { Event: "fw-arcade:Client:AdjustLobbySettings", Game, Id }
             },
             {
                 Icon: "play",
-                Title: "Start",
-                Desc: "Start de lobby",
+                Title: "Play",
+                Desc: "Start playing",
                 Data: {Event: "fw-arcade:Client:TryStartGame", Game, Id}
             },
             {
                 Icon: "trash",
-                Title: "Annuleren",
-                Desc: "Verwijder de lobby",
+                Title: "Cancel",
+                Desc: "Delete the lobby",
                 Data: {Event: "fw-arcade:Server:LeaveLobby", Game, Id }
             },
         ]
     } else {
         lobbyContext = [
             {
-                Icon: " ",
-                Title: "Verlaten",
-                Desc: `Lobby verlaten`,
+                Icon: "",
+                Title: "Leave",
+                Desc: `Leave the lobby`,
                 Data: {Event: "fw-arcade:Server:LeaveLobby", Game, Id }
             },
         ]
@@ -116,13 +116,13 @@ onNet("fw-arcade:Client:ViewLobby", async ({Game, Id}: {Game: string, Id: number
             },
             {
                 Icon: "users",
-                Title: "Spelers",
+                Title: "Players",
                 Desc: `${Result.Players.length}/${Result.MaxPlayers}`
             },
             {
                 Icon: "user-plus",
-                Title: "Invite Spelers",
-                Desc: `Nodig nog wat spelers uit om je lobby op gang te brengen!`,
+                Title: "Invite Players",
+                Desc: `Invite more players to start having fun!`,
                 Disabled: Result.Players.length == Result.MaxPlayers,
                 Data: {Event: "fw-arcade:Client:InviteToLobby", Game, Id }
             },
@@ -142,13 +142,13 @@ onNet("fw-arcade:Client:ViewLobby", async ({Game, Id}: {Game: string, Id: number
             {
                 Icon: "box",
                 Title: "Open Token Inventory",
-                Desc: `Doe je Arcade Token hier in om te spelen!`,
+                Desc: `Put in your Arcade-tokens to start playing!`,
                 Data: {Event: "fw-arcade:Client:LobbyInventory", Game, Id}
             },
             {
                 Icon: "backward",
-                Title: "Terug",
-                Desc: `Terug naar de lobby lijst`,
+                Title: "Back",
+                Desc: `View lobby list`,
                 Data: {Event: "fw-arcade:Client:OpenLobbyMenu", Game}
             },
         ],
@@ -163,7 +163,7 @@ on("fw-arcade:Client:InviteToLobby", async ({Game, Id}: {Game: string, Id: numbe
     const Result = await exp['fw-ui'].CreateInput([
         {
             Icon: 'id-card',
-            Label: 'BSN',
+            Label: 'State ID',
             Name: 'Cid',
             Type: "number"
         },
@@ -179,7 +179,7 @@ onNet("fw-arcade:Client:ViewLobbyTeam", async ({Game, Id, TeamId}: {Game: string
     if (!IsInLobby(Id)) return;
 
     const Result = await FW.SendCallback("fw-arcade:Server:GetLobby", Game, Id);
-    if (!Result) return FW.Functions.Notify("Lobby bestaat niet..", "error");
+    if (!Result) return FW.Functions.Notify("Lobby doesn't exist..", "error");
     
     const TeamPlayers = Result.Players.filter((Val: {Team: number}) => Val.Team == TeamId);
     const MyCid = FW.Functions.GetPlayerData().citizenid;
@@ -190,7 +190,7 @@ onNet("fw-arcade:Client:ViewLobbyTeam", async ({Game, Id, TeamId}: {Game: string
         lobbyContext.push({
             Icon: "user-plus",
             Title: "Join Team",
-            Desc: "Join dit team",
+            Desc: "Join this team",
             Data: {Event: "fw-arcade:Server:SwapTeam", Game, Id, TeamId}
         })
     }
@@ -200,8 +200,8 @@ onNet("fw-arcade:Client:ViewLobbyTeam", async ({Game, Id, TeamId}: {Game: string
         
         lobbyContext.push({
             Icon: "arrow-right",
-            Title: `${Name} ${MyCid == Cid ? "(Jij)" : ""}`,
-            Desc: Result.Matchmaker == MyCid ? "Verplaats de speler naar het andere team door te klikken." : "",
+            Title: `${Name} ${MyCid == Cid ? "(You)" : ""}`,
+            Desc: Result.Matchmaker == MyCid ? "Click to move the player to the other team." : "",
             Data: Result.Matchmaker == MyCid ? {Event: "fw-arcade:Server:SwapTeam", Game, Id, TeamId, Cid } : undefined,
         })
     }
@@ -215,7 +215,7 @@ onNet("fw-arcade:Client:ViewLobbyTeam", async ({Game, Id, TeamId}: {Game: string
             ...lobbyContext,
             {
                 Icon: "backward",
-                Title: "Terug",
+                Title: "Back",
                 Data: { Event: "fw-arcade:Client:ViewLobby", Game, Id }
             },
         ],
@@ -227,7 +227,7 @@ on("fw-arcade:Client:AdjustLobbySettings", async ({Game, Id}: {Game: string, Id:
     if (!IsInLobby(Id)) return;
 
     const Result = await FW.SendCallback("fw-arcade:Server:GetLobby", Game, Id);
-    if (!Result) return FW.Functions.Notify("Lobby bestaat niet..", "error");
+    if (!Result) return FW.Functions.Notify("Lobby doesn't exist..", "error");
 
     const MyCid = FW.Functions.GetPlayerData().citizenid;
     if (Result.Matchmaker != MyCid) return;
@@ -253,10 +253,10 @@ on("fw-arcade:Client:TryStartGame", async ({Game, Id}: {Game: string, Id: number
     if (!IsInLobby(Id)) return;
 
     const Result = await FW.SendCallback("fw-arcade:Server:GetLobby", Game, Id);
-    if (!Result) return FW.Functions.Notify("Lobby bestaat niet..", "error");
+    if (!Result) return FW.Functions.Notify("Lobby doesn't exist..", "error");
 
     if (Result.Players.filter((Val: {Team: number}) => Val.Team == 1).length <= 0 || Result.Players.filter((Val: {Team: number}) => Val.Team == 2).length <= 0) {
-        return FW.Functions.Notify("Er moet minimaal 1 persoon in elk team zitten!", "error");
+        return FW.Functions.Notify("At least once player must be in each lobby!", "error");
     };
 
     const {Success, Msg} = await FW.SendCallback("fw-arcade:Server:CanLobbyStart", Game, Id);
@@ -265,7 +265,7 @@ on("fw-arcade:Client:TryStartGame", async ({Game, Id}: {Game: string, Id: number
 
 onNet("fw-arcade:Client:StartLobby", async ({Game, Id}: {Game: string, Id: number}) => {
     if (!IsInLobby(Id)) return;
-    FW.Functions.Notify("Het spel start in 5 seconden!");
+    FW.Functions.Notify("The game starts in 5 seconds!");
 
     setTimeout(() => {
         DoScreenFadeOut(1000);

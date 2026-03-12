@@ -38,7 +38,7 @@ ZoneThread.addHook("active", async (Data) => {
         if (!isOutsideZone) {
             outsideTime = GetGameTimer() + 10000;
             isOutsideZone = true;
-            FW.Functions.Notify("Ga terug in de zone!", "error")
+            FW.Functions.Notify("Return to the zone!", "error")
         };
 
         if (GetGameTimer() > outsideTime || MyCoords[2] <= 0.0) {

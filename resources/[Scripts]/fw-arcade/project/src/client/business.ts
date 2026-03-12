@@ -18,19 +18,19 @@ onNet("fw-arcade:Client:OpenTokenMenu", async () => {
     FW.Functions.OpenMenu({
         MainMenuItems: [
             {
-                Title: "Tokens kopen",
-                Desc: "Je hebt tokens nodig om te kunnen spelen.",
+                Title: "Purchase Tokens",
+                Desc: "You need tokens to play games on the arcades.",
                 SecondMenu: [
                     {
                         Icon: "dollar-sign",
-                        Title: "Betaal met Cash",
-                        Desc: `€${ticketPrice}`,
+                        Title: "Pay with Cash",
+                        Desc: `$${ticketPrice}`,
                         Data: { Event: "fw-arcade:Client:PurchaseToken", Payment: "Cash" }
                     },
                     {
                         Icon: "credit-card",
-                        Title: "Betaal met Bank",
-                        Desc: `€${ticketPrice}`,
+                        Title: "Pay with Card",
+                        Desc: `$${ticketPrice}`,
                         Data: { Event: "fw-arcade:Client:PurchaseToken", Payment: "Card" }
                     },
                 ]
@@ -49,7 +49,7 @@ onNet("fw-arcade:Client:PurchaseToken", async (Data: {
     const Result = await exp['fw-ui'].CreateInput([
         {
             Icon: 'coins',
-            Label: 'Aantal tokens',
+            Label: 'Amount of tokens',
             Name: 'Amount',
             Type: "number"
         },
@@ -74,7 +74,7 @@ onNet("fw-arcade:Client:OpenArcadeManagement", async (Data: {
     })
 
     if (ticketTypes == undefined || ticketTypes.length == 0) {
-        return FW.Functions.Notify("Deze arcadekast kan niet geopend worden..", "error");
+        return FW.Functions.Notify("This arcade can not be opened..", "error");
     };
 
     const ContextItems = [
@@ -84,28 +84,28 @@ onNet("fw-arcade:Client:OpenArcadeManagement", async (Data: {
         },
         {
             Icon: "heart",
-            Title: `Arcadekast status: ${Math.floor(arcadeMachines[Data.Game])}%`,
-            Desc: `Klik om te repareren (${Math.ceil((1200 - (1200 * (Math.floor(arcadeMachines[Data.Game]) / 100))) * 2)}x)`,
+            Title: `Arcade status: ${Math.floor(arcadeMachines[Data.Game])}%`,
+            Desc: `Click to repair (${Math.ceil((1200 - (1200 * (Math.floor(arcadeMachines[Data.Game]) / 100))) * 2)}x)`,
             Data: { Event: "fw-arcade:Client:RepairArcadeMachine", Game: Data.Game, Health: arcadeMachines[Data.Game] }
         },
         {
             Icon: "clock",
-            Title: `Laatste reparatie`,
+            Title: `Last repair`,
             Desc: DateTime.fromMillis(arcadeStats[Data.Game].lastRepair).toFormat("dd MMM yyyy HH:mm")
         },
         {
             Icon: "chart-line",
-            Title: `Totaal aantal keer gespeeld`,
-            Desc: `${Math.floor(arcadeStats[Data.Game].totalPlays).toLocaleString('nl-NL')} keer`
+            Title: `Times played`,
+            Desc: `${Math.floor(arcadeStats[Data.Game].totalPlays).toLocaleString('en-US')} times`
         },
         // {
         //     Icon: "chart-line",
-        //     Title: `Vandaag aantal keer gespeeld`,
+        //     Title: `Times played today`,
         //     Desc: `0 keer`
         // },
         {
             Icon: "medal",
-            Title: `Populariteit positie`,
+            Title: `Popularity rank`,
             Desc: Object.keys(arcadeStats).sort((a, b) => arcadeStats[b].totalPlays - arcadeStats[a].totalPlays).findIndex((Val) => Val == Data.Game) + 1
         },
     ];
@@ -122,17 +122,17 @@ on("fw-arcade:Client:RepairArcadeMachine", async (Data: {
     if (!await exp['fw-businesses'].HasRolePermission("Coopers Arcade", "CraftAccess")) return;
 
     if (Data.Health >= 95) {
-        return FW.Functions.Notify("De arcadekast ziet er nog perfect in uit!")
+        return FW.Functions.Notify("The arcade looks fine!")
     };
 
     const RequiredMaterials = Math.floor(1200 - (1200 * (Math.floor(Data.Health) / 100)));
-    if (RequiredMaterials <= 0) return FW.Functions.Notify("De arcadekast ziet er nog perfect uit!");
+    if (RequiredMaterials <= 0) return FW.Functions.Notify("The arcade looks fine!");
 
     if (!exp['fw-inventory'].HasEnoughOfItem("electronics", RequiredMaterials) || !exp['fw-inventory'].HasEnoughOfItem("plastic", RequiredMaterials)) {
-        return FW.Functions.Notify("Je hebt niet genoeg materialen op zak..", "error")
+        return FW.Functions.Notify("You don't have enough materials..", "error")
     };
 
-    const Finished = await FW.Functions.CompactProgressbar(500 * (100 - Data.Health), "Arcadekast repareren..", false, true, {
+    const Finished = await FW.Functions.CompactProgressbar(500 * (100 - Data.Health), "Repairing arcade..", false, true, {
         disableMovement: true,
         disableCarMovement: true,
         disableMouse: false,
@@ -164,21 +164,21 @@ on("fw-arcade:Client:OpenMembershipMenu", async () => {
 
         ContextItems.push({
             Title: `(#${Cid}) ${Name}`,
-            Desc: `${OverdueDebts.length} achterstallige ${OverdueDebts.length == 1 ? "factuur" : "facturen"}`,
+            Desc: `${OverdueDebts.length} overdue ${OverdueDebts.length == 1 ? "invoice" : "invoices"}`,
             SecondMenu: [
                 {
                     Icon: "user",
                     Title: `(#${Cid}) ${Name}`,
-                    Desc: `Lid sinds: ${DateTime.fromMillis(FirstPayment).toFormat("dd MMM yyyy")}`
+                    Desc: `Membership since: ${DateTime.fromMillis(FirstPayment).toFormat("dd MMM yyyy")}`
                 },
                 {
                     Title: `Membership Type: ${Type}`,
                 },
                 {
-                    Title: `Membership Status: ${OverdueDebts.length < 1 ? "Actief" : "Inactief"}`,
+                    Title: `Membership Status: ${OverdueDebts.length < 1 ? "Active" : "Inactive"}`,
                 },
                 {
-                    Title: `Lidmaatschap opzeggen`,
+                    Title: `Revoke Membership`,
                     Data: {
                         Event: "fw-arcade:Server:RevokeMembership",
                         Cid
@@ -191,8 +191,8 @@ on("fw-arcade:Client:OpenMembershipMenu", async () => {
     FW.Functions.OpenMenu({
         MainMenuItems: [
             {
-                Title: "Persoon toevoegen",
-                Desc: "Registreer een GameNerd membership"
+                Title: "Add Member",
+                Desc: "Register a new GameNerd membership"
             },
             ...ContextItems
         ]
@@ -247,7 +247,7 @@ export default () => {
             {
                 Name: 'token',
                 Icon: 'fas fa-cash-register',
-                Label: 'Tokens kopen',
+                Label: 'Purchase Tokens',
                 EventType: 'Client',
                 EventName: 'fw-arcade:Client:OpenTokenMenu',
                 EventParams: {},

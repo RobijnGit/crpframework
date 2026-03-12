@@ -37,7 +37,7 @@ export default () => {
 
         Cb(true);
 
-        SendLobbyNotify(Game, Id, `${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname} heeft de tag overgenomen!`);
+        SendLobbyNotify(Game, Id, `${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname} took over the tag!`);
         setTimeout(() => {
             activeTags[Id].TagCooldown = false;
         }, 5000)
@@ -164,7 +164,7 @@ export const VehicleTag = {
                 ClearPlayerBucket(Source);
 
                 if (WinningTeam != false) {
-                    emitNet("FW:Notify", Source, Team == WinningTeam ? "Je team heeft gewonnen! Gefeliciteerd!" : "Je team heeft verloren.. Volgende keer beter!", Team == WinningTeam ? "success" : "error")
+                    emitNet("FW:Notify", Source, Team == WinningTeam ? "Your team won, congratulations!" : "Your team lost, better luck next time..", Team == WinningTeam ? "success" : "error")
                 };
             };
         }, 750);

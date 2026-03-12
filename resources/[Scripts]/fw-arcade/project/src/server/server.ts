@@ -21,10 +21,10 @@ setImmediate(() => {
         if (!arcadeMachines || !arcadeMachines[Game]) return;
 
         const RequiredMaterials = Math.floor(1200 - (1200 * (Math.floor(arcadeMachines[Game]) / 100)));
-        if (RequiredMaterials <= 0) return Player.Functions.Notify("De arcadekast ziet er nog perfect uit!");
+        if (RequiredMaterials <= 0) return Player.Functions.Notify("The arcade machine looks just fine!");
     
         if (!Player.Functions.HasEnoughOfItem("electronics", RequiredMaterials) || !Player.Functions.HasEnoughOfItem("plastic", RequiredMaterials)) {
-            return Player.Functions.Notify("Je hebt niet genoeg materialen op zak..", "error")
+            return Player.Functions.Notify("You don't have enough materials..", "error")
         };
 
         Player.Functions.RemoveItemByName("electronics", RequiredMaterials, true);
@@ -37,7 +37,7 @@ setImmediate(() => {
         await Delay(1);
         exp['fw-config'].SetConfigValue("bus-arcade", "arcadeStats", arcadeStats);
 
-        Player.Functions.Notify("Arcadekast gerepareerd!", "success")
+        Player.Functions.Notify("Arcade machine repaired!", "success")
     });
 
     FW.Functions.CreateCallback("fw-arcade:Server:GetPlayerCharName", async (Source: number, Cb: Function, Cid: string) => {
@@ -53,7 +53,7 @@ onNet("fw-arcade:Server:PurchaseToken", async (Data: {
     if (!Player) return;
 
     if (Data.Amount <= 0) {
-        return Player.Functions.Notify("Je moet minimaal 1 token kopen!", "error")
+        return Player.Functions.Notify("You need to purchase at least one token!", "error")
     }
 
     const BusinessAccount = await exp['fw-businesses'].GetBusinessAccount("Coopers Arcade");
@@ -62,15 +62,15 @@ onNet("fw-arcade:Server:PurchaseToken", async (Data: {
 
     if (
         (Data.Payment == "Cash" && Player.Functions.RemoveMoney("cash", ticketPrice * Data.Amount)) ||
-        (Data.Payment == "Card" && await exp['fw-financials'].RemoveMoneyFromAccount(BusinessOwner, BusinessAccount, Player.PlayerData.charinfo.account, ticketPrice * Data.Amount, 'PURCHASE', 'Arcade Token gekocht.', false))
+        (Data.Payment == "Card" && await exp['fw-financials'].RemoveMoneyFromAccount(BusinessOwner, BusinessAccount, Player.PlayerData.charinfo.account, ticketPrice * Data.Amount, 'PURCHASE', 'Arcade Token purchase.', false))
     ) {
-        exp['fw-financials'].AddMoneyToAccount(Player.PlayerData.citizenid, Player.PlayerData.charinfo.account, BusinessAccount, ticketPrice * Data.Amount, "PURCHASE", `Betaling zakelijke dienstverlening: Arcade Token gekocht`, false)
+        exp['fw-financials'].AddMoneyToAccount(Player.PlayerData.citizenid, Player.PlayerData.charinfo.account, BusinessAccount, ticketPrice * Data.Amount, "PURCHASE", `Payment for business services: Arcade Token purchase`, false)
         Player.Functions.AddItem("arcadetoken", Data.Amount, false, {
             purchaser: Player.PlayerData.citizenid,
             games: 3
         }, true, false)
     } else {
-        Player.Functions.Notify("Je hebt niet genoeg geld..", "error")
+        Player.Functions.Notify("You don't have enough money..", "error")
     };
 });
 

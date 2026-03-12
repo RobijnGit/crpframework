@@ -7,10 +7,10 @@ import { currentLobby } from "../../lobby/utils";
 import { IsSpectator, ToggleFreecam } from "../../lobby/spectate";
 
 export const Vehicles = [
-    {Name: "Off Road voertuigen", Models: [ "yosemite3", "brawler", "kamacho", "caracara2", "hellion", "everon", "freecrawler" ] },
+    {Name: "Off-Road vehicles", Models: [ "yosemite3", "brawler", "kamacho", "caracara2", "hellion", "everon", "freecrawler" ] },
     {Name: "Sports", Models: [ "seven70", "coquette4", "italigto", "neo", "pariah", "corsita", "tenf2", "comet5", "sentinel4" ] },
     {Name: "Caddy", Models: [ "caddy" ] },
-    {Name: "Motoren", Models: [ "esskey", "nemesis", "pcj", "vader" ] },
+    {Name: "Motorcycles", Models: [ "esskey", "nemesis", "pcj", "vader" ] },
 ];
 
 export let currentMap = Maps[0];
@@ -159,17 +159,17 @@ onNet("fw-arcade:Client:VTag:UpdateInfo", async (Data: {
     let ExtraItems: Array<{Text: string}> = [];
     if (MyTeam == currentHolder[0]) {
         ExtraItems.push({
-            Text: "Jouw team heeft momenteel de tag vast!"
+            Text: "Your team holds the flag!"
         })
     }
 
     exp['fw-ui'].ShowInfo({
         Title: "Vehicle Tag",
         Items: [
-            { Text: `Resterende tijd: ${FormatTime(Data.Timer)}` },
-            { Text: `Eerste die ${Data.PointsGoal} punten behaald wint!` },
-            { Text: `Team 1: ${Data.Points[0]} punten` },
-            { Text: `Team 2: ${Data.Points[1]} punten` },
+            { Text: `Remaining time: ${FormatTime(Data.Timer)}` },
+            { Text: `First to get ${Data.PointsGoal} points wins!` },
+            { Text: `Team 1: ${Data.Points[0]} points` },
+            { Text: `Team 2: ${Data.Points[1]} points` },
             ...ExtraItems
         ]
     })
@@ -204,7 +204,7 @@ export default () => {
             {
                 Name: 'vehicletag',
                 Icon: 'fas fa-chess',
-                Label: 'Vehicle Tag spelen',
+                Label: 'Play Vehicle Tag',
                 EventType: 'Client',
                 EventName: 'fw-arcade:Client:OpenLobbyMenu',
                 EventParams: { Game: "vehicleTag" },
@@ -215,7 +215,7 @@ export default () => {
             {
                 Name: 'repair',
                 Icon: 'fas fa-hammer',
-                Label: 'Arcadekast beheren',
+                Label: 'Manage Arcade',
                 EventType: 'Client',
                 EventName: 'fw-arcade:Client:OpenArcadeManagement',
                 EventParams: { Game: "vehicleTag" },
@@ -230,29 +230,29 @@ export const VehicleTag = {
         const Result = await exp['fw-ui'].CreateInput([
             {
                 Icon: 'file-signature',
-                Label: 'Lobby naam',
+                Label: 'Name',
                 Name: 'Name'
             },
             {
                 Icon: 'user-lock',
-                Label: 'Wachtwoord',
+                Label: 'Password',
                 Name: 'Password',
                 Type: "password"
             },
             {
                 Icon: 'tag',
-                Label: 'Tijd in minuten',
+                Label: 'Time in minutes',
                 Name: 'Time',
                 Type: "number",
             },
             {
                 Icon: 'tag',
-                Label: 'Te behalen punten',
+                Label: 'Points to win',
                 Name: 'Points',
                 Type: "number"
             },
             {
-                Label: 'Voertuig groep',
+                Label: 'Vehicle Group',
                 Name: 'Vehicles',
                 Choices: Vehicles.map((Val) => {
                     return { Text: Val.Name }
@@ -275,7 +275,7 @@ export const VehicleTag = {
             Result.Vehicles.trim().length == 0 ||
             Result.Map.trim().length == 0
         ) {
-            FW.Functions.Notify("Vul alle velden in!", "error");
+            FW.Functions.Notify("Fil in all settings!", "error");
             return false;
         }
 
@@ -285,20 +285,20 @@ export const VehicleTag = {
         const Result = await exp['fw-ui'].CreateInput([
             {
                 Icon: 'tag',
-                Label: 'Tijd in minuten',
+                Label: 'Time in minutes',
                 Name: 'Time',
                 Type: "number",
                 Value: lobbySettings.Time || 15,
             },
             {
                 Icon: 'tag',
-                Label: 'Te behalen punten',
+                Label: 'Points to win',
                 Name: 'Points',
                 Type: "number",
                 Value: lobbySettings.Points || 350,
             },
             {
-                Label: 'Voertuig groep',
+                Label: 'Vehicle Group',
                 Name: 'Vehicles',
                 Value: lobbySettings.Vehicles,
                 Choices: Vehicles.map((Val) => {
@@ -321,7 +321,7 @@ export const VehicleTag = {
             Result.Vehicles.toString().trim().length == 0 ||
             Result.Map.toString().trim().length == 0
         ) {
-            FW.Functions.Notify("Vul alle velden in!", "error");
+            FW.Functions.Notify("Fil in all settings!", "error");
             return false;
         }
 

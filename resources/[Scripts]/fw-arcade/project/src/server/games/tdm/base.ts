@@ -88,7 +88,7 @@ onNet("fw-arcade:Server:TDM:RemoveLoadout", async () => {
     await Delay(50);
     Player.Functions.RefreshInventory();
 
-    Player.Functions.Notify("Loadout verwijderd.");
+    Player.Functions.Notify("Loadout deleted.");
 });
 
 onNet("fw-arcade:Server:TDM:UpdateKillCounters", async (KillerSource: number) => {
@@ -233,7 +233,7 @@ export const TDM = {
             }, 500);
 
             if (WinningTeam) {
-                emitNet("FW:Notify", Source, Team == WinningTeam ? "Je team heeft gewonnen! Gefeliciteerd!" : "Je team heeft verloren.. Volgende keer beter!", Team == WinningTeam ? "success" : "error")
+                emitNet("FW:Notify", Source, Team == WinningTeam ? "Your team won, congratulations!" : "Your team lost, better luck next time..", Team == WinningTeam ? "success" : "error")
             };
         };
     },

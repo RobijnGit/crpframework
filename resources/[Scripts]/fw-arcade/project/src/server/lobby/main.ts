@@ -39,11 +39,11 @@ const activeLobbys: {
 export default () => {
     FW.RegisterServer("fw-arcade:Server:CreateLobby", async (Source: number, Game: string, LobbySettings: any) => {
         const Player = FW.Functions.GetPlayer(Source);
-        if (!Player) return Player.Functions.Notify("Lobby niet aangemaakt!", "error");
+        if (!Player) return Player.Functions.Notify("Failed to create lobby!", "error");
 
         const { arcadeMachines } = await exp['fw-config'].GetModuleConfig("bus-arcade", {arcadeMachines: {}});
         if (arcadeMachines[Game] == undefined || arcadeMachines[Game] <= GetRandom(1, 10) - 1.0) {
-            return Player.Functions.Notify("Kan de lobby niet starten, de arcadekast is kapot..", "error");
+            return Player.Functions.Notify("The arcade machine seems broken.. Failed to create lobby.", "error");
         };
 
         if (activeLobbys[Game] == undefined) {
@@ -82,7 +82,7 @@ export default () => {
 
         // console.log(`Created lobby for ${Game}, lobby name: ${LobbySettings.Name}!`);
 
-        Player.Functions.Notify("Lobby aangemaakt!");
+        Player.Functions.Notify("Lobby created!");
         emitNet("fw-arcade:Client:SetCurrentLobby", Source, Game, LobbyData.Id);
         emitNet("fw-arcade:Client:OpenLobbyMenu", Source, {Game});
     });
@@ -92,11 +92,11 @@ export default () => {
         if (!Player) return;
 
         const Lobby = GetLobby(Game, Id);
-        if (!Lobby) return Player.Functions.Notify("Lobby bestaat niet..", "error");
-        if (Lobby.Password != Password) return Player.Functions.Notify("Wachtwoord klopt niet..", "error");
+        if (!Lobby) return Player.Functions.Notify("Lobby doesn't exist..", "error");
+        if (Lobby.Password != Password) return Player.Functions.Notify("Password is incorrect..", "error");
 
         const TeamId = GetTeamId(Lobby.Players);
-        SendLobbyNotify(Game, Id, `${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname} heeft de lobby gejoined!`)
+        SendLobbyNotify(Game, Id, `${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname} joined the lobby!`)
 
         sourceToLobby[Source] = { Game, Id };
         Lobby.Players.push({
@@ -106,7 +106,7 @@ export default () => {
             Team: TeamId
         })
 
-        Player.Functions.Notify("Je bent een lobby gejoined.");
+        Player.Functions.Notify("You have joined the lobby!");
         emitNet("fw-arcade:Client:SetCurrentLobby", Source, Game, Lobby.Id);
     });
 
@@ -115,13 +115,13 @@ export default () => {
         if (!Player) return;
 
         const Lobby = GetLobby(Game, Id);
-        if (!Lobby) return Player.Functions.Notify("Lobby bestaat niet..", "error");
+        if (!Lobby) return Player.Functions.Notify("Lobby doesn't exist..", "error");
 
         if (!await exp['fw-businesses'].HasPlayerBusinessPermission("Coopers Arcade", Source, "VehicleSales")) {
             return;
         };
 
-        if (sourceToLobby[Source]) return Player.Functions.Notify("Je zit al in een lobby!");
+        if (sourceToLobby[Source]) return Player.Functions.Notify("You are already in a lobby!");
 
         sourceToLobby[Source] = { Game, Id };
         Lobby.Spectators.push({
@@ -138,8 +138,8 @@ export default () => {
         if (!Player) return;
 
         const Lobby = GetLobby(Game, Id);
-        if (!Lobby) return Player.Functions.Notify("Lobby bestaat niet..", "error");
-        if (IsCidInAnyLobby(TargetCid)) return Player.Functions.Notify("Speler zit al in een lobby!");
+        if (!Lobby) return Player.Functions.Notify("Lobby doesn't exist..", "error");
+        if (IsCidInAnyLobby(TargetCid)) return Player.Functions.Notify("Player is already in the lobby!");
 
         const Target = FW.Functions.GetPlayerByCitizenId(TargetCid);
         if (!Target) return;
@@ -148,9 +148,9 @@ export default () => {
         const TargetCoords: number[] = GetEntityCoords(GetPlayerPed(Target.PlayerData.source));
         const ArcadeCoords = new Vector3(-1654.12, -1070.66, 12.16);
 
-        if (ArcadeCoords.getDistanceFromArray(TargetCoords) > 100.0) return Player.Functions.Notify("Speler is niet bij de arcade..", "error");
+        if (ArcadeCoords.getDistanceFromArray(TargetCoords) > 100.0) return Player.Functions.Notify("Player is not at the arcade..", "error");
 
-        emitNet("fw-phone:Client:Notification", Target.PlayerData.source, `arcade-invite-${Game}:${Id}`, "fas fa-gamepad", ["white", "rgb(38, 50, 56)"], "Arcade Invite", `${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname} heeft je uitgenodigd voor een lobby.`, false, true, "fw-arcade:Server:AcceptInvitation", "fw-phone:Client:RemoveNotificationById", {Id: `arcade-invite-${Game}:${Id}`, Game, LobbyId: Id})
+        emitNet("fw-phone:Client:Notification", Target.PlayerData.source, `arcade-invite-${Game}:${Id}`, "fas fa-gamepad", ["white", "rgb(38, 50, 56)"], "Arcade Invite", `${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname} has invited you for a lobby.`, false, true, "fw-arcade:Server:AcceptInvitation", "fw-phone:Client:RemoveNotificationById", {Id: `arcade-invite-${Game}:${Id}`, Game, LobbyId: Id})
     });
 
     FW.RegisterServer("fw-arcade:Server:SaveLobbySettings", (Source: number, Game: string, Id: number, NewSettings: {[key: string]: any}) => {
@@ -158,7 +158,7 @@ export default () => {
         if (!Player) return;
 
         const Lobby = GetLobby(Game, Id);
-        if (!Lobby) return Player.Functions.Notify("Lobby bestaat niet..", "error");
+        if (!Lobby) return Player.Functions.Notify("Lobby doesn't exist..", "error");
 
         if (Lobby.Matchmaker != Player.PlayerData.citizenid) return;
         Lobby.Settings = NewSettings;
@@ -169,7 +169,7 @@ export default () => {
         if (!Player) return;
 
         const Lobby = GetLobby(Game, Id);
-        if (!Lobby) return Player.Functions.Notify("Lobby bestaat niet..", "error");
+        if (!Lobby) return Player.Functions.Notify("Lobby doesn't exist..", "error");
 
         if (Lobby.Matchmaker != Player.PlayerData.citizenid) return;
 
@@ -207,10 +207,10 @@ export default () => {
 
     FW.Functions.CreateCallback("fw-arcade:Server:CanLobbyStart", async (Source: number, Cb: Function, Game: string, Id: number) => {
         const Player = FW.Functions.GetPlayer(Source);
-        if (!Player) return Cb({ Success: false, Msg: "Lobby kan niet gestart worden.." });
+        if (!Player) return Cb({ Success: false, Msg: "Lobby failed to start.." });
 
         const Lobby = GetLobby(Game, Id);
-        if (!Lobby) return Cb({ Success: false, Msg: "Lobby bestaat niet.." });
+        if (!Lobby) return Cb({ Success: false, Msg: "Lobby doesn't exist.." });
 
         if (Lobby.Matchmaker != Player.PlayerData.citizenid) {
             return Cb({ Success: false, Msg: "Alleen de Matchmaker kan de lobby starten.." });
@@ -218,7 +218,7 @@ export default () => {
 
         const { arcadeMachines, arcadeStats } = await exp['fw-config'].GetModuleConfig("bus-arcade", {arcadeMachines: {}});
         if (arcadeMachines[Game] == undefined || arcadeMachines[Game] <= GetRandom(1, 10) - 1.0) {
-            return Cb({Success: false, Msg: "Kan de lobby niet starten, de arcadekast is kapot.."})
+            return Cb({Success: false, Msg: "Failed to start the game, the arcade machine seems broken.."})
         };
 
         // Remove disconnected players and players that are not nearby Arcade Building..
@@ -233,7 +233,7 @@ export default () => {
             // @ts-ignore
             if (!GetPlayerName(src) || ArcadeCoords.getDistanceFromArray(TargetCoords) > 35.0) {
                 disconnectedPlayers.push(src);
-                SendLobbyNotify(Game, Id, `${Name} is uit de lobby gekickt.`)
+                SendLobbyNotify(Game, Id, `${Name} has been kicked from the lobby.`)
             };
         };
 
@@ -241,12 +241,12 @@ export default () => {
 
         // Check if both teams have 1 player.
         if (Lobby.Players.filter((Val: {Team: number}) => Val.Team == 1).length <= 0 || Lobby.Players.filter((Val: {Team: number}) => Val.Team == 2).length <= 0) {
-            return Cb({Success: false, Msg: "Er moet minimaal 1 persoon in elk team zitten!"});
+            return Cb({Success: false, Msg: "There must be at least 1 person in each team."});
         };
 
         // Check if all players have disposited their arcade tokens.
         const Items = await exp['fw-inventory'].GetInventoryItemsUnproccessed(`arcade-tokens-${Game}-${Id}`);
-        if (!Items) return Cb({Success: false, Msg: "Iemand heeft geen geldige Arcade Token ingeleverd.."});
+        if (!Items) return Cb({Success: false, Msg: "Someone forgot to deposit their arcade token.."});
 
         const FoundTokens = Lobby.Players.filter((Val: LobbyPlayer) => {
             return !Items.some(({info}: {
@@ -258,7 +258,7 @@ export default () => {
         });
 
         if (FoundTokens.length != 0) {
-            return Cb({Success: false, Msg: "Iemand heeft geen geldige Arcade Token ingeleverd.."})
+            return Cb({Success: false, Msg: "Someone forgot to deposit their arcade token.."})
         };
 
         for (let i = 0; i < Items.length; i++) {
@@ -346,15 +346,15 @@ onNet("fw-arcade:Server:AcceptInvitation", async (Data: {
 }) => {
     const Source = source;
     const Player = FW.Functions.GetPlayer(Source);
-    if (!Player) return emitNet('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Ongeldige invite...", true);
+    if (!Player) return emitNet('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Invalid invite...", true);
 
     const Lobby = GetLobby(Data.Game, Data.LobbyId);
-    if (!Lobby) return emitNet('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Ongeldige invite...", true);
+    if (!Lobby) return emitNet('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Invalid invite...", true);
 
-    emitNet('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Invite geaccepteerd!", true)
+    emitNet('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Invite accepted!", true)
 
     const TeamId = GetTeamId(Lobby.Players);
-    SendLobbyNotify(Data.Game, Data.LobbyId, `${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname} heeft de lobby gejoined!`);
+    SendLobbyNotify(Data.Game, Data.LobbyId, `${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname} has joined the lobby!`);
 
     sourceToLobby[Source] = { Game: Data.Game, Id: Data.LobbyId };
     Lobby.Players.push({
@@ -364,7 +364,7 @@ onNet("fw-arcade:Server:AcceptInvitation", async (Data: {
         Team: TeamId
     });
 
-    Player.Functions.Notify("Je bent een lobby gejoined.");
+    Player.Functions.Notify("You have joined the lobby!");
     emitNet("fw-arcade:Client:SetCurrentLobby", Source, Data.Game, Lobby.Id);
 });
 
@@ -394,11 +394,11 @@ onNet("fw-arcade:Server:LeaveLobby", async ({Game, Id}: {Game: string, Id: numbe
 
     if (Lobby.Matchmaker == Player.PlayerData.citizenid) {
         const Items = await exp['fw-inventory'].GetInventoryItemsUnproccessed(`arcade-tokens-${Game}-${Id}`);
-        if (Items.length != 0) return Player.Functions.Notify("Er zitten nog arcade tokens in de kast!", "error");
+        if (Items.length != 0) return Player.Functions.Notify("There are still tokens in the machine!", "error");
 
         const LobbyIndex = activeLobbys[Game].findIndex(Val => Val.Id == Id);
         if (LobbyIndex == -1) return;
-        SendLobbyNotify(Game, Id, `${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname} heeft de lobby verwijderd!`)
+        SendLobbyNotify(Game, Id, `${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname} has deleted the lobby!`)
 
         for (let i = 0; i < Lobby.Players.length; i++) {
             const {Source: src} = Lobby.Players[i];
@@ -409,7 +409,7 @@ onNet("fw-arcade:Server:LeaveLobby", async ({Game, Id}: {Game: string, Id: numbe
         activeLobbys[Game].splice(LobbyIndex, 1);
     } else {
         Lobby.Players = Lobby.Players.filter(Val => Val.Cid != Player.PlayerData.citizenid);
-        SendLobbyNotify(Game, Id, `${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname} heeft de lobby verlaten!`)
+        SendLobbyNotify(Game, Id, `${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname} has left the lobby!`)
         emitNet("fw-arcade:Client:SetCurrentLobby", Source, false, 0);
     };
 
@@ -446,7 +446,7 @@ on("playerDropped", async (Reason: string) => {
     if (Lobby.Matchmaker == Player.PlayerData.citizenid) {
         const LobbyIndex = activeLobbys[Game].findIndex(Val => Val.Id == Id);
         if (LobbyIndex == -1) return;
-        SendLobbyNotify(Game, Id, `${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname} heeft de lobby verwijderd!`)
+        SendLobbyNotify(Game, Id, `${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname} has deleted the lobby!`)
 
         for (let i = 0; i < Lobby.Players.length; i++) {
             const {Source: src} = Lobby.Players[i];
@@ -463,6 +463,6 @@ on("playerDropped", async (Reason: string) => {
         activeLobbys[Game].splice(LobbyIndex, 1);
     } else {
         Lobby.Players = Lobby.Players.filter(Val => Val.Cid != Player.PlayerData.citizenid);
-        SendLobbyNotify(Game, Id, `${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname} heeft de lobby verlaten!`)
+        SendLobbyNotify(Game, Id, `${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname} has left the lobby!`)
     }
 });

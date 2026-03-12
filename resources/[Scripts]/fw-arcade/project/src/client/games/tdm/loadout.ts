@@ -26,11 +26,11 @@ export const OpenLoadoutMenu = (Respawn: boolean) => {
             Title: "Loadout"
         },
         {
-            Title: Respawn ? "Spawn" : "Terug naar spel",
+            Title: Respawn ? "Spawn" : "Back to game",
             Data: {Event: "fw-arcade:Client:TDM:Spawn", Respawn}
         },
         {
-            Title: "Verwijder huidige wapens",
+            Title: "Delete all weapons",
             CloseMenu: false,
             Data: {Event: "fw-arcade:Server:TDM:RemoveLoadout" }
         }
@@ -38,14 +38,14 @@ export const OpenLoadoutMenu = (Respawn: boolean) => {
 
     const Weapons: Array<{AmmoType: string, WeaponID: string}> = Object.values(exp['fw-weapons'].GetAllWeaponList());
     const WeaponTypes: {[key: string]: string} = {
-        AMMO_PISTOL: "PISTOL Wapens",
-        AMMO_REVOLVER: "REVOLVER Wapens",
-        AMMO_SHOTGUN: "SHOTGUN Wapens",
-        AMMO_RIFLE: "AR Wapens",
-        AMMO_SMG: "SMG Wapens",
-        AMMO_NONE: "MELEE Wapens",
-        // AMMO_FIRE: "EXPLOSIVES Wapens",
-        // AMMO_SNOWBALLLAUNCHER: "Sneeuw Wapens",
+        AMMO_PISTOL: "PISTOLS",
+        AMMO_REVOLVER: "REVOLVERS",
+        AMMO_SHOTGUN: "SHOTGUNS",
+        AMMO_RIFLE: "RIFLES",
+        AMMO_SMG: "SMGS",
+        AMMO_NONE: "MELEES",
+        // AMMO_FIRE: "EXPLOSIVES",
+        // AMMO_SNOWBALLLAUNCHER: "SNOW",
     };
 
     for (let i = 0; i < Weapons.length; i++) {
@@ -60,7 +60,7 @@ export const OpenLoadoutMenu = (Respawn: boolean) => {
         if (LoadoutIndex == -1) {
             LoadoutMenu.push({
                 Title: WeaponTypes[AmmoType],
-                Desc: `Bekijk alle ${WeaponTypes[AmmoType].replace("Wapens", "wapens")}`,
+                Desc: `View all ${WeaponTypes[AmmoType].toLowerCase()}`,
                 SecondMenu: [
                     {
                         Title: ItemData.Label,

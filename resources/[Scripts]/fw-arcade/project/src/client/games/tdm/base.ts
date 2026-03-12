@@ -29,7 +29,7 @@ export const Maps = [
         Radius: 70,
     },
     {
-        Name: "De Bario",
+        Name: "Jamestown",
         Coords: new Vector3(338.84, -2043.97, 21.26),
         Spawns: [new Vector4(392.41, -2010.62, 23.48, 141.37), new Vector4(309.84, -2102.66, 17.75, 332.08)],
         Cam: new Vector4(298.34, -2010.15, 64.81, 227.67),
@@ -188,8 +188,8 @@ onNet("fw-arcade:Client:TDM:UpdateCounter", async (Counter: {
     exp['fw-ui'].ShowInfo({
         Title: "TDM",
         Items: [
-            {Text: `${Spectator ? "Team 1 punten" : "Jouw teampunten"}: ${MyTeam == 1 ? Counter.TeamOnePoints : Counter.TeamTwoPoints} / ${Lobby.Settings.Points}`},
-            {Text: `${Spectator ? "Team 2 punten" : "Enemy teampunten"}: ${MyTeam == 1 ? Counter.TeamTwoPoints : Counter.TeamOnePoints} / ${Lobby.Settings.Points}`},
+            {Text: `${Spectator ? "Team 1 points" : "Your team points"}: ${MyTeam == 1 ? Counter.TeamOnePoints : Counter.TeamTwoPoints} / ${Lobby.Settings.Points}`},
+            {Text: `${Spectator ? "Team 2 points" : "Enemy team points"}: ${MyTeam == 1 ? Counter.TeamTwoPoints : Counter.TeamOnePoints} / ${Lobby.Settings.Points}`},
         ]
     });
 });
@@ -213,7 +213,7 @@ export default () => {
             {
                 Name: 'vehicletag',
                 Icon: 'fas fa-chess',
-                Label: 'Airsoft TDM spelen',
+                Label: 'Play Airsoft TDM',
                 EventType: 'Client',
                 EventName: 'fw-arcade:Client:OpenLobbyMenu',
                 EventParams: { Game: "tdm" },
@@ -222,7 +222,7 @@ export default () => {
             {
                 Name: 'repair',
                 Icon: 'fas fa-hammer',
-                Label: 'Arcadekast beheren',
+                Label: 'Manage Arcade',
                 EventType: 'Client',
                 EventName: 'fw-arcade:Client:OpenArcadeManagement',
                 EventParams: { Game: "tdm" },
@@ -239,24 +239,24 @@ export const TDM = {
         const Result = await exp['fw-ui'].CreateInput([
             {
                 Icon: 'file-signature',
-                Label: 'Lobby naam',
+                Label: 'Name',
                 Name: 'Name'
             },
             {
                 Icon: 'user-lock',
-                Label: 'Wachtwoord',
+                Label: 'Password',
                 Name: 'Password',
                 Type: "password"
             },
             {
                 Icon: 'tag',
-                Label: 'Te behalen punten',
+                Label: 'Points to win',
                 Name: 'Points',
                 Type: "number"
             },
             {
                 Icon: 'tag',
-                Label: 'Aantal seconden spawn protection ',
+                Label: 'Amount of seconds spawn protection',
                 Name: 'SpawnTime',
                 Type: "number"
             },
@@ -284,7 +284,7 @@ export const TDM = {
             Result.SpawnTime.trim().length == 0 || Result.SpawnTime <= 0 ||
             Result.Map.trim().length == 0
         ) {
-            FW.Functions.Notify("Vul alle velden in!", "error");
+            FW.Functions.Notify("Fill in all fields!", "error");
             return false;
         }
 
@@ -294,14 +294,14 @@ export const TDM = {
         const Result = await exp['fw-ui'].CreateInput([
             {
                 Icon: 'tag',
-                Label: 'Te behalen punten',
+                Label: 'Points to win',
                 Name: 'Points',
                 Type: "number",
                 Value: lobbySettings.Points || 350,
             },
             {
                 Icon: 'tag',
-                Label: 'Aantal seconden spawn protection ',
+                Label: 'Amount of seconds spawn protection',
                 Name: 'SpawnTime',
                 Type: "number",
                 Value: lobbySettings.SpawnTime || 3
@@ -329,7 +329,7 @@ export const TDM = {
             Result.Points.toString().trim().length == 0 || Result.Points <= 0 ||
             Result.Map.toString().trim().length == 0
         ) {
-            FW.Functions.Notify("Vul alle velden in!", "error");
+            FW.Functions.Notify("Fill in all fields!", "error");
             return false;
         }
 
