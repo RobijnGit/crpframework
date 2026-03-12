@@ -1,0 +1,9 @@
+/cache
+/db
+/.idea
+/vscode
+**/node_modules/
+**/dist
+.replxx_history
+private.cfg
+resources/\[local\]/
