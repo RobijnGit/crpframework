@@ -44,10 +44,10 @@ AddEventHandler('FW:client:spawn:vehicle', function(Veh, Model)
 			SetVehRadioStation(Vehicle, "OFF")
 			SetVehicleOnGroundProperly(Vehicle)
 			DoScreenFadeIn(250)
-			FW.Functions.Notify(Model..' ingespawned!', 'success')
+			FW.Functions.Notify(("Spawned %s!"):format(Model), 'success')
 		end)
 	else
-		FW.Functions.Notify('Model bestaat niet..', 'error')
+		FW.Functions.Notify("Model does not exist.", 'error')
 	end
 end)
 

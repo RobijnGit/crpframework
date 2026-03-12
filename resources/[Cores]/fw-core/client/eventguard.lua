@@ -21,9 +21,6 @@ RegisterNetEvent("fw-core:Client:EventGuard:SetToken")
 AddEventHandler("fw-core:Client:EventGuard:SetToken", function(Token)
     if FW.EventGuard.Token == nil then
         FW.EventGuard.Token = Token
-        print("^1EventGuard: Set Token..^7")
-    else
-        print("^1EventGuard: Tried to set token, but the token was already set..^7")
     end
 end)
 

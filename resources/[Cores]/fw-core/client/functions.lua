@@ -68,29 +68,29 @@ end
 FW.Functions.GetCardinalDirection = function()
     local heading = GetEntityHeading(PlayerPedId())
     if heading >= 315 or heading < 45 then
-        return "Noordelijke Richting"
+        return "North"
     elseif heading >= 45 and heading < 135 then
-        return "Westelijke Richting"
+        return "West"
     elseif heading >=135 and heading < 225 then
-        return "Zuidelijke Richting"
+        return "South"
     elseif heading >= 225 and heading < 315 then
-        return "Oostelijke Richting"
+        return "East"
     end
 end
 
 FW.Functions.GetVehicleColorLabel = function(Vehicle)
 	if Vehicle <= 0 or not DoesEntityExist(Vehicle) then
-		return "Onbekend"
+		return "Unknown"
 	end
 
 	local Color1, Color2 = GetVehicleColours(Vehicle)
-	if Color1 == nil then return "Onbekend" end
+	if Color1 == nil then return "Unknown" end
 
 	if Color2 == nil or FW.Shared.Colors[Color2] == nil then
 		return FW.Shared.Colors[Color1]
 	end
 
-	return FW.Shared.Colors[Color1] .. " met " .. FW.Shared.Colors[Color2]
+	return FW.Shared.Colors[Color1] .. " w/ " .. FW.Shared.Colors[Color2]
 end
 
 FW.Functions.EnumerateEntities = function(initFunc, moveFunc, disposeFunc)
@@ -245,7 +245,7 @@ FW.Functions.CompactProgressbar = function(Duration, Label, UseWhileDead, CanCan
 	local Prom = promise:new()
 
     exports['fw-progressbar']:Progress({
-        name = "sucking a dick",
+        name = "Eating...",
         duration = Duration,
         label = Label,
         useWhileDead = UseWhileDead,
