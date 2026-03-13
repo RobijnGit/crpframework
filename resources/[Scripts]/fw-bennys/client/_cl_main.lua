@@ -122,38 +122,38 @@ RegisterNetEvent('PolyZone:OnExit', function(PolyData, Coords)
 end)
 
 RegisterNetEvent('fw-bennys:Client:OpenBennys', function(Admin)
-    if not Admin and not CanOpenBennys(CurrentBennyZone.data.Authorized) then return FW.Functions.Notify("Deze Bennys kan jij niet gebruiken..", "error") end
+    if not Admin and not CanOpenBennys(CurrentBennyZone.data.Authorized) then return FW.Functions.Notify("You don't have access to this bennys.", "error") end
     local Vehicle = GetVehiclePedIsUsing(PlayerPedId())
     InBennys, IsAdmin = true, Admin
-    if GetPedInVehicleSeat(Vehicle, -1) == PlayerPedId() then
-        local IsMechanicOnline = FW.SendCallback("fw-bennys:Server:IsMechanicOnline")
-
-        local PlayerData = FW.Functions.GetPlayerData()
-        local IsGov = Admin or IsBennysGov(CurrentBennyZone.data.Authorized) and ((PlayerData.job.name == "police" or PlayerData.job.name == "ems" or PlayerData.job.name == "doc") and PlayerData.job.onduty)
-        IsEmployedAtMechanic = IsGov or exports['fw-businesses']:IsPlayerInBusiness('Bennys Motorworks') or exports['fw-businesses']:IsPlayerInBusiness('Hayes Repairs') or exports['fw-businesses']:IsPlayerInBusiness('Harmony Repairs')
-        if IsMechanicOnline and not IsEmployedAtMechanic and not IsAdmin then
-            return FW.Functions.Notify("Spreek een van de voertuigreparatie bedrijven aan voor hulp.", "error")
-        end
-
-        PlaySoundFrontend(-1, 'SELECT', 'HUD_FRONTEND_DEFAULT_SOUNDSET', true)
-        VehicleMods = FW.VSync.GetVehicleMods(Vehicle)
-
-        if not IsAdmin then SetEntityHeading(Vehicle, CurrentBennyZone.data ~= nil and CurrentBennyZone.data.Heading or CurrentBennyZone.offsetRot) end
-        FreezeEntityPosition(Vehicle, true)
-        SetNuiFocusKeepInput(true)
-        SetNuiFocus(true, false)
-
-        Citizen.CreateThread(function()
-            while InBennys do
-                DisableControlAction(0, 75, true)
-                Citizen.Wait(4)
-            end
-        end)
-
-        BuildMenu(Vehicle)
-    else
-        FW.Functions.Notify("Je moet in de bestuurderstoel zitten om Bennys te gebruiken.", "error")
+    if GetPedInVehicleSeat(Vehicle, -1) ~= PlayerPedId() then
+        return
     end
+
+    local IsMechanicOnline = FW.SendCallback("fw-bennys:Server:IsMechanicOnline")
+
+    local PlayerData = FW.Functions.GetPlayerData()
+    local IsGov = Admin or IsBennysGov(CurrentBennyZone.data.Authorized) and ((PlayerData.job.name == "police" or PlayerData.job.name == "ems" or PlayerData.job.name == "doc") and PlayerData.job.onduty)
+    IsEmployedAtMechanic = IsGov or exports['fw-businesses']:IsPlayerInBusiness('Bennys Motorworks') or exports['fw-businesses']:IsPlayerInBusiness('Hayes Repairs') or exports['fw-businesses']:IsPlayerInBusiness('Harmony Repairs')
+    if IsMechanicOnline and not IsEmployedAtMechanic and not IsAdmin then
+        return FW.Functions.Notify("Talk to a mechanic to fix your vehicle.", "error")
+    end
+
+    PlaySoundFrontend(-1, 'SELECT', 'HUD_FRONTEND_DEFAULT_SOUNDSET', true)
+    VehicleMods = FW.VSync.GetVehicleMods(Vehicle)
+
+    if not IsAdmin then SetEntityHeading(Vehicle, CurrentBennyZone.data ~= nil and CurrentBennyZone.data.Heading or CurrentBennyZone.offsetRot) end
+    FreezeEntityPosition(Vehicle, true)
+    SetNuiFocusKeepInput(true)
+    SetNuiFocus(true, false)
+
+    Citizen.CreateThread(function()
+        while InBennys do
+            DisableControlAction(0, 75, true)
+            Citizen.Wait(4)
+        end
+    end)
+
+    BuildMenu(Vehicle)
 end)
 
 RegisterNetEvent("fw-bennys:Client:SaveOutfit")
@@ -162,7 +162,7 @@ AddEventHandler("fw-bennys:Client:SaveOutfit", function(Data, Entity)
 
     local IsOwned = FW.SendCallback("fw-vehicles:Server:GetVehicleByPlate", GetVehicleNumberPlateText(Entity)) ~= nil
     if not IsOwned then
-        return FW.Functions.Notify("Kan niet bij dit voertuig..")
+        return FW.Functions.Notify("You can't save an outfit on this vehicle..")
     end
 
     local Result = exports['fw-ui']:CreateInput({
@@ -199,7 +199,7 @@ AddEventHandler("fw-bennys:Client:SwapOutfit", function(Data, Entity)
 
     local IsOwned = FW.SendCallback("fw-vehicles:Server:GetVehicleByPlate", GetVehicleNumberPlateText(Entity)) ~= nil
     if not IsOwned then
-        return FW.Functions.Notify("Kan niet bij dit voertuig..")
+        return FW.Functions.Notify("You can't save an outfit on this vehicle..")
     end
 
     local Result = exports['fw-ui']:CreateInput({
@@ -219,10 +219,10 @@ AddEventHandler("fw-bennys:Client:SwapOutfit", function(Data, Entity)
         local Meta = exports['fw-vehicles']:GetVehicleMeta(Entity, 'Outfits')
         local Outfit = Meta[Result.Slot]
         if not Outfit then
-            return FW.Functions.Notify("Je hebt geen outfit opgeslagen op slot " .. Result.Slot)
+            return FW.Functions.Notify("You don't have an outfit saved on slot " .. Result.Slot)
         end
 
-        local Finished = FW.Functions.CompactProgressbar(60000, "Outfitje swappen..", false, false, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+        local Finished = FW.Functions.CompactProgressbar(60000, "Swapping outfits..", false, false, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
         if not Finished then return end
 
         local WheelColor = GetVehicleExtraColours(Entity)
@@ -425,7 +425,7 @@ RegisterNUICallback('PurchaseUpgrade', function(Data, Cb)
 
     if Data.Menu == 'Repair' then
         if tonumber(Button.Data.Costs) > Cash then
-            return FW.Functions.Notify("Je hebt niet genoeg cash..", "error")
+            return FW.Functions.Notify("You don't have enough cash..", "error")
         end
 
         local BodyHealth = GetVehicleBodyHealth(Vehicle)
@@ -437,7 +437,7 @@ RegisterNUICallback('PurchaseUpgrade', function(Data, Cb)
         SetVehicleHandbrake(Vehicle, true)
 
         if MissingEngineHealth > 50 then
-            local Finished = FW.Functions.CompactProgressbar(5000 + (MissingEngineHealth / 50), "Motor repareren...", false, false, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+            local Finished = FW.Functions.CompactProgressbar(5000 + (MissingEngineHealth / 50), "Repairing Engine...", false, false, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
             if Finished then
                 SetVehicleEngineHealth(Vehicle, EngineHealth + MissingEngineHealth)
                 SetVehiclePetrolTankHealth(Vehicle, 1000.0)
@@ -445,7 +445,7 @@ RegisterNUICallback('PurchaseUpgrade', function(Data, Cb)
         end
 
         if MissingBodyHealth > 50 then
-            local Finished = FW.Functions.CompactProgressbar(5000 + (MissingBodyHealth / 50), "Body repareren...", false, false, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+            local Finished = FW.Functions.CompactProgressbar(5000 + (MissingBodyHealth / 50), "Repairing Body...", false, false, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
             if Finished then
                 SetVehicleDeformationFixed(Vehicle)
                 SetVehicleBodyHealth(Vehicle, BodyHealth + MissingBodyHealth)
@@ -467,16 +467,16 @@ RegisterNUICallback('PurchaseUpgrade', function(Data, Cb)
         end
     else
         if Button.Id == "Wheels" and (VehicleMods['Wheels'] == Button.Data.WheelType and VehicleMods['ModFrontWheels'] == Button.Data.ModIndex) then
-            return FW.Functions.Notify("Modificatie is al geinstalleerd..", "error")
+            return FW.Functions.Notify("Mod has already been installed..", "error")
         elseif Button.Id ~= "Wheels" and VehicleMods[Button.Id] == Button.Data.ModIndex then
-            return FW.Functions.Notify("Modificatie is al geinstalleerd..", "error")
+            return FW.Functions.Notify("Mod has already been installed..", "error")
         elseif Button.Id ~= "Wheels" and VehicleMods[Button.Data.ModType] == Button.Data.ModIndex then
-            return FW.Functions.Notify("Modificatie is al geinstalleerd..", "error")
+            return FW.Functions.Notify("Mod has already been installed..", "error")
         end
 
 
         -- if VehicleMods['Neon'] ~= nil and Button.Data.ModType == 'NeonSide' and  VehicleMods['Neon'][Button.Data.ModIndex+1] == 1 then
-        --     return FW.Functions.Notify("Modificatie is al geinstalleerd..", "error")
+        --     return FW.Functions.Notify("Mod has already been installed..", "error")
         -- end
         
         -- if VehicleMods['NeonColor'] ~= nil then
@@ -485,7 +485,7 @@ RegisterNUICallback('PurchaseUpgrade', function(Data, Cb)
         -- end
 
         -- if oldRGB ~= nil and Button.Data.ModType == 'NeonColor' and json.encode(oldRGB) == json.encode(Button.Data.ModIndex) then
-        --     return FW.Functions.Notify("Modificatie is al geinstalleerd..", "error")
+        --     return FW.Functions.Notify("Mod has already been installed..", "error")
         -- end
 
         if Button.Id == "ResprayColor" then
@@ -494,17 +494,17 @@ RegisterNUICallback('PurchaseUpgrade', function(Data, Cb)
             local DashboardColor, InteriorColor = VehicleMods['DashboardColor'], VehicleMods['InteriorColor']
 
             if CurrentRespray == 'Primary' and Button.Data.ModIndex == ColorPrimary then
-                return FW.Functions.Notify("Je auto is al gespoten in deze kleur..", "error")
+                return FW.Functions.Notify("Your car is already painted in this color..", "error")
             elseif CurrentRespray == 'Secondary' and Button.Data.ModIndex == ColorSecondary then
-                return FW.Functions.Notify("Je auto is al gespoten in deze kleur..", "error")
+                return FW.Functions.Notify("Your car is already painted in this color..", "error")
             elseif CurrentRespray == 'Dashboard' and Button.Data.ModIndex == DashboardColor then
-                return FW.Functions.Notify("Je auto is al gespoten in deze kleur..", "error")
+                return FW.Functions.Notify("Your car is already painted in this color..", "error")
             elseif CurrentRespray == 'Interior' and Button.Data.ModIndex == InteriorColor then
-                return FW.Functions.Notify("Je auto is al gespoten in deze kleur..", "error")
+                return FW.Functions.Notify("Your car is already painted in this color..", "error")
             elseif CurrentRespray == 'Pearlescent' and Button.Data.ModIndex == PearlescentColor then
-                return FW.Functions.Notify("Je auto is al gespoten in deze kleur..", "error")
+                return FW.Functions.Notify("Your car is already painted in this color..", "error")
             elseif CurrentRespray == 'WheelColor' and Button.Data.ModIndex == WheelColor then
-                return FW.Functions.Notify("Je auto is al gespoten in deze kleur..", "error")
+                return FW.Functions.Notify("Your car is already painted in this color..", "error")
             end
         end
 
@@ -515,7 +515,7 @@ RegisterNUICallback('PurchaseUpgrade', function(Data, Cb)
 
         if type(Button.Data.Costs) == 'number' and Costs > 0 and not IsAdmin then
             if Costs > Cash then
-                return FW.Functions.Notify("Je hebt niet genoeg cash..", "error")
+                return FW.Functions.Notify("You don't have enough cash..", "error")
             end
 
             FW.SendCallback("FW:RemoveCash", Costs)
@@ -579,7 +579,7 @@ RegisterNUICallback('PurchaseUpgrade', function(Data, Cb)
         local ModsSaved = FW.SendCallback("fw-bennys:Server:SaveMods", NetworkGetNetworkIdFromEntity(Vehicle), VehicleMods, Plate, Button)
         if not ModsSaved then
             -- CloseBennys()
-            FW.Functions.Notify("Er ging iets fout tijdens op opslaan van de modificaties! (Kosten: " .. Button.Data.Costs .. ")", "error", 7000)
+            FW.Functions.Notify("Something went wrong while saving the mods (Costs: " .. Button.Data.Costs .. ")", "error", 7000)
         end
 
         ::Cancel::

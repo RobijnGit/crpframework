@@ -15,7 +15,7 @@ function BuildMenu(Vehicle)
         Menu.Populate('Repair', {
             Label = "Repair",
             Id = "RepairVehicle",
-            Costs = "€" .. Costs,
+            Costs = "$" .. Costs,
             Data = {
                 Costs = Costs
             }
@@ -60,7 +60,7 @@ function BuildMenu(Vehicle)
                         Label = v.Label,
                         TargetMenu = v.TargetMenu,
                         Installed = v.Data ~= nil and IsModInstalled(Vehicle, v.Data) or nil,
-                        Costs = GetModPrice(v.Id, k) ~= nil and '€' .. GetModPrice(v.Id, k) or nil,
+                        Costs = GetModPrice(v.Id, k) ~= nil and '$' .. GetModPrice(v.Id, k) or nil,
                         Data = v.Data or {},
                     })
                 end
@@ -99,7 +99,7 @@ function BuildMenu(Vehicle)
                         Menu.Populate(Data.Id, {
                             Id = Data.Id,
                             Label = 'Stock ' .. Data.Label,
-                            Costs = "€0",
+                            Costs = "$0",
                             Installed = GetVehicleMod(Vehicle, Data.ModType) == -1,
                             Data = {
                                 Costs = 0,
@@ -118,7 +118,7 @@ function BuildMenu(Vehicle)
                             Menu.Populate(Data.Id, {
                                 Id = Data.Id,
                                 Label = ModLabel,
-                                Costs = "€" .. GetModPrice(Data.Id, (i + 1)),
+                                Costs = "$" .. GetModPrice(Data.Id, (i + 1)),
                                 Installed = GetVehicleMod(Vehicle, Data.ModType) == i,
                                 Data = {
                                     Costs = GetModPrice(Data.Id, (i + 1)),

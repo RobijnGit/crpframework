@@ -57,7 +57,7 @@ $(document).ready(function(e){
                 }
 
                 $(`.menu-${Data.Name} .menu-item[data-index="${Data.Index}"]`).find('span').remove();
-                $(`.menu-${Data.Name} .menu-item[data-index="${Data.Index}"]`).append(Data.Item.Installed ? '<span class="price installed">GEINSTALLEERD<span>' : (Data.Item.Costs != undefined ? '<span class="price">' + Data.Item.Costs + '</span>' : ''));
+                $(`.menu-${Data.Name} .menu-item[data-index="${Data.Index}"]`).append(Data.Item.Installed ? '<span class="price installed">INSTALLED<span>' : (Data.Item.Costs != undefined ? '<span class="price">' + Data.Item.Costs + '</span>' : ''));
 
                 break;
             case "UpdateMenuSecondText":
