@@ -34,7 +34,7 @@ setImmediate(() => {
             {
                 Name: "book",
                 Icon: "fas fa-book",
-                Label: "Boek Maken",
+                Label: "Write Book",
                 EventType: "Client",
                 EventName: "fw-books:Client:WriteBook",
                 EventParams: {},
@@ -45,7 +45,7 @@ setImmediate(() => {
             {
                 Name: "paper",
                 Icon: "fas fa-file",
-                Label: "Papier kopen (€130,00)",
+                Label: "Purchase Paper ($130,00)",
                 EventType: "Server",
                 EventName: "fw-books:Server:PurchasePaper",
                 EventParams: {},
@@ -54,7 +54,7 @@ setImmediate(() => {
             // {
             //     Name: "copy",
             //     Icon: "fas fa-copy",
-            //     Label: "Boek Kopiëren (€500,00)",
+            //     Label: "Copy Book ($500,00)",
             //     EventType: "Client",
             //     EventName: "fw-books:Client:CopyBook",
             //     EventParams: {},

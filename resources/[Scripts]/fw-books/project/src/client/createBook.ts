@@ -11,17 +11,17 @@ onNet("fw-books:Client:WriteBook", async (IgnorePaperRequirement: boolean = fals
     const Result = await exp['fw-ui'].CreateInput([
         {
             Icon: 'user-edit',
-            Label: 'Boek titel',
+            Label: 'Book title',
             Name: 'Title'
         },
         {
             Icon: 'image',
-            Label: 'Icoon (imgur image link)',
+            Label: 'Book Icon (imgur image link)',
             Name: 'Icon'
         },
         {
             Icon: 'image',
-            Label: 'Paginas (imgur image link, een per pagina)',
+            Label: 'Pages (imgur image link, een per pagina)',
             Name: 'PagesUrls',
             Value: [],
             _Type: "ImageList",
@@ -30,7 +30,7 @@ onNet("fw-books:Client:WriteBook", async (IgnorePaperRequirement: boolean = fals
     ]);
 
     emit("fw-emotes:Client:PlayEmote", "notepad", null, true);
-    const Finished = await FW.Functions.CompactProgressbar(10e3, "Boek schrijven..", false, true, {
+    const Finished = await FW.Functions.CompactProgressbar(10e3, "Writing a book..", false, true, {
         disableMovement: false, disableCarMovement: false, disableMouse: false, disableCombat: true
     }, {}, {}, {}, false);
     emit("fw-emotes:Client:CancelEmote", true);
@@ -39,7 +39,7 @@ onNet("fw-books:Client:WriteBook", async (IgnorePaperRequirement: boolean = fals
 
     // Check again, in case if someone decided to take it out of their inventory.
     if (!IgnorePaperRequirement && !exp['fw-inventory'].HasEnoughOfItem("paper", 1)) {
-        return FW.Functions.Notify("Je mist Papier!", "error");
+        return FW.Functions.Notify("You're missing some paper!", "error");
     };
 
     const Data = await FW.SendCallback("fw-books:Server:CreateBook", Result, IgnorePaperRequirement);

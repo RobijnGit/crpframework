@@ -8,17 +8,17 @@ FW.Functions.CreateCallback("fw-books:Server:CreateBook", async (Source: number,
     if (!Player) return;
 
     if (!ImgurRegex.test(Icon)) {
-        Player.Functions.Notify("Icoon moet een imgur PNG image zijn! (bv. https://i.imgur.com/SteKs2I.png", "error");
+        Player.Functions.Notify("Icon must be an imgur PNG image! (eg. https://i.imgur.com/SteKs2I.png", "error");
         return Cb({ Success: false });
     };
 
     if (!PagesUrls || PagesUrls.length < 1) {
-        Player.Functions.Notify("Je moet ten minste 1 pagina hebben!", "error");
+        Player.Functions.Notify("You need to atleast add one page!", "error");
         return Cb({ Success: false });
     };
 
     if (PagesUrls.some((Img) => !ImgurRegex.test(Img))) {
-        Player.Functions.Notify("Alle paginas moeten een imgur PNG image zijn! (bv. https://i.imgur.com/SteKs2I.png", "error");
+        Player.Functions.Notify("All pages must be a imgur PNG image! (bv. https://i.imgur.com/SteKs2I.png", "error");
         return Cb({ Success: false });
     };
 
@@ -53,7 +53,7 @@ onNet("fw-books:Server:PurchasePaper", () => {
     if (!Player) return;
 
     if (!Player.Functions.RemoveMoney("cash", 130)) {
-        return Player.Functions.Notify("Je hebt niet genoeg cash!", "error");
+        return Player.Functions.Notify("You don't have enough cash!", "error");
     };
 
     Player.Functions.AddItem("paper", 1, false, false, true);
