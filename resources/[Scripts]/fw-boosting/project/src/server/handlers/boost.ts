@@ -34,41 +34,41 @@ let PlateMap: {
 const JobTasks = {
     Dropoff: [
         {
-            Title: "Zoek en steel het gezochte voertuig.",
+            Title: "Search and steal the wanted vehicle.",
             Progress: 0, RequiredProgress: 1,
         },
         {
-            Title: "Zoek naar volgapparatuur en schakel ze uit.",
+            Title: "Look for the tracking device and turn it off.",
             Progress: 0, RequiredProgress: 1,
         },
         {
-            Title: "Zorg dat de politie niet in de buurt is en ga naar de drop-off.",
+            Title: "Make sure the police is not nearby and go to the drop-off.",
             Progress: 0, RequiredProgress: 1,
         },
         {
-            Title: "Parkeer het voertuig op de inleverlocatie en verlaat het gebied.",
+            Title: "Park the vehicle at the drop-off and leave the area.",
             Progress: 0, RequiredProgress: 1,
         },
     ],
     Vin: [
         {
-            Title: "Zoek en steel het gezochte voertuig.",
+            Title: "Search and steal the wanted vehicle.",
             Progress: 0, RequiredProgress: 1,
         },
         {
-            Title: "Zoek naar volgapparatuur en schakel ze uit.",
+            Title: "Look for the tracking device and turn it off.",
             Progress: 0, RequiredProgress: 1,
         },
         {
-            Title: "Zorg dat de politie niet in de buurt is en ga naar de drop-off.",
+            Title: "Make sure the police is not nearby and go to the drop-off.",
             Progress: 0, RequiredProgress: 1,
         },
         {
-            Title: "Ga naar de werkstationlaptop en wis online vin-registraties.",
+            Title: "Go to the workstation laptop and remove all online VIN-registrations.",
             Progress: 0, RequiredProgress: 1,
         },
         {
-            Title: "Ga de vin fysiek van het voertuig schrapen.",
+            Title: "Go physically scratch the VIN off from the vehicle.",
             Progress: 0, RequiredProgress: 1,
         },
     ]
@@ -84,7 +84,7 @@ export default () => {
             return Cb({
                 data: {
                     success: false,
-                    message: "Je zit niet in de queue!"
+                    message: "You are not in the queue!"
                 }
             });
         };
@@ -95,7 +95,7 @@ export default () => {
             return Cb({
                 data: {
                     success: false,
-                    message: "Je groep is niet klaar om te werken!"
+                    message: "Your group is not ready to start!"
                 }
             });
         };
@@ -114,7 +114,7 @@ export default () => {
             return Cb({
                 data: {
                     success: false,
-                    message: "Je kan dit contract niet starten.. Je hebt een limiet bereikt."
+                    message: "You can't start this contract, you've reached your limit."
                 }
             });
         }
@@ -126,7 +126,7 @@ export default () => {
             return Cb({
                 data: {
                     success: false,
-                    message: `Je hebt niet genoeg ${Contract.Crypto} in je wallet om het contract te starten!`
+                    message: `You don't have enough ${Contract.Crypto} in your wallet to start this contract!`
                 }
             });
         };
@@ -143,7 +143,7 @@ export default () => {
                 return Cb({
                     data: {
                         success: true,
-                        message: "Er ging iets mis tijdens het starten van het contract.."
+                        message: "Something went wrong while starting the contract.."
                     }
                 });
             };
@@ -189,7 +189,7 @@ export default () => {
         Cb({
             data: {
                 success: true,
-                message: "Contract gestart, instructies zijn naar je telefoon gestuurd."
+                message: "Contract started, instructions have been sent to your phone."
             }
         });
 
@@ -274,7 +274,7 @@ export default () => {
             return Cb({
                 data: {
                     succes: false,
-                    message: "Dit voertuig heeft geen tracker!"
+                    message: "This vehicle doesn't have any trackers!"
                 }
             });
         };
@@ -283,7 +283,7 @@ export default () => {
             return Cb({
                 data: {
                     success: false,
-                    message: "Nog even wachten.."
+                    message: "Wait a little more.."
                 }
             });
         };
@@ -292,7 +292,7 @@ export default () => {
             return Cb({
                 data: {
                     success: false,
-                    message: "Iemand anders is al aan het hacken..."
+                    message: "Somebody else is already hacking..."
                 }
             });
         };
@@ -329,7 +329,7 @@ export default () => {
         PlateMap[Plate].Tracker.Delay += Delay;
         PlateMap[Plate].Tracker.Cooldown = HackCooldown;
 
-        Player.Functions.Notify(`Je hebt de hack gedelayed met ${Delay} seconden!`);
+        Player.Functions.Notify(`You've delayed the tracker with ${Delay} seconds!`);
 
         const Group = exp['fw-jobmanager'].GetGroup("boosting", PlateMap[Plate].GroupId)
         const HackingProgress = (100 / TierConfigs[PlateMap[Plate].Class].Trackers) * PlateMap[Plate].Tracker.Completed;
@@ -538,7 +538,7 @@ onNet("fw-boosting:Server:CleanupBoosting", async (Contract: BoostingContract, C
             AddCryptoToPlayer(Cid, Contract.Crypto, Payout);
 
             if (Member) {
-                emit("fw-phone:Server:Mails:AddMail", "Boosting Service", `${Contract.Class}-${Cid}`, `Je ontvangt ${Payout} ${Contract.Crypto} voor het contract!`, Member.PlayerData.source);
+                emit("fw-phone:Server:Mails:AddMail", "Boosting Service", `${Contract.Class}-${Cid}`, `You've received ${Payout} ${Contract.Crypto} for the contract!`, Member.PlayerData.source);
             };
         };
 
@@ -562,7 +562,7 @@ onNet("fw-boosting:Server:ConfirmVINOrder", ({Id, Contract}: {Id: string; Contra
     if (!Player) return;
 
     if (!Player.Functions.RemoveCrypto(Contract.Crypto, Contract.ScratchPrice)) {
-        emitNet('fw-phone:Client:UpdateNotification', Source, Id, true, true, false, "Je hebt niet genoeg GNE!", true)
+        emitNet('fw-phone:Client:UpdateNotification', Source, Id, true, true, false, "You don't have enough GNE!", true)
         emitNet("fw-boosting:Client:ConfirmOrder", Source, false)
     };
 

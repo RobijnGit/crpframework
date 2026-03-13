@@ -26,7 +26,7 @@ export const GenerateContractForCid = async (Source: number, Cid: string, Classe
         GetRandom(4000000, 9000000) + new Date().getTime()
     ]);
 
-    emit("fw-phone:Server:Mails:AddMail", "Boosting Service", `${Class}-${Cid}`, `Je hebt een ${Class} contract ontvangen!`, Source);
+    emit("fw-phone:Server:Mails:AddMail", "Boosting Service", `${Class}-${Cid}`, `You've received a ${Class}-class contract!`, Source);
 };
 
 export const GetClassesFromExperience = (Experience: number, IsGenerating?: boolean): VehicleClass[] => {
@@ -87,7 +87,7 @@ export const TransferContract = async (PlayerSource: number, TargetSource: numbe
     if (TargetSource == PlayerSource) {
         return {
             success: true,
-            message: "Je hebt het contract aan jezelf overgedragen domme lul",
+            message: "You can't transfer the contract to yourself?",
             dumb: true,
         }
     };
@@ -101,6 +101,6 @@ export const TransferContract = async (PlayerSource: number, TargetSource: numbe
 
     return {
         success: true,
-        message: "Contract succesvol overgedragen!"
+        message: "Contract successfully transfered!"
     };
 };

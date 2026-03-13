@@ -31,7 +31,7 @@ ExpireThread.addHook("active", async () => {
 
         const PreviousBidder = FW.Functions.GetPlayerByCitizenId(Data.bidder);
         if (PreviousBidder) {
-            emitNet("fw-phone:Client:Notification", PreviousBidder.PlayerData.source, `boosting-auction-${Data.id}`, 'fas fa-gavel', [ 'white', '#1c305c' ], "Veiling gewonnen", `${FW.Shared.HashVehicles[GetHashKey(Data.vehicle)].Name} voor ${Data.bid} GNE.`)
+            emitNet("fw-phone:Client:Notification", PreviousBidder.PlayerData.source, `boosting-auction-${Data.id}`, 'fas fa-gavel', [ 'white', '#1c305c' ], "Auction win", `${FW.Shared.HashVehicles[GetHashKey(Data.vehicle)].Name} for ${Data.bid} GNE.`)
         };
 
         await exp['ghmattimysql'].executeSync("UPDATE `laptop_boosting` SET `cid` = ?, `auction` = 0, `auction_end` = 0, `bid` = 0, `bidder` = '1001' WHERE `id` = ?", [Data.bidder, Data.id])

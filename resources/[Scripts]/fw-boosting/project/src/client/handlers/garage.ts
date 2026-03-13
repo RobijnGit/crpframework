@@ -69,8 +69,8 @@ onNet("fw-boosting:Client:OpenContractSales", async () => {
     const ContextItems = [
         {
             Icon: "exclemation-cricle",
-            Title: "Contracten die tekoop zijn",
-            Desc: "Kom later terug voor andere opties.."
+            Title: "Contracts that are for sale",
+            Desc: "Come back later for more options.."
         }
     ];
 
@@ -81,7 +81,7 @@ onNet("fw-boosting:Client:OpenContractSales", async () => {
         ContextItems.push({
             Icon: "car",
             Title: `<div></div>`,
-            Desc: `Klasse: ${Model.Class}`
+            Desc: `Class: ${Model.Class}`
         });
     };
 
@@ -116,7 +116,7 @@ setImmediate(() => {
             {
                 Name: 'talk',
                 Icon: 'fas fa-comment',
-                Label: 'Praten',
+                Label: 'Talk',
                 EventType: 'Client',
                 EventName: 'fw-boosting:Client:OpenContractSales',
                 EventParams: {},

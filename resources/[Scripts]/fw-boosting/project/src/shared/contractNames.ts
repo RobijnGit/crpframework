@@ -119,9 +119,4 @@ export const ContractNames: string[] = [
     "SavageHunter",
     "ToxicJester",
     "SpectralFalcon",
-    "Pindakaas",
-    "VinnieDePoeh",
-    "Wasmiddel",
-    "Bananenmopper",
-    "WelBakker"
 ]

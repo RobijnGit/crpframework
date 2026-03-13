@@ -37,7 +37,7 @@ setImmediate(() => {
                 {
                     Name: "boosting-vin-laptop",
                     Icon: "fas fa-laptop",
-                    Label: "Bereid Vin Scratch voor",
+                    Label: "Prepare VIN-scratch",
                     EventType: "client",
                     EventName: "fw-boosting:Client:PrepareVIN",
                     EventParams: {},

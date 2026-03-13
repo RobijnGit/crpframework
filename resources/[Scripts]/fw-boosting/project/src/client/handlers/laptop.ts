@@ -58,7 +58,7 @@ export const AuctionContract = async (Data: any) => {
         SetContracts(Result.contracts);
     }, 100);
 
-    return { success: true, message: "Contract succesvol op de veiling aangeboden!" };
+    return { success: true, message: "Contract has succesfully been placed in the auction!" };
 };
 
 export const TransferContract = async (Data: any) => {
