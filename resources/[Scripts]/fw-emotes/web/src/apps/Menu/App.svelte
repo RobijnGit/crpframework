@@ -135,7 +135,7 @@
 {#if MenuVisible}
     <div class="menu-wrapper">
         <div class="menu-header">
-            <p>Animaties</p>
+            <p>Emotes</p>
         </div>
         <div class="menu-current">
             <p>Emotes List</p>
@@ -158,7 +158,7 @@
             />
 
             <MenuItem
-                Text={[ CurrentEmotesCategory == "Default" ? "Gedeelde Animaties" : "Normale Animaties"]}
+                Text={[ CurrentEmotesCategory == "Default" ? "Shared Emotes" : "Default Emotes"]}
                 Special={true}
                 Selected={CurrentItem == 3}
             />

@@ -1,21 +1,21 @@
 local RequestData = nil
 
 Citizen.CreateThread(function()
-    FW.AddKeybind("emotesAcceptShared", "Emotes", "Accepteer Animatieverzoek", "Y", function(IsPressed)
+    FW.AddKeybind("emotesAcceptShared", "Emotes", "Accept Emote Request", "Y", function(IsPressed)
         if not IsPressed then return end
         if not RequestData or GetGameTimer() > RequestData.ExpireTime then return end
 
-        FW.Functions.Notify("Verzoek geaccepteerd!", "success")
+        FW.Functions.Notify("Request accepted!", "success")
         FW.TriggerServer("fw-emotes:Server:RespondToRequest", true, RequestData.Requestor, RequestData.EmoteName)
 
         RequestData = nil
     end)
     
-    FW.AddKeybind("emotesRefuseShared", "Emotes", "Weiger Animatieverzoek", "N", function(IsPressed)
+    FW.AddKeybind("emotesRefuseShared", "Emotes", "Deny Emote Request", "N", function(IsPressed)
         if not IsPressed then return end
         if not RequestData or GetGameTimer() > RequestData.ExpireTime then return end
 
-        FW.Functions.Notify("Verzoek geweigerd!", "error")
+        FW.Functions.Notify("Request denied!", "error")
         FW.TriggerServer("fw-emotes:Server:RespondToRequest", false, RequestData.Requestor, RequestData.EmoteName)
 
         RequestData = nil
@@ -26,7 +26,7 @@ RegisterNetEvent("fw-emotes:Client:GiveRequestChoice")
 AddEventHandler("fw-emotes:Client:GiveRequestChoice", function(Requestor, EmoteName)
     if RequestData and RequestData.ExpireTime > GetGameTimer() then return end
 
-    FW.Functions.Notify(("Emote verzoek van ID %s: %s - Druk op %s om te accepteren, of %s om te weigeren."):format(Requestor, EmoteName, FW.GetCustomizedKey("emotesAcceptShared"), FW.GetCustomizedKey("emotesRefuseShared")), "primary", 7000)
+    FW.Functions.Notify(("Emote request from ID %s: %s - Press %s to accept, or %s to deny."):format(Requestor, EmoteName, FW.GetCustomizedKey("emotesAcceptShared"), FW.GetCustomizedKey("emotesRefuseShared")), "primary", 7000)
 
     RequestData = {Requestor = Requestor, EmoteName = EmoteName, ExpireTime = GetGameTimer() + 7000}
 end)

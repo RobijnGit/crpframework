@@ -99,7 +99,7 @@ function PlayEmote(EmoteName, OverrideData, IsForced)
 
     local Data = OverrideData or Config.Emotes[EmoteName]
     if not Data then
-        return FW.Functions.Notify("Emote '" .. EmoteName .. "' bestaat niet.", "error")
+        return FW.Functions.Notify("Emote '" .. EmoteName .. "' does not exist.", "error")
     end
 
     CancelEmote()
@@ -205,7 +205,7 @@ function PlayEmote(EmoteName, OverrideData, IsForced)
     elseif Data.Category == "Shared" then
         local Player, Distance = FW.Functions.GetClosestPlayer()
         if Player == -1 or Distance > 2.5 then
-            return FW.Functions.Notify("Niemand in de buurt. (Misschien dichterbij staan)", "error")
+            return FW.Functions.Notify("No player found. (Maybe get closer?)", "error")
         end
 
         FW.TriggerServer("fw-emotes:Server:SendRequest", Player, EmoteName)
@@ -265,10 +265,10 @@ AddEventHandler('fw-emotes:Client:OpenEmotes', function()
 
                 if GetResourceKvpInt('emotes-showHelp') ~= 1 then
                     local Coords = GetEntityCoords(PlayerPedId())
-                    DrawText3D(Coords + vector3(0, 0, 0.42), "Druk ~g~Arrow Left~s~ en ~g~Arrow Right~s~ om pagina te veranderen")
-                    DrawText3D(Coords + vector3(0, 0, 0.28), "Druk ~g~Arrow Up~s~ en ~g~Arrown Down~s~ om te navigeren")
-                    DrawText3D(Coords + vector3(0, 0, 0.14), "Druk ~g~Enter~s~ om de emote af te spelen")
-                    DrawText3D(Coords - vector3(0, 0, 0.0), "Druk ~g~Backspace~s~ om het menu te sluiten")
+                    DrawText3D(Coords + vector3(0, 0, 0.42), "Press ~g~Arrow Left~s~ amd ~g~Arrow Right~s~ to scroll pages")
+                    DrawText3D(Coords + vector3(0, 0, 0.28), "Press ~g~Arrow Up~s~ and ~g~Arrown Down~s~ too navigate")
+                    DrawText3D(Coords + vector3(0, 0, 0.14), "Press ~g~Enter~s~ to play emote")
+                    DrawText3D(Coords - vector3(0, 0, 0.0), "Press ~g~Backspace~s~ to close the menu")
                 end
                 
                 Citizen.Wait(4)

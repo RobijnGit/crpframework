@@ -2,22 +2,15 @@ local SyncedEmotes = {}
 
 FW = exports['fw-core']:GetCoreObject()
 
-FW.Commands.Add("am", "Open het animatie menu", {}, false, function(Source, Args)
+FW.Commands.Add("em", "Open Emote Menu", {}, false, function(Source, Args)
     local Player = FW.Functions.GetPlayer(Source)
     if Player == nil then return end
 
     TriggerClientEvent('fw-emotes:Client:OpenEmotes', Source)
 end)
 
-FW.Commands.Add("em", "Open het animatie menu", {}, false, function(Source, Args)
-    local Player = FW.Functions.GetPlayer(Source)
-    if Player == nil then return end
-
-    TriggerClientEvent('fw-emotes:Client:OpenEmotes', Source)
-end)
-
-FW.Commands.Add("a", "Doe een animatie, doe /am voor het menu.", {
-    { name = "emote", help = "Emote die je wilt doen" }
+FW.Commands.Add("e", "Play Emote, use /em for Emote Menu.", {
+    { name = "emote", help = "Emote you want to play" }
 }, true, function(Source, Args)
     local Player = FW.Functions.GetPlayer(Source)
     if Player == nil then return end
@@ -25,17 +18,8 @@ FW.Commands.Add("a", "Doe een animatie, doe /am voor het menu.", {
     TriggerClientEvent('fw-emotes:Client:PlayEmote', Source, Args[1]:lower())
 end)
 
-FW.Commands.Add("e", "Doe een animatie, doe /em voor het menu.", {
-    { name = "emote", help = "Emote die je wilt doen" }
-}, true, function(Source, Args)
-    local Player = FW.Functions.GetPlayer(Source)
-    if Player == nil then return end
-
-    TriggerClientEvent('fw-emotes:Client:PlayEmote', Source, Args[1]:lower())
-end)
-
-FW.Commands.Add("dance", "Eventjes lekker dansen", {
-    {name = "number", help = "een nummer of gewoon niks"}
+FW.Commands.Add("dance", "Dance", {
+    {name = "number", help = "Optional dance number"}
 }, false, function(Source, Args)
     local DanceNumber = -1
     if Args[1] ~= nil and Args[1] == 'c' then
@@ -52,7 +36,7 @@ FW.RegisterServer("fw-emotes:Server:SendRequest", function(Source, Target, Emote
     local Player = FW.Functions.GetPlayer(Source)
     if not Player then return end
 
-    Player.Functions.Notify("Verzoek verstuurd..", "success")
+    Player.Functions.Notify("Request has been sent..", "success")
 
     TriggerClientEvent("fw-emotes:Client:GiveRequestChoice", Target, Source, EmoteName)
 end)
@@ -65,7 +49,7 @@ FW.RegisterServer("fw-emotes:Server:RespondToRequest", function(Source, DidAccep
     if not Target then return end
 
     if not DidAccept then
-        Player.Functions.Notify("Verzoek was geweigerd..", "error")
+        Player.Functions.Notify("Request was denied..", "error")
         return
     end
 
