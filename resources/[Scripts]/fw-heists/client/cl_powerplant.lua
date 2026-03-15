@@ -8,7 +8,7 @@ AddEventHandler('fw-ui:Client:Target:Changed', function(Entity, EntityType, Enti
             while #(vector3(712.33, 166.22, 79.75) - GetEntityCoords(PlayerPedId())) > 6.0 do
                 Citizen.Wait(10)
             end
-            FW.Functions.Notify("Zou schandalig zijn als dit explodeerd..", "error")
+            FW.Functions.Notify("Would be a shame if this exploded right..", "error")
         end
     end
 end)

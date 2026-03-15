@@ -1,14 +1,14 @@
 RegisterNetEvent("fw-heists:Client:PickupStore")
 AddEventHandler("fw-heists:Client:PickupStore", function()
     local PlayerData = FW.Functions.GetPlayerData()
-    if PlayerData.job.name == 'police' then return FW.Functions.Notify("Ik praat niet met de wouten..", "error") end
+    if PlayerData.job.name == 'police' then return FW.Functions.Notify("I don't talk with the ops yo..", "error") end
 
     local MenuItems = {}
     MenuItems[#MenuItems + 1] = {
         Icon = 'laptop-code',
         Disabled = CurrentCops < Config.RequiredCopsPickup,
-        Title = 'Groene Laptop',
-        Desc = 'Benodigheden: €1.500, 1 Groene USB',
+        Title = 'Green Laptop',
+        Desc = 'Requirements: $1.500, 1 Green USB',
         Data = {
             Event = 'fw-heists:Server:StartPickup', Type = 'Server',
             Cash = 1500, Laptop = "green"
@@ -17,8 +17,8 @@ AddEventHandler("fw-heists:Client:PickupStore", function()
     MenuItems[#MenuItems + 1] = {
         Icon = 'laptop-code',
         Disabled = CurrentCops < Config.RequiredCopsPickup,
-        Title = 'Blauwe Laptop',
-        Desc = 'Benodigheden: €2.500, 1 Blauwe USB',
+        Title = 'Blue Laptop',
+        Desc = 'Requirements: $2.500, 1 Blue USB',
         Data = {
             Event = 'fw-heists:Server:StartPickup', Type = 'Server',
             Cash = 2500, Laptop = "blue"
@@ -27,8 +27,8 @@ AddEventHandler("fw-heists:Client:PickupStore", function()
     MenuItems[#MenuItems + 1] = {
         Icon = 'laptop-code',
         Disabled = CurrentCops < Config.RequiredCopsPickup,
-        Title = 'Rode Laptop',
-        Desc = 'Benodigheden: €3.500, 1 Rode USB',
+        Title = 'Red Laptop',
+        Desc = 'Requirements: $3.500, 1 Red USB',
         Data = {
             Event = 'fw-heists:Server:StartPickup', Type = 'Server',
             Cash = 3500, Laptop = "red"
@@ -37,8 +37,8 @@ AddEventHandler("fw-heists:Client:PickupStore", function()
     MenuItems[#MenuItems + 1] = {
         Icon = 'laptop-code',
         Disabled = CurrentCops < Config.RequiredCopsPickup,
-        Title = 'Gele Laptop',
-        Desc = 'Benodigheden: €4.500, 1 Gele USB',
+        Title = 'Yellow Laptop',
+        Desc = 'Requirements: $4.500, 1 Yellow USB',
         Data = {
             Event = 'fw-heists:Server:StartPickup', Type = 'Server',
             Cash = 4500, Laptop = "yellow"
@@ -57,7 +57,7 @@ AddEventHandler("fw-heists:Client:MarkPickupGPS", function(Coords)
     SetBlipAsShortRange(Blip, true)
     SetBlipColour(Blip, 5)
     BeginTextCommandSetBlipName("STRING")
-    AddTextComponentSubstringPlayerName("Goederen Pickup")
+    AddTextComponentSubstringPlayerName("Dead Drop")
     EndTextCommandSetBlipName(Blip)
 
     Citizen.CreateThread(function()

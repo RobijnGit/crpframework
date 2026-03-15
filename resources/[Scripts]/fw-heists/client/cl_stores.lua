@@ -4,26 +4,26 @@ local SentSafeAlert = false
 RegisterNetEvent("fw-heists:Client:Stores:RobRegister")
 AddEventHandler("fw-heists:Client:Stores:RobRegister", function(Data, Entity)
     if CurrentCops < Config.RequiredCopsStores then
-        return FW.Functions.Notify("Je kan dit nu niet doen..", "error")
+        return FW.Functions.Notify("You can't do this right now..", "error")
     end
 
     if DataManager.Get("HeistsDisabled", 0) == 1 then
-        return FW.Functions.Notify("Je kan dit nu niet doen..", "error")
+        return FW.Functions.Notify("You can't do this right now..", "error")
     end
 
     local Item = exports['fw-inventory']:GetItemByName('lockpick') or exports['fw-inventory']:GetItemByName('advlockpick')
     if not Item then
-        return FW.Functions.Notify("Je mist een lockpick..")
+        return FW.Functions.Notify("You are missing a lockpick..")
     end
 
     local RegId = GetRegisterIdByCoords(GetEntityCoords(Entity))
     if RegId == nil then
-        return FW.Functions.Notify("Deze kassa kan niet opengebroken worden..", "error")
+        return FW.Functions.Notify("This register can't be robbed..", "error")
     end
 
     local IsRegisterRobbed = FW.SendCallback("fw-heists:Server:Stores:GetRegisterState", RegId)
     if IsRegisterRobbed then
-        return FW.Functions.Notify("Deze kassa is/wordt al opengebroken..", "error")
+        return FW.Functions.Notify("This register has already been robbed..", "error")
     end
 
     if math.random() < 0.8 and not SentAlert then
@@ -48,7 +48,7 @@ AddEventHandler("fw-heists:Client:Stores:RobRegister", function(Data, Entity)
     if not Outcome then
         TriggerServerEvent("fw-heists:Server:SetRegisterState", 'Busy', RegId, false)
         exports['fw-assets']:RemoveLockpickChance(Item.Item == 'advlockpick')
-        return FW.Functions.Notify("Je bent gefaald, loser.", "error")
+        return FW.Functions.Notify("Failed, loser.", "error")
     end
 
     TriggerServerEvent("fw-heists:Server:SetRegisterState", 'Robbed', RegId, true)
@@ -59,14 +59,14 @@ RegisterNetEvent("fw-heists:Client:Stores:InspectRegister")
 AddEventHandler("fw-heists:Client:Stores:InspectRegister", function(Data, Entity)
     local RegId = GetRegisterIdByCoords(GetEntityCoords(Entity))
     if RegId == nil then
-        return FW.Functions.Notify("Ziet eruit als een kassa..", "error")
+        return FW.Functions.Notify("Looks like a cash register..", "error")
     end
 
     local IsRegisterRobbed = FW.SendCallback("fw-heists:Server:Stores:GetRegisterState", RegId)
     if IsRegisterRobbed then
-        FW.Functions.Notify("Deze kassa ziet er opengebroken uit!", "error")
+        FW.Functions.Notify("Looks like it has been robbed!", "error")
     else
-        FW.Functions.Notify("Ziet eruit als een kassa..", "success")
+        FW.Functions.Notify("Looks like a cash register..", "success")
     end
 end)
 
@@ -94,7 +94,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'heist_steal_register',
                 Icon = 'fas fa-screwdriver',
-                Label = 'Openbreken',
+                Label = 'Break!',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Stores:RobRegister',
                 EventParams = '',
@@ -109,7 +109,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'heist_check_register',
                 Icon = 'fas fa-search',
-                Label = 'Inspecteren',
+                Label = 'Inspect',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Stores:InspectRegister',
                 EventParams = '',
@@ -145,7 +145,7 @@ AddEventHandler("fw-ui:Ready", function()
                 {
                     Name = 'crack',
                     Icon = 'fas fa-user-secret',
-                    Label = 'Kluis Openbreken',
+                    Label = 'Crack Safe',
                     EventType = 'Client',
                     EventName = 'fw-heists:Client:CrackSafe',
                     EventParams = { SafeId = k },
@@ -156,7 +156,7 @@ AddEventHandler("fw-ui:Ready", function()
                 {
                     Name = 'open',
                     Icon = 'fas fa-box-open',
-                    Label = 'Kluis Openen',
+                    Label = 'Open Safe',
                     EventType = 'Server',
                     EventName = 'fw-heists:Server:RewardSafe',
                     EventParams = { SafeId = k },
@@ -179,7 +179,7 @@ AddEventHandler("fw-ui:Ready", function()
                 {
                     Name = 'close',
                     Icon = 'fas fa-lock',
-                    Label = 'Alarm Uitschakelen',
+                    Label = 'Disable Alarm',
                     EventType = 'Client',
                     EventName = 'fw-heists:Client:Stores:ResetSafe',
                     EventParams = { SafeId = k },
@@ -196,7 +196,7 @@ end)
 RegisterNetEvent("fw-heists:Client:CrackSafe")
 AddEventHandler("fw-heists:Client:CrackSafe", function(Data)
     if CurrentCops < Config.RequiredCopsStores then
-        return FW.Functions.Notify("Je kan dit nu niet doen..", "error")
+        return FW.Functions.Notify("You can't do this right now..", "error")
     end
 
     if not Data.SafeId then
@@ -205,12 +205,12 @@ AddEventHandler("fw-heists:Client:CrackSafe", function(Data)
 
     local State = FW.SendCallback("fw-heists:Server:GetSafeState", Data.SafeId)
     if State ~= 0 then
-        return FW.Functions.Notify("Je kan de kluis nu niet openbreken..")
+        return FW.Functions.Notify("You cannot break open the safe now...")
     end
 
     local Item = exports['fw-inventory']:GetItemByName("heist-safecracking")
     if not Item then
-        return FW.Functions.Notify("Je mist een Safe Cracking Tool...", "error")
+        return FW.Functions.Notify("You're missing a Safe Cracking Tool...", "error")
     end
 
     if not SentSafeAlert then
@@ -245,9 +245,9 @@ RegisterNetEvent("fw-heists:Client:Stores:InspectSafe")
 AddEventHandler("fw-heists:Client:Stores:InspectSafe", function(Data)
     local State = FW.SendCallback("fw-heists:Server:GetSafeState", Data.SafeId)
     if State ~= 0 then
-        FW.Functions.Notify("Zichtbare inbraaksporen op de kluis..", "error")
+        FW.Functions.Notify("Visible signs of forced entry on the safe..", "error")
     else
-        FW.Functions.Notify("Kluis ziet eruit als een kluis..")
+        FW.Functions.Notify("The safe looks like a safe..")
     end
 end)
 
@@ -259,5 +259,5 @@ AddEventHandler("fw-heists:Client:Stores:ResetSafe", function(Data)
     end
 
     FW.TriggerServer("fw-heists:Store:SetSafeState", Data.SafeId, 0)
-    FW.Functions.Notify("Alarm is uitgeschakeld!", "error")
+    FW.Functions.Notify("Alarm has been disabled!", "error")
 end)

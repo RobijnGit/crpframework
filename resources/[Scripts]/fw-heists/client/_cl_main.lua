@@ -39,7 +39,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'table',
                 Icon = 'fas fa-pills',
-                Label = 'Tafeltje Kopen (150 SHUNG)',
+                Label = 'Purchase Table (150 SHUNG)',
                 EventType = 'Server',
                 EventName = "fw-illegal:Server:Meth:PurchaseTable",
                 EventParams = {},
@@ -59,7 +59,7 @@ end)
 RegisterNetEvent("fw-items:Client:HeistLootTracker")
 AddEventHandler("fw-items:Client:HeistLootTracker", function(Item)
     if GetEntitySpeed(PlayerPedId()) * 3.6 < 50 then
-        return FW.Functions.Notify("Je gaat te traag om de tracker te hacken..", "error")
+        return FW.Functions.Notify("You are going too slow to hack the tracker...", "error")
     end
 
     if math.random() < 0.65 then

@@ -59,8 +59,7 @@ AddEventHandler("fw-heists:Client:Trolley:Grab", function(Data, Entity)
     end
 
     if DataManager.Get("trolley-" .. TrolleyId, 0) ~= 0 then
-
-        return FW.Functions.Notify("Dit kan je nu niet doen..", "error")
+        return FW.Functions.Notify("You can't do this right now..", "error")
     end
     
     DataManager.Set("trolley-" .. TrolleyId, 1)
@@ -160,7 +159,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'heist_trolly',
                 Icon = 'fas fa-hand-holding-usd',
-                Label = 'Meenemen!',
+                Label = 'Grab!',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Trolley:Grab',
                 EventParams = {},
@@ -179,7 +178,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'heist_trolly',
                 Icon = 'fas fa-hand-holding-usd',
-                Label = 'Meenemen!',
+                Label = 'Grab!',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Trolley:Grab',
                 EventParams = {},

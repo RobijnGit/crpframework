@@ -4,15 +4,15 @@ RegisterNetEvent("fw-items:Clent:Used:HeavyThermite")
 AddEventHandler("fw-items:Clent:Used:HeavyThermite", function()
     if #(GetEntityCoords(PlayerPedId()) - vector3(882.21, -2258.15, 30.46)) < 1.7 then
         if CurrentCops < Config.RequiredCopsBobcat or DataManager.Get("GlobalCooldown", false) == true then
-            return FW.Functions.Notify("Je kan dit nu niet doen..", "error")
+            return FW.Functions.Notify("You can't do this right now..", "error")
         end
 
         if DataManager.Get("HeistsDisabled", 0) == 1 then
-            returnFW.Functions.Notify("Je kan dit nu niet doen..", "error")
+            returnFW.Functions.Notify("You can't do this right now..", "error")
         end
     
         if DataManager.Get(GetBobcatPrefix() .. "front-doors", 0) ~= 0 then
-            return FW.Functions.Notify("Ziet er verbrand uit..", "error")
+            return FW.Functions.Notify("Looks burned..", "error")
         end
 
         if not IsWearingHandshoes() and math.random(1, 100) <= 85 then
@@ -36,7 +36,7 @@ AddEventHandler("fw-items:Clent:Used:HeavyThermite", function()
             end
 
             TriggerServerEvent('fw-doors:Server:SetLockStateById', 'BOBCAT_MAIN_3', 0)
-            TriggerServerEvent("fw-phone:Server:Mails:AddMail", "Dark Market", "#Bobcat-427", "De deuren naar kluis van de Bobcat Security worden zometeen geopend...")
+            TriggerServerEvent("fw-phone:Server:Mails:AddMail", "Dark Market", "#Bobcat-427", "The doors to the Bobcat Security vault are about to open..")
 
             Citizen.SetTimeout((1000 * 60) * 3, function()
                 TriggerServerEvent("fw-heists:Server:SpawnBobcatSecurity")
@@ -52,7 +52,7 @@ AddEventHandler('fw-items:Client:Used:Explosive', function()
     if #(GetEntityCoords(PlayerPedId()) - vector3(890.7, -2284.56, 31.15)) > 1.5 then return end
 
     if DataManager.Get(GetBobcatPrefix() .. "front-doors", 0) == 0 then
-        return FW.Functions.Notify("De kluis kan nog niet opgemaakt worden..", "error")
+        return FW.Functions.Notify("The safe cannot be opened yet..", "error")
     end
 
     local Coords = vector3(890.47, -2284.56, 30.54)
@@ -71,7 +71,7 @@ AddEventHandler('fw-items:Client:Used:Explosive', function()
     Citizen.SetTimeout(6000, function()
         exports["fw-inventory"]:SetBusyState(false)
         TriggerEvent('fw-assets:client:reset:explosion:anim')
-        FW.Functions.Notify("Rennen voor je leven!!!!")
+        FW.Functions.Notify("Run for your life!!!!")
 
         if not exports['fw-police']:IsStatusAlreadyActive('explosive') then
             TriggerEvent('fw-police:Client:SetStatus', 'explosive', 350)
@@ -111,12 +111,12 @@ RegisterNetEvent("fw-heists:Client:LootBobcatCrate")
 AddEventHandler("fw-heists:Client:LootBobcatCrate", function(Data)
     local Player, Distance = FW.Functions.GetClosestPlayer()
     if Player ~= -1 and Distance < 3.0 then
-        return FW.Functions.Notify("Er staat iemand in de buurt volgensmij..", "error")
+        return FW.Functions.Notify("I think there's someone nearby...", "error")
     end
 
     Citizen.SetTimeout(math.random(100, 500), function()
         if DataManager.Get(GetBobcatPrefix() .. "crate-" .. Data.CrateId, 0) ~= 0 then
-            return FW.Functions.Notify("Ziet er leeg uit..", "error")
+            return FW.Functions.Notify("Looks empty..", "error")
         end
 
         DataManager.Set(GetBobcatPrefix() .. "crate-" .. Data.CrateId, 1)
@@ -126,7 +126,7 @@ AddEventHandler("fw-heists:Client:LootBobcatCrate", function(Data)
 
         TriggerServerEvent('fw-ui:Server:gain:stress', math.random(6, 12))
 
-        local Finished = FW.Functions.CompactProgressbar(25000, "Beroven...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "anim@heists@ornate_bank@grab_cash_heels", anim = "grab", flags = 16 }, {}, {}, false)
+        local Finished = FW.Functions.CompactProgressbar(25000, "Robbing...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "anim@heists@ornate_bank@grab_cash_heels", anim = "grab", flags = 16 }, {}, {}, false)
         StopAnimTask(PlayerPedId(), "anim@heists@ornate_bank@grab_cash_heels", "grab", 1.0)
         DataManager.Set(GetBobcatPrefix() .. "crate-" .. Data.CrateId, Finished and 2 or 0)
 
@@ -220,7 +220,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'grab-weapons',
                 Icon = 'fas fa-circle',
-                Label = 'Pakken',
+                Label = 'Grab',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:LootBobcatCrate',
                 EventParams = {CrateId = 1},
@@ -249,7 +249,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'grab-weapons',
                 Icon = 'fas fa-circle',
-                Label = 'Pakken',
+                Label = 'Grab',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:LootBobcatCrate',
                 EventParams = {CrateId = 2},
@@ -278,7 +278,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'grab-weapons',
                 Icon = 'fas fa-circle',
-                Label = 'Pakken',
+                Label = 'Grab',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:LootBobcatCrate',
                 EventParams = {CrateId = 3},

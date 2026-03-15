@@ -5,11 +5,11 @@ RegisterNetEvent("fw-heists:Client:HQ:UseElevator")
 AddEventHandler("fw-heists:Client:HQ:UseElevator", function(Data)
     local PlayerData = FW.Functions.GetPlayerData()
     if PlayerData.job.name == 'police' then
-        return FW.Functions.Notify("Lijkt erop alsof deze lift kapot is..", "error")
+        return FW.Functions.Notify("It looks like this elevator is broken...", "error")
     end
 
     if Data.Leave then
-        local Finished = FW.Functions.CompactProgressbar(3500, "Wachten op lift...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "amb@world_human_hang_out_street@female_hold_arm@idle_a", anim = "idle_a", flags = 8, }, {}, {}, false)
+        local Finished = FW.Functions.CompactProgressbar(3500, "Waiting for elevator...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "amb@world_human_hang_out_street@female_hold_arm@idle_a", anim = "idle_a", flags = 8, }, {}, {}, false)
         StopAnimTask(PlayerPedId(),  "amb@world_human_hang_out_street@female_hold_arm@idle_a", "idle_a", 1.0)
 
         local Coords = FW.SendCallback("fw-heists:Server:GetPedCoords", "HeistHeadquartersPed")
@@ -55,10 +55,10 @@ RegisterNetEvent("fw-heists:Client:EnterHeadquarters")
 AddEventHandler("fw-heists:Client:EnterHeadquarters", function(Data)
     local Result = FW.SendCallback("fw-heists:Server:GetLevelProgression")
     if Data.Level > Result.CurrentLevel then
-        return FW.Functions.Notify("Je hebt deze level nog niet geunlocked..", "error")
+        return FW.Functions.Notify("You have not unlocked this level yet..", "error")
     end
 
-    local Finished = FW.Functions.CompactProgressbar(3500, "Wachten op lift...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "amb@world_human_hang_out_street@female_hold_arm@idle_a", anim = "idle_a", flags = 8, }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(3500, "Waiting for elevator...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "amb@world_human_hang_out_street@female_hold_arm@idle_a", anim = "idle_a", flags = 8, }, {}, {}, false)
     StopAnimTask(PlayerPedId(),  "amb@world_human_hang_out_street@female_hold_arm@idle_a", "idle_a", 1.0)
 
     if not Finished then
@@ -126,7 +126,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'elevator',
                 Icon = 'fas fa-sort',
-                Label = 'Lift',
+                Label = 'Elevator',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:HQ:UseElevator',
                 EventParams = {},
@@ -156,7 +156,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'elevator',
                 Icon = 'fas fa-sort',
-                Label = 'Lift',
+                Label = 'Elevator',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:HQ:UseElevator',
                 EventParams = { Leave = true },
@@ -186,7 +186,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'loot',
                 Icon = 'fas fa-plug',
-                Label = 'USBs Inleveren',
+                Label = 'Trade USBs',
                 EventType = 'Server',
                 EventName = 'fw-heists:Server:TradeUSBs',
                 EventParams = {},
@@ -219,7 +219,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'loot',
                 Icon = 'fas fa-donate',
-                Label = 'Loot Inleveren',
+                Label = 'Trade Loot',
                 EventType = 'Server',
                 EventName = 'fw-heists:Server:TradeLoot',
                 EventParams = {},
@@ -243,9 +243,9 @@ AddEventHandler("fw-ui:Ready", function()
         },
         Options = {
             {
-                Name = 'loot',
+                Name = 'talk',
                 Icon = 'fas fa-comment',
-                Label = 'Praten',
+                Label = 'Talk',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:HQ:CryptoShop',
                 EventParams = {},

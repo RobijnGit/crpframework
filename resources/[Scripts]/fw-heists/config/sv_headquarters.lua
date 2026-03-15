@@ -23,7 +23,7 @@ Config.Items = {
             Item = { "heist-drill-basic" }
         },
         { 
-            Title = 'Groene Laptop',
+            Title = 'Green Laptop',
             Crypto = 8,
             Icon = 'laptop',
             Item = { "heist-laptop", "green" }
@@ -50,7 +50,7 @@ Config.Items = {
             Item = { "heist-electronic-kit-adv" }
         },
         { 
-            Title = 'Blauwe Laptop',
+            Title = 'Blue Laptop',
             Crypto = 40,
             Icon = 'laptop',
             Item = { "heist-laptop", "blue"}
@@ -83,7 +83,7 @@ Config.Items = {
         --     Item = { "jammingdevice" }
         -- },
         { 
-            Title = 'Rode Laptop',
+            Title = 'Red Laptop',
             Crypto = 200,
             Icon = 'laptop',
             Item = { "heist-laptop", "red" }

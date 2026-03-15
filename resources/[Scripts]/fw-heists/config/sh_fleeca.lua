@@ -32,7 +32,7 @@ Config.FleecaOptions = {
         {
             Name = 'rob',
             Icon = 'fas fa-th',
-            Label = 'Overvallen',
+            Label = 'Rob',
             EventType = 'Client',
             EventName = 'fw-heists:Client:Fleeca:Loot',
             EventParams = {},

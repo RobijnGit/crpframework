@@ -5,21 +5,21 @@ AddEventHandler('fw-items:Clent:Used:HeavyThermite', function()
     local Entity, EntityType, EntityCoords = exports['fw-ui']:GetEntityPlayerIsLookingAt(2.0, 0.2, 286, PlayerPedId())
     if GetEntityType(Entity) == 2 and GetEntityModel(Entity) == GetHashKey("stockade") then
         if CurrentCops < Config.RequiredBanktruckCops or DataManager.Get("GlobalCooldown", false) == true then
-            return FW.Functions.Notify("Je kan dit nu niet doen..", "error")
+            return FW.Functions.Notify("You can't do this right now..", "error")
         end
 
         if DataManager.Get("HeistsDisabled", 0) == 1 then
-            return FW.Functions.Notify("Je kan dit nu niet doen..", "error")
+            return FW.Functions.Notify("You can't do this right now..", "error")
         end
     
         if not exports['fw-inventory']:HasEnoughOfItem("gruppe6", 1) then
-            return FW.Functions.Notify("Je mist een Gruppe 6 kaart..", "error")
+            return FW.Functions.Notify("You are missing a Gruppe 6 card..", "error")
         end
     
         local NetId = NetworkGetNetworkIdFromEntity(Entity)
     
         local CanRob = FW.SendCallback("fw-heists:Server:Banktruck:CanRobTruck", NetId)
-        if not CanRob then return FW.Functions.Notify("De deuren zijn al opengebrand..", "error") end
+        if not CanRob then return FW.Functions.Notify("The doors have already been burned open..", "error") end
     
         if LastTruckPlateAlert ~= GetVehicleNumberPlateText(Entity) then
             TriggerServerEvent('fw-mdw:Server:SendAlert:Banktruck', GetEntityCoords(PlayerPedId()))
@@ -86,12 +86,12 @@ AddEventHandler("fw-heists:Client:Banktruck:Setup", function(NetId)
             if Distance < 3.0 then
                 if not ShowingInteraction then
                     ShowingInteraction = true
-                    exports['fw-ui']:ShowInteraction('[E] Leegroven')
+                    exports['fw-ui']:ShowInteraction('[E] Rob')
                 end
 
                 if IsControlJustPressed(0, 38) then
                     if not CanRobTruck then
-                        FW.Functions.Notify("Nog even wachten...", "error")
+                        FW.Functions.Notify("Wait a little more...", "error")
                         goto Skip
                     end
 
@@ -107,7 +107,7 @@ AddEventHandler("fw-heists:Client:Banktruck:Setup", function(NetId)
                         exports['fw-ui']:HideInteraction()
                         exports['fw-assets']:AddProp('HeistBag')
 
-                        FW.Functions.Progressbar("rob", "Stelen..", 60000, false, true, {
+                        FW.Functions.Progressbar("rob", "Robbing..", 60000, false, true, {
                             disableMovement = true,
                             disableCarMovement = true,
                             disableMouse = false,
@@ -162,7 +162,7 @@ AddEventHandler("fw-heists:Client:Backtruck:TrackerBlip", function(x, y, z)
         SetBlipDisplay(Blip, 2)
         SetBlipFlashes(Blip, true)
         BeginTextCommandSetBlipName("STRING")
-        AddTextComponentString("10-90D - GPS-locatie")
+        AddTextComponentString("10-90D - GPS-location")
         EndTextCommandSetBlipName(Blip)
 
         while Alpha > 50 do

@@ -4,7 +4,7 @@ FW.Functions.CreateCallback("fw-heists:Server:GetLevelProgression", function(Sou
 
     local Group = exports['fw-phone']:GetPlayerGroup(Player.PlayerData.citizenid)
     if not Group or Group == nil then
-        Player.Functions.Notify("Je hebt geen TierUp! groep..", "error")
+        Player.Functions.Notify("You don't have a TierUp! group..", "error")
         return
     end
 
@@ -19,7 +19,7 @@ FW.Functions.CreateCallback("fw-heists:Server:GetLevelItems", function(Source, C
 
     local Group = exports['fw-phone']:GetPlayerGroup(Player.PlayerData.citizenid)
     if not Group or Group == nil then
-        Player.Functions.Notify("Je hebt geen TierUp! groep..", "error")
+        Player.Functions.Notify("You don't have a TierUp! group..", "error")
         return
     end
 
@@ -44,7 +44,7 @@ AddEventHandler("fw-heists:Server:PurchaseCryptoshop", function(Data)
     end
 
     if not Player.Functions.RemoveCrypto('EVD', Data.Crypto) then
-        TriggerClientEvent('fw-phone:Client:Notification', Source, "heists-crypto" .. math.random(1, 100), "fas fa-home", { "white" , "rgb(38, 50, 56)" }, "Evidentia", "Je hebt niet genoeg crypto.")
+        TriggerClientEvent('fw-phone:Client:Notification', Source, "heists-crypto" .. math.random(1, 100), "fas fa-home", { "white" , "rgb(38, 50, 56)" }, "Evidentia", "You don't have enough crypto.")
         return
     end
 
@@ -58,7 +58,7 @@ AddEventHandler("fw-heists:Server:TradeLoot", function()
     if Player == nil then return end
 
     if FW.Throttled(Player.PlayerData.citizenid .. '-heists-loot-trade', 7000) then
-        return Player.Functions.Notify("Je kan dit nu niet doen..", "error")
+        return Player.Functions.Notify("You can't do this right now..", "error")
     end
 
     local Inventory = exports['fw-inventory']:GetInventoryItemsUnproccessed('ply-' .. Player.PlayerData.citizenid)
@@ -93,7 +93,7 @@ AddEventHandler("fw-heists:Server:TradeUSBs", function()
     if Player == nil then return end
 
     if FW.Throttled(Player.PlayerData.citizenid .. '-heists-usb-trade', 7000) then
-        return Player.Functions.Notify("Je kan dit nu niet doen..", "error")
+        return Player.Functions.Notify("You can't do this right now..", "error")
     end
 
     local Inventory = exports['fw-inventory']:GetInventoryItemsUnproccessed('ply-' .. Player.PlayerData.citizenid)
@@ -106,7 +106,7 @@ AddEventHandler("fw-heists:Server:TradeUSBs", function()
     end
 
     if Player.Functions.RemoveItemByName('heist-loot-usb', TradableUsbs, false) then
-        TriggerClientEvent('fw-inventory:Client:ShowActionBox', Source, 'Ingeleverd', 'heist-loot-usb', TradableUsbs, '')
+        TriggerClientEvent('fw-inventory:Client:ShowActionBox', Source, 'Traded', 'heist-loot-usb', TradableUsbs, '')
 
         local CryptoAdded = 0
         for i = 1, TradableUsbs, 1 do
@@ -114,7 +114,7 @@ AddEventHandler("fw-heists:Server:TradeUSBs", function()
         end
 
         Player.Functions.AddCrypto('EVD', CryptoAdded)
-        TriggerClientEvent('fw-phone:Client:Notification', Source, "heists-crypto" .. math.random(1, 100), "fas fa-home", { "white" , "rgb(38, 50, 56)" }, "Crypto", CryptoAdded .." Evidentia toegevoegd!")
+        TriggerClientEvent('fw-phone:Client:Notification', Source, "heists-crypto" .. math.random(1, 100), "fas fa-home", { "white" , "rgb(38, 50, 56)" }, "Crypto", CryptoAdded .." Evidentia added!")
     end
 end)
 

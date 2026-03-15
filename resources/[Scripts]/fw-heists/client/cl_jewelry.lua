@@ -2,15 +2,15 @@ RegisterNetEvent("fw-items:Clent:Used:HeavyThermite")
 AddEventHandler("fw-items:Clent:Used:HeavyThermite", function()
     if #(GetEntityCoords(PlayerPedId()) - vector3(-596.25, -283.85, 50.32)) <= 1.5 then
         if DataManager.Get(GetJewelryPrefix() .. "powerbox", 0) == 1 then
-            return FW.Functions.Notify("Ziet er verbrand uit..", "error")
+            return FW.Functions.Notify("Looks burned..", "error")
         end
     
         if DataManager.Get("HeistsDisabled", 0) == 1 then
-            return FW.Functions.Notify("Je kan dit nu niet doen..", "error")
+            return FW.Functions.Notify("You can't do this right now..", "error")
         end
     
         if CurrentCops < Config.RequiredCopsJewelry or DataManager.Get("GlobalCooldown", false) == true then
-            return FW.Functions.Notify("Je kan dit nu niet doen..", "error")
+            return FW.Functions.Notify("You can't do this right now..", "error")
         end
     
         if not IsWearingHandshoes() and math.random(1, 100) <= 85 then
@@ -58,11 +58,11 @@ RegisterNetEvent('fw-heists:Client:Jewelry:SmashVitrine', function(Data)
     if DataManager.Get(GetJewelryPrefix() .. "powerbox", 0) ~= 1 then return end
 
     if not Config.Jewelry.Weapons[GetSelectedPedWeapon(PlayerPedId())] then
-        return FW.Functions.Notify("Met dit wapen ga je het niet redden..", "error")
+        return FW.Functions.Notify("You need a bigger weapon..", "error")
     end
 
     if DataManager.Get(GetJewelryPrefix() .. "vitrine-" .. Data.VitrineId, 0) ~= 0 then
-        return FW.Functions.Notify("Vitrinekast is al ingeslagen..", "error")
+        return FW.Functions.Notify("The display has already been smashed...", "error")
     end
 
     DataManager.Set(GetJewelryPrefix() .. "vitrine-" .. Data.VitrineId, 1)
@@ -73,7 +73,7 @@ RegisterNetEvent('fw-heists:Client:Jewelry:SmashVitrine', function(Data)
     end
 
     local Smashing = true
-    FW.Functions.Progressbar("smash_vitrine", "Juwelen jatten..", 15000, false, true, {
+    FW.Functions.Progressbar("smash_vitrine", "Stealing Jewels..", 15000, false, true, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
@@ -116,7 +116,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'hack',
                 Icon = 'fas fa-project-diagram',
-                Label = 'Hacken',
+                Label = 'Hack',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Jewelry:HackSecurity',
                 EventParams = {},
@@ -144,7 +144,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'smash_jewelry_vitrine',
                 Icon = 'fas fa-circle',
-                Label = 'Slaan!',
+                Label = 'Smash!',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Jewelry:SmashVitrine',
                 EventParams = { VitrineId = 1 },
@@ -172,7 +172,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'smash_jewelry_vitrine',
                 Icon = 'fas fa-circle',
-                Label = 'Slaan!',
+                Label = 'Smash!',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Jewelry:SmashVitrine',
                 EventParams = { VitrineId = 2 },
@@ -200,7 +200,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'smash_jewelry_vitrine',
                 Icon = 'fas fa-circle',
-                Label = 'Slaan!',
+                Label = 'Smash!',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Jewelry:SmashVitrine',
                 EventParams = { VitrineId = 3 },
@@ -228,7 +228,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'smash_jewelry_vitrine',
                 Icon = 'fas fa-circle',
-                Label = 'Slaan!',
+                Label = 'Smash!',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Jewelry:SmashVitrine',
                 EventParams = { VitrineId = 4 },
@@ -256,7 +256,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'smash_jewelry_vitrine',
                 Icon = 'fas fa-circle',
-                Label = 'Slaan!',
+                Label = 'Smash!',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Jewelry:SmashVitrine',
                 EventParams = { VitrineId = 5 },
@@ -284,7 +284,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'smash_jewelry_vitrine',
                 Icon = 'fas fa-circle',
-                Label = 'Slaan!',
+                Label = 'Smash!',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Jewelry:SmashVitrine',
                 EventParams = { VitrineId = 6 },
@@ -312,7 +312,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'smash_jewelry_vitrine',
                 Icon = 'fas fa-circle',
-                Label = 'Slaan!',
+                Label = 'Smash!',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Jewelry:SmashVitrine',
                 EventParams = { VitrineId = 7 },
@@ -340,7 +340,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'smash_jewelry_vitrine',
                 Icon = 'fas fa-circle',
-                Label = 'Slaan!',
+                Label = 'Smash!',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Jewelry:SmashVitrine',
                 EventParams = { VitrineId = 8 },
@@ -368,7 +368,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'smash_jewelry_vitrine',
                 Icon = 'fas fa-circle',
-                Label = 'Slaan!',
+                Label = 'Smash!',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Jewelry:SmashVitrine',
                 EventParams = { VitrineId = 9 },
@@ -396,7 +396,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'smash_jewelry_vitrine',
                 Icon = 'fas fa-circle',
-                Label = 'Slaan!',
+                Label = 'Smash!',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Jewelry:SmashVitrine',
                 EventParams = { VitrineId = 10 },
@@ -424,7 +424,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'smash_jewelry_vitrine',
                 Icon = 'fas fa-circle',
-                Label = 'Slaan!',
+                Label = 'Smash!',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Jewelry:SmashVitrine',
                 EventParams = { VitrineId = 11 },
@@ -452,7 +452,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'smash_jewelry_vitrine',
                 Icon = 'fas fa-circle',
-                Label = 'Slaan!',
+                Label = 'Smash!',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Jewelry:SmashVitrine',
                 EventParams = { VitrineId = 12 },
@@ -480,7 +480,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'smash_jewelry_vitrine',
                 Icon = 'fas fa-circle',
-                Label = 'Slaan!',
+                Label = 'Smash!',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:Jewelry:SmashVitrine',
                 EventParams = { VitrineId = 13 },

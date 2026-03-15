@@ -4,19 +4,19 @@ RegisterNetEvent("fw-items:Clent:Used:HeavyThermite")
 AddEventHandler("fw-items:Clent:Used:HeavyThermite", function()
     if InsidePowerbox then
         if CurrentCops < Config.RequiredVaultCops or DataManager.Get("GlobalCooldown", false) == true then
-            return FW.Functions.Notify("Je kan dit nu niet doen..", "error")
+            return FW.Functions.Notify("You can't do this right now..", "error")
         end
 
         if DataManager.Get("HeistsDisabled", 0) == 1 then
-            return FW.Functions.Notify("Je kan dit nu niet doen..", "error")
+            return FW.Functions.Notify("You can't do this right now..", "error")
         end    
     
         if not exports['fw-sync']:BlackoutActive() then
-            return FW.Functions.Notify("Je ziet een alarm zitten op het kastje die gekoppelt lijkt te zijn met het stroomnetwerk..", "error")
+            return FW.Functions.Notify("You can see an alarm on the power box that appears to be connected to the power grid...", "error")
         end
     
         if DataManager.Get(GetVaultPrefix() .. "powerbox", 0) == 1 then
-            return FW.Functions.Notify("Ziet er verbrand uit..", "error")
+            return FW.Functions.Notify("Looks burned..", "error")
         end
     
         if not IsWearingHandshoes() and math.random(1, 100) <= 85 then
@@ -46,11 +46,11 @@ end)
 RegisterNetEvent("fw-heists:Client:Vault:OpenLaptop")
 AddEventHandler("fw-heists:Client:Vault:OpenLaptop", function(Data)
     if DataManager.Get(GetVaultPrefix() .. "powerbox", 0) ~= 1 then
-        return FW.Functions.Notify("Schakel eerst de elektriciteitskast uit..", "error")
+        return FW.Functions.Notify("First switch off the power box..", "error")
     end
 
     local Item = exports["fw-inventory"]:GetItemByName('heist-electronic-kit-hard')
-    if Item == nil then return FW.Functions.Notify("Je mist een Hardened Electronic Kit..", "error") end
+    if Item == nil then return FW.Functions.Notify("You're missing a Hardened Electronic Kit..", "error") end
     TriggerServerEvent('fw-inventory:Server:DecayItem', 'heist-electronic-kit-hard', Item.Slot, 25.0)
 
     local GameData = FW.SendCallback("fw-heists:Server:Vault:GetCodeData", Data.Id)
@@ -62,11 +62,11 @@ end)
 RegisterNetEvent("fw-heists:Client:Vault:HackMainOffice")
 AddEventHandler("fw-heists:Client:Vault:HackMainOffice", function()
     if DataManager.Get(GetVaultPrefix() .. "powerbox", 0) ~= 1 then
-        return FW.Functions.Notify("Ziet er verbrand uit..", "error")
+        return FW.Functions.Notify("Looks burned..", "error")
     end
 
     local Item = exports["fw-inventory"]:GetItemByName('heist-decrypter-hard')
-    if Item == nil then return FW.Functions.Notify("Je mist een Hardened Decrypter..", "error") end
+    if Item == nil then return FW.Functions.Notify("You're missing a Hardened Decrypter..", "error") end
     TriggerServerEvent('fw-inventory:Server:DecayItem', 'heist-decrypter-hard', Item.Slot, 33.0)
 
     local Success = exports['fw-ui']:StartUntangle({
@@ -83,13 +83,13 @@ end)
 RegisterNetEvent("fw-heists:Client:Vault:CrackSafe")
 AddEventHandler("fw-heists:Client:Vault:CrackSafe", function()
     if DataManager.Get(GetVaultPrefix() .. "powerbox", 0) ~= 1 then
-        return FW.Functions.Notify("Schakel eerst de elektriciteitskast uit..", "error")
+        return FW.Functions.Notify("First switch off the power box..", "error")
     end
     if DataManager.Get(GetVaultPrefix() .. "vault-office", 0) ~= 1 then return end
     if DataManager.Get(GetVaultPrefix() .. "office-safe", 0) == 1 then return end
 
     local Item = exports["fw-inventory"]:GetItemByName('heist-safecracking')
-    if Item == nil then return FW.Functions.Notify("Je mist een Safe Cracking Tool..", "error") end
+    if Item == nil then return FW.Functions.Notify("You're missing a Safe Cracking Tool..", "error") end
     TriggerServerEvent('fw-inventory:Server:DecayItem', 'heist-safecracking', Item.Slot, 33.0)
 
     if not IsWearingHandshoes() and math.random(1, 100) <= 85 then
@@ -110,7 +110,7 @@ end)
 RegisterNetEvent("fw-heists:Client:Vault:EnterPassword")
 AddEventHandler("fw-heists:Client:Vault:EnterPassword", function()
     if DataManager.Get(GetVaultPrefix() .. "powerbox", 0) ~= 1 then
-        return FW.Functions.Notify("Schakel eerst de elektriciteitskast uit..", "error")
+        return FW.Functions.Notify("First switch off the power box..", "error")
     end
     if DataManager.Get(GetVaultPrefix() .. "vault-office", 0) ~= 1 then return end
 
@@ -129,11 +129,11 @@ end)
 RegisterNetEvent("fw-heists:Client:Vault:HackVaultGate")
 AddEventHandler("fw-heists:Client:Vault:HackVaultGate", function()
     if DataManager.Get(GetVaultPrefix() .. "powerbox", 0) ~= 1 then
-        return FW.Functions.Notify("Schakel eerst de elektriciteitskast uit..", "error")
+        return FW.Functions.Notify("First switch off the power box..", "error")
     end
 
     local Item = exports["fw-inventory"]:GetItemByName('heist-laptop', 'red')
-    if Item == nil then return FW.Functions.Notify("Dit lijkt niet de goeie laptop te zijn..", "error") end
+    if Item == nil then return FW.Functions.Notify("This doesn't seem to be the right laptop..", "error") end
 
     TriggerServerEvent('fw-inventory:Server:DecayItem', 'heist-laptop', Item.Slot, 33.33)
 
@@ -153,12 +153,12 @@ end)
 RegisterNetEvent("fw-heists:Client:Vault:DecryptBottomVault")
 AddEventHandler("fw-heists:Client:Vault:DecryptBottomVault", function(Data)
     if DataManager.Get(GetVaultPrefix() .. "powerbox", 0) ~= 1 then
-        return FW.Functions.Notify("Schakel eerst de elektriciteitskast uit..", "error")
+        return FW.Functions.Notify("First switch off the power box..", "error")
     end
     if DataManager.Get(GetVaultPrefix() .. "vault-upper", 0) ~= 1 then return end
 
     local Item = exports["fw-inventory"]:GetItemByName('heist-decrypter-hard')
-    if Item == nil then return FW.Functions.Notify("Je mist een Hardened Decrypter..", "error") end
+    if Item == nil then return FW.Functions.Notify("You're missing a Hardened Decrypter..", "error") end
     TriggerServerEvent('fw-inventory:Server:DecayItem', 'heist-decrypter-hard', Item.Slot, 33.0)
 
     if not IsWearingHandshoes() and math.random(1, 100) <= 85 then
@@ -194,7 +194,7 @@ end)
 RegisterNetEvent("fw-heists:Client:Vault:HackEletrical")
 AddEventHandler("fw-heists:Client:Vault:HackEletrical", function()
     if DataManager.Get(GetVaultPrefix() .. "powerbox", 0) ~= 1 then
-        return FW.Functions.Notify("Schakel eerst de elektriciteitskast uit..", "error")
+        return FW.Functions.Notify("First switch off the power box..", "error")
     end
     if DataManager.Get(GetVaultPrefix() .. "vault-upper", 0) ~= 1 then return end
     if DataManager.Get(GetVaultPrefix() .. "vault-gate-hacked", 0) ~= 1 then return end
@@ -207,7 +207,7 @@ AddEventHandler("fw-heists:Client:Vault:HackEletrical", function()
     if not Success then return end
 
     DataManager.Set(GetVaultPrefix() .. "lasers-hacked", 1)
-    TriggerServerEvent("fw-phone:Server:Mails:AddMail", "Dark Market", "#Vault-90", "Je hebt 10 minuten voordat de generator weer werkt en de lasers weer aan staan!")
+    TriggerServerEvent("fw-phone:Server:Mails:AddMail", "Dark Market", "#Vault-90", "You have 10 minutes before the generator works again and the lasers are back on!")
     FW.TriggerServer("fw-heists:Server:Vault:StartLasers")
 end)
 
@@ -218,7 +218,7 @@ AddEventHandler("fw-heists:Client:Vault:HackVault", function(Data)
     end
 
     if DataManager.Get(GetVaultPrefix() .. "powerbox", 0) ~= 1 then
-        return FW.Functions.Notify("Schakel eerst de elektriciteitskast uit..", "error")
+        return FW.Functions.Notify("First switch off the power box..", "error")
     end
 
     if DataManager.Get(GetVaultPrefix() .. "vault-upper", 0) ~= 1 then return end
@@ -226,7 +226,7 @@ AddEventHandler("fw-heists:Client:Vault:HackVault", function(Data)
     if DataManager.Get(GetVaultPrefix() .. "lasers-hacked", 0) ~= 1 then return end
 
     local Item = exports["fw-inventory"]:GetItemByName('heist-decrypter-hard')
-    if Item == nil then return FW.Functions.Notify("Je mist een Hardened Decrypter..", "error") end
+    if Item == nil then return FW.Functions.Notify("You're missing a Hardened Decrypter..", "error") end
     TriggerServerEvent('fw-inventory:Server:DecayItem', 'heist-decrypter-hard', Item.Slot, 33.0)
 
     if not IsWearingHandshoes() and math.random(1, 100) <= 85 then
@@ -236,7 +236,7 @@ AddEventHandler("fw-heists:Client:Vault:HackVault", function(Data)
     TriggerServerEvent('fw-ui:Server:gain:stress', math.random(6, 12))
 
     local Item = exports["fw-inventory"]:GetItemByName('heist-keycard-vault')
-    if Item == nil then return FW.Functions.Notify("Je mist een Keycard..", "error") end
+    if Item == nil then return FW.Functions.Notify("You're missing a Keycard..", "error") end
 
     local Success = exports['fw-ui']:StartUntangle({
         Dots = 10,
@@ -261,7 +261,7 @@ AddEventHandler("fw-heists:Client:Vault:HackBigVault", function(Data)
     end
     
     if DataManager.Get(GetVaultPrefix() .. "powerbox", 0) ~= 1 then
-        return FW.Functions.Notify("Schakel eerst de elektriciteitskast uit..", "error")
+        return FW.Functions.Notify("First switch off the power box..", "error")
     end
     
     if DataManager.Get(GetVaultPrefix() .. "vault-upper", 0) ~= 1 then return end
@@ -273,19 +273,19 @@ AddEventHandler("fw-heists:Client:Vault:HackBigVault", function(Data)
     end
 
     local Item = exports["fw-inventory"]:GetItemByName('heist-laptop', 'red')
-    if Item == nil then return FW.Functions.Notify("Dit lijkt niet de goeie laptop te zijn..", "error") end
+    if Item == nil then return FW.Functions.Notify("This doesn't seem to be the right laptop..", "error") end
 
     TriggerServerEvent('fw-inventory:Server:DecayItem', 'heist-laptop', Item.Slot, 33.33)
 
     local Result = exports['fw-ui']:CreateInput({
-        { Label = "Beveiligingscode", Icon = 'fas fa-code', Name = "Code" }
+        { Label = "Security Code", Icon = 'fas fa-code', Name = "Code" }
     })
 
     TriggerServerEvent('fw-ui:Server:gain:stress', math.random(6, 12))
 
     local IsCodeCorrect = FW.SendCallback("fw-heists:Server:Vault:IsSecurityCodeCorrect", Result.Code)
     if not IsCodeCorrect then
-        return FW.Functions.Notify("Toegang geweigerd.", "error")
+        return FW.Functions.Notify("Access denied.", "error")
     end
 
     local Success = ShapeMinigame(13, 6, 6)
@@ -302,7 +302,7 @@ end)
 RegisterNetEvent("fw-heists:Client:Vault:UseKeycard")
 AddEventHandler("fw-heists:Client:Vault:UseKeycard", function()
     local Item = exports["fw-inventory"]:GetItemByName('heist-entrykeycard')
-    if Item == nil then return FW.Functions.Notify("Je mist een Keycard..", "error") end
+    if Item == nil then return FW.Functions.Notify("You're missing a Keycard..", "error") end
 
     local DidRemove = FW.SendCallback("FW:RemoveItem", "heist-entrykeycard", 1)
     if not DidRemove then return end
@@ -323,7 +323,7 @@ AddEventHandler("fw-heists:Client:Vault:Loot", function(Data)
     end
 
     if DataManager.Get(GetVaultPrefix() .. "powerbox", 0) ~= 1 then
-        return FW.Functions.Notify("Schakel eerst de elektriciteitskast uit..", "error")
+        return FW.Functions.Notify("First switch off the power box..", "error")
     end
     if DataManager.Get(GetVaultPrefix() .. "vault-upper", 0) ~= 1 then return end
     if DataManager.Get(GetVaultPrefix() .. "vault-gate-hacked", 0) ~= 1 then return end
@@ -332,7 +332,7 @@ AddEventHandler("fw-heists:Client:Vault:Loot", function(Data)
     if DataManager.Get(GetVaultPrefix() .. "loot-"..Data.Id, 0) ~= 0 then return end
 
     if not exports['fw-inventory']:HasEnoughOfItem('heist-drill-hard', 1) then
-        return FW.Functions.Notify("Je mist een boormachine..", "error")
+        return FW.Functions.Notify("You're missing a drill..", "error")
     end
 
     if not IsWearingHandshoes() and math.random(1, 100) <= 85 then
@@ -375,7 +375,7 @@ Citizen.CreateThread(function()
         InsidePowerbox = IsInside
 
         if IsInside then
-            exports['fw-ui']:ShowInteraction('Elektriciteitskast')
+            exports['fw-ui']:ShowInteraction('Power Box')
         else
             exports['fw-ui']:HideInteraction()
         end

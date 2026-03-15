@@ -28,7 +28,7 @@ AddEventHandler("fw-heists:Server:Paleto:CorrectCode", function(Panel)
     PaletoPanels[Panel] = true
 
     if PaletoPanels[1] and PaletoPanels[2] then
-        Player.Functions.Notify("Kluis alarm succesvol uitgeschakeld...", "error")
+        Player.Functions.Notify("Vault alarm successfully deactivated...", "error")
         Config.Paleto.State = 3
         TriggerClientEvent("fw-heists:Client:SyncPaleto", -1, Config.Paleto)
     end
@@ -98,7 +98,7 @@ AddEventHandler("fw-heists:Server:Paleto:GrabUSB", function(Data, Entity)
     end
 
     if (not PaletoObjects[USBId]) or (not DoesEntityExist(PaletoObjects[USBId])) then
-        return Player.Functions.Notify("Deze USB is al opgepakt..", "error")
+        return Player.Functions.Notify("This USB already has been picked up..", "error")
     end
 
     DeleteEntity(PaletoObjects[USBId])

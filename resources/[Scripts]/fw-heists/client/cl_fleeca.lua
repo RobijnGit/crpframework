@@ -4,15 +4,15 @@ RegisterNetEvent("fw-items:Clent:Used:HeavyThermite")
 AddEventHandler("fw-items:Clent:Used:HeavyThermite", function()
     if FleecaPowerBox then
         if DataManager.Get(GetFleecaPrefix(FleecaPowerBox) .. "powerbox", 0) == 1 then
-            return FW.Functions.Notify("Ziet er verbrand uit..", "error")
+            return FW.Functions.Notify("Looks burned..", "error")
         end
 
         if DataManager.Get("HeistsDisabled", 0) == 1 then
-            returnFW.Functions.Notify("Je kan dit nu niet doen..", "error")
+            returnFW.Functions.Notify("You can't do this right now..", "error")
         end
     
         if CurrentCops < Config.RequiredCopsFleeca or DataManager.Get("GlobalCooldown", false) == true then
-            return FW.Functions.Notify("Je kan dit nu niet doen..", "error")
+            return FW.Functions.Notify("You can't do this right now..", "error")
         end
 
         if not IsWearingHandshoes() and math.random(1, 100) <= 85 then
@@ -50,19 +50,19 @@ AddEventHandler("fw-heists:Client:HeistLaptopUsed", function(Laptop)
     end
 
     if DataManager.Get(GetFleecaPrefix(FleecaId) .. "vault", 0) == 1 then
-        return FW.Functions.Notify("Iemand is al aan het hacken!", "error")
+        return FW.Functions.Notify("Someone is already hacking!", "error")
     end
 
     if DataManager.Get(GetFleecaPrefix(FleecaId) .. "vault", 0) == 2 then
-        return FW.Functions.Notify("Beveiligingssysteem is al gehackt!", "error")
+        return FW.Functions.Notify("Security system has already been hacked!", "error")
     end
 
     local Item = exports["fw-inventory"]:GetItemByName('heist-laptop', 'green')
-    if Item == nil or Laptop ~= "green" then return FW.Functions.Notify("Dit lijkt niet de goeie laptop te zijn..", "error") end
+    if Item == nil or Laptop ~= "green" then return FW.Functions.Notify("This does not seem to be the right laptop...", "error") end
 
     -- Is the power box outside hacked?
     if DataManager.Get(GetFleecaPrefix(FleecaId) .. "powerbox", 0) == 0 then
-        return FW.Functions.Notify("Schakel eerst het elektriciteitskastje uit!", "error")
+        return FW.Functions.Notify("First switch off the power box!", "error")
     end
 
     if DataManager.Get(GetFleecaPrefix(FleecaId) .. "door-lockpicked", 0) == 0 then
@@ -102,7 +102,7 @@ AddEventHandler("fw-items:Client:UseLockpick", function(IsAdvanced)
     exports['fw-vehicles']:LoopAnimation(false)
 
     if not Outcome then
-        FW.Functions.Notify("Gefaald..", "error")
+        FW.Functions.Notify("Failed..", "error")
         exports['fw-assets']:RemoveLockpickChance(IsAdvanced)
         return
     end
@@ -127,15 +127,15 @@ AddEventHandler("fw-heists:Client:Fleeca:HackGate", function()
     end
 
     if DataManager.Get(GetFleecaPrefix(FleecaId) .. "vault-gate", 0) == 1 then
-        return FW.Functions.Notify("Iemand is al aan het hacken!", "error")
+        return FW.Functions.Notify("Someone is already hacking!", "error")
     end
 
     if DataManager.Get(GetFleecaPrefix(FleecaId) .. "vault-gate", 0) == 2 then
-        return FW.Functions.Notify("Beveiligingssysteem is al gehackt!", "error")
+        return FW.Functions.Notify("Security system has already been hacked!", "error")
     end
 
     if not exports['fw-inventory']:HasEnoughOfItem('heist-decrypter-basic', 1) then
-        return FW.Functions.Notify("Je mist een Basic Decrypter!", "Error")
+        return FW.Functions.Notify("You are missing a Basic Decrypter!", "Error")
     end
 
     TriggerServerEvent('fw-inventory:Server:DecayItem', 'heist-decrypter-basic', nil, 33.33)
@@ -183,7 +183,7 @@ AddEventHandler("fw-heists:Client:Fleeca:Loot", function(Data)
     end
 
     if DataManager.Get(GetFleecaPrefix(FleecaId) .. "loot-" .. Data.SafeId, 0) ~= 0 then
-        return FW.Functions.Notify("Iemand is al aan het looten!")
+        return FW.Functions.Notify("Someone is already robbing the safe!")
     end
 
     if not exports['fw-inventory']:HasEnoughOfItem('heist-drill-basic', 1) then
@@ -213,7 +213,7 @@ AddEventHandler("fw-heists:Client:Fleeca:Loot", function(Data)
     end
 
     if DataManager.Get(GetFleecaPrefix(FleecaId) .. "loot-" .. Data.SafeId, 0) == 2 then
-        return FW.Functions.Notify("Loot is al beroofd!")
+        return FW.Functions.Notify("Safe is already empty!")
     end
 
     DataManager.Set(GetFleecaPrefix(FleecaId) .. "loot-" .. Data.SafeId, 2)
@@ -277,7 +277,7 @@ Citizen.CreateThread(function()
         }, function(IsInside, Zone, Points)
             if IsInside then
                 FleecaPowerBox = Zone.data.FleecaId
-                exports['fw-ui']:ShowInteraction('Elektriciteitskast')
+                exports['fw-ui']:ShowInteraction('Power Box')
             else
                 FleecaPowerBox = false
                 exports['fw-ui']:HideInteraction()

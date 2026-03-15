@@ -13,7 +13,7 @@ AddEventHandler("fw-ui:Ready", function()
                 {
                     Name = 'search',
                     Icon = 'fas fa-money-bill-wave',
-                    Label = 'Zoeken naar Cash',
+                    Label = 'Search for Cash',
                     EventType = 'Client',
                     EventName = 'fw-heists:Client:SearchATM',
                     EventParams = {},
@@ -25,7 +25,7 @@ AddEventHandler("fw-ui:Ready", function()
                 {
                     Name = 'pickup',
                     Icon = 'fas fa-level-up fa-flip-horizontal',
-                    Label = 'Pin Automaat Oppakken',
+                    Label = 'Pickup ATM',
                     EventType = 'Client',
                     EventName = 'fw-heists:Client:PickupATM',
                     EventParams = {},
@@ -42,15 +42,15 @@ end)
 RegisterNetEvent("fw-heists:Client:AttachRope")
 AddEventHandler("fw-heists:Client:AttachRope", function(Data, Entity)
     if CurrentCops < 2 then
-        return FW.Functions.Notify("Je kan dit nu niet doen..", "error")
+        return FW.Functions.Notify("You can't do this right now..", "error")
     end
 
     if DataManager.Get("HeistsDisabled", 0) == 1 then
-        return FW.Functions.Notify("Je kan dit nu niet doen..", "error")
+        return FW.Functions.Notify("You can't do this right now..", "error")
     end
 
     -- if not IsAtmNearCity(GetEntityCoords(Entity)) then
-    --     return FW.Functions.Notify("Hier kan je niks trekken, behalve jezelf..", "error")
+    --     return FW.Functions.Notify(You can't pull anything here, except yourself...", "error")
     -- end
 
     if IsAttachingRope then
@@ -59,7 +59,7 @@ AddEventHandler("fw-heists:Client:AttachRope", function(Data, Entity)
 
     TaskTurnPedToFaceEntity(PlayerPedId(), Entity, 1000)
     Citizen.Wait(1000)
-    local Finished = FW.Functions.CompactProgressbar(8000, "Sleeptouw koppelen..", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "mini@repair", anim = "fixing_a_ped", flags = 1 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(8000, "Attaching Rope..", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "mini@repair", anim = "fixing_a_ped", flags = 1 }, {}, {}, false)
     StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
 
     if not Finished then return end
@@ -76,7 +76,7 @@ AddEventHandler("fw-heists:Client:DetachRope", function(Data, Entity)
 
     TaskTurnPedToFaceEntity(PlayerPedId(), Entity, 1000)
     Citizen.Wait(1000)
-    local Finished = FW.Functions.CompactProgressbar(8000, "Sleeptouw ontkoppelen..", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "mini@repair", anim = "fixing_a_ped", flags = 1 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(8000, "Detaching Rope..", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "mini@repair", anim = "fixing_a_ped", flags = 1 }, {}, {}, false)
     StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
 
     if not Finished then return end
@@ -99,12 +99,12 @@ AddEventHandler("fw-heists:Client:AttachATM", function(Data, Entity)
 
     local IsATMCooldown = FW.SendCallback("fw-heists:Server:IsATMRobbed", GetEntityCoords(Entity))
     if IsATMCooldown then
-        return FW.Functions.Notify("Deze pin automaat lijkt al gesloopt te zijn..", "error")
+        return FW.Functions.Notify("This ATM appears to have already been vandalized...", "error")
     end
 
     TaskTurnPedToFaceEntity(PlayerPedId(), Entity, 1000)
     Citizen.Wait(1000)
-    local Finished = FW.Functions.CompactProgressbar(20000, "Sleeptouw koppelen..", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "mini@repair", anim = "fixing_a_ped", flags = 1 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(20000, "Attaching Rope..", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "mini@repair", anim = "fixing_a_ped", flags = 1 }, {}, {}, false)
     StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
 
     if not Finished then return end
@@ -228,7 +228,7 @@ AddEventHandler("fw-heists:Client:SearchATM", function(Data, Entity)
     TaskTurnPedToFaceEntity(PlayerPedId(), Entity, 1000)
     
     Citizen.Wait(1000)
-    local Finished = FW.Functions.CompactProgressbar(10000, "Pinautomaat doorzoeken..", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "amb@world_human_bum_wash@male@low@idle_a", anim = "idle_a", flags = 1 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(10000, "Searching ATM..", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "amb@world_human_bum_wash@male@low@idle_a", anim = "idle_a", flags = 1 }, {}, {}, false)
     StopAnimTask(PlayerPedId(), "amb@world_human_bum_wash@male@low@idle_a", "idle_a", 1.0)
 
     if not Finished then
@@ -242,7 +242,7 @@ RegisterNetEvent("fw-heists:Client:PickupATM")
 AddEventHandler("fw-heists:Client:PickupATM", function(Data, Entity)
     TaskTurnPedToFaceEntity(PlayerPedId(), Entity, 1000)
     Citizen.Wait(1000)
-    local Finished = FW.Functions.CompactProgressbar(3000, "Pinautomaat oppakken..", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "amb@world_human_bum_wash@male@low@idle_a", anim = "idle_a", flags = 1 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(3000, "Picking up ATM..", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "amb@world_human_bum_wash@male@low@idle_a", anim = "idle_a", flags = 1 }, {}, {}, false)
     StopAnimTask(PlayerPedId(), "amb@world_human_bum_wash@male@low@idle_a", "idle_a", 1.0)
     if not Finished then return end
 
