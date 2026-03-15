@@ -6,20 +6,20 @@ AddEventHandler("fw-graffiti:Client:ScrubGraffiti", function(Data, Entity)
     if exports['fw-progressbar']:GetTaskBarStatus() then return end
 
     if not exports['fw-inventory']:HasEnoughOfItem('scrubbingcloth', 1) then
-        return FW.Functions.Notify("Je hebt een schrobdoek nodig..", "error")
+        return FW.Functions.Notify("You need a scrubbing cloth..", "error")
     end
 
     local Graffiti = Config.NearbyGraffitis[Entity]
-    if not Graffiti then return FW.Functions.Notify("De graffiti lijkt op kinderverf..", "error") end
+    if not Graffiti then return FW.Functions.Notify("The graffiti looks like children's paint..", "error") end
 
     local Spray = Config.Sprays[Graffiti.Type]
-    if not Spray then return FW.Functions.Notify("De graffiti lijkt op kinderverf..", "error") end
+    if not Spray then return FW.Functions.Notify("The graffiti looks like children's paint..", "error") end
 
     local CanBeScrubbed = not Spray.IsGang
     if Spray.IsGang then CanBeScrubbed = FW.SendCallback("fw-graffiti:Server:IsGangOnline", Graffiti.Type) end
 
     if not CanBeScrubbed then
-        return FW.Functions.Notify("Je kan dit nu niet doen, probeer het later nog eens.")
+        return FW.Functions.Notify("You cannot do this now, try again later.")
     end
 
     if Spray.IsGang and CanBeScrubbed then
@@ -30,7 +30,7 @@ AddEventHandler("fw-graffiti:Client:ScrubGraffiti", function(Data, Entity)
     if not DidRemove then return end
 
 	TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_MAID_CLEAN", 0, true)
-    local Finished = FW.Functions.CompactProgressbar((60000) * 4, "Schrob, schrob, schrob 🧽💦", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar((60000) * 4, "Scrub, scrub, scrub.. 🧽💦", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
     if Finished then
         FW.TriggerServer("fw-graffiti:Server:DestroySpray", Graffiti.Key)
     end
@@ -42,19 +42,19 @@ AddEventHandler("fw-graffiti:Client:DiscoverGraffiti", function(Data, Entity)
     if not Gang or Config.Sprays[Gang.Id] == nil then return end
 
     local Graffiti = Config.NearbyGraffitis[Entity]
-    if not Graffiti then return FW.Functions.Notify("De graffiti lijkt op kinderverf..", "error") end
+    if not Graffiti then return FW.Functions.Notify("The graffiti looks like children's paint..", "error") end
 
     local Spray = Config.Sprays[Graffiti.Type]
-    if not Spray then return FW.Functions.Notify("De graffiti lijkt op kinderverf..", "error") end
+    if not Spray then return FW.Functions.Notify("The graffiti looks like children's paint..", "error") end
 
     if not Spray.IsGang then
-        return FW.Functions.Notify("De graffiti lijkt niet zo spannend te zijn..")
+        return FW.Functions.Notify("The graffiti doesn't seem that exciting...")
     end
 
     local Sprays = FW.SendCallback("fw-laptop:Server:Unknown:GetDiscoveredSprays", Gang.Id)
     for k, v in pairs(Sprays) do
         if v == Graffiti.Id then
-            return FW.Functions.Notify("Je hebt deze graffiti al ontdekt..", "error")
+            return FW.Functions.Notify("You have already discovered this graffiti..", "error")
         end
     end
 
@@ -64,35 +64,35 @@ end)
 RegisterNetEvent("fw-graffiti:Client:ContestGraffiti")
 AddEventHandler("fw-graffiti:Client:ContestGraffiti", function(Data, Entity)
     local Gang = FW.SendCallback("fw-laptop:Server:Unknown:GetPlayerGang")
-    if not Gang or Config.Sprays[Gang.Id] == nil then return FW.Functions.Notify("Je kan dit niet..", "error") end
+    if not Gang or Config.Sprays[Gang.Id] == nil then return FW.Functions.Notify("You can't do this..", "error") end
 
     if exports['fw-progressbar']:GetTaskBarStatus() then return end
 
     local Graffiti = Config.NearbyGraffitis[Entity]
-    if not Graffiti then return FW.Functions.Notify("De graffiti lijkt op kinderverf..", "error") end
+    if not Graffiti then return FW.Functions.Notify("The graffiti looks like children's paint..", "error") end
 
     local Spray = Config.Sprays[Graffiti.Type]
-    if not Spray then return FW.Functions.Notify("De graffiti lijkt op kinderverf..", "error") end
+    if not Spray then return FW.Functions.Notify("The graffiti looks like children's paint..", "error") end
 
-    if not Spray.IsGang then return FW.Functions.Notify("Jij vindt dit intressant ja? Hmpf.") end
+    if not Spray.IsGang then return FW.Functions.Notify("You find this interesting, huh? Hmph.") end
 
     local IsGangOnline = FW.SendCallback("fw-graffiti:Server:IsGangOnline", Graffiti.Type)
     if not IsGangOnline then
-        return FW.Functions.Notify("Je kan dit nu niet doen, probeer het later nog eens.", "error")
+        return FW.Functions.Notify("You cannot do this now, try again later.", "error")
     end
 
     local CanContestSpray = FW.SendCallback("fw-graffiti:Server:CanContestSpray", Gang.Id)
     if not CanContestSpray then
-        return FW.Functions.Notify("Je hebt het contest limiet bereikt, probeer het later nog eens.", "error")
+        return FW.Functions.Notify("You have reached the contest limit, try again later.", "error")
     end
 
     if not exports['fw-inventory']:HasEnoughOfItem('gang-spray', 1, Gang.Id) then
-        return FW.Functions.Notify("Je hebt een spray nodig om deze graffiti over te spuiten..", "error")
+        return FW.Functions.Notify("You need a spray to spray over this graffiti..", "error")
     end
 
     local Result = FW.SendCallback("fw-graffiti:Server:SetSprayContested", false, Graffiti.Key)
     if Result then
-        FW.Functions.Notify("Graffiti aan het veroveren..")
+        FW.Functions.Notify("Contesting graffiti..")
         FW.TriggerServer("fw-graffiti:Server:AlertSprayer", Graffiti.Type, "Contest", FW.Functions.GetStreetLabel())
     end
 end)
@@ -100,25 +100,25 @@ end)
 RegisterNetEvent("fw-graffiti:Client:ClaimGraffiti")
 AddEventHandler("fw-graffiti:Client:ClaimGraffiti", function(Data, Entity)
     local Gang = FW.SendCallback("fw-laptop:Server:Unknown:GetPlayerGang")
-    if not Gang or Config.Sprays[Gang.Id] == nil then return FW.Functions.Notify("Je kan dit niet..", "error") end
+    if not Gang or Config.Sprays[Gang.Id] == nil then return FW.Functions.Notify("You can't do this..", "error") end
 
     local CanClaimGraffiti = FW.SendCallback("fw-graffiti:Server:CanClaimGraffiti")
     if not CanClaimGraffiti then
-        return FW.Functions.Notify("Ik denk dat ik nog even moet wachten voordat ik het overspuit..", "error")
+        return FW.Functions.Notify("I think I need to wait a little longer before I repaint it...", "error")
     end
 
     local Graffiti = Config.NearbyGraffitis[Entity]
-    if not Graffiti then return FW.Functions.Notify("De graffiti lijkt op kinderverf..", "error") end
+    if not Graffiti then return FW.Functions.Notify("The graffiti looks like children's paint..", "error") end
 
     local Spray = Config.Sprays[Graffiti.Type]
-    if not Spray then return FW.Functions.Notify("De graffiti lijkt op kinderverf..", "error") end
+    if not Spray then return FW.Functions.Notify("The graffiti looks like children's paint..", "error") end
 
-    if not Spray.IsGang then return FW.Functions.Notify("Jij vindt dit intressant ja? Hmpf.") end
+    if not Spray.IsGang then return FW.Functions.Notify("You find this interesting, huh? Hmph.") end
 
     IsPlacing = true
     SprayingAnim({255, 255, 255})
 
-    local Finished = FW.Functions.CompactProgressbar(40000, "Lekker spuiten...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(40000, "Spraying...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
     StopParticleFxLooped(SprayingParticle, true)
     DeleteObject(TempSpray); DeleteObject(SprayingCan)
     StopAnimTask(PlayerPedId(), "switch@franklin@lamar_tagging_wall", "lamar_tagging_exit_loop_lamar", 1.0)
@@ -162,13 +162,13 @@ AddEventHandler("fw-graffiti:Client:RemoveSpray", function()
     if not IsAdmin then return end
 
     local Hit, Coords, Entity = exports['fw-ui']:RayCastGamePlayCamera(5.0)
-    if not Hit or Entity == 0 or Entity == -1 or GetEntityType(Entity) ~= 3 then return FW.Functions.Notify("Dit is geen graffiti..", "error") end
+    if not Hit or Entity == 0 or Entity == -1 or GetEntityType(Entity) ~= 3 then return FW.Functions.Notify("This is not graffiti..", "error") end
 
     local Graffiti = Config.NearbyGraffitis[Entity]
-    if not Graffiti then return FW.Functions.Notify("Geen graffiti gevonden..", "error") end
+    if not Graffiti then return FW.Functions.Notify("No graffiti found..", "error") end
 
     local Spray = Config.Sprays[Graffiti.Type]
-    if not Spray then return FW.Functions.Notify(Graffiti.Type .. " ongeldige spray..", "error") end
+    if not Spray then return FW.Functions.Notify(Graffiti.Type .. " invalid spray..", "error") end
 
     FW.TriggerServer("fw-graffiti:Server:DestroySpray", Graffiti.Key)
 end)

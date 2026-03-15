@@ -143,7 +143,7 @@ AddEventHandler("fw-graffiti:Client:PlaceSpray", function(Type, IsAdmin)
     IsPlacing = true
 
     if not Config.Sprays[Type] then
-        return FW.Functions.Notify("Spraytype bestaat niet.", "error")
+        return FW.Functions.Notify("Spraytype doesn't exist.", "error")
     end
 
     local _Admin = IsAdmin and FW.SendCallback("fw-admin:Server:IsPlayerAdmin")
@@ -157,24 +157,24 @@ AddEventHandler("fw-graffiti:Client:PlaceSpray", function(Type, IsAdmin)
         local HasGangReachedLimit = FW.SendCallback("fw-laptop:Server:Unknown:HasGangReachedLimit", Type)
         if not _Admin and Config.Sprays[Type].IsGang and HasGangReachedLimit then
             IsPlacing = false
-            return FW.Functions.Notify("Je groep heeft het dagelijks limiet bereikt, probeer morgen nog een keer.", "error")
+            return FW.Functions.Notify("Your group has reached the daily limit, try again tomorrow..", "error")
         end
 
         local ClosestGraffiti = GetClosestGraffiti(true, Coords)
 
         if ClosestGraffiti and ClosestGraffiti.Type ~= Type and Config.Sprays[Type].IsGang then
             IsPlacing = false
-            return FW.Functions.Notify("Je kan geen sprays plaatsen op vijandig territorium!", "error")
+            return FW.Functions.Notify("You cannot place sprays on hostile territory!", "error")
         end
 
         if exports['fw-island']:GetIslandActive() then
             IsPlacing = false
-            return FW.Functions.Notify("Je kan geen sprays plaatsen op vijandig territorium!", "error")
+            return FW.Functions.Notify("You cannot place sprays on hostile territory!", "error")
         end
 
         if ClosestGraffiti and ClosestGraffiti.Type == Type and Config.Sprays[Type].IsGang and #(GetEntityCoords(PlayerPedId()) - ClosestGraffiti.Coords) < 75.0 then
             IsPlacing = false
-            return FW.Functions.Notify("Je bent te dichtbij een andere spray!", "error")
+            return FW.Functions.Notify("You are too close to another spray!", "error")
         end
 
         TaskTurnPedToFaceCoord(PlayerPedId(), Coords.x, Coords.y, Coords.z, 1)
@@ -196,7 +196,7 @@ AddEventHandler("fw-graffiti:Client:PlaceSpray", function(Type, IsAdmin)
             end
         end)
 
-        local Finished = FW.Functions.CompactProgressbar(40000, "Lekker spuiten...", false, false, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+        local Finished = FW.Functions.CompactProgressbar(40000, "Spraying...", false, false, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
         StopParticleFxLooped(SprayingParticle, true)
         DeleteObject(TempSpray); DeleteObject(SprayingCan)
         StopAnimTask(PlayerPedId(), "switch@franklin@lamar_tagging_wall", "lamar_tagging_exit_loop_lamar", 1.0)
