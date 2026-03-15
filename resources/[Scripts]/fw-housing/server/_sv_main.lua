@@ -69,7 +69,7 @@ AddEventHandler("fw-housing:Server:SellLocation", function(HouseId, Data)
     if Config.Houses[HouseId] == nil then return end
     local HouseData = Config.Houses[HouseId]
 
-    TriggerClientEvent("fw-phone:Client:Notification", Target.PlayerData.source, "purchase-house-" .. Data.Cid, "fas fa-home", { "white", "rgb(38, 50, 56)" }, "Huis Kopen", exports['fw-businesses']:NumberWithCommas(HouseData.Price + (HouseData.Price * (tonumber(Data.Commission) / 100))) .. " incl. tax", false, true, "fw-housing:Server:PurchaseConfirm", "fw-phone:Client:RemoveNotificationById", { Id = "purchase-house-" .. Data.Cid, Cid = Data.Cid, HouseId = HouseId, Commission = Data.Commission, Business = Business })
+    TriggerClientEvent("fw-phone:Client:Notification", Target.PlayerData.source, "purchase-house-" .. Data.Cid, "fas fa-home", { "white", "rgb(38, 50, 56)" }, "Purchase Property", exports['fw-businesses']:NumberWithCommas(HouseData.Price + (HouseData.Price * (tonumber(Data.Commission) / 100))) .. " incl. tax", false, true, "fw-housing:Server:PurchaseConfirm", "fw-phone:Client:RemoveNotificationById", { Id = "purchase-house-" .. Data.Cid, Cid = Data.Cid, HouseId = HouseId, Commission = Data.Commission, Business = Business })
 end)
 
 RegisterNetEvent("fw-housing:Server:PurchaseConfirm")
@@ -81,11 +81,11 @@ AddEventHandler("fw-housing:Server:PurchaseConfirm", function(Data)
     if Config.Houses[Data.HouseId] == nil then return end
     local HouseData = Config.Houses[Data.HouseId]
 
-    TriggerClientEvent('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Kopen...", true)
+    TriggerClientEvent('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Purchasing...", true)
 
     Citizen.SetTimeout(1000, function()
-        if exports['fw-financials']:RemoveMoneyFromAccount("1001", exports['fw-businesses']:GetBusinessAccount(Data.Business), Player.PlayerData.charinfo.account, HouseData.Price + (HouseData.Price * (tonumber(Data.Commission) / 100)), 'PURCHASE', 'Betaling zakelijke dienstverlening: ' .. HouseData.Adress .. ' gekocht.') then
-            exports['fw-financials']:AddMoneyToAccount(Player.PlayerData.citizenid, Player.PlayerData.charinfo.account, exports['fw-businesses']:GetBusinessAccount(Data.Business), HouseData.Price * (tonumber(Data.Commission) / 100), 'PURCHASE', 'Betaling zakelijke dienstverlening: ' .. HouseData.Adress .. ' gekocht. (Commissie: ' .. Data.Commission .. ')')
+        if exports['fw-financials']:RemoveMoneyFromAccount("1001", exports['fw-businesses']:GetBusinessAccount(Data.Business), Player.PlayerData.charinfo.account, HouseData.Price + (HouseData.Price * (tonumber(Data.Commission) / 100)), 'PURCHASE', 'Payment for business services: ' .. HouseData.Adress .. ' purchased.') then
+            exports['fw-financials']:AddMoneyToAccount(Player.PlayerData.citizenid, Player.PlayerData.charinfo.account, exports['fw-businesses']:GetBusinessAccount(Data.Business), HouseData.Price * (tonumber(Data.Commission) / 100), 'PURCHASE', 'Payment for business services: ' .. HouseData.Adress .. ' purchased. (Commission: ' .. Data.Commission .. ')')
             TriggerClientEvent('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Transactie Voltooid!", true)
 
             local Date = os.date("*t", os.time())
@@ -94,7 +94,7 @@ AddEventHandler("fw-housing:Server:PurchaseConfirm", function(Data)
                 Title = HouseData.Adress,
                 Content = Config.ContractText:format(Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname, HouseData.Adress, HouseData.Category, exports['fw-businesses']:NumberWithCommas(HouseData.Price), Player.PlayerData.citizenid, Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname, Date.day .. '/' .. Date.month .. '/' .. Date.year .. ' ' .. Date.hour .. ':' .. Date.min),
                 Signatures = {
-                    { Signed = true, Name = 'De Staat', Timestamp = os.time() * 1000, Cid = '1001' },
+                    { Signed = true, Name = "The State", Timestamp = os.time() * 1000, Cid = '1001' },
                     { Signed = true, Name = Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname, Timestamp = os.time() * 1000, Cid = Player.PlayerData.citizenid },
                 },
                 Sharees = { Player.PlayerData.citizenid },
@@ -112,7 +112,7 @@ AddEventHandler("fw-housing:Server:PurchaseConfirm", function(Data)
                 ['@Id'] = HouseData.DbId
             })
         else
-            TriggerClientEvent('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Transactie Geweigerd!", true)
+            TriggerClientEvent('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Transaction Denied!", true)
         end
     end)
 end)
@@ -169,7 +169,7 @@ FW.Functions.CreateCallback('fw-housing:Server:CreateHouse', function(Source, Cb
 
     local AccountId = exports['fw-businesses']:GetBusinessAccount(Business)
 
-    if exports['fw-financials']:RemoveMoneyFromAccount("1001", Player.PlayerData.charinfo.account, exports['fw-businesses']:GetBusinessAccount(Business), Config.PricesPerClass[tonumber(Data.Class) or 0], 'PURCHASE', 'Huis aangekocht: ' .. Data.Class .. ' [' .. Data.Adress .. ']') then
+    if exports['fw-financials']:RemoveMoneyFromAccount("1001", Player.PlayerData.charinfo.account, exports['fw-businesses']:GetBusinessAccount(Business), Config.PricesPerClass[tonumber(Data.Class) or 0], 'PURCHASE', 'Purchased property: ' .. Data.Class .. ' [' .. Data.Adress .. ']') then
         exports['ghmattimysql']:executeSync("INSERT INTO `player_houses` (`selling`, `name`, `adress`, `class`, `coords`) VALUES ('0', ?, ?, ?, ?)", {
             Data.Name,
             Data.Adress,
@@ -240,7 +240,7 @@ FW.Functions.CreateCallback("fw-housing:Server:SellHouse", function(Source, Cb, 
     TriggerClientEvent("fw-housing:Client:SyncHouse", -1, HouseId, Config.Houses[HouseId])
 
     local ReceiveMoney = math.floor(Config.Houses[HouseId].Price / 2)
-    exports['fw-financials']:AddMoneyToAccount('1001', "1", Player.PlayerData.charinfo.account, ReceiveMoney, 'SELL', 'Huis te koop gezet: ' .. Config.Houses[HouseId].Adress)
+    exports['fw-financials']:AddMoneyToAccount('1001', "1", Player.PlayerData.charinfo.account, ReceiveMoney, 'SELL', 'Property set for sale: ' .. Config.Houses[HouseId].Adress)
 
     local Result = exports['ghmattimysql']:executeSync("UPDATE `player_houses` SET `citizenid` = NULL, `keyholders` = '[]', `business` = '[]', `selling` = 1 WHERE `id` = @Id", {
         ['@Id'] = Config.Houses[HouseId].DbId
@@ -258,19 +258,19 @@ FW.Functions.CreateCallback("fw-housing:Server:PurchaseHouse", function(Source, 
     if Player == nil then return end
 
     if not Config.Houses[HouseId] then
-        return Cb({Success = false, Msg = "Ongeldig Huis" })
+        return Cb({Success = false, Msg = "Invalid Property" })
     end
 
     if not Config.Houses[HouseId].Selling then
-        return Cb({Success = false, Msg = "Huis staat niet te koop" })
+        return Cb({Success = false, Msg = "Property is not for sale" })
     end
 
-    if exports['fw-financials']:RemoveMoneyFromAccount("1001", exports['fw-businesses']:GetBusinessAccount("Dynasty 8"), Player.PlayerData.charinfo.account, Config.Houses[HouseId].Price, 'PURCHASE', 'Huis gekocht: ' .. Config.Houses[HouseId].Adress) then
+    if exports['fw-financials']:RemoveMoneyFromAccount("1001", exports['fw-businesses']:GetBusinessAccount("Dynasty 8"), Player.PlayerData.charinfo.account, Config.Houses[HouseId].Price, 'PURCHASE', 'Purchased property: ' .. Config.Houses[HouseId].Adress) then
         Config.Houses[HouseId].Owned = true
         Config.Houses[HouseId].Owner = Player.PlayerData.citizenid
         Config.Houses[HouseId].Selling = false
         TriggerClientEvent("fw-housing:Client:SyncHouse", -1, HouseId, Config.Houses[HouseId])
-        exports['fw-financials']:AddMoneyToAccount(Player.PlayerData.citizenid, Player.PlayerData.charinfo.account, exports['fw-businesses']:GetBusinessAccount("Dynasty 8"), Config.Houses[HouseId].Price * 0.25, 'PURCHASE', 'Huis gekocht: ' .. Config.Houses[HouseId].Adress)
+        exports['fw-financials']:AddMoneyToAccount(Player.PlayerData.citizenid, Player.PlayerData.charinfo.account, exports['fw-businesses']:GetBusinessAccount("Dynasty 8"), Config.Houses[HouseId].Price * 0.25, 'PURCHASE', 'Purchased property: ' .. Config.Houses[HouseId].Adress)
 
         local Result = exports['ghmattimysql']:executeSync("UPDATE `player_houses` SET `citizenid` = @Cid, `keyholders` = @Keyholders, `selling` = 0 WHERE `id` = @Id", {
             ['@Cid'] = Player.PlayerData.citizenid,
@@ -284,16 +284,16 @@ FW.Functions.CreateCallback("fw-housing:Server:PurchaseHouse", function(Source, 
             Title = Config.Houses[HouseId].Adress,
             Content = Config.ContractText:format(Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname, Config.Houses[HouseId].Adress, Config.Houses[HouseId].Category, exports['fw-businesses']:NumberWithCommas(Config.Houses[HouseId].Price), Player.PlayerData.citizenid, Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname, Date.day .. '/' .. Date.month .. '/' .. Date.year .. ' ' .. Date.hour .. ':' .. Date.min),
             Signatures = {
-                { Signed = true, Name = 'De Staat', Timestamp = os.time() * 1000, Cid = '1001' },
+                { Signed = true, Name = "The State", Timestamp = os.time() * 1000, Cid = '1001' },
                 { Signed = true, Name = Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname, Timestamp = os.time() * 1000, Cid = Player.PlayerData.citizenid },
             },
             Sharees = { Player.PlayerData.citizenid },
             Finalized = 1,
         })
 
-        Cb({Success = Result.affectedRows > 0, Msg = "Kon data niet opslaan.", House = Config.Houses[HouseId]})
+        Cb({Success = Result.affectedRows > 0, Msg = "Failed to save data.", House = Config.Houses[HouseId]})
     else
-        Cb({Success = false, Msg = "Niet Genoeg Balans" })
+        Cb({Success = false, Msg = "Not Enough Balance" })
     end
 end)
 
@@ -421,8 +421,6 @@ end
 exports("GetHouses", GetHouses)
 
 function SetHousingDecorations(HouseId, Objects)
-    print("Setting house decorations for " .. HouseId)
-    print(json.encode(Objects))
     Config.Houses[HouseId].Decorations = Objects
     TriggerClientEvent("fw-housing:Client:SyncHouse", -1, HouseId, Config.Houses[HouseId])
     SaveHouse(HouseId)

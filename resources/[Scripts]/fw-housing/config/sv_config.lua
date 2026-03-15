@@ -30,36 +30,36 @@ Config.TierCategory = {
 
 -- Must be 'minified' cuz documents editor requires it to load text..
 --[[
-<h2>Transactieoverzicht voor woningaankoop voor het graafschap Los Santos</h2>
+<h2>Transaction overview for home purchase in the county of Los Santos</h2>
 <p>&nbsp;</p>
-<p>Verkoper Naam: De Staat van Los Santos</p>
-<p>Koper Naam: %s</p>
-<p>Verkocht adres: %s</p>
-<p>Beschrijving van onroerend goed: %s</p>
-<p>Waarde van onroerend goed op het moment van verkoop: %s</p>
+<p>Seller Name: The State of Los Santos</p>
+<p>Buyer Name: %s</p>
+<p>Sold Adress: %s</p>
+<p>Description of real estate: %s</p>
+<p>Value of real estate at the time of sale: %s</p>
 <p>&nbsp;</p>
-<h4>Openbaarmaking &amp; Garantie:</h4>
+<h4>Disclosure &amp; Warranty:</h4>
 <p>&nbsp;</p>
-<p>De verkoper verklaart dat het huis in GOEDE REPARATIE verkeert en dat het structureel gezond is en voldoet aan alle wettelijke voorschriften.</p>
+<p>The seller declares that the property is in GOOD REPAIR and that it is structurally sound and complies with all legal regulations.</p>
 <p>&nbsp;</p>
-<p>Koper stemt in met het volgende:</p>
-<p>* Koop het huis zoals het is en zal geen aanspraak maken op de verkoper voor eventuele gebreken/problemen die zich voordoen na aankoop.</p>
+<p>The buyer agrees to the following:</p>
+<p>* Buy the house as is and will not make any claim against the seller for any defects/problems that arise after purchase.</p>
 <p>&nbsp;</p>
-<p>* Betalingen op het onroerend goed dat wordt verkocht, zijn verschuldigd volgens de factuur in de vorm van onroerendgoedbelasting.</p>
+<p>* Payments on the real estate being sold are due according to the invoice in the form of property tax.</p>
 <p>&nbsp;</p>
-<p>* De staat ZAL GEEN aanvraag tot afscherming indienen tot een van beide</p>
-<p>&nbsp; &nbsp; * Twee weken zijn verstreken sinds de laatste betaling,</p>
-<p>&nbsp; &nbsp; * Bevestigd wordt dat de koper niet langer in de staat van Los Santos woont, of</p>
-<p>&nbsp; &nbsp; * Toegekend door een rechter voor afscherming</p>
+<p>* The State WILL NOT file a request for foreclosure until either of the following</p>
+<p>&nbsp; &nbsp; * Two weeks have passed since the last payment,</p>
+<p>&nbsp; &nbsp; * It is confirmed that the buyer no longer resides in the state of Los Santos, or</p>
+<p>&nbsp; &nbsp; * Granted by a judge for foreclosure</p>
 <p>&nbsp;</p>
-<p>* Het onroerend goed is een bezit en valt daarom onder het vermogen van een bepaalde leningmaatschappij en de staat om het onroerend goed als onderpand te nemen.</p>
+<p>* The real estate is an asset and therefore falls under the assets of a specific lending company and the state to take the real estate as collateral.</p>
 <p>&nbsp;</p>
-<p>De volledige titel en verantwoordelijkheid voor alle van toepassing zijnde staats- en lokale belastingen, evenals VvE-kosten, zijn uitsluitend de verantwoordelijkheid van de koper.</p>
+<p>The full title and responsibility for all applicable state and local taxes, as well as HOA fees, are solely the responsibility of the buyer.</p>
 <p>&nbsp;</p>
-<p>BSN: %s</p>
-<p>Handtekening van Koper: %s</p>
+<p>State ID: %s</p>
+<p>Signature of Buyer: %s</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<p>Datum: %s</p>
+<p>Date: %s</p>
 ]]
-Config.ContractText = "<h2>Transactieoverzicht voor woningaankoop voor het graafschap Los Santos</h2><p>&nbsp;</p><p>Verkoper Naam: De Staat van Los Santos</p><p>Koper Naam: %s</p><p>Verkocht adres: %s</p><p>Beschrijving van onroerend goed: %s</p><p>Waarde van onroerend goed op het moment van verkoop: %s</p><p>&nbsp;</p><h4>Openbaarmaking &amp; Garantie:</h4><p>&nbsp;</p><p>De verkoper verklaart dat het huis in GOEDE REPARATIE verkeert en dat het structureel gezond is en voldoet aan alle wettelijke voorschriften.</p><p>&nbsp;</p><p>Koper stemt in met het volgende:</p><p>* Koop het huis zoals het is en zal geen aanspraak maken op de verkoper voor eventuele gebreken/problemen die zich voordoen na aankoop.</p><p>&nbsp;</p><p>* Betalingen op het onroerend goed dat wordt verkocht, zijn verschuldigd volgens de factuur in de vorm van onroerendgoedbelasting.</p><p>&nbsp;</p><p>* De staat ZAL GEEN aanvraag tot afscherming indienen tot een van beide</p><p>&nbsp; &nbsp; * Twee weken zijn verstreken sinds de laatste betaling,</p><p>&nbsp; &nbsp; * Bevestigd wordt dat de koper niet langer in de staat van Los Santos woont, of</p><p>&nbsp; &nbsp; * Toegekend door een rechter voor afscherming</p><p>&nbsp;</p><p>* Het onroerend goed is een bezit en valt daarom onder het vermogen van een bepaalde leningmaatschappij en de staat om het onroerend goed als onderpand te nemen.</p><p>&nbsp;</p><p>De volledige titel en verantwoordelijkheid voor alle van toepassing zijnde staats- en lokale belastingen, evenals VvE-kosten, zijn uitsluitend de verantwoordelijkheid van de koper.</p><p>&nbsp;</p><p>BSN: %s</p><p>Handtekening van Koper: %s</p><p>&nbsp;</p><p>&nbsp;</p><p>Datum: %s</p>"
+Config.ContractText = "<h2>Transaction overview for home purchase in the county of Los Santos</h2><p>&nbsp;</p><p>Seller Name: The State of Los Santos</p><p>Buyer Name: %s</p><p>Sold Adress: %s</p><p>Description of real estate: %s</p><p>Value of real estate at the time of sale: %s</p><p>&nbsp;</p><h4>Disclosure &amp; Warranty:</h4><p>&nbsp;</p><p>The seller declares that the property is in GOOD REPAIR and that it is structurally sound and complies with all legal regulations.</p><p>&nbsp;</p><p>The buyer agrees to the following:</p><p>* Buy the house as is and will not make any claim against the seller for any defects/problems that arise after purchase.</p><p>&nbsp;</p><p>* Payments on the real estate being sold are due according to the invoice in the form of property tax.</p><p>&nbsp;</p><p>* The State WILL NOT file a request for foreclosure until either of the following</p><p>&nbsp; &nbsp; * Two weeks have passed since the last payment,</p><p>&nbsp; &nbsp; * It is confirmed that the buyer no longer resides in the state of Los Santos, or</p><p>&nbsp; &nbsp; * Granted by a judge for foreclosure</p><p>&nbsp;</p><p>* The real estate is an asset and therefore falls under the assets of a specific lending company and the state to take the real estate as collateral.</p><p>&nbsp;</p><p>The full title and responsibility for all applicable state and local taxes, as well as HOA fees, are solely the responsibility of the buyer.</p><p>&nbsp;</p><p>State ID: %s</p><p>Signature of Buyer: %s</p><p>&nbsp;</p><p>&nbsp;</p><p>Date: %s</p>"

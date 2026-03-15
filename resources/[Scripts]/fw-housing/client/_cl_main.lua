@@ -148,7 +148,7 @@ function StartInsideLoop()
 
             local ExitCoords = vector3(HouseCoords.x + HouseOffsets.Exit.x, HouseCoords.y + HouseOffsets.Exit.y, HouseCoords.z + HouseOffsets.Exit.z + 1.0)
             if #(MyCoords - ExitCoords) <= 1.0 then
-                DrawText3D(ExitCoords, "~g~[E]~s~ Verlaten")
+                DrawText3D(ExitCoords, "~g~[E]~s~ Exit")
 
                 if IsControlJustReleased(0, 38) then
                     TriggerEvent('fw-housing:Client:LeaveHouse', false)
@@ -158,7 +158,7 @@ function StartInsideLoop()
             if CurrentHouse.Locations.BackdoorOut and CurrentHouse.Locations.BackdoorIn then
                 local BackdoorCoords = vector3(CurrentHouse.Locations.BackdoorIn.x, CurrentHouse.Locations.BackdoorIn.y, CurrentHouse.Locations.BackdoorIn.z)
                 if #(MyCoords - BackdoorCoords) <= 1.0 then
-                    DrawText3D(BackdoorCoords, "~g~[E]~s~ Verlaat via Achterdeur")
+                    DrawText3D(BackdoorCoords, "~g~[E]~s~ Exit from Backdoor")
     
                     if IsControlJustReleased(0, 38) then
                         TriggerEvent('fw-housing:Client:LeaveHouse', true)
@@ -170,14 +170,14 @@ function StartInsideLoop()
                 local StashCoords = CurrentHouse.Locations.Stash
 
                 if #(MyCoords - StashCoords) <= 1.0 then
-                    DrawText3D(StashCoords, "~g~[E]~s~ Opslag")
+                    DrawText3D(StashCoords, "~g~[E]~s~ Stash")
                     
                     if IsControlJustReleased(0, 38) then
                         local IsLockdown = CurrentHouse.Owned and (exports['fw-cityhall']:IsLockdownActive("housing-" .. CurrentHouse.Owner) or exports['fw-cityhall']:IsLockdownActive("housing-" .. CurrentHouse.DbId))
                         local PlayerData = FW.Functions.GetPlayerData()
 
                         if IsLockdown and PlayerData.job.name ~= "police" and PlayerData.job.name ~= "judge" then
-                            FW.Functions.Notify("Huis is in lockdown!", "error")
+                            FW.Functions.Notify("House is in lockdown!", "error")
                         else
                             local InventoryData = Config.InventoryData[Config.TierToModel[CurrentHouse.Tier]]
                             TriggerEvent("fw-misc:Client:PlaySound", 'general.stashOpen')
@@ -185,7 +185,7 @@ function StartInsideLoop()
                         end
                     end
                 elseif #(MyCoords - StashCoords) <= 3.0 then
-                    DrawText3D(StashCoords, "Opslag")
+                    DrawText3D(StashCoords, "Stash")
                 end
             end
 
@@ -193,7 +193,7 @@ function StartInsideLoop()
                 local WardrobeCoords = CurrentHouse.Locations.Wardrobe
 
                 if #(MyCoords - WardrobeCoords) <= 1.0 then
-                    DrawText3D(WardrobeCoords, "~g~[E]~s~ Kledingkast / ~g~[G]~s~ Slapen")
+                    DrawText3D(WardrobeCoords, "~g~[E]~s~ Wardrobe / ~g~[G]~s~ Sleep")
 
                     if IsControlJustPressed(0, 38) then
                         TriggerEvent('fw-clothes:Client:OpenOutfits', true)
@@ -206,7 +206,7 @@ function StartInsideLoop()
                         end)
                     end
                 elseif #(MyCoords - WardrobeCoords) <= 3.0 then
-                    DrawText3D(WardrobeCoords, "Kledingkast / Slapen")
+                    DrawText3D(WardrobeCoords, "Wardrobe / Sleep")
                 end
             end
 
@@ -289,13 +289,13 @@ AddEventHandler("fw-housing:Client:LockProperty", function(HouseId, IsDetcord)
 
     if House.Locked and not IsDetcord and not HasKeyToCurrent() then return end
     if not IsDetcord and HasOverdueDebts(House.Adress) then
-        TriggerServerEvent("fw-phone:Server:Mails:AddMail", "De Staat van Los Santos", "Kennisgeving van inbeslagname", "U heeft twee of meer onderhoudskosten openstaan voor deze woning. Als deze niet worden afbetaald, kan dit leiden tot permanente inbeslagname van eigendom aan de staat van Los Santos. Zodra openstaande onderhoudskosten zijn betaald, worden uw sleutels aan u en uw huurders geretourneerd.")
+        TriggerServerEvent("fw-phone:Server:Mails:AddMail", "The State of San Andreas", "Notice of seizure", "You have two or more outstanding maintenance charges for this property. If these are not paid off, this may result in the permanent seizure of the property by the State of San Andreas. Once the outstanding maintenance charges have been paid, your keys will be returned to you and your tenants.")
         return
     end
 
     FW.Functions.TriggerCallback("fw-housing:Server:LockProperty", function(HasLocked)
         if HasLocked then
-            FW.Functions.Notify(("Huis %s."):format(House.Locked and "ontgrendeld" or "vergrendeld"), House.Locked and "success" or "error")
+            FW.Functions.Notify(("Property %s."):format(House.Locked and "unlocked" or "locked"), House.Locked and "success" or "error")
         end
     end, House.Id, IsDetcord)
 end)
@@ -315,18 +315,18 @@ AddEventHandler("fw-housing:Client:EnterProperty", function(HouseId, Forced)
     local Coords = GetEntityCoords(PlayerPedId())
 
     if not CurrentHouse.Tier then
-        return FW.Functions.Notify("Huis heeft nog geen tier..", "error")
+        return FW.Functions.Notify("The house has no tier yet..", "error")
     end
 
     if not CurrentHouse.Owned and not CanRealtor() then
-        return FW.Functions.Notify("Jij kan hier niet naar binnen..", "error")
+        return FW.Functions.Notify("You can't enter this property..", "error")
     end
 
     local IsLockdown = CurrentHouse.Owned and (exports['fw-cityhall']:IsLockdownActive("housing-" .. CurrentHouse.Owner) or exports['fw-cityhall']:IsLockdownActive("housing-" .. CurrentHouse.DbId))
     local PlayerData = FW.Functions.GetPlayerData()
 
     if IsLockdown and PlayerData.job.name ~= "police" and PlayerData.job.name ~= "judge" then
-        return FW.Functions.Notify("Huis is in lockdown!", "error")
+        return FW.Functions.Notify("Property is in lockdown!", "error")
     end
 
     local IsBackdoor = false
