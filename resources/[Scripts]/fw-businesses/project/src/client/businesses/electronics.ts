@@ -15,7 +15,7 @@ onNet("fw-businesses:Client:Electronics:Storage", async (Data: {
     if (!await HasRolePermission(Data.Business, "StashAccess")) return;
 
     if (await IsBusinessOnLockdown(Data.Business)) {
-        return FW.Functions.Notify("Bedrijf is in lockdown..", "error");
+        return FW.Functions.Notify("Business is in lockdown..", "error");
     };
 
     if (exp['fw-inventory'].CanOpenInventory()) {
@@ -30,7 +30,7 @@ onNet("fw-businesses:Client:Electronics:Craft", async (Data: {
     if (!await HasRolePermission(Data.Business, "CraftAccess")) return;
 
     if (await IsBusinessOnLockdown(Data.Business)) {
-        return FW.Functions.Notify("Bedrijf is in lockdown..", "error");
+        return FW.Functions.Notify("Business is in lockdown..", "error");
     };
 
     if (exp['fw-inventory'].CanOpenInventory()) {
@@ -46,11 +46,11 @@ onNet("fw-businesses:Client:Electronics:Scrap", async (Data: {
     if (!await HasRolePermission(Data.Business, "CraftAccess")) return;
 
     if (await IsBusinessOnLockdown(Data.Business)) {
-        return FW.Functions.Notify("Bedrijf is in lockdown..", "error");
+        return FW.Functions.Notify("Business is in lockdown..", "error");
     };
 
     const Result = await FW.SendCallback("fw-businesses:Server:Electronics:GetScrapItems", Data.Business);
-    if (!Result || Result.length == 0) return FW.Functions.Notify("Je hebt geen electronica opzak..", "error");
+    if (!Result || Result.length == 0) return FW.Functions.Notify("You don't have any electronics..", "error");
 
     let ContextItems = [];
     for (let i = 0; i < Result.length; i++) {
@@ -61,7 +61,7 @@ onNet("fw-businesses:Client:Electronics:Scrap", async (Data: {
             Desc: `Slot ${Slot}`,
             SecondMenu: [
                 {
-                    Title: `<div style="display: flex; justify-content: space-between"><span>Scrappen</span><span>▨ ${Parts}</span></div>`,
+                    Title: `<div style="display: flex; justify-content: space-between"><span>Scrap</span><span>▨ ${Parts}</span></div>`,
                     Icon: "hammer",
                     Data: {
                         Event: "fw-businesses:Server:Electronics:ScrapElectronic",
@@ -72,8 +72,8 @@ onNet("fw-businesses:Client:Electronics:Scrap", async (Data: {
                 },
                 {
                     Disabled: Materials < 40,
-                    Title: Materials < 40 ? "Repareren" : `Repareren (${Materials} electronica)`,
-                    Desc: Materials < 40 ? `De ${Label.toLowerCase()} doet het nog..` : false,
+                    Title: Materials < 40 ? "Repair" : `Repair (${Materials} electronics)`,
+                    Desc: Materials < 40 ? `${Label.toLowerCase()} still works fine..` : false,
                     Icon: "wrench",
                     Data: {
                         Event: "fw-businesses:Server:Electronics:RepairElectronic",
@@ -95,13 +95,13 @@ onNet("fw-businesses:Client:Electronics:AddMusicEntry", async (Data: {
     if (!await HasRolePermission(Data.Business, 'CraftAccess')) return;
 
     if (await IsBusinessOnLockdown(Data.Business)) {
-        return FW.Functions.Notify("Bedrijf is in lockdown..", "error");
+        return FW.Functions.Notify("Business is in lockdown..", "error");
     };
 
     const Result = await exp['fw-ui'].CreateInput([
         { Label: 'SoundCloud Track Id (e.g: 1242868615)', Name: 'TapeId', Type: 'number' },
-        { Label: 'Artiest', Icon: 'fas fa-user-music', Name: 'Artist' },
-        { Label: 'Titel', Icon: 'fas fa-user-edit', Name: 'Title' },
+        { Label: 'Artist', Icon: 'fas fa-user-music', Name: 'Artist' },
+        { Label: 'Title', Icon: 'fas fa-user-edit', Name: 'Title' },
     ]);
 
     if (!Result) return;
@@ -118,7 +118,7 @@ onNet("fw-businesses:Client:Electronics:ManageMusicEntries", async (Data: {
     if (!await HasRolePermission(Data.Business, 'CraftAccess')) return;
 
     if (await IsBusinessOnLockdown(Data.Business)) {
-        return FW.Functions.Notify("Bedrijf is in lockdown..", "error");
+        return FW.Functions.Notify("Business is in lockdown..", "error");
     };
 
     const Tapes = await FW.SendCallback("fw-businesses:Server:Electronics:GetMusicEntries")
@@ -135,7 +135,7 @@ onNet("fw-businesses:Client:Electronics:ManageMusicEntries", async (Data: {
             SecondMenu: [
                 {
                     Icon: "trash",
-                    Title: "Track Verwijderen",
+                    Title: "Delete Track",
                     Data: {
                         Event: "fw-businesses:Server:Electronics:RemoveMusicEntry",
                         Type: "Server",
@@ -156,11 +156,11 @@ onNet("fw-businesses:Client:Electronics:CreateMusicTape", async (Data: {
     if (!await HasRolePermission(Data.Business, 'CraftAccess')) return;
 
     if (await IsBusinessOnLockdown(Data.Business)) {
-        return FW.Functions.Notify("Bedrijf is in lockdown..", "error");
+        return FW.Functions.Notify("Business is in lockdown..", "error");
     };
 
     const Tapes = await FW.SendCallback("fw-businesses:Server:Electronics:GetMusicEntries")
-    if (Tapes.length === 0) return FW.Functions.Notify("Geen tracks gevonden..", "error");
+    if (Tapes.length === 0) return FW.Functions.Notify("No tracks found..", "error");
 
     const Tracks = Tapes.map(({id, tape_artist, tape_title}: {[key: string]: any}) => {
         return { Text: `${tape_artist} - ${tape_title}`, Value: id }
@@ -168,7 +168,7 @@ onNet("fw-businesses:Client:Electronics:CreateMusicTape", async (Data: {
 
     const Result = await exp['fw-ui'].CreateInput([
         { Label: 'Track', Name: 'TrackId', Choices: Tracks },
-        { Label: 'Aantal', Name: 'Copies', Type: "number" },
+        { Label: 'Amount of copies', Name: 'Copies', Type: "number" },
     ]);
 
     if (!Result) return;
@@ -176,7 +176,7 @@ onNet("fw-businesses:Client:Electronics:CreateMusicTape", async (Data: {
     if (Result.Copies == 0 || Result.Copies == '' || Number(Result.Copies) <= 0) return;
 
     const Duration = 1500 * Number(Result.Copies)
-    const Success = await FW.Functions.CompactProgressbar(Duration, 'Cassettebandjes maken...', false, true, { disableMovement: true, disableCarMovement: true, disableMouse: false, disableCombat: true }, { animDict: "anim@amb@business@coc@coc_unpack_cut@", anim: "fullcut_cycle_v6_cokecutter", flags: 0 }, {}, {}, false)
+    const Success = await FW.Functions.CompactProgressbar(Duration, 'Create music tape...', false, true, { disableMovement: true, disableCarMovement: true, disableMouse: false, disableCombat: true }, { animDict: "anim@amb@business@coc@coc_unpack_cut@", anim: "fullcut_cycle_v6_cokecutter", flags: 0 }, {}, {}, false)
     StopAnimTask(PlayerPedId(), "anim@amb@business@coc@coc_unpack_cut@", "fullcut_cycle_v6_cokecutter", 1.0)
     if (!Success) return;
 
@@ -223,7 +223,7 @@ const loadElectronicsZone = async () => {
             options.push({
                 Name: 'craft',
                 Icon: 'fas fa-tools',
-                Label: 'Craften',
+                Label: 'Craft',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:Electronics:Craft',
                 EventParams: ZoneData.data,
@@ -238,7 +238,7 @@ const loadElectronicsZone = async () => {
             options.push({
                 Name: 'scrap',
                 Icon: 'fas fa-hammer',
-                Label: 'Scrap en repareren',
+                Label: 'Scrap and repair',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:Electronics:Scrap',
                 EventParams: ZoneData.data,
@@ -253,7 +253,7 @@ const loadElectronicsZone = async () => {
             options.push({
                 Name: 'stash',
                 Icon: 'fas fa-box-open',
-                Label: 'Toonbank',
+                Label: 'Tray',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:Electronics:Counter',
                 EventParams: ZoneData.data,
@@ -265,7 +265,7 @@ const loadElectronicsZone = async () => {
             options.push({
                 Name: 'pay_payment',
                 Icon: 'fas fa-hand-holding-usd',
-                Label: 'Betalen',
+                Label: 'Pay',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:Foodchain:GetPayments',
                 EventParams: ZoneData.data,
@@ -275,7 +275,7 @@ const loadElectronicsZone = async () => {
             options.push({
                 Name: 'setup_payment',
                 Icon: 'fas fa-cash-register',
-                Label: 'Bestelling Openen',
+                Label: 'Setup Payment',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:Foodchain:SetupPayment',
                 EventParams: { RegisterId: ZoneData.data.RegisterId },
@@ -292,7 +292,7 @@ const loadElectronicsZone = async () => {
             options.push({
                 Name: 'clock_in',
                 Icon: 'fas fa-clock',
-                Label: 'Inklokken',
+                Label: 'Clock In',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:SetClock',
                 EventParams: { ...ZoneData.data, ClockedIn: true },
@@ -306,7 +306,7 @@ const loadElectronicsZone = async () => {
             options.push({
                 Name: 'clock_out',
                 Icon: 'fas fa-clock',
-                Label: 'Uitklokken',
+                Label: 'Clock Out',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:SetClock',
                 EventParams: { ...ZoneData.data, ClockedIn: false },
@@ -322,7 +322,7 @@ const loadElectronicsZone = async () => {
             options.push({
                 Name: 'addMusicEntry',
                 Icon: 'fas fa-music',
-                Label: 'Muziek Toevoegen',
+                Label: 'Add Music Track',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:Electronics:AddMusicEntry',
                 EventParams: { ...ZoneData.data, ClockedIn: true },
@@ -337,7 +337,7 @@ const loadElectronicsZone = async () => {
             options.push({
                 Name: 'manageMusicEntry',
                 Icon: 'fas fa-list',
-                Label: 'Muziek Beheren',
+                Label: 'Manage Music Tracks',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:Electronics:ManageMusicEntries',
                 EventParams: { ...ZoneData.data, ClockedIn: true },
@@ -352,7 +352,7 @@ const loadElectronicsZone = async () => {
             options.push({
                 Name: 'tape',
                 Icon: 'fas fa-play-circle',
-                Label: 'Maak Cassettabandje',
+                Label: 'Create Music Tape',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:Electronics:CreateMusicTape',
                 EventParams: { ...ZoneData.data, ClockedIn: true },

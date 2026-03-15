@@ -55,7 +55,7 @@ FW.Functions.CreateCallback("fw-businesses:Server:BicycleShop:Purchase", async (
             Title: `${SharedData.Name} - ${Plate}`,
             Content: VehicleRegistration.replace(/%s/g, () => TemplateData.shift() || ''),
             Signatures: [
-                { Signed: true, Name: 'De Staat', Timestamp: _Date.getTime(), Cid: '1001' },
+                { Signed: true, Name: "The State", Timestamp: _Date.getTime(), Cid: '1001' },
                 { Signed: true, Name: `${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname}`, Timestamp: _Date.getTime(), Cid: Player.PlayerData.citizenid },
             ],
             Sharees: [ Player.PlayerData.citizenid ],

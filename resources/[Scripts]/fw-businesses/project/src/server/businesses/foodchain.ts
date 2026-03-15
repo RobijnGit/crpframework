@@ -34,7 +34,7 @@ FW.RegisterServer("fw-businesses:Server:Foodchain:SetPaymentData", async (Source
     if (!Player) return;
 
     if (!await HasPlayerBusinessPermission(Business, Source, "ChargeExternal")) {
-        return Player.Functions.Notify("Geen toegang..", "error")
+        return Player.Functions.Notify("No Access..", "error")
     };
 
     if (!RegistersCache[Business]) RegistersCache[Business] = [];
@@ -75,20 +75,20 @@ onNet("fw-businesses:Server:Foodchain:PayRegister", async (Data: {
 
     if (
         (Data.PaymentType == 'Cash' && Player.Functions.RemoveMoney("cash", PaymentData.Costs)) ||
-        (Data.PaymentType == "Bank") && exp['fw-financials'].RemoveMoneyFromAccount(PaymentData.Employee.Cid, BusinessAccount, Player.PlayerData.charinfo.account, PaymentData.Costs, 'PURCHASE', `Betaling zakelijke dienstverlening: ${PaymentData.Order}`, false)
+        (Data.PaymentType == "Bank") && exp['fw-financials'].RemoveMoneyFromAccount(PaymentData.Employee.Cid, BusinessAccount, Player.PlayerData.charinfo.account, PaymentData.Costs, 'PURCHASE', `Payment for business services: ${PaymentData.Order}`, false)
     ) {
         if (Data.PaymentType == "Bank") {
-            emitNet('fw-phone:Client:Notification', Player.PlayerData.source, `business-pay-${Data.Business}-${Data.RegisterId}`, "fas fa-home", [ "white" , "rgb(38, 50, 56)" ], Data.Business, `${NumberWithCommas(PaymentData.Costs)} afgeschreven van je bankrekening.`);
+            emitNet('fw-phone:Client:Notification', Player.PlayerData.source, `business-pay-${Data.Business}-${Data.RegisterId}`, "fas fa-home", [ "white" , "rgb(38, 50, 56)" ], Data.Business, `${NumberWithCommas(PaymentData.Costs)} has been deducted from your banking account.`);
         };
 
-        emitNet('fw-phone:Client:Notification', PaymentData.Employee.Source, `business-payment-${Data.Business}-${Data.RegisterId}`, "fas fa-home", [ "white" , "rgb(38, 50, 56)" ], Data.Business, `${NumberWithCommas(PaymentData.Costs)} is succesvol afgeschreven.`);
-        exp['fw-financials'].AddMoneyToAccount(Player.PlayerData.citizenid, Player.PlayerData.charinfo.account, BusinessAccount, PaymentData.CostsWithoutTax, "PURCHASE", `Betaling zakelijke dienstverlening: ${PaymentData.Order}`, false)
+        emitNet('fw-phone:Client:Notification', PaymentData.Employee.Source, `business-payment-${Data.Business}-${Data.RegisterId}`, "fas fa-home", [ "white" , "rgb(38, 50, 56)" ], Data.Business, `${NumberWithCommas(PaymentData.Costs)} has succesfully been paid.`);
+        exp['fw-financials'].AddMoneyToAccount(Player.PlayerData.citizenid, Player.PlayerData.charinfo.account, BusinessAccount, PaymentData.CostsWithoutTax, "PURCHASE", `Payment for business services: ${PaymentData.Order}`, false)
         exp['fw-financials'].AddMoneyToAccount('1001', '1', '1', PaymentData.Costs - PaymentData.CostsWithoutTax, "TAX", `Services Tax. (${Data.Business}: ${NumberWithCommas(PaymentData.Costs)})`, false)
 
         RegistersCache[Data.Business][Data.RegisterId - 1] = false;
         emitNet("fw-businesses:Client:Foodchain:RecieveReceipt", -1, Data.Business, {Check: "Penis Twister 9000"});
     } else {
-        Player.Functions.Notify("Je hebt niet genoeg geld..", "error")
+        Player.Functions.Notify("You don't have enough money..", "error")
     };
 });
 
@@ -119,8 +119,8 @@ onNet("fw-businesses:Server:SellReceipts", async () => {
     };
 
     if (TotalReceive > 0) {
-        Player.Functions.Notify("Balans is toegevoegd op je bank.");
-        exp['fw-financials'].AddMoneyToAccount('1001', '1', Player.PlayerData.charinfo.account, TotalReceive, 'DEPOSIT', 'Baan: Bonnetjes verkoop');
+        Player.Functions.Notify("Balance has been deposited onto your bank account.");
+        exp['fw-financials'].AddMoneyToAccount('1001', '1', Player.PlayerData.charinfo.account, TotalReceive, 'DEPOSIT', 'Job: Receipts Sale');
     };
 });
 
@@ -174,11 +174,11 @@ FW.RegisterServer("fw-businesses:Server:Foodchain:CreateItem", async (Source: nu
 
     const Result = await exp['ghmattimysql'].executeSync("SELECT COUNT(*) as Amount FROM `server_customtypes` WHERE `type_id` = ?", [DishId])
     if (Result[0].Amount != 0) {
-        return Player.Functions.Notify("Dish bestaat al!", "error")
+        return Player.Functions.Notify("Dish already exists!", "error")
     }
 
     if (!ImgurRegex.test(Data.Image)) {
-        return Player.Functions.Notify("Icoon moet een imgur PNG image zijn! (bv. https://i.imgur.com/SteKs2I.png", "error");
+        return Player.Functions.Notify("Icon must be an image! (e.g. https://i.imgur.com/SteKs2I.png", "error");
     };
 
     let Ingredients = [];
@@ -201,7 +201,7 @@ FW.RegisterServer("fw-businesses:Server:Foodchain:CreateItem", async (Source: nu
         Data.Image
     ])
 
-    Player.Functions.Notify("Gerecht toegevoegd!")
+    Player.Functions.Notify("Dish added!")
     TriggerEvent('fw-logs:Server:Log', 'menuManagement', 'Dish Created', `User: [${Player.PlayerData.source}] - ${Player.PlayerData.citizenid} - ${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname}\nFoodchain: ${Business}\nDish Type: ${Dish}\nData: \`\`\`json\n${JSON.stringify(Data, undefined, 2)}\`\`\``, 'green')
 });
 
@@ -232,11 +232,11 @@ onNet("fw-businesses:Server:Foodchain:DeleteItem", async (Data: {
     if (!Player) return;
 
     if (Data.Foodchain != "Prison" && await GetBusinessOwner(Data.Foodchain) != Player.PlayerData.citizenid) {
-        return Player.Functions.Notify("Geen toegang..", "error")
+        return Player.Functions.Notify("No Access..", "error")
     }
 
     await exp['ghmattimysql'].executeSync("DELETE FROM `businesses_dishes` WHERE `id` = ?" , [ Data.DishId ])
-    Player.Functions.Notify("Gerecht verwijderd!")
+    Player.Functions.Notify("Dish deleted!")
 });
 
 // Misc
@@ -248,7 +248,7 @@ onNet("fw-businesses:Server:Foodchain:GrabBusinessBag", async (Data: {
     if (!Player) return;
 
     if (!await HasPlayerBusinessPermission(Data.Business, Player.PlayerData.source, "ChargeExternal")) {
-        return Player.Functions.Notify("Geen toegang..", "error")
+        return Player.Functions.Notify("No Access..", "error")
     };
 
     const BagId = `bag-${new Date().getTime()}${GetRandom(1, 999999)}`;
@@ -263,7 +263,7 @@ onNet("fw-businesses:Server:Foodchain:GrabBusinessGift", async (Data: {
     if (!Player) return;
 
     if (!IsClockedIn(Player.PlayerData.source, Data.Business)) {
-        return Player.Functions.Notify("Geen toegang..", "error")
+        return Player.Functions.Notify("No Access..", "error")
     };
 
     if (Data.Type == "uwucafe") {

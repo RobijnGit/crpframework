@@ -7,7 +7,7 @@ onNet("fw-business:Client:News:OpenStash", (Data: {
     Stash: string;
 }) => {
     const Job = FW.Functions.GetPlayerData().job;
-    if (Job.name != "news" || Job.grade.level != '1') return FW.Functions.Notify("Geen toegang..", "error");
+    if (Job.name != "news" || Job.grade.level != '1') return FW.Functions.Notify("No Access..", "error");
 
     if (!exp['fw-inventory'].CanOpenInventory()) return;
     FW.TriggerServer('fw-inventory:Server:OpenInventory', 'Stash', `business_news_${Data.Stash}`, 20, 2000)
@@ -155,7 +155,7 @@ setImmediate(() => {
             {
                 Name: 'employees',
                 Icon: 'fas fa-users',
-                Label: 'Nieuws Mederwekerslijst',
+                Label: 'News Employee List',
                 EventType: 'Client',
                 EventName: 'fw-police:Client:OpenEmployeelist',
                 EventParams: { Job: 'news' },
@@ -167,7 +167,7 @@ setImmediate(() => {
             {
                 Name: 'highcommand_badge',
                 Icon: 'fas fa-id-badge',
-                Label: 'Nieuws Pas Maken',
+                Label: 'Create News Badge',
                 EventType: 'Client',
                 EventName: 'fw-ui:Client:CreateBadge',
                 EventParams: { Badge: 'news', Department: "Los Santos Broadcasting Network" },
@@ -209,7 +209,7 @@ setImmediate(() => {
             {
                 Name: 'grab_camera',
                 Icon: 'fas fa-camera',
-                Label: 'Camera Kopen (€ 85,00)',
+                Label: 'Purchase Camera ($ 85,00)',
                 EventType: 'Server',
                 EventName: 'fw-businesses:Server:News:PurchaseCamera',
                 EventParams: {},
@@ -221,7 +221,7 @@ setImmediate(() => {
             {
                 Name: 'grab_mic',
                 Icon: 'fas fa-microphone',
-                Label: 'Microfoon Kopen (€ 85,00)',
+                Label: 'Purchase Mic ($ 85,00)',
                 EventType: 'Server',
                 EventName: 'fw-businesses:Server:News:PurchaseMic',
                 EventParams: {},

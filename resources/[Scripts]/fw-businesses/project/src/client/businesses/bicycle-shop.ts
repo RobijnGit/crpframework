@@ -16,7 +16,7 @@ onNet("fw-businesses:Client:BicycleShop:OpenMenu", async ({isRental, spawn}: {is
             Desc: NumberWithCommas(FW.Shared.CalculateTax('Vehicle Registration Tax', price)),
             SecondMenu: [
                 {
-                    Title: 'Bevestig aankoop',
+                    Title: 'Confirm Purchase',
                     GoBack: false,
                     CloseMenu: true,
                     DoCloseEvent: false,
@@ -43,21 +43,21 @@ onNet("fw-businesses:Client:BicycleShop:PurchaseBike", async (Data: {
     Spawn: Vector4Format
 }) => {
     if (!FW.Functions.IsSpawnPointClear(Data.Spawn, 1.85)) {
-        return FW.Functions.Notify("Er staat iets in de weg..", "error")
+        return FW.Functions.Notify("Something is in the way..", "error")
     }
 
     const [startX, startY, startZ] = GetEntityCoords(PlayerPedId(), false);
-    const Finished = await FW.Functions.CompactProgressbar(15000, "Aanschaffen, niet bewegen...", false, true, {disableMovement: false, disableCarMovement: false, disableMouse: false, disableCombat: false}, {}, {}, {}, false)
+    const Finished = await FW.Functions.CompactProgressbar(15000, "Purchasing, don't move...", false, true, {disableMovement: false, disableCarMovement: false, disableMouse: false, disableCombat: false}, {}, {}, {}, false)
     if (!Finished) return;
 
     const [endX, endY, endZ] = GetEntityCoords(PlayerPedId(), false);
 
     if (new Vector3().setFromArray([endX, endY, endZ]).getDistanceFromArray([startX, startY, startZ]) > 2.0) {
-        return FW.Functions.Notify("Idioot, je bent te ver weg gegaan..", "error")
+        return FW.Functions.Notify("You left the salesman..", "error")
     };
 
     const Result = await FW.SendCallback("fw-businesses:Server:BicycleShop:Purchase", Data.Model, Data.Price, Data.IsRental, Data.Spawn);
-    if (!Result.Success) return FW.Functions.Notify("Niet genoeg cash..", "error");
+    if (!Result.Success) return FW.Functions.Notify("Not enough cash..", "error");
 
     while (!NetworkDoesEntityExistWithNetworkId(Result.NetId)) await Delay(100);
     const Vehicle = NetworkGetEntityFromNetworkId(Result.NetId);
@@ -94,7 +94,7 @@ setImmediate(async () => {
                 {
                     Name: 'purchase',
                     Icon: 'fas fa-circle',
-                    Label: `Fiets ${isRental ? "huren" : "kopen"}`,
+                    Label: `${isRental ? "Rent" : "Purchase"} Bicycle`,
                     EventType: 'Client',
                     EventName: 'fw-businesses:Client:BicycleShop:OpenMenu',
                     EventParams: { isRental, spawn },

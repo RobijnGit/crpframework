@@ -11,12 +11,12 @@ on("fw-businesses:Client:Foodchain:SetupPayment", async (Data: {
     if (!CurrentClock.ClockedIn) return;
 
     const Result = await exp['fw-ui'].CreateInput([
-        { Label: "Kosten", Icon: "fas fa-euro-sign", Name: "Costs", Type: "number" },
-        { Label: "Bestelling", Icon: "fas fa-pencil", Name: "Comment" },
+        { Label: "Costs", Icon: "fas fa-euro-sign", Name: "Costs", Type: "number" },
+        { Label: "Comment", Icon: "fas fa-pencil", Name: "Comment" },
     ]);
 
     if (await IsBusinessOnLockdown(CurrentClock.Business)) {
-        return FW.Functions.Notify("Bedrijf is in lockdown..", "error")
+        return FW.Functions.Notify("Business is in lockdown..", "error")
     };
 
     if (Result && Number(Result.Costs) > 0 && Result.Comment.trim().length > 0) {
@@ -32,20 +32,20 @@ on("fw-businesses:Client:Foodchain:GetPayments", async (Data: {
 
     const Result = await FW.SendCallback("fw-businesses:Server:Foodchain:GetPaymentData", Data.Business, Data.RegisterId);
     if (!Result) {
-        return FW.Functions.Notify("Geen openstaande bestelling..", "error");
+        return FW.Functions.Notify("No outstanding payments..", "error");
     };
 
     FW.Functions.OpenMenu({
         MainMenuItems: [
             {
                 Icon: 'info-circle',
-                Title: "Restaurant Bestelling",
+                Title: "Food Order",
                 Desc: `${NumberWithCommas(Result.Costs)} | ${Result.Order}`,
                 Data: { Event: "", Type: ""}
             },
             {
                 Icon: 'credit-card',
-                Title: "Betalen met Bank",
+                Title: "Pay with Card",
                 CloseMenu: true,
                 Data: {
                     Event: "fw-businesses:Server:Foodchain:PayRegister",
@@ -56,7 +56,7 @@ on("fw-businesses:Client:Foodchain:GetPayments", async (Data: {
             },
             {
                 Icon: 'money-bill',
-                Title: "Betalen met Cash",
+                Title: "Pay with Cash",
                 CloseMenu: true,
                 Data: {
                     Event: "fw-businesses:Server:Foodchain:PayRegister",

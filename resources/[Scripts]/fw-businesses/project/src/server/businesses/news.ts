@@ -5,9 +5,9 @@ onNet("fw-businesses:Server:News:PurchaseCamera", () => {
     const Player = FW.Functions.GetPlayer(Source);
     if (!Player) return;
 
-    if (Player.PlayerData.job.name != 'news') return Player.Functions.Notify("Geen toegang..", "error");
+    if (Player.PlayerData.job.name != 'news') return Player.Functions.Notify("No Access..", "error");
     if (!Player.Functions.RemoveMoney('cash', 85, 'Purchase News Item')) {
-        return Player.Functions.Notify("Niet genoeg cash..", "error")
+        return Player.Functions.Notify("Not enough cash..", "error")
     };
 
     Player.Functions.AddItem('newscamera', 1, false, undefined, true);
@@ -18,9 +18,9 @@ onNet("fw-businesses:Server:News:PurchaseMic", () => {
     const Player = FW.Functions.GetPlayer(Source);
     if (!Player) return;
 
-    if (Player.PlayerData.job.name != 'news') return Player.Functions.Notify("Geen toegang..", "error");
+    if (Player.PlayerData.job.name != 'news') return Player.Functions.Notify("No Access..", "error");
     if (!Player.Functions.RemoveMoney('cash', 85, 'Purchase News Item')) {
-        return Player.Functions.Notify("Niet genoeg cash..", "error")
+        return Player.Functions.Notify("Not enough cash..", "error")
     };
 
     Player.Functions.AddItem('newsmic', 1, false, undefined, true);

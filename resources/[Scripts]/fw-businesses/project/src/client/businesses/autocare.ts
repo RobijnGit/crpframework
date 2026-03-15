@@ -103,7 +103,7 @@ PartsThread.addHook("active", ({vehicle, seatIndex, displayName, netId}) => {
     if (VehicleParts[Plate].Engine < 25.0 && IsVehicleEngineOn(vehicle)) {
         if (Math.random() < 0.12) {
             SetVehicleEngineOn(vehicle, false, true, true);
-            FW.Functions.Notify("Voertuig is afgeslagen..", "error");
+            FW.Functions.Notify("Vehicle has stalled..", "error");
         };
     };
 
@@ -174,12 +174,12 @@ PartsThread.addHook("active", ({vehicle, seatIndex, displayName, netId}) => {
 onNet("fw-businesses:Client:AutoCare:CheckVehicle", async (Data: any, Entity: number) => {
     const Plate = GetVehicleNumberPlateText(Entity)
     if (!VehicleParts[Plate]) {
-        return FW.Functions.Notify("Je ziet weinig schroefjes en bent verbaasd dat dit voertuig vooruit komt..", "error")
+        return FW.Functions.Notify("You don't see any bolts and screws, you're surprised that this vehicle still runs..", "error")
     };
 
     const VehicleData = FW.Shared.HashVehicles[GetEntityModel(Entity)]
     if (!VehicleData) {
-        return FW.Functions.Notify("Dit voertuig kan niet gecontroleerd worden..", "error")
+        return FW.Functions.Notify("This vehicle can't been checked..", "error")
     };
 
     const ContextItems: any = [];
@@ -187,14 +187,14 @@ onNet("fw-businesses:Client:AutoCare:CheckVehicle", async (Data: any, Entity: nu
         Icon: 'car',
         CloseMenu: false,
         Title: `${VehicleData.Name} | ${Plate}`,
-        Desc: `Klasse: ${VehicleData.Class} | Totale percentage: ${Round(GetTotalPercentage(Object.values(VehicleParts[Plate])), 2)}%`,
+        Desc: `Class: ${VehicleData.Class} | Total health: ${Round(GetTotalPercentage(Object.values(VehicleParts[Plate])), 2)}%`,
         Data: { Event: '', Type: 'Client'},
     });
 
     ContextItems.push({
         Icon: 'wrench',
-        Title: "Voertuig Diagnostiek",
-        Desc: "Bekijk de staat van de onderdelen.",
+        Title: "Vehicle Diagnostics",
+        Desc: "View the state of the vehicle parts.",
         Data: { Event: '', Type: 'Client'},
         SecondMenu: []
     });
@@ -202,15 +202,15 @@ onNet("fw-businesses:Client:AutoCare:CheckVehicle", async (Data: any, Entity: nu
     if (await IsPlayerInBusiness("Bennys Motorworks") && !exp['fw-vehicles'].IsGovVehicle(Entity)) {
         ContextItems.push({
             Icon: 'meteor',
-            Title: "Voertuig Opties",
-            Desc: "Monteer een raceharnas of nitrofles.",
+            Title: "Vehicle Options",
+            Desc: "Mount a racing harness or install nitro.",
             Data: { Event: '', Type: 'Client'},
             SecondMenu: [
                 {
                     Icon: 'user-slash',
                     CloseMenu: true,
                     Disabled: false,
-                    Title: 'Raceharnas',
+                    Title: 'Racing Harness',
                     Desc: `Huidige staat: ${Round(exp['fw-vehicles'].GetVehicleMeta(Entity, 'Harness'), 2)}%`,
                     Data: { Event: "fw-businesses:Client:AutoCare:MountMisc", Type: "Client", Misc: "Harness", Vehicle: Entity },
                 },
@@ -218,7 +218,7 @@ onNet("fw-businesses:Client:AutoCare:CheckVehicle", async (Data: any, Entity: nu
                     Icon: 'bolt',
                     CloseMenu: true,
                     Disabled: !IsToggleModOn(Entity, 18),
-                    Title: 'Nitrofles',
+                    Title: 'Nitrous',
                     Desc: `Huidige staat: ${Round(exp['fw-vehicles'].GetVehicleMeta(Entity, 'Nitrous'), 2)}%`,
                     Data: { Event: "fw-businesses:Client:AutoCare:MountMisc", Type: "Client", Misc: "Nitrous", Vehicle: Entity },
                 },
@@ -232,8 +232,8 @@ onNet("fw-businesses:Client:AutoCare:CheckVehicle", async (Data: any, Entity: nu
         ContextItems[1].SecondMenu.push({
             Icon: 'info-circle',
             CloseMenu: false,
-            Title: `Voertuig ${partLabels[Key]}`,
-            Desc: `Huidige staat: ${Round(Value, 2)}%`,
+            Title: `Vehicle ${partLabels[Key]}`,
+            Desc: `Current Health: ${Round(Value, 2)}%`,
         })
     };
 
@@ -241,8 +241,8 @@ onNet("fw-businesses:Client:AutoCare:CheckVehicle", async (Data: any, Entity: nu
     ContextItems[1].SecondMenu.push({
         Icon: 'sparkles',
         CloseMenu: false,
-        Title: `Voertuig Wax`,
-        Desc: `Huidige staat: ${(Waxed && Waxed > 0.0 ? `${Round(Waxed, 2)}%` : "Geen wax")}`,
+        Title: `Vehicle Wax`,
+        Desc: `Current Health: ${(Waxed && Waxed > 0.0 ? `${Round(Waxed, 2)}%` : "No wax")}`,
     })
 
     FW.Functions.OpenMenu({
@@ -252,7 +252,7 @@ onNet("fw-businesses:Client:AutoCare:CheckVehicle", async (Data: any, Entity: nu
 
 onNet("fw-businesses:Client:AutoCare:MountPart", (Item: string, Type: string, Class: string) => {
     if (IsPedInAnyVehicle(PlayerPedId(), false)) {
-        return FW.Functions.Notify("Je kan vanaf hier geen voertuigonderdeel monteren..", "error")
+        return FW.Functions.Notify("You can't mount a part from here..", "error")
     };
 
     const RayResult = exp['fw-ui'].GetEntityPlayerIsLookingAt(4.0, 0.2, 286, PlayerPedId());
@@ -266,7 +266,7 @@ onNet("fw-businesses:Client:AutoCare:MountPart", (Item: string, Type: string, Cl
     if (!VehicleData) return;
 
     if (VehicleData.Class != Class) {
-        return FW.Functions.Notify("Het lijkt erop dat dit onderdeel niet in dit voertuig past..", "error")
+        return FW.Functions.Notify("Seems like this part won't fit this vehicle..", "error")
     }
 
     let Animation: {
@@ -285,7 +285,7 @@ onNet("fw-businesses:Client:AutoCare:MountPart", (Item: string, Type: string, Cl
     }
 
     exp["fw-inventory"].SetBusyState(true)
-    FW.Functions.Progressbar("mounting_part", "Repareren...", 12500, false, true, {
+    FW.Functions.Progressbar("mounting_part", "Repairing...", 12500, false, true, {
         disableMovement: true,
         disableCarMovement: true,
         disableMouse: false,
@@ -296,7 +296,7 @@ onNet("fw-businesses:Client:AutoCare:MountPart", (Item: string, Type: string, Cl
 
         const DidRemove = await FW.SendCallback("FW:RemoveItem", Item, 1, false, Class);
         if (!DidRemove) {
-            return FW.Functions.Notify("Waar is het voertuigonderdeel gebleven dan?", "error")
+            return FW.Functions.Notify("Where did the part go?", "error")
         };
 
         const Plate = GetVehicleNumberPlateText(Entity)
@@ -316,15 +316,15 @@ onNet("fw-businesses:Client:AutoCare:MountMisc", (Data: {
     Vehicle: number;
 }) => {
     const Item = exp['fw-inventory'].GetItemByName(Data.Misc.toLowerCase());
-    if (!Item) return FW.Functions.Notify("Je mist een item..", "error");
+    if (!Item) return FW.Functions.Notify("You're missin an item..", "error");
 
     if (Data.Misc == "Nitrous" && !IsToggleModOn(Data.Vehicle, 18)) {
-        return FW.Functions.Notify("Dit voertuig heeft geen Turbo om de nitrofles op te installeren..", "error")
+        return FW.Functions.Notify("This vehicle doesn't have turbo installed to mount nitrous on..", "error")
     };
 
     TriggerEvent('fw-emotes:Client:PlayEmote', "welding", undefined, true);
     exp["fw-inventory"].SetBusyState(true);
-    FW.Functions.Progressbar("mounting_part", "Repareren...", 12500, false, true, {
+    FW.Functions.Progressbar("mounting_part", "Repairing...", 12500, false, true, {
         disableMovement: true,
         disableCarMovement: true,
         disableMouse: false,
@@ -332,7 +332,7 @@ onNet("fw-businesses:Client:AutoCare:MountMisc", (Data: {
     }, {}, {}, {}, async () => {
         TriggerEvent("fw-emotes:Client:CancelEmote", true)
         const NewPercentage = await FW.SendCallback("fw-businesses:Server:AutoCare:GetNewPercentage", Data.Misc, Item.CreateDate, Item.Slot, NetworkGetNetworkIdFromEntity(Data.Vehicle))
-        FW.Functions.Notify(`Harness gerepareerd naar ${Round(NewPercentage, 2)}%`)
+        FW.Functions.Notify(`${Data.Misc == "Nitrous" ? "Nitrous" : "Harness"} has been repaired to ${Round(NewPercentage, 2)}%`)
         exp["fw-inventory"].SetBusyState(false);
     }, () => {
         TriggerEvent("fw-emotes:Client:CancelEmote", true)
@@ -345,11 +345,11 @@ onNet("fw-businesses:Client:AutoCare:Stash", async (Data: {
     Name: string;
 }) => {
     if (!await HasRolePermission(Data.Business, 'StashAccess')) {
-        return FW.Functions.Notify("Geen toegang..", "error")
+        return FW.Functions.Notify("No Access..", "error")
     }
 
     if (await IsBusinessOnLockdown(Data.Business)) {
-        return FW.Functions.Notify("Bedrijf is in lockdown..", "error")
+        return FW.Functions.Notify("Business is in lockdown..", "error")
     };
 
     if (exp['fw-inventory'].CanOpenInventory()) {
@@ -361,11 +361,11 @@ onNet("fw-businesses:Client:AutoCare:Craft", async (Data: {
     Business: string;
 }) => {
     if (!await HasRolePermission(Data.Business, 'CraftAccess')) {
-        return FW.Functions.Notify("Geen toegang..", "error")
+        return FW.Functions.Notify("No Access..", "error")
     }
 
     if (await IsBusinessOnLockdown(Data.Business)) {
-        return FW.Functions.Notify("Bedrijf is in lockdown..", "error")
+        return FW.Functions.Notify("Business is in lockdown..", "error")
     };
 
     if (exp['fw-inventory'].CanOpenInventory()) {
@@ -394,16 +394,16 @@ onNet("fw-businesses:Client:AutoCare:ApplyWax", async () => {
 
     const Plate = GetVehicleNumberPlateText(Entity)
     if (!VehicleParts[Plate]) {
-        return FW.Functions.Notify("Je kan dit voertuig niet waxen..")
+        return FW.Functions.Notify("You can't wax this vehicle..")
     }
     
     if (GetVehicleDirtLevel(Entity) > 1.0) {
-        return FW.Functions.Notify("De auto is vies.. Misschien eerst maar eens schoonpoetsen?")
+        return FW.Functions.Notify("The vehicle is dirty, you need to clean it first..", "error",)
     }
 
     const WaxPercentage = exp['fw-vehicles'].GetVehicleMeta(Entity, "Waxed")
     if (WaxPercentage && WaxPercentage > 25.0) {
-        return FW.Functions.Notify("De auto is nog gewaxt.. Probeer het later nog eens!")
+        return FW.Functions.Notify("The vehicle is already waxed..")
     }
 
 	TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_MAID_CLEAN", 0, true)
@@ -459,7 +459,7 @@ const loadAutocareZones = async () => {
             options.push({
                 Name: 'craft',
                 Icon: 'fas fa-wrench',
-                Label: 'Craften',
+                Label: 'Craft',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:AutoCare:Craft',
                 EventParams: ZoneData.data,
@@ -471,7 +471,7 @@ const loadAutocareZones = async () => {
             options.push({
                 Name: 'tray',
                 Icon: 'fas fa-box-open',
-                Label: 'Toonbank',
+                Label: 'Tray',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:AutoCare:Tray',
                 EventParams: ZoneData.data,

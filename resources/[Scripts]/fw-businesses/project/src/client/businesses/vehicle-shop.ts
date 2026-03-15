@@ -87,13 +87,13 @@ onNet("fw-businesses:Client:VehicleShop:LoadVehicle", async (NetId: number, Plat
 });
 
 QuicksellThread.addHook("preStart", () => {
-    exp['fw-ui'].ShowInteraction("[Y] Quick-Sell Voertuig", "error")
+    exp['fw-ui'].ShowInteraction("[Y] Quick-Sell Vehicle", "error")
 });
 
 QuicksellThread.addHook("active", () => {
     if (IsControlJustReleased(0, 246)) {
         const Vehicle = GetVehiclePedIsIn(PlayerPedId(), false);
-        if (!Vehicle) return FW.Functions.Notify("Je zit niet in een voertuig..", "error");
+        if (!Vehicle) return;
         FW.TriggerServer("fw-businesses:Server:QuicksellVehicle", NetworkGetNetworkIdFromEntity(Vehicle), GetVehicleNumberPlateText(Vehicle), GetEntityModel(Vehicle));
     }
 });

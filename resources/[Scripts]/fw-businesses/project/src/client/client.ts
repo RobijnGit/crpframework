@@ -17,11 +17,11 @@ onNet("fw-businesses:Client:SetClock", async (Data: {
     ClockedIn: boolean;
 }) => {
     if (Data.ClockedIn && !IsPlayerInBusiness(Data.Business)) {
-        return FW.Functions.Notify("Ze herkennen je niet..", "error");
+        return FW.Functions.Notify("They don't recognize you..", "error");
     };
 
     if (Data.ClockedIn && await IsBusinessOnLockdown(Data.Business)) {
-        return FW.Functions.Notify("Bedrijf is in lockdown..", "error");
+        return FW.Functions.Notify("Business is in lockdown..", "error");
     };
 
     CurrentClock = Data;
@@ -35,9 +35,9 @@ onNet("fw-businesses:Client:CreateBusiness", async () => {
     if (PlayerJob.name != 'judge' && PlayerJob.name != 'mayor') return;
 
     const Result = await exp['fw-ui'].CreateInput([
-        { Label: 'Bedrijfsnaam', Icon: 'fas fa-heading', Name: 'BusinessName' },
-        { Label: 'BSN Eigenaar', Icon: 'fas fa-id-card', Name: 'BusinessOwner' },
-        { Label: 'Bankrekeningnummer', Icon: 'fas fa-money-check-alt', Name: 'BusinessAccount' },
+        { Label: 'Business Name', Icon: 'fas fa-heading', Name: 'BusinessName' },
+        { Label: 'Owner State ID', Icon: 'fas fa-id-card', Name: 'BusinessOwner' },
+        { Label: 'Bank Account Number', Icon: 'fas fa-money-check-alt', Name: 'BusinessAccount' },
     ])
 
     emitNet("fw-businesses:Server:CreateBusiness", Result)

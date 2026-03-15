@@ -74,17 +74,17 @@ export default () => {
     // Employees
     FW.Functions.CreateCallback('fw-businesses:Server:AddEmployee', async (Source: number, Cb: Function, BusinessName: string, Cid: string, Role: string) => {
         const Player = FW.Functions.GetPlayer(Source);
-        if (!Player) return Cb({Success: false, Msg: "Ongeldige speler."});
+        if (!Player) return Cb({Success: false, Msg: "Invalid Player."});
 
         const Business = await GetBusinessByName(BusinessName);
-        if (!Business) return Cb({Success: false, Msg: "Ongeldig bedrijf."});
+        if (!Business) return Cb({Success: false, Msg: "Invalid Business."});
 
         const PlayerData = await exp['ghmattimysql'].executeSync("SELECT `citizenid` FROM `players` WHERE `citizenid` = ?", [Cid]);
-        if (!PlayerData[0]) return Cb({Success: false, Msg: "Ongeldige speler."});
+        if (!PlayerData[0]) return Cb({Success: false, Msg: "Invalid Player."});
 
         // Is the player in the business?
         const Employees: BusinessEmployee[] = JSON.parse(Business.business_employees) || [];
-        if (Employees.findIndex(Val => Val.Cid == Cid) != -1) return Cb({Success: false, Msg: "Speler is al een werknemer"});
+        if (Employees.findIndex(Val => Val.Cid == Cid) != -1) return Cb({Success: false, Msg: "Player is already employed."});
 
         Employees.push({Cid, Role});
         await exp['ghmattimysql'].executeSync("UPDATE `phone_businesses` SET `business_employees` = ? WHERE `business_name` = ?", [
@@ -109,18 +109,18 @@ export default () => {
 
     FW.Functions.CreateCallback('fw-businesses:Server:SetEmployeeRank', async (Source: number, Cb: Function, BusinessName: string, Cid: string, Role: string) => {
         const Player = FW.Functions.GetPlayer(Source);
-        if (!Player) return Cb({Success: false, Msg: "Ongeldige speler."});
+        if (!Player) return Cb({Success: false, Msg: "Invalid Player."});
 
         const Business = await GetBusinessByName(BusinessName);
-        if (!Business) return Cb({Success: false, Msg: "Ongeldig bedrijf."});
+        if (!Business) return Cb({Success: false, Msg: "Invalid Business."});
 
         const PlayerData = await exp['ghmattimysql'].executeSync("SELECT `citizenid` FROM `players` WHERE `citizenid` = ?", [Cid]);
-        if (!PlayerData[0]) return Cb({Success: false, Msg: "Ongeldige speler."});
+        if (!PlayerData[0]) return Cb({Success: false, Msg: "Invalid Player."});
 
         // Is the player in the business?
         const Employees: BusinessEmployee[] = JSON.parse(Business.business_employees) || [];
         const EmployeeIndex = Employees.findIndex(Val => Val.Cid == Cid);
-        if (EmployeeIndex == -1) return Cb({Success: false, Msg: "Speler is geen werknemer"});
+        if (EmployeeIndex == -1) return Cb({Success: false, Msg: "Player is not employed here."});
 
         Employees[EmployeeIndex].Role = Role;
 
@@ -147,17 +147,17 @@ export default () => {
 
     FW.Functions.CreateCallback('fw-businesses:Server:RemoveEmployee', async (Source: number, Cb: Function, BusinessName: string, Cid: string) => {
         const Player = FW.Functions.GetPlayer(Source);
-        if (!Player) return Cb({Success: false, Msg: "Ongeldige speler."});
+        if (!Player) return Cb({Success: false, Msg: "Invalid Player."});
 
         const Business = await GetBusinessByName(BusinessName);
-        if (!Business) return Cb({Success: false, Msg: "Ongeldig bedrijf."});
+        if (!Business) return Cb({Success: false, Msg: "Invalid Business."});
 
         const PlayerData = await exp['ghmattimysql'].executeSync("SELECT `citizenid` FROM `players` WHERE `citizenid` = ?", [Cid]);
-        if (!PlayerData[0]) return Cb({Success: false, Msg: "Ongeldige speler."});
+        if (!PlayerData[0]) return Cb({Success: false, Msg: "Invalid Player."});
 
         // Is the player in the business?
         let Employees: BusinessEmployee[] = JSON.parse(Business.business_employees) || [];
-        if (Employees.findIndex(Val => Val.Cid == Cid) == -1) return Cb({Success: false, Msg: "Speler is geen werknemer"});
+        if (Employees.findIndex(Val => Val.Cid == Cid) == -1) return Cb({Success: false, Msg: "Player is not employed here."});
 
         Employees = Employees.filter(Val => Val.Cid != Cid);
 
@@ -184,17 +184,17 @@ export default () => {
     // Roles
     FW.Functions.CreateCallback("fw-businesses:Server:CreateRole", async (Source: number, Cb: Function, BusinessName: string, Name: string, RoleData: RolePermissions) => {
         const Player = FW.Functions.GetPlayer(Source);
-        if (!Player) return Cb({Success: false, Msg: "Ongeldige Speler"});
+        if (!Player) return Cb({Success: false, Msg: "Invalid Player"});
 
         const Business = await GetBusinessByName(BusinessName);
-        if (!Business) return Cb({Success: false, Msg: "Ongeldig Bedrijf"});
+        if (!Business) return Cb({Success: false, Msg: "Invalid Business"});
 
         if (Name.trim().length == 0) {
-            return Cb({Success: false, Msg: "Ongeldige rol."})
+            return Cb({Success: false, Msg: "Invalid Role."})
         };
 
         const Roles: BusinessRole[] = JSON.parse(Business.business_ranks);
-        if (Roles.findIndex(Val => Val.Name.toLowerCase() == Name.toLowerCase()) != -1) return Cb({Success: false, Msg: "Rol bestaat al."});
+        if (Roles.findIndex(Val => Val.Name.toLowerCase() == Name.toLowerCase()) != -1) return Cb({Success: false, Msg: "Role already exists."});
 
         Roles.push({
             Name,
@@ -222,18 +222,18 @@ export default () => {
 
     FW.Functions.CreateCallback("fw-businesses:Server:EditRole", async (Source: number, Cb: Function, BusinessName: string, Name: string, RoleData: RolePermissions) => {
         const Player = FW.Functions.GetPlayer(Source);
-        if (!Player) return Cb({Success: false, Msg: "Ongeldige Speler"});
+        if (!Player) return Cb({Success: false, Msg: "Invalid Player"});
 
         const Business = await GetBusinessByName(BusinessName);
-        if (!Business) return Cb({Success: false, Msg: "Ongeldig Bedrijf"});
+        if (!Business) return Cb({Success: false, Msg: "Invalid Business"});
 
         if (Name.trim().length == 0) {
-            return Cb({Success: false, Msg: "Ongeldige rol."})
+            return Cb({Success: false, Msg: "Invalid Role."})
         };
 
         const Roles: BusinessRole[] = JSON.parse(Business.business_ranks);
         const RoleIndex = Roles.findIndex(Val => Val.Name.toLowerCase() == Name.toLowerCase());
-        if (RoleIndex == -1) return Cb({Success: false, Msg: "Rol bestaat niet."});
+        if (RoleIndex == -1) return Cb({Success: false, Msg: "Role doesn't exist."});
 
         Roles[RoleIndex].Perms = {
             Hire: !!RoleData.Hire,
@@ -258,17 +258,17 @@ export default () => {
 
     FW.Functions.CreateCallback("fw-businesses:Server:Delete", async (Source: number, Cb: Function, BusinessName: string, Name: string) => {
         const Player = FW.Functions.GetPlayer(Source);
-        if (!Player) return Cb({Success: false, Msg: "Ongeldige Speler"});
+        if (!Player) return Cb({Success: false, Msg: "Invalid Player"});
 
         const Business = await GetBusinessByName(BusinessName);
-        if (!Business) return Cb({Success: false, Msg: "Ongeldig Bedrijf"});
+        if (!Business) return Cb({Success: false, Msg: "Invalid Business"});
 
         if (Name.trim().length == 0) {
-            return Cb({Success: false, Msg: "Ongeldige rol."})
+            return Cb({Success: false, Msg: "Invalid Role."})
         };
 
         const Employees: BusinessEmployee[] = JSON.parse(Business.business_employees);
-        if (Employees.findIndex(Val => Val.Role.toLowerCase() == Name.toLowerCase()) != -1) return Cb({Success: false, Msg: "Een werknemer heeft deze rol."});
+        if (Employees.findIndex(Val => Val.Role.toLowerCase() == Name.toLowerCase()) != -1) return Cb({Success: false, Msg: "This role is in use."});
 
         let Roles: BusinessRole[] = JSON.parse(Business.business_ranks);
         Roles = Roles.filter(Val => Val.Name.toLowerCase() != Name.toLowerCase());

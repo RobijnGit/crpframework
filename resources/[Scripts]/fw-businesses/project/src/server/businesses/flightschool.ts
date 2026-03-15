@@ -16,14 +16,14 @@ FW.Functions.CreateCallback("fw-businesses:Server:Flightschool:GivePilotLicense"
     Give: boolean;
 }) => {
     const Player = FW.Functions.GetPlayer(Source);
-    if (!Player) return Cb({Success: false, Msg: "Ongeldige speler."});
+    if (!Player) return Cb({Success: false, Msg: "Invalid Player."});
 
 
     const Target = FW.Functions.GetPlayerByCitizenId(Data.Cid);
-    if (!Target) return Cb({Success: false, Msg: "Ongeldige speler."});
+    if (!Target) return Cb({Success: false, Msg: "Invalid Player."});
 
-    const CanChargeExternal = await HasPlayerBusinessPermission("Los Santos Vliegschool", Source, "ChargeExternal");
-    if (!CanChargeExternal) return Cb({Success: false, Msg: "Geen toegang.."});
+    const CanChargeExternal = await HasPlayerBusinessPermission("Los Santos Flight School", Source, "ChargeExternal");
+    if (!CanChargeExternal) return Cb({Success: false, Msg: "No Access.."});
 
     if (Data.Give) {
         const _Date = new Date();
@@ -35,23 +35,23 @@ FW.Functions.CreateCallback("fw-businesses:Server:Flightschool:GivePilotLicense"
 
         emit('fw-phone:Server:Documents:AddDocument', '1001', {
             Type: 1,
-            Title: `Vliegbrevet - ${Target.PlayerData.citizenid}`,
+            Title: `Flight Certificate - ${Target.PlayerData.citizenid}`,
             Content: FillLicenseTemplate([
                 `${Target.PlayerData.charinfo.firstname} ${Target.PlayerData.charinfo.lastname}`,
                 Target.PlayerData.citizenid,
-                Target.PlayerData.charinfo.gender == 0 ? "Man" : "Vrouw",
+                Target.PlayerData.charinfo.gender == 0 ? "Male" : 'Female',
                 `${Player.PlayerData.charinfo.firstname} ${Player.PlayerData.charinfo.lastname}`,
                 `${Day}/${Month + 1}/${Year} ${Hour}:${Minutes}`
             ]),
             Signatures: [
-                { Signed: true, Name: 'De Staat', Timestamp: _Date.getTime(), Cid: '1001' },
+                { Signed: true, Name: "The State", Timestamp: _Date.getTime(), Cid: '1001' },
             ],
             Sharees: [ Target.PlayerData.citizenid ],
             Finalized: 1,
         })
     } else {
         exp['ghmattimysql'].executeSync("DELETE FROM `phone_documents` WHERE `type` = 1 AND `title` = ? AND `sharees` LIKE ?", [
-            `Vliegbrevet - ${Target.PlayerData.citizenid}`,
+            `Flight Certificate - ${Target.PlayerData.citizenid}`,
             `%${Target.PlayerData.citizenid}%`
         ])
     };

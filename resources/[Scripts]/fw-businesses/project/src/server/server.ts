@@ -14,26 +14,26 @@ FW.Functions.CreateCallback("fw-businesses:Server:PayExternal", async (Source: n
     if (!Player) return;
 
     const Business = await GetBusinessByName(BusinessName);
-    if (!Business) return Cb({Success: false, Msg: "Ongeldige bedrijf."});
+    if (!Business) return Cb({Success: false, Msg: "Invalid Business."});
 
     if (!HasPlayerBusinessPermission(BusinessName, Source, "PayExternal")) {
-        return Cb({Success: false, Msg: "Geen toegang."});
+        return Cb({Success: false, Msg: "No Access."});
     };
 
     if (!Business.business_account) {
-        return Cb({Success: false, Msg: "Geen bankrekening gekoppeld aan bedrijf."});
+        return Cb({Success: false, Msg: "No financial account is connected to this business."});
     };
 
     const Result = await exp['ghmattimysql'].executeSync("SELECT `citizenid`, `charinfo` FROM `players` WHERE `citizenid` = ?", [ Cid ]);
-    if (!Result[0]) return Cb({ Success: false, Msg: "Ongeldige speler." });
+    if (!Result[0]) return Cb({ Success: false, Msg: "Invalid Player." });
 
     const CharInfo = JSON.parse(Result[0].charinfo);
 
-    if (await exp['fw-financials'].RemoveMoneyFromAccount(Cid, CharInfo.account, Business.business_account, Number(Amount), 'PAY', `Pay External: ${Comment || "Geen commentaar."}`, false)) {
-        exp['fw-financials'].AddMoneyToAccount(Cid, Player.PlayerData.charinfo.account, CharInfo.account, Number(Amount), 'PAY', `Pay External: ${Comment || "Geen commentaar."}`);
+    if (await exp['fw-financials'].RemoveMoneyFromAccount(Cid, CharInfo.account, Business.business_account, Number(Amount), 'PAY', `Pay External: ${Comment || "No Comment."}`, false)) {
+        exp['fw-financials'].AddMoneyToAccount(Cid, Player.PlayerData.charinfo.account, CharInfo.account, Number(Amount), 'PAY', `Pay External: ${Comment || "No Comment."}`);
         return Cb({ Success: true })
     } else {
-        Cb({ Success: false, Msg: "Niet genoeg balans op bedrijfsrekening." })
+        Cb({ Success: false, Msg: "Not enough balance on financial account." })
     };
 });
 
@@ -42,21 +42,21 @@ FW.Functions.CreateCallback("fw-businesses:Server:ChargeCustomer", async (Source
     if (!Player) return;
 
     const Business = await GetBusinessByName(BusinessName);
-    if (!Business) return Cb({Success: false, Msg: "Ongeldige bedrijf."});
+    if (!Business) return Cb({Success: false, Msg: "Invalid Business."});
 
     if (!HasPlayerBusinessPermission(BusinessName, Source, "ChargeExternal")) {
-        return Cb({Success: false, Msg: "Geen toegang."});
+        return Cb({Success: false, Msg: "No Access."});
     };
 
     if (!Business.business_account) {
-        return Cb({Success: false, Msg: "Geen bankrekening gekoppeld aan bedrijf."});
+        return Cb({Success: false, Msg: "No financial account is connected to this business."});
     };
 
     const Target = FW.Functions.GetPlayerByCitizenId(Cid);
-    if (!Target) return Cb({Success: false, Msg: "Ongeldige speler."});
+    if (!Target) return Cb({Success: false, Msg: "Invalid Player."});
 
     const TaxIncluded = FW.Shared.CalculateTax("Services", Number(Amount));
-    emitNet("fw-phone:Client:Notification", Target.PlayerData.source, `charge-customer-${Cid}`, "fas fa-donate", [ "white", "rgb(38, 50, 56)" ], "Zakelijke Facturatie", `${NumberWithCommas(Number(TaxIncluded))} - ${BusinessName} - ${Comment || "Geen commentaar."}`, false, true, "fw-businesses:Server:AcceptCharge", "fw-businesses:Server:RejectCharge", { Id: `charge-customer-${Cid}`, Account: Business.business_account, Cid: Cid, Charger: Source, Business: BusinessName, Amount: Number(Amount), Comment: Comment || "Geen commentaar." });
+    emitNet("fw-phone:Client:Notification", Target.PlayerData.source, `charge-customer-${Cid}`, "fas fa-donate", [ "white", "rgb(38, 50, 56)" ], "Business Charge", `${NumberWithCommas(Number(TaxIncluded))} - ${BusinessName} - ${Comment || "No Comment."}`, false, true, "fw-businesses:Server:AcceptCharge", "fw-businesses:Server:RejectCharge", { Id: `charge-customer-${Cid}`, Account: Business.business_account, Cid: Cid, Charger: Source, Business: BusinessName, Amount: Number(Amount), Comment: Comment || "No Comment." });
 
     Cb({Success: true})
 });
@@ -98,14 +98,14 @@ onNet("fw-businesses:Server:AcceptCharge", async (Data: {
 
     const TaxIncluded = FW.Shared.CalculateTax("Services", Data.Amount);
 
-    if (await exp['fw-financials'].RemoveMoneyFromAccount(Charger.PlayerData.citizenid, Data.Account, Player.PlayerData.charinfo.account, TaxIncluded, 'PURCHASE', `Betaling zakelijke dienstverlening: ${Data.Comment}`, false)) {
-        exp['fw-financials'].AddMoneyToAccount(Player.PlayerData.citizenid, Player.PlayerData.charinfo.account, Data.Account, Data.Amount, 'PURCHASE', `Betaling zakelijke dienstverlening: ${Data.Comment}`);
-        emitNet('fw-phone:Client:Notification', Data.Charger, `business-charge-${Data.Cid}`, "fas fa-home", [ "white" , "rgb(38, 50, 56)" ], "Zakelijke Facturatie", "Betaling Voltooid!");
-        emitNet('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Betaling Voltooid!", true);
+    if (await exp['fw-financials'].RemoveMoneyFromAccount(Charger.PlayerData.citizenid, Data.Account, Player.PlayerData.charinfo.account, TaxIncluded, 'PURCHASE', `Payment for business services: ${Data.Comment}`, false)) {
+        exp['fw-financials'].AddMoneyToAccount(Player.PlayerData.citizenid, Player.PlayerData.charinfo.account, Data.Account, Data.Amount, 'PURCHASE', `Payment for business services: ${Data.Comment}`);
+        emitNet('fw-phone:Client:Notification', Data.Charger, `business-charge-${Data.Cid}`, "fas fa-home", [ "white" , "rgb(38, 50, 56)" ], "Business Charge", "Payment succesfull!");
+        emitNet('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Payment succesfull!", true);
         exp['fw-financials'].AddMoneyToAccount("1001", "1", "1", TaxIncluded - Data.Amount, 'TAX', `${Data.Business} facturatie betaald: ${Data.Comment}`);
     } else {
-        emitNet('fw-phone:Client:Notification', Data.Charger, `business-charge-${Data.Cid}`, "fas fa-home", [ "white" , "rgb(38, 50, 56)" ], "Zakelijke Facturatie", "Betaling Geweigerd!");
-        emitNet('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Betaling Geweigerd!", true);
+        emitNet('fw-phone:Client:Notification', Data.Charger, `business-charge-${Data.Cid}`, "fas fa-home", [ "white" , "rgb(38, 50, 56)" ], "Business Charge", "Payment failed!");
+        emitNet('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Payment failed!", true);
     };
 });
 
@@ -115,8 +115,8 @@ onNet("fw-businesses:Server:RejectCharge", (Data: {
     Charger: number,
 }) => {
     const Source = source;
-    emitNet('fw-phone:Client:Notification', Data.Charger, `business-charge-${Data.Cid}`, "fas fa-home", [ "white" , "rgb(38, 50, 56)" ], "Zakelijke Facturatie", "Betaling Geweigerd!");
-    emitNet('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Betaling Geweigerd!", true);
+    emitNet('fw-phone:Client:Notification', Data.Charger, `business-charge-${Data.Cid}`, "fas fa-home", [ "white" , "rgb(38, 50, 56)" ], "Business Charge", "Payment failed!");
+    emitNet('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Payment failed!", true);
 });
 
 onNet("fw-businesses:Server:CreateBusiness", async (Data: {
@@ -138,5 +138,5 @@ onNet("fw-businesses:Server:CreateBusiness", async (Data: {
         Data.BusinessAccount,
     ]);
 
-    Player.Functions.Notify(`Bedrijf [${Data.BusinessName}] successvol aangemaakt!`, "success")
+    Player.Functions.Notify(`Business [${Data.BusinessName}] sucessfully created!`, "success")
 });

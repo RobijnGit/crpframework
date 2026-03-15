@@ -45,7 +45,7 @@ const AddCatalogZone = (ShopId: VehicleShops, ShopAbbvr: string, ShopLabel: stri
 };
 
 CatalogThread.addHook("preStart", (Data) => {
-    exp['fw-ui'].ShowInteraction(`[E] ${Data.ShopAbbvr} Catalogus`)
+    exp['fw-ui'].ShowInteraction(`[E] ${Data.ShopAbbvr} Catalog`)
 });
 
 CatalogThread.addHook("active", async (Data) => {

@@ -15,7 +15,7 @@ onNet("fw-businesses:Client:WhiteWidow:Storage", async (Data: {
     if (!await HasRolePermission(Data.Business, "StashAccess")) return;
 
     if (await IsBusinessOnLockdown(Data.Business)) {
-        return FW.Functions.Notify("Bedrijf is in lockdown..", "error");
+        return FW.Functions.Notify("Business is in lockdown..", "error");
     };
 
     if (exp['fw-inventory'].CanOpenInventory()) {
@@ -29,7 +29,7 @@ onNet("fw-businesses:Client:WhiteWidow:Craft", async (Data: {
     if (!await HasRolePermission(Data.Business, "CraftAccess")) return;
 
     if (await IsBusinessOnLockdown(Data.Business)) {
-        return FW.Functions.Notify("Bedrijf is in lockdown..", "error");
+        return FW.Functions.Notify("Business is in lockdown..", "error");
     };
 
     if (exp['fw-inventory'].CanOpenInventory()) {
@@ -77,7 +77,7 @@ const loadWeedshopZones = async () => {
             options.push({
                 Name: 'craft',
                 Icon: 'fas fa-tools',
-                Label: 'Craften',
+                Label: 'Craft',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:WhiteWidow:Craft',
                 EventParams: ZoneData.data,
@@ -92,7 +92,7 @@ const loadWeedshopZones = async () => {
             options.push({
                 Name: 'stash',
                 Icon: 'fas fa-box-open',
-                Label: 'Toonbank',
+                Label: 'Tray',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:WhiteWidow:Counter',
                 EventParams: ZoneData.data,
@@ -104,7 +104,7 @@ const loadWeedshopZones = async () => {
             options.push({
                 Name: 'pay_payment',
                 Icon: 'fas fa-hand-holding-usd',
-                Label: 'Betalen',
+                Label: 'Pay',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:Foodchain:GetPayments',
                 EventParams: ZoneData.data,
@@ -114,7 +114,7 @@ const loadWeedshopZones = async () => {
             options.push({
                 Name: 'setup_payment',
                 Icon: 'fas fa-cash-register',
-                Label: 'Bestelling Openen',
+                Label: 'Create Order',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:Foodchain:SetupPayment',
                 EventParams: { RegisterId: ZoneData.data.RegisterId },
@@ -131,7 +131,7 @@ const loadWeedshopZones = async () => {
             options.push({
                 Name: 'clock_in',
                 Icon: 'fas fa-clock',
-                Label: 'Inklokken',
+                Label: 'Clock In',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:SetClock',
                 EventParams: { ...ZoneData.data, ClockedIn: true },
@@ -145,7 +145,7 @@ const loadWeedshopZones = async () => {
             options.push({
                 Name: 'clock_out',
                 Icon: 'fas fa-clock',
-                Label: 'Uitklokken',
+                Label: 'Clock Out',
                 EventType: 'Client',
                 EventName: 'fw-businesses:Client:SetClock',
                 EventParams: { ...ZoneData.data, ClockedIn: false },

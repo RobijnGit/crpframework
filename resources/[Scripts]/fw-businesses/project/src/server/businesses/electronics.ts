@@ -102,9 +102,9 @@ onNet("fw-businesses:Server:Electronics:RepairElectronic", async (Data: {
 
     if (await Player.Functions.RemoveItemByName('electronics', Data.Materials, true)) {
         exp['fw-inventory'].IncreaseQualityItemFromInventory(`ply-${Player.PlayerData.citizenid}`, Item.Item, 100.0, Data.Slot);
-        Player.Functions.Notify("Gerepareerd!")
+        Player.Functions.Notify("Repaired!")
     } else {
-        Player.Functions.Notify("Je hebt niet genoeg eletronica..", "error")
+        Player.Functions.Notify("You don't have enough electronics..", "error")
     };
 });
 
@@ -117,7 +117,7 @@ onNet("fw-businesses:Server:Electronics:RemoveMusicEntry", async (Data: {
     if (!Player) return;
 
     if (!HasPlayerBusinessPermission(Data.Business, Source, "CraftAccess")) {
-        return Player.Functions.Notify("Geen toegang.", "error")
+        return Player.Functions.Notify("No Access.", "error")
     };
 
     await exp['ghmattimysql'].executeSync("DELETE FROM `musictapes` WHERE `id` = ?", [Data.TrackId]);
@@ -140,7 +140,7 @@ FW.RegisterServer("fw-businesses:Server:Electronics:AddMusicEntry", async (Sourc
     if (!Player) return;
     
     if (!HasPlayerBusinessPermission(Data.Business, Source, "CraftAccess")) {
-        return Player.Functions.Notify("Geen toegang.", "error")
+        return Player.Functions.Notify("No Access.", "error")
     };
 
     const Result = await exp['ghmattimysql'].executeSync('INSERT INTO `musictapes` (tape_id, tape_title, tape_artist) VALUES (?, ?, ?)', [
@@ -161,11 +161,11 @@ FW.RegisterServer("fw-businesses:Server:Electronics:CreateCassetteTapes", async 
     if (!Player) return;
 
     if (!HasPlayerBusinessPermission(Data.Business, Source, "CraftAccess")) {
-        return Player.Functions.Notify("Geen toegang.", "error")
+        return Player.Functions.Notify("No Access.", "error")
     };
 
     const Result = await exp['ghmattimysql'].executeSync('SELECT * FROM `musictapes` WHERE `id` = ?', [Data.TrackId]);
-    if (!Result[0]) return Player.Functions.Notify("Track bestaat niet..");
+    if (!Result[0]) return Player.Functions.Notify("Track doesn't exist..");
 
     for (let i = 0; i < Data.Copies; i++) {
         Player.Functions.AddItem("musictape", 1, undefined, {
