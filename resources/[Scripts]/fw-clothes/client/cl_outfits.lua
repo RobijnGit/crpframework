@@ -25,7 +25,7 @@ AddEventHandler("fw-clothes:Client:OpenOutfits", function(Forced, IsCommand)
         local Outfits = FW.SendCallback("fw-clothes:Server:GetPlayerOutfits")
         local ContextMenu = {
             {
-                Title = "Outfit Opslaan",
+                Title = "Save Outfit",
                 Icon = "plus",
                 Data = { Event = "fw-clothes:Client:SaveOutfitPrompt", Forced = Forced }
             }
@@ -39,17 +39,17 @@ AddEventHandler("fw-clothes:Client:OpenOutfits", function(Forced, IsCommand)
                 Data = { Event = 'fw-clothes:Client:LoadOutfit', IsPreview = true, Outfit = v.Outfit },
                 SecondMenu = {
                     {
-                        Title = "Aantrekken",
+                        Title = "Select Outfit",
                         Icon = "check",
                         Data = { Event = "fw-clothes:Client:LoadOutfit", Outfit = v.Outfit, IsPreview = false }
                     },
                     {
-                        Title = "Overschrijven",
+                        Title = "Overwrite",
                         Icon = "user-edit",
                         Data = { Event = "fw-clothes:Client:OverwriteOutfit", OutfitId = v.Id }
                     },
                     {
-                        Title = "Verwijderen",
+                        Title = "Delete",
                         Icon = "trash",
                         Data = { Event = "fw-clothes:Server:DeleteOutfit", OutfitId = v.Id }
                     },

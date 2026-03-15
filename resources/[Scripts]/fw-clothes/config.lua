@@ -34,7 +34,7 @@ Config.ChangeRooms = {
     { Store = true,  Coords = vector3(1834.47, 2571.27, 46.01) }, -- Prison Guards
 
     { Store = false, Coords = vector3(-1180.19, -893.76, 13.8) }, -- Burger Shot
-    { Store = false, Coords = vector3(-929.36, -2936.28, 13.95) }, -- Los Santos Vliegschool
+    { Store = false, Coords = vector3(-929.36, -2936.28, 13.95) }, -- Los Santos Flight School
     { Store = false, Coords = vector3(-1427.75, -459.65, 35.91) }, -- Otto's Autos
     { Store = false, Coords = vector3(810.45, -759.57, 31.26) }, -- Maldinis Pizza
     { Store = false, Coords = vector3(-587.36, -1050.26, 22.34) }, -- UwU Cafe

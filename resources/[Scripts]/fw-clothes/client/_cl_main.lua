@@ -30,7 +30,7 @@ Citizen.CreateThread(function()
                     NearClothing = true
                     if not ShowingInteract then
                         ShowingInteract = true
-                        exports['fw-ui']:ShowInteraction(v.Store and '[E] Kleding / [G] Outfits' or '[G] Outfits', 'primary')
+                        exports['fw-ui']:ShowInteraction(v.Store and '[E] Clothing Store / [G] Outfits' or '[G] Outfits', 'primary')
                     end
                     if IsControlJustReleased(0, 38) and v.Store then
                         ClearPedTasksImmediately(PlayerPedId()) DisableAllControlActions(0)

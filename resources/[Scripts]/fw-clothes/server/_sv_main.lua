@@ -65,13 +65,13 @@ FW.Functions.CreateCallback("fw-clothes:Server:PurchaseClothes", function(Source
 
     local BankBalance = exports['fw-financials']:GetAccountBalance(Player.PlayerData.charinfo.account)
     if PaymentType == "Cash" and Price > 0 and not Player.Functions.RemoveMoney('Cash', Price) then
-        return Cb({Success = false, Msg = "Je hebt niet genoeg contant.."})
+        return Cb({Success = false, Msg = "You don't have enough cash.."})
     elseif PaymentType == "Bank" and Price > 0 and BankBalance < Price then
-        return Cb({Success = false, Msg = "Je hebt niet genoeg bank balans.."})
+        return Cb({Success = false, Msg = "You don't have enough balance..."})
     end
 
     if PaymentType == "Bank" and Price > 0 then
-        exports['fw-financials']:RemoveMoneyFromAccount(Player.PlayerData.citizenid, Player.PlayerData.charinfo.account, Player.PlayerData.charinfo.account, Price, 'PURCHASE', "Kleding gekocht", false)
+        exports['fw-financials']:RemoveMoneyFromAccount(Player.PlayerData.citizenid, Player.PlayerData.charinfo.account, Player.PlayerData.charinfo.account, Price, 'PURCHASE', "Purchased Clothes", false)
     end
 
     Player.Functions.SetSkin(NewSkin)
@@ -96,7 +96,7 @@ FW.RegisterServer("fw-clothes:Server:SavePlayerOutfit", function(Source, Name, O
             OverwriteId
         })
 
-        Player.Functions.Notify("Outfit overschreven.")
+        Player.Functions.Notify("Outfit overwritten.")
     else
         exports['ghmattimysql']:executeSync("INSERT INTO `player_outfits` (`citizenid`, `name`, `outfit`) VALUES (?, ?, ?)", {
             Player.PlayerData.citizenid,
@@ -104,7 +104,7 @@ FW.RegisterServer("fw-clothes:Server:SavePlayerOutfit", function(Source, Name, O
             json.encode({ Model = Outfit.Model, Clothes = Outfit.Clothes })
         })
 
-        Player.Functions.Notify("Outfit opgeslagen.")
+        Player.Functions.Notify("Outfit saved.")
     end
 
     TriggerClientEvent("fw-clothes:Client:CloseOutfits", Source, {KeepCam = false}, true)
@@ -139,39 +139,39 @@ FW.RegisterServer("fw-clothes:Server:ReceiveFacewearItem", function(Source, Comp
     Player.Functions.AddItem(ComponentItems[ComponentId], 1, false, {Prop = ComponentData[1], Texture = ComponentData[2]}, true)
 end)
 
-FW.Commands.Add("outfits", "Open kledingkast", {}, false, function(Source, Args)
+FW.Commands.Add("outfits", "Open wardrobe", {}, false, function(Source, Args)
     TriggerClientEvent('fw-clothes:Client:OpenOutfits', Source, true, true)
 end)
 
-FW.Commands.Add("h0", "Zet je helm af", {}, false, function(Source, Args)
+FW.Commands.Add("h0", "Take off your helmet", {}, false, function(Source, Args)
     TriggerClientEvent('fw-clothes:Client:ToggleFacewear', Source, 'Hat', false, true)
 end)
 
-FW.Commands.Add("m0", "Zet je masker af", {}, false, function(Source, Args)
+FW.Commands.Add("m0", "Take off your mask", {}, false, function(Source, Args)
     TriggerClientEvent('fw-clothes:Client:ToggleFacewear', Source, 'Masks', false, true)
 end)
 
-FW.Commands.Add("b0", "Zet je bril af", {}, false, function(Source, Args)
+FW.Commands.Add("g0", "Take off your glasses", {}, false, function(Source, Args)
     TriggerClientEvent('fw-clothes:Client:ToggleFacewear', Source, 'Glasses', false, true)
 end)
 
-FW.Commands.Add("v0", "Doe je vest uit", {}, false, function(Source, Args)
+FW.Commands.Add("v0", "Take off your vest", {}, false, function(Source, Args)
     TriggerClientEvent('fw-clothes:Client:ToggleFacewear', Source, 'Vest', false, true)
 end)
 
-FW.Commands.Add("h1", "Zet je helm op", {}, false, function(Source, Args)
+FW.Commands.Add("h1", "Put on your helmet", {}, false, function(Source, Args)
     TriggerClientEvent('fw-clothes:Client:ToggleFacewear', Source, 'Hat', true, true)
 end)
 
-FW.Commands.Add("m1", "Zet je masker op", {}, false, function(Source, Args)
+FW.Commands.Add("m1", "Put on your mask", {}, false, function(Source, Args)
     TriggerClientEvent('fw-clothes:Client:ToggleFacewear', Source, 'Masks', true, true)
 end)
 
-FW.Commands.Add("b1", "Zet je bril op", {}, false, function(Source, Args)
+FW.Commands.Add("g1", "Put on your glasses", {}, false, function(Source, Args)
     TriggerClientEvent('fw-clothes:Client:ToggleFacewear', Source, 'Glasses', true, true)
 end)
 
-FW.Commands.Add("v1", "Doe je vest aan", {}, false, function(Source, Args)
+FW.Commands.Add("v1", "Put on your vest", {}, false, function(Source, Args)
     TriggerClientEvent('fw-clothes:Client:ToggleFacewear', Source, 'Vest', true, true)
 end)
 

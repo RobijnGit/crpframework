@@ -76,7 +76,7 @@ AddEventHandler('PolyZone:OnEnter', function(PolyData, Coords)
             NearShop = true
             if not ShowingInteract then
                 ShowingInteract = true
-                exports['fw-ui']:ShowInteraction('[E] Kleding', 'primary')
+                exports['fw-ui']:ShowInteraction('[E] Clothing', 'primary')
             end
             Citizen.CreateThread(function()
                 while NearShop do
