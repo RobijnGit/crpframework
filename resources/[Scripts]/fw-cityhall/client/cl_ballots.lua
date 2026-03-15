@@ -20,7 +20,7 @@ Citizen.CreateThread(function()
             return
         end
 
-        exports['fw-ui']:ShowInteraction("[E] Stembus")
+        exports['fw-ui']:ShowInteraction("[E] Vote")
         Citizen.CreateThread(function()
             while InsideVoting do
                 if IsControlJustReleased(0, 38) then
@@ -38,7 +38,7 @@ function OpenVotingUI()
     local Ballots = FW.SendCallback("fw-cityhall:Server:GetActiveBallots")
 
     if #Ballots == 0 then
-        return FW.Functions.Notify("Er is niks om op te stemmen..", "error")
+        return FW.Functions.Notify("There's no active ballots..", "error")
     end
 
     exports['fw-ui']:SetUIFocus(true, true)

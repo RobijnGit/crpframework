@@ -94,7 +94,7 @@ function InitZones()
             {
                 Name = 'purchase-id',
                 Icon = 'fas fa-id-card-alt',
-                Label = 'Identiteitskaart (' .. exports['fw-businesses']:NumberWithCommas(Config.IdPrice) .. ')',
+                Label = 'Purchase ID-card (' .. exports['fw-businesses']:NumberWithCommas(Config.IdPrice) .. ')',
                 EventType = 'Server',
                 EventName = 'fw-cityhall:Server:PurchaseId',
                 EventParams = { Type = "Identity" },
@@ -105,7 +105,7 @@ function InitZones()
             {
                 Name = 'purchase-drivers',
                 Icon = 'fas fa-id-card-alt',
-                Label = 'Rijbewijs (' .. exports['fw-businesses']:NumberWithCommas(Config.IdPrice) .. ')',
+                Label = 'Purchase Drivers License (' .. exports['fw-businesses']:NumberWithCommas(Config.IdPrice) .. ')',
                 EventType = 'Server',
                 EventName = 'fw-cityhall:Server:PurchaseId',
                 EventParams = { Type = "Driver" },
@@ -134,7 +134,7 @@ function InitZones()
             {
                 Name = 'pdActions',
                 Icon = 'fas fa-crutch',
-                Label = 'PD Acties',
+                Label = 'PD Actions',
                 EventType = 'Client',
                 EventName = 'fw-cityhall:Client:OpenPDActions',
                 EventParams = {},
@@ -176,7 +176,7 @@ function InitZones()
             {
                 Name = 'gavel',
                 Icon = 'fas fa-gavel',
-                Label = 'Slaan met die hamer!!',
+                Label = 'Hit Gavel',
                 EventType = 'Server',
                 EventName = 'fw-cityhall:server:hamer',
                 EventParams = { },
@@ -205,7 +205,7 @@ function InitZones()
             {
                 Name = 'highcommand_badge',
                 Icon = 'fas fa-id-badge',
-                Label = 'DOJ Pas Maken',
+                Label = 'Create DOJ Badge',
                 EventType = 'Client',
                 EventName = 'fw-ui:Client:CreateBadge',
                 EventParams = { Badge = 'doj', Job = 'judge', Department = 'Department of Justice' },
@@ -217,7 +217,7 @@ function InitZones()
             {
                 Name = 'fetchBankId',
                 Icon = 'fas fa-university',
-                Label = 'Bankrekeningnummer Opvragen',
+                Label = 'Lookup Financial Account Number',
                 EventType = 'Client',
                 EventName = 'fw-cityhall:Client:RequestBankaccount',
                 EventParams = {},

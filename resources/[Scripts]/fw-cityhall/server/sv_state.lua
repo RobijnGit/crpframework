@@ -1,9 +1,9 @@
-FW.Commands.Add("destaat", "Beheer de Staat.", {}, false, function(Source, Args)
+FW.Commands.Add("state", "Manage The State.", {}, false, function(Source, Args)
     local Player = FW.Functions.GetPlayer(Source)
     if Player == nil then return end
 
     if Player.PlayerData.job.name ~= 'judge' and Player.PlayerData.job.name ~= 'mayor' then
-        return Player.Functions.Notify("Je kan geen melding maken..", "error")
+        return Player.Functions.Notify("You can't do this..", "error")
     end
 
     TriggerClientEvent("fw-cityhall:Client:OpenStateMenu", Source)

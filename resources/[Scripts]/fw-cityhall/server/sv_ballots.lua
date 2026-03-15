@@ -26,7 +26,7 @@ FW.RegisterServer("fw-cityhall:Server:SaveBallotVote", function(Source, Data)
             })
 
             -- if Voted[1] ~= nil then
-            --     return Player.Functions.Notify("Stem is niet opgeslagen! (Je hebt al gestemd)")
+            --     return Player.Functions.Notify("Vote did not save, you've already voted on this ballot.")
             -- end
 
             exports['ghmattimysql']:executeSync("INSERT INTO `ballots_votes` (ballot_id, license, vote) VALUES (?, ?, ?)", {

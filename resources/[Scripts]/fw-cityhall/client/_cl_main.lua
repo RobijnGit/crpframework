@@ -32,12 +32,12 @@ AddEventHandler("fw-cityhall:Client:GiveLicense", function(Data)
     local Result = exports['fw-ui']:CreateInput({
         {
             Name = 'Cid',
-            Label = 'BSN',
+            Label = 'State ID',
             Icon = 'fas fa-id-card-alt'
         },
         {
             Name = 'License',
-            Label = 'Vergunning',
+            Label = 'License',
             Icon = 'fas fa-file-certificate',
             Choices = Licenses
         }
@@ -54,21 +54,21 @@ AddEventHandler("fw-cityhall:Client:CreateFinancial", function(Data)
     local Result = exports['fw-ui']:CreateInput({
         {
             Name = 'Cid',
-            Label = 'BSN',
+            Label = 'State ID',
             Icon = 'fas fa-id-card-alt'
         },
         {
             Name = 'Name',
-            Label = 'Rekening Naam',
+            Label = 'Account Name',
             Icon = 'fas fa-heading'
         },
         {
             Name = 'Type',
-            Label = 'Rekening Type',
+            Label = 'Account Type',
             Icon = 'fas fa-university',
             Choices = {
-                { Text = 'Spaarrekening' },
-                { Text = 'Bedrijfsrekening' },
+                { Text = 'Savings Account' },
+                { Text = 'Business Account' },
             }
         }
     })
@@ -83,22 +83,22 @@ AddEventHandler("fw-cityhall:Client:FinancialState", function(Data)
     local Result = exports['fw-ui']:CreateInput({
         {
             Name = 'AccountId',
-            Label = 'Rekeningnummer',
+            Label = 'Account ID',
             Icon = 'fas fa-university'
         },
         {
             Name = 'State',
-            Label = 'Status',
+            Label = 'State',
             Icon = 'fas fa-power-off',
             Choices = {
-                { Text = 'Activeren' },
-                { Text = 'Deactiveren' },
+                { Text = 'Active' },
+                { Text = 'Inactive' },
             }
         }
     })
 
     if Result.AccountId and Result.State then
-        TriggerServerEvent('fw-cityhall:Server:SetFinancialState', Result.AccountId, Result.State == 'Activeren')
+        TriggerServerEvent('fw-cityhall:Server:SetFinancialState', Result.AccountId, Result.State == 'Active')
     end
 end)
 
@@ -107,12 +107,12 @@ AddEventHandler("fw-cityhall:Client:FinancialMonitorState", function(Data)
     local Result = exports['fw-ui']:CreateInput({
         {
             Name = 'AccountId',
-            Label = 'Rekeningnummer',
+            Label = 'Account ID',
             Icon = 'fas fa-university'
         },
         {
             Name = 'State',
-            Label = 'Monitoren',
+            Label = 'Monitor',
             Icon = 'fas fa-power-off',
             Choices = {
                 { Text = 'true' },
@@ -133,7 +133,7 @@ AddEventHandler('fw-cityhall:client:lawyer:add:closest', function()
         local ServerId = Player
         TriggerServerEvent('fw-cityhall:lawyer:add', ServerId)
     else
-        FW.Functions.Notify("Niemand in de buurt..", "error")
+        FW.Functions.Notify("Nobody is nearby..", "error")
     end
 end)
 
@@ -147,7 +147,7 @@ AddEventHandler("fw-cityhall:Client:SubpoenaRecords", function()
     if PlayerJob.name ~= 'judge' then return end
 
     local Result = exports['fw-ui']:CreateInput({
-        { Label = 'Telefoonnummer', Icon = 'fas fa-phone-alt', Name = 'Phone' },
+        { Label = 'Phone Number', Icon = 'fas fa-phone-alt', Name = 'Phone' },
     })
 
     TriggerServerEvent("fw-cityhall:Server:SubpoenaRecords", Result)
@@ -159,7 +159,7 @@ AddEventHandler("fw-cityhall:Client:SubpoenaFinancials", function()
     if PlayerJob.name ~= 'judge' then return end
 
     local Result = exports['fw-ui']:CreateInput({
-        { Label = 'Rekeningnummer', Icon = 'fas fa-university', Name = 'AccountId' },
+        { Label = 'Account ID', Icon = 'fas fa-university', Name = 'AccountId' },
     })
 
     TriggerServerEvent("fw-cityhall:Server:SubpoenaFinancials", Result)
@@ -170,32 +170,32 @@ AddEventHandler("fw-cityhall:Client:SendAnnouncement", function()
     FW.Functions.OpenMenu({ MainMenuItems = {
         {
             Icon = 'bullhorn',
-            Title = 'Staats Mededeling',
-            Desc = '[De Staat van San Andreas] <text>',
+            Title = 'State Announcement',
+            Desc = '[State of San Andreas] <text>',
             Data = {
                 Event = 'fw-cityhall:Client:AnnouncementInput',
                 Type = 'Client',
-                AnnounceType = "De Staat van San Andreas"
+                AnnounceType = "State of San Andreas"
             }
         },
         {
             Icon = 'exclamation-triangle',
-            Title = 'Waarschuwing voor Openbare Veiligheid',
-            Desc = '[Openbare Veiligheidswaarschuwing] <text>',
+            Title = 'Public Safety Alert',
+            Desc = '[Public Safety Alert] <text>',
             Data = {
                 Event = 'fw-cityhall:Client:AnnouncementInput',
                 Type = 'Client',
-                AnnounceType = "Openbare Veiligheidswaarschuwing"
+                AnnounceType = "Public Safety Alert"
             }
         },
         {
             Icon = 'gavel',
-            Title = 'Rechtbank Mededeling',
-            Desc = '[De Rechtbank] <text>',
+            Title = 'Court Announcement',
+            Desc = '[Court Announcement] <text>',
             Data = {
                 Event = 'fw-cityhall:Client:AnnouncementInput',
                 Type = 'Client',
-                AnnounceType = "De Rechtbank"
+                AnnounceType = "Court Announcement"
             }
         },
     }})
@@ -206,7 +206,7 @@ AddEventHandler("fw-cityhall:Client:AnnouncementInput", function(Data)
     Citizen.Wait(100)
 
     local Result = exports['fw-ui']:CreateInput({
-        { Label = 'Tekst', Name = 'Text', ShowLength = true, MaxLength = 500 },
+        { Label = 'Text', Name = 'Text', ShowLength = true, MaxLength = 500 },
     })
 
     FW.TriggerServer("fw-cityhall:Server:SendAnnouncement", Data.AnnounceType, Result.Text)
@@ -217,7 +217,7 @@ AddEventHandler("fw-cityhall:Client:RequestBankaccount", function(Data)
     Citizen.Wait(100)
 
     local Result = exports['fw-ui']:CreateInput({
-        { Label = 'BSN', Name = 'Cid', Icon = 'user' },
+        { Label = 'State ID', Name = 'Cid', Icon = 'user' },
     })
 
     FW.TriggerServer("fw-cityhall:Server:RequestBankaccount", Result.Cid)
