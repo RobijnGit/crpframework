@@ -6,7 +6,7 @@ RegisterNetEvent('fw-doors:Client:Used:Detcord')
 AddEventHandler('fw-doors:Client:Used:Detcord', function()
     Citizen.SetTimeout(450, function()
         local PlayerData = FW.Functions.GetPlayerData()
-        if PlayerData.job.name ~= 'police' then FW.Functions.Notify("Leuk zo'n speeltje, maar wat moet ik ermee?", "error") return end
+        if PlayerData.job.name ~= 'police' then FW.Functions.Notify("What is this?", "error") return end
 
         -- Housing
         if exports['fw-housing']:GetCurrentHouse() then 
@@ -23,7 +23,7 @@ AddEventHandler('fw-doors:Client:Used:Detcord', function()
             if Entity == 0 or Entity == -1 or EntityType ~= 3 then return end
             local DoorId = GetTargetDoorId(Entity)
             if not CanDetcordDoor(DoorId) then 
-                FW.Functions.Notify("Deze deur kan niet worden gedetcord worden.", "error")
+                FW.Functions.Notify("This door can not be unlocked with a detcord.", "error")
                 return 
             end
             local DetcordDone = DoDetcord(EntityCoords)

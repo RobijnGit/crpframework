@@ -10,8 +10,8 @@ AddEventHandler('fw-doors:Client:Open:Elevator:Menu', function(Data, Entity)
             end
             local MenuData = {}     
             MenuData['Icon'] = 'sort-circle'
-            MenuData['Title'] = AtLocation and Disabled and v.Name..' (Je bent hier)' or v.Name
-            MenuData['Desc'] = not AtLocation and Disabled and 'Geen Toegang!' or v.Desc
+            MenuData['Title'] = AtLocation and Disabled and v.Name..' (You are here)' or v.Name
+            MenuData['Desc'] = not AtLocation and Disabled and 'No Access!' or v.Desc
             MenuData['Data'] = { Event = 'fw-doors:Client:Use:Elevator', Type = 'Client', CurrentElevator = Data, ElevatorData = v }
             MenuData['Disabled'] = Disabled
             table.insert(MenuItems, MenuData)
@@ -25,7 +25,7 @@ end)
 RegisterNetEvent('fw-doors:Client:Use:Elevator')
 AddEventHandler('fw-doors:Client:Use:Elevator', function(Data)
     if Data.ElevatorData.Coords ~= nil then
-        FW.Functions.Progressbar("", 'Wachten op de lift..', 3500, false, true, {
+        FW.Functions.Progressbar("", 'Waiting for elevator..', 3500, false, true, {
             disableMovement = true,
             disableCarMovement = true,
             disableMouse = false,
@@ -67,7 +67,7 @@ function InitElevator()
                         {
                             Name = 'elevator_option',
                             Icon = 'fas fa-chevron-circle-up',
-                            Label = 'Lift',
+                            Label = 'Elevator',
                             EventType = 'Client',
                             EventName = 'fw-doors:Client:Open:Elevator:Menu',
                             EventParams = {ElevatorId = k, AtLocation = ElevatorData.IdName},
