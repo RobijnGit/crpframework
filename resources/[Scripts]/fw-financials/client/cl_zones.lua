@@ -31,7 +31,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'open_atm',
                 Icon = 'fas fa-dollar-sign',
-                Label = 'Pin Automaat',
+                Label = 'ATM',
                 EventType = 'Client',
                 EventName = 'fw-financials:Client:OpenFinancial',
                 EventParams = false,
@@ -42,7 +42,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'rob',
                 Icon = 'fas fa-cog',
-                Label = 'Koppel aan Pin Automaat',
+                Label = 'Attach rope to ATM',
                 EventType = 'Client',
                 EventName = 'fw-heists:Client:AttachATM',
                 EventParams = {},
@@ -62,7 +62,7 @@ AddEventHandler("fw-ui:Ready", function()
                 {
                     Name = 'open_atm',
                     Icon = 'fas fa-dollar-sign',
-                    Label = 'Pin Automaat',
+                    Label = 'ATM',
                     EventType = 'Client',
                     EventName = 'fw-financials:Client:OpenFinancial',
                     EventParams = false,
@@ -73,7 +73,7 @@ AddEventHandler("fw-ui:Ready", function()
                 {
                     Name = 'rob',
                     Icon = 'fas fa-cog',
-                    Label = 'Koppel Sleeptouw aan Pin Automaat',
+                    Label = 'Attach rope to ATM',
                     EventType = 'Client',
                     EventName = 'fw-heists:Client:AttachATM',
                     EventParams = {},

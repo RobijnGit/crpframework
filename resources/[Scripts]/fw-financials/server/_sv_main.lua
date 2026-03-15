@@ -1,8 +1,8 @@
 FW = exports['fw-core']:GetCoreObject()
 
-FW.Commands.Add("geefcontant", "Geef iemand cash", {
-    { name = "id", help = "Speler ID" },
-    { name = "aantal", help = "Hoeveel munnies" },
+FW.Commands.Add("givecash", "Give someone cash", {
+    { name = "id", help = "Player ID" },
+    { name = "amount", help = "How much moneysss" },
 }, true, function(Source, Args)
     local CashAmount = tonumber(Args[2])
     if type(CashAmount) ~= 'number' then return end
@@ -21,10 +21,10 @@ FW.Commands.Add("geefcontant", "Geef iemand cash", {
             Target.Functions.AddMoney('cash', Amount)
             TriggerClientEvent('fw-financials:Client:Give:Cash:Animation', Source)
         else
-            Player.Functions.Notify('Niet genoeg cash..', 'error')
+            Player.Functions.Notify('Not enough cash..', 'error')
         end
     else
-        Player.Functions.Notify('Lange armen wel man..', 'error')
+        Player.Functions.Notify('The player is too far..', 'error')
     end
 end)
 
@@ -113,10 +113,10 @@ end)
 
 FW.Functions.CreateCallback("fw-financials:Server:SetFinancialAccess", function(Source, Cb, Data)
     local Player = FW.Functions.GetPlayer(Source)
-    if Player == nil then return Cb({Success = false, Msg = "Ongeldige Speler"}) end
+    if Player == nil then return Cb({Success = false, Msg = "Invalid Player"}) end
 
     local Account = GetFinancialAccountById(Data.AccountId)
-    if Account == nil then return Cb({Success = false, Msg = "Ongeldige Bankrekening"}) end
+    if Account == nil then return Cb({Success = false, Msg = "Invalid Financial Account"}) end
 
     local Authorized = json.decode(Account.authorized)
 
@@ -150,7 +150,7 @@ FW.Functions.CreateCallback("fw-financials:Server:SetFinancialAccess", function(
         ['@AccountId'] = Data.AccountId,
     })
 
-    Cb({ Success = Result.affectedRows > 0, Msg = "Data was niet opgeslagen!" })
+    Cb({ Success = Result.affectedRows > 0, Msg = "Data was not saved!" })
 end)
 
 FW.Functions.CreateCallback("fw-financials:Server:Deposit", function(Source, Cb, Data)
@@ -237,7 +237,7 @@ FW.Functions.CreateCallback("fw-financials:Server:ExportData", function(Source, 
             local Data = json.decode(response)
             Cb({Msg = Data.Message, Url = Data.Url})
         else
-            Cb({Msg = "Fout opgetreden tijdens exporteren (" .. statusCode .. ")"})
+            Cb({Msg = "Export failed (" .. statusCode .. ")"})
         end
     end, 'GET', json.encode({ pStartDate = Data.StartDate, pEndDate = Data.EndDate }), {['Content-Type'] = 'application/json'})
 end)
@@ -258,11 +258,11 @@ AddEventHandler("fw-financials:Server:ReceivePaycheck", function()
 
     local ReceiveMoney = Player.PlayerData.metadata['paycheck']
     if ReceiveMoney <= 0 then
-        return Player.Functions.Notify('Hij kijkt je aan en zegt dat je geen salaris hebt om op te halen..', 'error')
+        return Player.Functions.Notify('He looks at you and tells you that you have no paycheck to receive..', 'error')
     end
 
-    if AddMoneyToAccount('1001', '1', Player.PlayerData.charinfo.account, ReceiveMoney, 'DEPOSIT', 'Salaris ontvangen') then
-        Player.Functions.Notify("Je salaris van " .. exports['fw-businesses']:NumberWithCommas(ReceiveMoney) .. ' is overgemaakt naar je bankrekening.', 'success')
+    if AddMoneyToAccount('1001', '1', Player.PlayerData.charinfo.account, ReceiveMoney, 'DEPOSIT', 'Paycheck') then
+        Player.Functions.Notify("Your paycheck of " .. exports['fw-businesses']:NumberWithCommas(ReceiveMoney) .. ' has been added to your balance.', 'success')
         Player.Functions.SetMetaData('paycheck', 0)
     end
 end)

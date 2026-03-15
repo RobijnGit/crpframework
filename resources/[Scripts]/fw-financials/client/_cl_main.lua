@@ -28,9 +28,9 @@ end)
 
 RegisterNetEvent("fw-financials:Client:OpenFinancial")
 AddEventHandler("fw-financials:Client:OpenFinancial", function(IsBank, Entity)
-    local AnimDict, Anim, Text = 'amb@prop_human_atm@male@idle_a', 'idle_b', 'Kaart plaatsen..'
+    local AnimDict, Anim, Text = 'amb@prop_human_atm@male@idle_a', 'idle_b', 'Inserting Card..'
     if IsBank then
-        AnimDict, Anim, Text = 'mp_common', 'givetake1_a', 'Bankdocumentatie tonen..'
+        AnimDict, Anim, Text = 'mp_common', 'givetake1_a', 'Showing Documents..'
     else
         TaskTurnPedToFaceEntity(PlayerPedId(), Entity, -1)
     end
@@ -82,9 +82,9 @@ RegisterNUICallback("Financials/Close", function(Data, Cb)
     exports['fw-ui']:SetUIFocus(false, false)
     exports['fw-ui']:SendUIMessage("Financials", "SetVisibility", { Visible = false })
 
-    local AnimDict, Anim, Text = 'amb@prop_human_atm@male@exit', 'exit', 'Kaart ophalen..'
+    local AnimDict, Anim, Text = 'amb@prop_human_atm@male@exit', 'exit', 'Retrieving Card..'
     if NearBank then
-        AnimDict, Anim, Text = 'mp_common', 'givetake1_a', 'Documentatie verzamelen..'
+        AnimDict, Anim, Text = 'mp_common', 'givetake1_a', 'Gathering Documents..'
     end
 
     FW.Functions.Progressbar("financial", Text, 1000, false, false, {

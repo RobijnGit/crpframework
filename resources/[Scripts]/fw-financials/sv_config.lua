@@ -1,5 +1,5 @@
 Config.AccountTypes = {
-    'Standaard',
-    'Spaarrekening',
-    'Bedrijfsrekening',
+    'Default',
+    'Savings Account',
+    'Business Account',
 }
