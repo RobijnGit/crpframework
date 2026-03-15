@@ -133,8 +133,6 @@ RegisterNUICallback('toggleengine', function(data, cb)
     if not IsPedInAnyHeli(player) then
         SetVehicleEngineOn(veh, engine, false, true)
         SetVehicleJetEngineOn(veh, engine)
-    else
-        FW.Functions.Notify("Dat kan hier niet..", "error")
     end
     cb('ok')
 end)
