@@ -11,15 +11,15 @@
         "oil": ["Sunflower"]
     },
     "categoryLabels": {
-        "cream": "Slagroom",
-        "beans": "Koffiebonen",
-        "beef": "Vlees",
-        "dairy": "Zuivel",
-        "vegetables": "Groenten",
-        "grain": "Graan",
-        "seasoning": "Kruiden",
-        "sugar": "Suiker",
-        "oil": "Olie"
+        "cream": "Cream",
+        "beans": "Beans",
+        "beef": "Beef",
+        "dairy": "Dairy",
+        "vegetables": "Vegetables",
+        "grain": "Grain",
+        "seasoning": "Seasoning",
+        "sugar": "Sugar",
+        "oil": "Oil"
     },
     "ingredientsPerDish": {
         "Main": 5,

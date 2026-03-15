@@ -1,10 +1,10 @@
 {
   "allowDecayedScrap": true,
   "scrapItems": [
-    { "Item": "phone", "Label": "Telefoon", "Rewards": [4, 8] },
+    { "Item": "phone", "Label": "Phone", "Rewards": [4, 8] },
     { "Item": "laptop", "Label": "Laptop", "Rewards": [26, 38] },
     { "Item": "radio", "Label": "Radio", "Rewards": [4, 8] },
-    { "Item": "megaphone", "Label": "Megafoon", "Rewards": [2, 4] },
+    { "Item": "megaphone", "Label": "Megaphone", "Rewards": [2, 4] },
     { "Item": "walkman", "Label": "Walkman", "Rewards": [1, 3] }
   ],
   "zones": [
