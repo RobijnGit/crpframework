@@ -70,7 +70,7 @@ AddEventHandler("fw-charachters:Client:OpenSpawn", function(PlayerData)
         if PlayerData.metadata.islifer then
             table.insert(SpawnLocations, {
                 Id = "lastlocation",
-                Name = "Laatste Locatie",
+                Name = "Last Location",
                 Icon = 'fas fa-map-pin',
                 Coords = { X = PlayerData.position.x, Y = PlayerData.position.y, Z = PlayerData.position.z, H = 0.0 },
                 Type = 'Location',

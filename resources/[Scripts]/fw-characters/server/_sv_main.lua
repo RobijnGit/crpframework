@@ -2,7 +2,7 @@ local FW = exports['fw-core']:GetCoreObject()
 
 -- Code
 
-FW.Commands.Add("logout", "Ga terug naar het karakterscherm.", {}, false, function(Source, Args)
+FW.Commands.Add("logout", "Return to character screen (admin).", {}, false, function(Source, Args)
     local Player = FW.Functions.GetPlayer(Source)
     if Player == nil then return end
 
@@ -31,7 +31,7 @@ FW.Functions.CreateCallback("fw-characters:Server:GetCharacters", function(Sourc
 end)
 
 FW.Functions.CreateCallback("fw-character:Server:CreateCharacter", function(Source, Cb, Data)
-    local CharInfo = { firstname = Data.Firstname, lastname = Data.Lastname, birthdate = Data.Birthdate, nationality = 'Los Santos', gender = Data.Gender == 'Vrouw' and 1 or 0, isLifer = Data.Type == "Lifer" }
+    local CharInfo = { firstname = Data.Firstname, lastname = Data.Lastname, birthdate = Data.Birthdate, nationality = 'Los Santos', gender = Data.Gender == 'Female' and 1 or 0, isLifer = Data.Type == "Lifer" }
     if FW.Player.Login(Source, true, false, CharInfo) then
         local Player = FW.Functions.GetPlayer(Source)
         if Data.Type == "Lifer" then
@@ -81,8 +81,8 @@ AddEventHandler("fw-characters:Server:GiveStarterItems", function()
     local Date = os.date("*t", os.time())
     TriggerEvent('fw-phone:Server:Documents:AddDocument', '1001', {
         Type = 1,
-        Title = 'Rijbewijs - ' .. Player.PlayerData.citizenid,
-        Content = exports['fw-cityhall']:GetLicenseTemplate():format((Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname), Player.PlayerData.citizenid, Player.PlayerData.charinfo.gender == 0 and "Man" or "Vrouw", "The State", Date.day .. '/' .. Date.month .. '/' .. Date.year .. ' ' .. Date.hour .. ':' .. Date.min),
+        Title = 'Drivers License - ' .. Player.PlayerData.citizenid,
+        Content = exports['fw-cityhall']:GetLicenseTemplate():format((Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname), Player.PlayerData.citizenid, Player.PlayerData.charinfo.gender == 0 and "Male" or 'Female', "The State", Date.day .. '/' .. Date.month .. '/' .. Date.year .. ' ' .. Date.hour .. ':' .. Date.min),
         Signatures = {
             { Signed = true, Name = "The State", Timestamp = os.time() * 1000, Cid = '1001' },
         },
@@ -132,7 +132,7 @@ AddEventHandler("fw-characters:Server:GiveStarterItems", function()
     })
 
     Citizen.SetTimeout(5000, function()
-        TriggerEvent('fw-phone:Server:Mails:AddMail', "The State", "Welkom in Los Santos!", ("Welkom in de Staat van San Andreas, %s. Je hebt een gloednieuw voertuig ontvangen als welkomstcadeau door de Staat van San Andreas.<br/><br/>We begrijpen dat de onderhoudskosten van een voertuig een uitdaging kunnen zijn, daarom zal de Staat de onderhoudskosten veroorloven voor dit voertuig."):format(Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname), Player.PlayerData.source)
+        TriggerEvent('fw-phone:Server:Mails:AddMail', "The State", "Welcome to Los Santos!", ("Welcome in The State of San Andreas, %s. As a gift, you've received a vehicle by the state..<br/><br/>We understand that the maintenance costs of a vehicle can be a challenge, so the State will fund the maintenance costs for this vehicle."):format(Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname), Player.PlayerData.source)
     end)
 end)
 
