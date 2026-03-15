@@ -46,7 +46,7 @@ AddEventHandler("fw-events:Client:RespawnAsZombie", function()
     Citizen.Wait(GetAnimDuration("stungun@standing", "damage") * 1000)
     SetPedToRagdoll(PlayerPedId(), 8000, 8000, 0, 0, 0, 0)
 
-    FW.Functions.Notify("Je bent geïnfecteerd met het zombie virus!", "error", 10000)
+    FW.Functions.Notify("You've been infected with the zombie virus!", "error", 10000)
 end)
 
 RegisterNetEvent("fw-events:Client:GiveAntidote")
@@ -59,9 +59,9 @@ AddEventHandler("fw-events:Client:GiveAntidote", function()
             local Outcome = exports['fw-ui']:StartSkillTest(3, { 10, 15 }, { 950, 1500 }, false)
             if Outcome then
                 TriggerServerEvent("fw-events:Server:UsedAntidote", Player)
-                FW.Functions.Notify("Je hebt het tegengif gegeven..", "success")
+                FW.Functions.Notify("You've given the antidote..", "success")
             else
-                FW.Functions.Notify("Je faalde het tegengif te geven..", "error")
+                FW.Functions.Notify("You failed to give the antidote..", "error")
             end
         end, 'zombie-antidote', 1, false)
     end
@@ -79,7 +79,7 @@ AddEventHandler("fw-events:Client:RecieveAntidote", function()
     Citizen.Wait(GetAnimDuration("stungun@standing", "damage") * 1000)
     SetPedToRagdoll(PlayerPedId(), 8000, 8000, 0, 0, 0, 0)
 
-    FW.Functions.Notify("Je bent verward en veranderd langzaam weer terug naar jezelf..", "success", 5000)
+    FW.Functions.Notify("You are confused and slowly becoming yourself again..", "success", 5000)
 end)
 
 AddEventHandler('gameEventTriggered', function (Name, Args)
