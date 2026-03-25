@@ -83,7 +83,7 @@ AddEventHandler('fw-items:Client:Used:SeedsFemale', function()
                         exports['fw-inventory']:SetBusyState(true)
                         TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_GARDENER_PLANT", 0, true)
 
-                        local Finished = FW.Functions.CompactProgressbar(6000, "Planten...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "", anim = "", flags = 1 }, {}, {}, false)
+                        local Finished = FW.Functions.CompactProgressbar(6000, "Planting...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "", anim = "", flags = 1 }, {}, {}, false)
                         if Finished then
                             local DidRemove = FW.SendCallback("FW:RemoveItem", 'weed-seed-female', 1, false, nil)
                             if not DidRemove then return end
@@ -95,13 +95,13 @@ AddEventHandler('fw-items:Client:Used:SeedsFemale', function()
                     end
                 end
                 if not FoundPlace then
-                    FW.Functions.Notify("Je kan hier geen plantjes plaatsen..", "error")
+                    FW.Functions.Notify("You cannot place these plants here..", "error")
                 end
             else
-                FW.Functions.Notify("Je kan hier geen plantjes plaatsen..", "error")
+                FW.Functions.Notify("You cannot place these plants here..", "error")
             end
         else
-            FW.Functions.Notify("Je bent gestopt met het plaatsen van een plant..", "error")
+            FW.Functions.Notify("Canceled.", "error")
         end
     end)
 end)
@@ -113,14 +113,14 @@ AddEventHandler('fw-illegal:Client:Plants:Pick:Plant', function(Nothing, Entity)
     if PlantData ~= nil then
         TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_GARDENER_PLANT", 0, true)
 
-        local Finished = FW.Functions.CompactProgressbar(5000, "Plant Oogsten...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "", anim = "", flags = 1 }, {}, {}, false)
+        local Finished = FW.Functions.CompactProgressbar(5000, "Harvesting...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "", anim = "", flags = 1 }, {}, {}, false)
         if Finished then
             TriggerServerEvent('fw-illegal:Server:Do:Plant:Stuff', 'Harvest', PlantData.Id)
         end
         exports['fw-inventory']:SetBusyState(false)
         ClearPedTasks(PlayerPedId())
     else
-        FW.Functions.Notify("Een error is voorgekomen..", "error")
+        FW.Functions.Notify("Something went wrong..", "error")
     end
 end)
 
@@ -128,7 +128,7 @@ RegisterNetEvent('fw-illegal:Client:Plants:Water:Plant')
 AddEventHandler('fw-illegal:Client:Plants:Water:Plant', function(Data)
     exports['fw-inventory']:SetBusyState(true)
 
-    local Finished = FW.Functions.CompactProgressbar(5000, "Plant Bewateren...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "weapon@w_sp_jerrycan", anim = "fire", flags = 49 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(5000, "Watering Plant...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "weapon@w_sp_jerrycan", anim = "fire", flags = 49 }, {}, {}, false)
     if Finished then
         TriggerServerEvent('fw-inventory:Server:DecayItem', 'farming-wateringcan', nil, 2.0)
         TriggerServerEvent('fw-illegal:Server:Do:Plant:Stuff', 'Water', Data['PlantId'], math.random(40, 45))
@@ -142,7 +142,7 @@ AddEventHandler('fw-illegal:Client:Plants:Fertelize:Plant', function(Data)
     -- print("Shit.") Wtf robijn
     exports['fw-inventory']:SetBusyState(true)
 
-    local Finished = FW.Functions.CompactProgressbar(5000, "Poep...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "weapon@w_sp_jerrycan", anim = "fire", flags = 49 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(5000, "Adding shit...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "weapon@w_sp_jerrycan", anim = "fire", flags = 49 }, {}, {}, false)
     if Finished then
         local DidRemove = FW.SendCallback("FW:RemoveItem", 'fertilizer', 1, false, nil)
         if not DidRemove then return end
@@ -156,7 +156,7 @@ RegisterNetEvent('fw-illegal:Client:Plants:Add:Male')
 AddEventHandler('fw-illegal:Client:Plants:Add:Male', function(Data)
     exports['fw-inventory']:SetBusyState(true)
 
-    local Finished = FW.Functions.CompactProgressbar(2000, "Boem Boem...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "weapon@w_sp_jerrycan", anim = "fire", flags = 49 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(2000, "Adding Male Seed...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "weapon@w_sp_jerrycan", anim = "fire", flags = 49 }, {}, {}, false)
     if Finished then
         local DidRemove = FW.SendCallback("FW:RemoveItem", 'weed-seed-male', 1, false, nil)
         if not DidRemove then return end
@@ -174,7 +174,7 @@ AddEventHandler('fw-illegal:Client:Plants:Destroy', function(Nothing, Entity)
 
     TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_GARDENER_PLANT", 0, true)
 
-    local Finished = FW.Functions.CompactProgressbar(2000, "Verwoesten...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "", anim = "", flags = 1 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(2000, "Squishing...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "", anim = "", flags = 1 }, {}, {}, false)
     if Finished then
         TriggerServerEvent('fw-illegal:Server:Do:Plant:Stuff', 'Destroy', PlantData.Id)
     end
@@ -203,7 +203,7 @@ end)
 function ShowPlantMenu(PlantId)
     local PlantData = GetPlantById(PlantId)
     if PlantData == nil then
-        return FW.Functions.Notify("Een error is voorgekomen..", "error")
+        return FW.Functions.Notify("Oops..", "error")
     end
 
     local MenuData = {}
@@ -214,15 +214,15 @@ function ShowPlantMenu(PlantId)
 
     MenuData[#MenuData + 1] = {
         Icon = 'cannabis',
-        Title = 'Wiet Plant #'..PlantId,
-        Desc = 'Levens: '..PlantData.Health..'%; Water: '..PlantData.Water..'%; Mest: '..PlantData.Fertilizer..'%; Zwanger: '..PlantData.Pregnant,
+        Title = 'Weed Plant #'..PlantId,
+        Desc = 'Health: '..PlantData.Health..'%; Water: '..PlantData.Water..'%; Fertilizer: '..PlantData.Fertilizer..'%; Pregnant: '..PlantData.Pregnant,
     }
 
     if PlantData.Water < 100 then
         MenuData[#MenuData + 1] = {
             Icon = 'tint',
-            Title = 'Voeg water toe',
-            Desc = 'Besproei mij met je tuinslang.',
+            Title = 'Add water',
+            Desc = 'Juice me up with your hose.',
             Data = {
                 Event = 'fw-illegal:Client:Plants:Water:Plant',
                 Type = 'Client',
@@ -235,8 +235,8 @@ function ShowPlantMenu(PlantId)
     if PlantData.Fertilizer < 100 then
         MenuData[#MenuData + 1] = {
             Icon = 'poop',
-            Title = 'Bemesten',
-            Desc = 'Laat ik even op deze plant poepen joh..',
+            Title = 'Fertilize',
+            Desc = 'Lets take a shit on this plant!',
             Data = {
                 Event = 'fw-illegal:Client:Plants:Fertelize:Plant',
                 Type = 'Client',
@@ -249,8 +249,8 @@ function ShowPlantMenu(PlantId)
     if (PlantData.Pregnant == 'False' and PlantStage <= 2) then -- Only add male in the 2 stages
         MenuData[#MenuData + 1] = {
             Icon = 'seedling',
-            Title = 'Voeg mannelijk zaad toe',
-            Desc = 'Kinderen?!',
+            Title = 'Add a male seed',
+            Desc = 'Childs?',
             Data = {
                 Event = 'fw-illegal:Client:Plants:Add:Male',
                 Type = 'Client',

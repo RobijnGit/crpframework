@@ -8,12 +8,12 @@ AddEventHandler("fw-inventory:Client:OnItemInsert", function(FromItem, ToItem)
 
     local Quantity = FromItem.Amount
     if not Quantity or Quantity > 5 then
-        return FW.Functions.Notify("Hmm lijkt alsof ik niet zoveel kan doen..", "error")
+        return FW.Functions.Notify("Looks like I can't fit this much in here..", "error")
     end
 
     exports['fw-inventory']:SetBusyState(true)
 
-    local Finished = FW.Functions.CompactProgressbar(5000 * Quantity, "Aan het opsplitsen in zakjes...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(5000 * Quantity, "Splitting into baggies...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
     exports['fw-inventory']:SetBusyState(false)
     if not Finished then return end
 
@@ -29,12 +29,12 @@ AddEventHandler("fw-inventory:Client:OnItemInsert", function(FromItem, ToItem)
     if not Quantity then return end
 
     if ToItem.Info.Uses + Quantity > 5 then
-        return FW.Functions.Notify("Hmm lijkt alsof ik niet zoveel kan doen..", "error")
+        return FW.Functions.Notify("Looks like I can't fit this much in here..", "error")
     end
 
     exports['fw-inventory']:SetBusyState(true)
 
-    local Finished = FW.Functions.CompactProgressbar(20000, "Crack pijp inpakken...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(20000, "Packaging into pipe...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
     exports['fw-inventory']:SetBusyState(false)
     if not Finished then return end
 
@@ -48,15 +48,15 @@ AddEventHandler("fw-illegal:Client:StartCocaineHeist", function()
     end
 
     if not exports['fw-sync']:BlackoutActive() or CokeRunStarted then
-        return FW.Functions.Notify("De man zegt 'Ga weg mafketel!' en kijkt je van top tot teen aan.")
+        return FW.Functions.Notify("The guys says 'What? Fuck off.' and looks at you from top to bottom.")
     end
 
     CokeRunStarted = FW.SendCallback("FW:RemoveCash", 100000)
     if not CokeRunStarted then
-        return FW.Functions.Notify("De man zegt 'Hiermee ga je het niet redden' en gebaart dat je weg moet gaan.")
+        return FW.Functions.Notify("The guys says 'You ain't getting shit for this amount of cash' en gebaart dat je weg moet gaan.")
     end
 
-    FW.Functions.Notify("De man zegt 'Gebruik ze verstandig' en overhandigt je een lijst met telefoonnummers.")
+    FW.Functions.Notify("The guys says 'Use them carefully.' en overhandigt je een lijst met telefoonnummers.")
 
     DropCoords = {}
     CallStatus = 1
@@ -77,7 +77,7 @@ AddEventHandler("fw-illegal:Client:DoCocaineCall", function(Data, Entity)
         return
     end
 
-    FW.Functions.Notify("GPS geupdate.")
+    FW.Functions.Notify("GPS updated..")
     CallStatus = CallStatus + 1
 
     if CallStatus > 4 then
@@ -94,7 +94,7 @@ RegisterNetEvent("fw-illegal:Client:UseCrackpipe")
 AddEventHandler("fw-illegal:Client:UseCrackpipe", function(Item)
     local Uses = Item.Info.Uses or 0
     if Uses <= 0 then
-        return FW.Functions.Notify("Het lijkt erop dat het op is :(", "error")
+        return FW.Functions.Notify("Looks like you're out of crack..", "error")
     end
 
     local Outcome = exports['fw-ui']:StartSkillTest(1, { 12, 18 }, { 2400, 2500 }, false)
@@ -105,7 +105,7 @@ AddEventHandler("fw-illegal:Client:UseCrackpipe", function(Item)
     FW.TriggerServer("fw-illegal:Server:SetCrackpipeUses", Item.Slot, Uses - 1)
 
     exports['fw-assets']:AddProp('CrackPipe')
-    local Finished = FW.Functions.CompactProgressbar(3000, "Crackje roken...", false, false, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "switch@trevor@trev_smoking_meth", anim = "trev_smoking_meth_loop", flags = 49 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(3000, "Smoking Crack...", false, false, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "switch@trevor@trev_smoking_meth", anim = "trev_smoking_meth_loop", flags = 49 }, {}, {}, false)
     TriggerEvent("fw-fx:Client:DrugEffect", "Crack")
 end)
 
@@ -144,7 +144,7 @@ function InitCocaine()
             {
                 Name = 'start_cocaine',
                 Icon = 'fas fa-circle',
-                Label = 'Geef me 100k (:',
+                Label = 'Give me 100k (:',
                 EventType = 'Client',
                 EventName = 'fw-illegal:Client:StartCocaineHeist',
                 EventParams = {},
@@ -237,7 +237,7 @@ function SetupCocainePeeks()
         exports['fw-ui']:AddOptionToPeek(GetHashKey("prop_phonebox_04"), {
             Name = 'cocaine_call_' .. i,
             Icon = 'fas fa-phone',
-            Label = 'Bel ' .. GeneratePhoneNumber(),
+            Label = 'Call ' .. GeneratePhoneNumber(),
             EventType = 'Client',
             EventName = 'fw-illegal:Client:DoCocaineCall',
             EventParams = { IsCorrect = Sequences[PayphoneId + 1] == i - (4 * PayphoneId) },

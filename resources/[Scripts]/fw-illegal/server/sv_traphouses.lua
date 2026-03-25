@@ -71,7 +71,7 @@ FW.Functions.CreateCallback("fw-illegal:Server:CanDoTraphouseTakeover", function
     end
 
     -- Send a mail to the traphouse owner about the takeover.
-    TriggerEvent('fw-phone:Server:Mails:AddMail', "Dark Market", "Traphouse Takeover", "Er probeert iemand een van je traphouses over te nemen!", Target.PlayerData.source)
+    TriggerEvent('fw-phone:Server:Mails:AddMail', "Dark Market", "Traphouse Takeover", "Someone is trying to take over one of your trap houses!", Target.PlayerData.source)
     Cb(true)
 end)
 
@@ -118,7 +118,7 @@ FW.RegisterServer("fw-illegal:Server:RobTraphouseCode", function(Source, Traphou
     if not TraphouseData then return end
 
     if math.random(100) > 95 then
-        return Player.Functions.Notify("De persoon kijkt je bang aan en zegt dat hij niks heeft..", "error")
+        return Player.Functions.Notify("The person looks at you fearfully and says that he has nothing to give..", "error")
     end
 
     local MyCoords = GetEntityCoords(GetPlayerPed(Source))
@@ -128,10 +128,10 @@ FW.RegisterServer("fw-illegal:Server:RobTraphouseCode", function(Source, Traphou
         local Reward = math.random(5, 100)
         Player.Functions.AddMoney("cash", Reward, "Traphouse NPC Robbery")
 
-        return Player.Functions.Notify("De persoon kijkt je bang aan en zegt dat hij niks heeft..", "error")
+        return Player.Functions.Notify("The person looks at you fearfully and says that he has nothing to give..", "error")
     end
 
-    Player.Functions.Notify("De persoon kijkt je bang aan en overhandigt je een briefje met '" .. TraphouseData.code .. "' erop..", "primary", 12000)
+    Player.Functions.Notify("The person looks at you fearfully and hands you a note with '" .. TraphouseData.code .. "' written on it..", "primary", 12000)
 end)
 
 FW.RegisterServer("fw-illegal:Server:RobNPC", function(Source, PedNetId)

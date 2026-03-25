@@ -5,7 +5,7 @@ FW.RegisterServer("fw-illegal:Server:FailedCocaine", function(Source)
     if Player == nil then return end
 
     Player.Functions.AddMoney('cash', 65000)
-    Player.Functions.Notify("De telefoon werdt niet beantwoord.. Je kreeg 65k terug van het mannetje.", "error")
+    Player.Functions.Notify("The phone wasn't answered.. You got 65k back from the guy.", "error")
 end)
 
 FW.RegisterServer("fw-illegal:Server:CreateCokeDinghy", function(Source, Coords)

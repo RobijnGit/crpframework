@@ -12,7 +12,7 @@ function InitMethruns()
             {
                 Name = 'inventory',
                 Icon = 'fas fa-box',
-                Label = 'Goederen Overhandigen',
+                Label = 'Hand over Goods',
                 EventType = 'Client',
                 EventName = 'fw-illegal:Client:OpenMethruns',
                 EventParams = {},
@@ -23,7 +23,7 @@ function InitMethruns()
             {
                 Name = 'tasks',
                 Icon = 'fas fa-tasks',
-                Label = 'Opdracht Starten',
+                Label = 'Start Task',
                 EventType = 'Server',
                 EventName = 'fw-illegal:Server:Methruns:GetTasks',
                 EventParams = {},
@@ -35,7 +35,7 @@ function InitMethruns()
             {
                 Name = 'reward',
                 Icon = 'fas fa-tasks',
-                Label = 'Beloning Ophalen',
+                Label = 'Collect Reward',
                 EventType = 'Server',
                 EventName = 'fw-illegal:Server:Methruns:GetReward',
                 EventParams = {},
@@ -58,7 +58,7 @@ function InitMethruns()
             {
                 Name = 'collect',
                 Icon = 'fas fa-box',
-                Label = 'Goederen Pakken',
+                Label = 'Collect Goods',
                 EventType = 'Server',
                 EventName = 'fw-illegal:Server:MethrunCollect',
                 EventParams = {},
@@ -103,7 +103,7 @@ AddEventHandler("fw-vehicles:Client:OnLockpickSuccess", function(Entity, InVehic
     local IsMethVehicle = FW.SendCallback("fw-illegal:Server:IsMethVehicle", NetworkGetNetworkIdFromEntity(Entity))
     if not IsMethVehicle then return end
 
-    TriggerServerEvent("fw-phone:Server:Mails:AddMail", "The Boss", "Dropoff", "Je hebt de auto zo te zien, ga naar de volgende locatie met deze auto, neem de spullen mee en leg het in de kofferbak. Je krijgt zometeen van mij een locatie waar je het voertuig moet inleveren.")
+    TriggerServerEvent("fw-phone:Server:Mails:AddMail", "The Boss", "Dropoff", "It looks like you have the car. Go to the next location with this car, take the items with you, and put them in the trunk. I will give you a location shortly where you need to return the vehicle.")
 
     local SupplierCoords = FW.SendCallback("fw-illegal:Server:GetMethSupplier")
     CreateDropoffBlip("Supplier", SupplierCoords)
@@ -137,7 +137,7 @@ end)
 
 RegisterNetEvent("fw-illegal:Client:SetMethDropoff")
 AddEventHandler("fw-illegal:Client:SetMethDropoff", function(Coords)
-    TriggerServerEvent("fw-phone:Server:Mails:AddMail", "The Boss", "Dropoff", "Je hebt de locatie op je GPS, kom er zo snel mogelijk naar toe, houdt de politie uit de buurt!")
+    TriggerServerEvent("fw-phone:Server:Mails:AddMail", "The Boss", "Dropoff", "You have the location on your GPS, come there as quickly as possible, keep the police away!")
     CreateDropoffBlip("Dropoff", Coords)
     MethDropoff = Coords
 end)
@@ -146,10 +146,10 @@ RegisterNetEvent("fw-illegal:Client:MethrunDropoffGoods")
 AddEventHandler("fw-illegal:Client:MethrunDropoffGoods", function(Data, Entity)
     local IsFloorCleanerInTrunk = FW.SendCallback("fw-illegal:Server:IsFloorCleanerInTrunk")
     if not IsFloorCleanerInTrunk then
-        return FW.Functions.Notify("Waar is het spul heen?", "error")
+        return FW.Functions.Notify("Where did the goods go??", "error")
     end
 
-    local Finished = FW.Functions.CompactProgressbar(40000, "Goederen afleveren...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", anim = "machinic_loop_mechandplayer", flags = 1 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(40000, "Delivering Goods...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", anim = "machinic_loop_mechandplayer", flags = 1 }, {}, {}, false)
 	StopAnimTask(PlayerPedId(), "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer", 1.0)
 
 	if not Finished then

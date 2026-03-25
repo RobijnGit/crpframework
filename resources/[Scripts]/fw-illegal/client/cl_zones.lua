@@ -21,7 +21,7 @@ function InitZones()
                 {
                     Name = 'dry_rack_inventory',
                     Icon = 'fas fa-archive',
-                    Label = 'Drook Rek',
+                    Label = 'Drying Rack',
                     EventType = 'Client',
                     EventName = 'fw-illegal:Client:Open:Dry:Rack',
                     EventParams = {},
@@ -32,7 +32,7 @@ function InitZones()
                 {
                     Name = 'dry_rack_start',
                     Icon = 'fas fa-play',
-                    Label = 'Start Droog Process',
+                    Label = 'Start Drying Process',
                     EventType = 'Client',
                     EventName = 'fw-illegal:Client:Start:Dry:Process',
                     EventParams = {},
@@ -51,7 +51,7 @@ function InitZones()
                     {
                         Name = 'plant_pick',
                         Icon = 'fas fa-sign-language',
-                        Label = 'Pak Plant',
+                        Label = 'Harvest',
                         EventType = 'Client',
                         EventName = 'fw-illegal:Client:Plants:Pick:Plant',
                         EventParams = '',
@@ -66,7 +66,7 @@ function InitZones()
                     {
                         Name = 'plant_check',
                         Icon = 'fas fa-cannabis',
-                        Label = 'Controleer Plant',
+                        Label = 'Check',
                         EventType = 'Client',
                         EventName = 'fw-illegal:Client:Plants:Open:Context',
                         EventParams = '',
@@ -77,7 +77,7 @@ function InitZones()
                     {
                         Name = 'plant_destroy',
                         Icon = 'fas fa-cut',
-                        Label = 'Verwoest Plant',
+                        Label = 'Destroy',
                         EventType = 'Client',
                         EventName = 'fw-illegal:Client:Plants:Destroy',
                         EventParams = '',

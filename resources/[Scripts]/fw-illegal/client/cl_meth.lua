@@ -69,7 +69,7 @@ AddEventHandler("fw-illegal:Client:Meth:PlaceTable", function(Item)
     end
 
     if not exports['fw-inventory']:HasEnoughOfItem('methtable', 1) then
-        return FW.Functions.Notify("Je mist een tafel.", "error")
+        return FW.Functions.Notify("Where's your table?", "error")
     end
 
     IsPlacing = true
@@ -81,10 +81,10 @@ AddEventHandler("fw-illegal:Client:Meth:PlaceTable", function(Item)
 
     if exports['fw-interiors']:IsInsideInterior() then
         IsPlacing = false
-        return FW.Functions.Notify("Je kan de chemische dampen in een gesloten ruimte niet aan..", "error")
+        return FW.Functions.Notify("You can't stand the chemical smell in here..", "error")
     end
 
-    local Finished = FW.Functions.CompactProgressbar(5000, "Tafel plaatsen...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", anim = "machinic_loop_mechandplayer", flags = 1 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(5000, "Placing Table...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", anim = "machinic_loop_mechandplayer", flags = 1 }, {}, {}, false)
 	StopAnimTask(PlayerPedId(), "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer", 1.0)
 
 	if not Finished then
@@ -103,7 +103,7 @@ AddEventHandler("fw-illegal:Client:PickupMethTable", function(Data, Entity)
     local TableData = GetMethTableByEntity(Entity)
     if not TableData then return end
 
-    local Finished = FW.Functions.CompactProgressbar(30000, "Tafel oppakken...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", anim = "machinic_loop_mechandplayer", flags = 1 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(30000, "Picking up...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", anim = "machinic_loop_mechandplayer", flags = 1 }, {}, {}, false)
 	StopAnimTask(PlayerPedId(), "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer", 1.0)
 	if not Finished then return end
 
@@ -113,18 +113,18 @@ end)
 RegisterNetEvent("fw-illegal:Client:StartCookingMeth")
 AddEventHandler("fw-illegal:Client:StartCookingMeth", function(Data, Entity)
     if IsCooking then
-        return FW.Functions.Notify("Je bent al aan het kokkenrellen..")
+        return FW.Functions.Notify("You're already cooking..")
     end
 
     local TableData = GetMethTableByEntity(Entity)
     if not TableData then return end
 
     if TableData.Owner ~= FW.Functions.GetPlayerData().citizenid then
-        return FW.Functions.Notify("Dit is niet jouw tafel..")
+        return FW.Functions.Notify("This ain't yours?")
     end
 
     if TableData.LastCook + ((60 * 60) * 1.5) > GetCloudTimeAsInt() then -- 1 hour and 30 minutes
-        return FW.Functions.Notify("De tafel wordt schoongemaakt, wacht nog even.", "error")
+        return FW.Functions.Notify("This table is still cooling back down..", "error")
     end
 
     local Result = exports['fw-minigames']:StartSliderMinigame({
@@ -135,7 +135,7 @@ AddEventHandler("fw-illegal:Client:StartCookingMeth", function(Data, Entity)
 
     local Success = FW.SendCallback("fw-illegal:Server:StartCookingMeth", TableData.Id, Result)
     if Success then
-        FW.Functions.Notify("Gestart met koken.")
+        FW.Functions.Notify("Started cooking!")
         CurrentStage = 1
         IsCooking = true
         CookingEntity = Entity
@@ -158,26 +158,26 @@ AddEventHandler("fw-illegal:Client:DoMethCook", function(Data, Entity)
 
     local DoExplode = false
     if TableData.Owner ~= FW.Functions.GetPlayerData().citizenid then
-        return FW.Functions.Notify("Dit is niet jouw tafel..")
+        return FW.Functions.Notify("This ain't yours?")
     end
 
     local Time, Text, Dict, Anim = 30000, "Doing absolutely nothing " .. Data.Stage, "", ""
     if Data.Stage == 1 then
-        Time, Text, Dict, Anim = 30000, "Goederen klaarmaken", "anim@heists@prison_heiststation@", "pickup_bus_schedule"
+        Time, Text, Dict, Anim = 30000, "Setting up the goods", "anim@heists@prison_heiststation@", "pickup_bus_schedule"
     elseif Data.Stage == 2 then
-        Time, Text, Dict, Anim = 45000, "Goederen combineren", "anim@heists@prison_heiststation@cop_reactions", "cop_b_idle"
+        Time, Text, Dict, Anim = 45000, "Combining the goods", "anim@heists@prison_heiststation@cop_reactions", "cop_b_idle"
         if ExplodeThisCook and math.random(1, 100) > 80 then DoExplode, ExplodeThisCook = true, false end
     elseif Data.Stage == 3 then
-        Time, Text, Dict, Anim = 25000, "Water mengen", "weapon@w_sp_jerrycan", "fire"
+        Time, Text, Dict, Anim = 25000, "Mixing water", "weapon@w_sp_jerrycan", "fire"
         if ExplodeThisCook and math.random(1, 100) > 70 then DoExplode, ExplodeThisCook = true, false end
     elseif Data.Stage == 4 then
-        Time, Text, Dict, Anim = 60000, "Oplosmiddel toevoegen", "weapon@w_sp_jerrycan", "fire"
+        Time, Text, Dict, Anim = 60000, "Adding solvent", "weapon@w_sp_jerrycan", "fire"
         if ExplodeThisCook and math.random(1, 100) > 50 then DoExplode, ExplodeThisCook = true, false end
     elseif Data.Stage == 5 then
-        Time, Text, Dict, Anim = 120000, "Product kristalliseren", "random@train_tracks", "idle_e"
+        Time, Text, Dict, Anim = 120000, "Crystallizing the product", "random@train_tracks", "idle_e"
         if ExplodeThisCook and math.random(1, 100) > 30 then DoExplode, ExplodeThisCook = true, false end
     elseif Data.Stage == 6 then
-        Time, Text, Dict, Anim = 60000, "Product inpakken", "anim@heists@prison_heiststation@", "pickup_bus_schedule"
+        Time, Text, Dict, Anim = 60000, "Packing the product", "anim@heists@prison_heiststation@", "pickup_bus_schedule"
     end
 
     if DoExplode then
@@ -219,7 +219,7 @@ AddEventHandler("fw-illegal:Client:CutMeth", function(Item)
         return
     end
 
-    local Finished = FW.Functions.CompactProgressbar(1000, "Inpakken...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(1000, "Cutting and packing...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
     if not Finished then return end
 
     FW.TriggerServer("fw-illegal:Server:CutMethReward", Item)
@@ -233,16 +233,16 @@ AddEventHandler("fw-inventory:Client:OnItemInsert", function(FromItem, ToItem)
     local Quantity = FromItem.Amount
     if not Quantity then return end
     if Quantity > 1 then
-        return FW.Functions.Notify("Hmm lijkt alsof ik niet zoveel kan doen..", "error")
+        return FW.Functions.Notify("Looks like I can't fit this much in here..", "error")
     end
     
     if ToItem.Info.Uses + Quantity > 4 then
-        return FW.Functions.Notify("Volgensmij zit hij vol..", "error")
+        return FW.Functions.Notify("Looks like the pipe is full..", "error")
     end
 
     exports['fw-inventory']:SetBusyState(true)
 
-    local Finished = FW.Functions.CompactProgressbar(10000, "Meth pijp inpakken...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(10000, "Packaging into pipe...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
     exports['fw-inventory']:SetBusyState(false)
     if not Finished then return end
 
@@ -253,7 +253,7 @@ RegisterNetEvent("fw-illegal:Client:UseMethpipe")
 AddEventHandler("fw-illegal:Client:UseMethpipe", function(Item)
     local Uses = Item.Info.Uses or 0
     if Uses <= 0 then
-        return FW.Functions.Notify("Het lijkt erop dat het op is :(", "error")
+        return FW.Functions.Notify("Looks like you're out of meth..", "error")
     end
 
     local Outcome = exports['fw-ui']:StartSkillTest(1, { 12, 18 }, { 2400, 2500 }, true)
@@ -264,7 +264,7 @@ AddEventHandler("fw-illegal:Client:UseMethpipe", function(Item)
     local Purity = FW.SendCallback("fw-illegal:Server:SetMethpipeUses", Item.Slot)
 
     exports['fw-assets']:AddProp('CrackPipe')
-    local Finished = FW.Functions.CompactProgressbar(1500, "Methje roken...", false, false, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "switch@trevor@trev_smoking_meth", anim = "trev_smoking_meth_loop", flags = 49 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(1500, "Smoking Meth...", false, false, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "switch@trevor@trev_smoking_meth", anim = "trev_smoking_meth_loop", flags = 49 }, {}, {}, false)
     TriggerEvent("fw-fx:Client:DrugEffect", "Meth", {Purity = Purity})
 end)
 
@@ -288,7 +288,7 @@ function InitMeth()
             {
                 Name = 'start',
                 Icon = 'fas fa-thermometer-full',
-                Label = 'Start met Koken',
+                Label = 'Start Cooking',
                 EventType = 'Client',
                 EventName = 'fw-illegal:Client:StartCookingMeth',
                 EventParams = '',
@@ -299,7 +299,7 @@ function InitMeth()
             {
                 Name = 'destroy',
                 Icon = 'fas fa-arrow-up',
-                Label = 'Tafel Oppaken',
+                Label = 'Pick Up',
                 EventType = 'Client',
                 EventName = 'fw-illegal:Client:PickupMethTable',
                 EventParams = '',
@@ -310,7 +310,7 @@ function InitMeth()
             {
                 Name = 'prepare',
                 Icon = 'fas fa-thermometer-full',
-                Label = 'Goederen klaarmaken',
+                Label = 'Setup Goods',
                 EventType = 'Client',
                 EventName = 'fw-illegal:Client:DoMethCook',
                 EventParams = {Stage = 1},
@@ -323,7 +323,7 @@ function InitMeth()
             {
                 Name = 'combine',
                 Icon = 'fas fa-thermometer-full',
-                Label = 'Goederen combineren',
+                Label = 'Combine Goods',
                 EventType = 'Client',
                 EventName = 'fw-illegal:Client:DoMethCook',
                 EventParams = {Stage = 2},
@@ -336,7 +336,7 @@ function InitMeth()
             {
                 Name = 'water',
                 Icon = 'fas fa-thermometer-full',
-                Label = 'Meng met water',
+                Label = 'Mix with Water',
                 EventType = 'Client',
                 EventName = 'fw-illegal:Client:DoMethCook',
                 EventParams = {Stage = 3},
@@ -349,7 +349,7 @@ function InitMeth()
             {
                 Name = 'solvent',
                 Icon = 'fas fa-thermometer-full',
-                Label = 'Voeg oplosmiddel toe',
+                Label = 'Add Solvent',
                 EventType = 'Client',
                 EventName = 'fw-illegal:Client:DoMethCook',
                 EventParams = {Stage = 4},
@@ -362,7 +362,7 @@ function InitMeth()
             {
                 Name = 'crystalize',
                 Icon = 'fas fa-thermometer-full',
-                Label = 'Product kristalliseren',
+                Label = 'Crystalize Product',
                 EventType = 'Client',
                 EventName = 'fw-illegal:Client:DoMethCook',
                 EventParams = {Stage = 5},
@@ -375,7 +375,7 @@ function InitMeth()
             {
                 Name = 'pack',
                 Icon = 'fas fa-thermometer-full',
-                Label = 'Product inpakken',
+                Label = 'Package Product',
                 EventType = 'Client',
                 EventName = 'fw-illegal:Client:DoMethCook',
                 EventParams = {Stage = 6},

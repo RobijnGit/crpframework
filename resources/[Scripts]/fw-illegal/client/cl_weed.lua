@@ -6,7 +6,7 @@ AddEventHandler('fw-illegal:Client:Open:Dry:Rack', function()
                 if not IsBusy then
                     FW.TriggerServer('fw-inventory:Server:OpenInventory', 'Stash', 'temp-dry-rack', 5, 1000)
                 else
-                    FW.Functions.Notify("De droger is bezig..", 'error')
+                    FW.Functions.Notify("It is already drying..", 'error')
                 end
             end)
         end)

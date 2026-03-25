@@ -28,7 +28,7 @@ function LoadTraphouses()
                 {
                     Name = "grab",
                     Icon = "fas fa-circle",
-                    Label = "Naar binnen gaan",
+                    Label = "Enter",
                     EventType = "Client",
                     EventName = "fw-illegal:Client:EnterTraphouse",
                     EventParams = { TraphouseId = k },
@@ -99,7 +99,7 @@ function EnterTraphouse(TraphouseId)
     local Coords = vector3(Data.traphouses[TraphouseId].x, Data.traphouses[TraphouseId].y, Data.traphouses[TraphouseId].z)
 
     InteriorData = exports['fw-interiors']:CreateInterior('shell_store3', vector3(Coords.x, Coords.y, -100.0))
-    if InteriorData == nil or InteriorData[1] == nil then return FW.Functions.Notify("Kan traphouse interieur niet laden..", "error") end
+    if InteriorData == nil or InteriorData[1] == nil then return FW.Functions.Notify("Failed to load traphouse..", "error") end
 
     DoScreenFadeOut(250)
     while not IsScreenFadedOut(250) do Citizen.Wait(4) end
@@ -150,9 +150,9 @@ function StartTraphouseLoop(TraphouseData, Coords)
             if NearAnything then
                 if not ShowingInteraction then
                     if InteractType == "Exit" then
-                        SetInteraction("[E] Verlaten", "primary")
+                        SetInteraction("[E] Exit", "primary")
                     elseif InteractType == "Storage" then
-                        SetInteraction("[E] Traphouse Acties", "primary")
+                        SetInteraction("[E] Actions", "primary")
                     end
                 end
 
@@ -182,7 +182,7 @@ function StartTraphouseLoop(TraphouseData, Coords)
                         if Result.owner ~= PlayerData.citizenid then
                             ContextItems[#ContextItems + 1] = {
                                 Title = "Traphouse Takeover",
-                                Desc = "Neem de traphouse over voor €5,000!",
+                                Desc = "Take this traphouse over for $5,000!",
                                 Disabled = PlayerData.money.cash < 5000,
                                 Data = {
                                     Event = 'fw-illegal:Client:TraphouseTakeover',
@@ -191,8 +191,8 @@ function StartTraphouseLoop(TraphouseData, Coords)
                             }
                         else
                             ContextItems[#ContextItems + 1] = {
-                                Title = "Code aanpassen",
-                                Desc = "Verander de pincode van de traphouse.",
+                                Title = "Change Code",
+                                Desc = "Change the code of the traphouse.",
                                 Data = {
                                     Event = 'fw-illegal:Client:ChangeTraphouseCode',
                                     Type = 'Client',
@@ -200,8 +200,8 @@ function StartTraphouseLoop(TraphouseData, Coords)
                             }
 
                             ContextItems[#ContextItems + 1] = {
-                                Title = "Opslag",
-                                Desc = "Open de opslag om te verkopen.",
+                                Title = "Storage",
+                                Desc = "Open the storage to sell.",
                                 Data = {
                                     Event = 'fw-illegal:Client:OpenTraphouseStorage',
                                     Type = 'Client',
@@ -209,8 +209,8 @@ function StartTraphouseLoop(TraphouseData, Coords)
                             }
 
                             ContextItems[#ContextItems + 1] = {
-                                Title = "Traphouse Legen",
-                                Desc = Result.cash <= 5000 and "Je hebt nog niet genoeg cash om op te halen.." or ("Neem %s cash mee."):format(exports['fw-businesses']:NumberWithCommas(Result.cash)),
+                                Title = "Clear Traphouse",
+                                Desc = Result.cash <= 5000 and "You don't have enough cash to pick up yet..." or ("Collect %s cash."):format(exports['fw-businesses']:NumberWithCommas(Result.cash)),
                                 Disabled = Result.cash <= 5000,
                                 Data = {
                                     Event = 'fw-illegal:Client:TakeTraphouseCash',
@@ -239,11 +239,11 @@ RegisterNetEvent("fw-illegal:Client:TraphouseTakeover")
 AddEventHandler("fw-illegal:Client:TraphouseTakeover", function()
     local Result = FW.SendCallback("fw-illegal:Server:CanDoTraphouseTakeover", InsideTraphouseId)
     if not Result then
-        return FW.Functions.Notify("Je kan de traphouse nu niet overnemen..")
+        return FW.Functions.Notify("You cannot take over the traphouse now..")
     end
 
     local MyCoords = GetEntityCoords(PlayerPedId())
-    local Finished = FW.Functions.CompactProgressbar(300000, "Traphouse aan het overnemen, niet bewegen..", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = false}, {}, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(300000, "Taking over, don't move..", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = false}, {}, {}, {}, false)
 
     if not Finished or #(MyCoords - GetEntityCoords(PlayerPedId())) > 2.0 then
         return
@@ -251,7 +251,7 @@ AddEventHandler("fw-illegal:Client:TraphouseTakeover", function()
 
     local Paid = FW.SendCallback("FW:RemoveCash", 5000)
     if not Paid then
-        return FW.Functions.Notify("Je hebt niet genoeg cash..", "error")
+        return FW.Functions.Notify("Not enough cash..", "error")
     end
 
     FW.TriggerServer("fw-illegal:Server:TakeoverTraphouse", InsideTraphouseId)
@@ -267,7 +267,7 @@ AddEventHandler("fw-illegal:Client:ChangeTraphouseCode", function()
     end
 
     local Result = exports['fw-ui']:CreateInput({
-        { Label = "Nieuwe Code", Name = "Code", Icon = "user-lock", Type = "password" }
+        { Label = "Code", Name = "Code", Icon = "user-lock", Type = "password" }
     })
 
     if Result and Result.Code ~= '' then
@@ -285,7 +285,7 @@ AddEventHandler("fw-illegal:Client:OpenTraphouseStorage", function()
     end
 
     if exports['fw-inventory']:CanOpenInventory() then
-        FW.TriggerServer('fw-inventory:Server:OpenInventory', 'Traphouse Opslag', "traphouse-" .. InsideTraphouseId, 2, 10)
+        FW.TriggerServer('fw-inventory:Server:OpenInventory', 'Traphouse Storage', "traphouse-" .. InsideTraphouseId, 2, 10)
         TriggerEvent("fw-misc:Client:PlaySound", 'general.stashOpen')
     end
 end)
@@ -300,7 +300,7 @@ AddEventHandler("fw-illegal:Client:TakeTraphouseCash", function()
     end
 
     local MyCoords = GetEntityCoords(PlayerPedId())
-    local Finished = FW.Functions.CompactProgressbar(10000, "Traphouse legen..", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = false}, {}, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(10000, "Clearing Traphouse..", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = false}, {}, {}, {}, false)
 
     if not Finished or #(MyCoords - GetEntityCoords(PlayerPedId())) > 2.0 then
         return
@@ -372,7 +372,7 @@ AddEventHandler("fw-weapons:Client:SetWeaponData", function(Data)
                         exports['fw-assets']:RequestAnimationDict("missfbi5ig_22")
 
                         if math.random() < 0.2 then
-                            TriggerServerEvent("fw-mdw:Server:SendAlert:CivilianRobbery", MyCoords, FW.Functions.GetStreetLabel(), IsPedMale(TargetPed) and 'Man' or 'Vrouw')
+                            TriggerServerEvent("fw-mdw:Server:SendAlert:CivilianRobbery", MyCoords, FW.Functions.GetStreetLabel(), IsPedMale(TargetPed) and 'Male' or 'Female')
                         end
 
                         while IsRobbingNpc do

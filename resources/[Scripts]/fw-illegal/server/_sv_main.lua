@@ -8,13 +8,13 @@ FW.Functions.CreateCallback("fw-illegal:Server:Start:Dry:Process", function(Sour
 
     if Drying then
         Cb(false)
-        return Player.Functions.Notify("Het droogrek is al in gebruik..", "error")
+        return Player.Functions.Notify("This drying rack is already being used..", "error")
     end
 
     local InvItems = exports['fw-inventory']:GetInventoryItems('temp-dry-rack')
     if InvItems == nil then
         Cb(false)
-        return Player.Functions.Notify("Droogrek is leeg..", "error")
+        return Player.Functions.Notify("Drying rack is empty..", "error")
     end
 
     Cb(true)
@@ -32,11 +32,11 @@ FW.Functions.CreateCallback("fw-illegal:Server:Start:Dry:Process", function(Sour
     end
 
     if #WeedBuds == 0 then
-        return Player.Functions.Notify("Er is niks om te drogen..", "error")
+        return Player.Functions.Notify("Nothing to dry..", "error")
     end
 
     Drying = true
-    Player.Functions.Notify("Droogprocess gestart..", "success")
+    Player.Functions.Notify("Started drying..", "success")
     Citizen.SetTimeout((1000 * 60) * 2, function()
         for k, v in pairs(WeedBuds) do
             if v.Amount and v.Amount > 0 then
