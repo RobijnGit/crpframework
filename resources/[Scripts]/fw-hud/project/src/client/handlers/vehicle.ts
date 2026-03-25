@@ -74,7 +74,7 @@ VehicleThread.addHook('active', () => {
 });
 
 const WarnFuellevel = async () => {
-    FW.Functions.Notify('Benzine niveau laag..', 'error')
+    FW.Functions.Notify('Low fuel..', 'error')
     PlaySoundFrontend(-1, "TIMER_STOP", "HUD_MINI_GAME_SOUNDSET", true); await Delay(200);
     PlaySoundFrontend(-1, "TIMER_STOP", "HUD_MINI_GAME_SOUNDSET", true); await Delay(200);
     PlaySoundFrontend(-1, "TIMER_STOP", "HUD_MINI_GAME_SOUNDSET", true);

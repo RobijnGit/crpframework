@@ -11,7 +11,7 @@ const GetHudId = (Id: string): number => {
 };
 exp("GetHudId", GetHudId);
 
-FW.Commands.Add("cash", "Hoeveel contant hebbie?", [], false, (Source: number, Args: Array<string>) => {
+FW.Commands.Add("cash", "How much cash do you have?", [], false, (Source: number, Args: Array<string>) => {
     const Player = FW.Functions.GetPlayer(Source)
     if (!Player) return;
 

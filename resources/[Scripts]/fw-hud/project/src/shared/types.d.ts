@@ -22,8 +22,8 @@ interface Preferences {
 
     'Phone.Brand': 'Android' | 'iOS';
     'Phone.Background': string;
-    'Phone.Animation': 'Linkeroor' | 'Rechteroor';
-    'Radio.Animation': 'Schouder' | 'Borst';
+    'Phone.Animation': 'Left Ear' | 'Right Ear';
+    'Radio.Animation': 'Shoulder' | 'Chest';
     'Phone.DisableMovement': boolean;
 
     'Notifications.SMS': boolean;

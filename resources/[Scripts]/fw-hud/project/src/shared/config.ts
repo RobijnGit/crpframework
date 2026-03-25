@@ -24,8 +24,8 @@ const PresetPreferences: Preferences = {
 
     'Phone.Brand': 'Android',
     'Phone.Background': 'https://i.imgur.com/3KTfLIV.jpg',
-    'Phone.Animation': 'Rechteroor',
-    'Radio.Animation': 'Schouder',
+    'Phone.Animation': 'Right Ear',
+    'Radio.Animation': 'Shoulder',
     'Phone.DisableMovement': true,
 
     'Notifications.SMS': true,
