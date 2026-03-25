@@ -13,7 +13,7 @@ exports("DespawnInteriors", DespawnInteriors)
 
 function CreateInterior(InteriorId, Coords, LoadProps)
 	if not IsModelValid(InteriorId) then
-		FW.Functions.Notify(("Interieur '%s' kan niet geladen worden.."):format(InteriorId))
+		FW.Functions.Notify(("Failed to load '%s'.."):format(InteriorId))
         return false
     end
 
