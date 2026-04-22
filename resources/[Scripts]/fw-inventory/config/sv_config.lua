@@ -255,7 +255,7 @@ Config.Stores = {
         }
     },
     ['Flightschool'] = {
-        Label = "Los Santos Vliegschool",
+        Label = "Los Santos Flight School",
         Items = {
             { Item = "parachute", Amount = 1 }
         }

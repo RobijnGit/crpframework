@@ -36,7 +36,7 @@
                 <div class="inventory-actions">
                     <input tabindex="-1" type="number" id="inventory-move-amount" max="9999" min="0" placeholder="Aantal">
                     <button class="inventory-actions-btn" id="inventory-use" style="margin: 0.5vh 0;"></button>
-                    <button class="inventory-actions-btn" id="inventory-close">Sluiten</button>
+                    <button class="inventory-actions-btn" id="inventory-close">Close</button>
                 </div>
             </div>
 
@@ -46,7 +46,7 @@
                     <div class="inventory-box-header-weight"><span>0</span>/250</div>
                     <div class="inventory-box-header-weightbar"><div class="weightbar-fill" style="width: 0%;"></div></div>
                 </div>
-                <div class="inventory-box-cash">Je hebt <span>69</span> om te spenderen</div>
+                <div class="inventory-box-cash">You have <span>69</span> to spend.</div>
                 <div class="inventory-box-slots"></div>
             </div>
         </div>
@@ -56,33 +56,34 @@
         </div>
 
         <div class="inventory-help-menu">
-            <h3>Over:</h3>
+            <h3>About:</h3>
             <p>
-                Om een volle stack te verplaatsen, moet je ervoor zorgen dat "AANTAL" leeg of groter is dan de volledige stack.<br />
-                Gebruik je muiswiel om het bedrag in te stellen dat je wilt verplaatsen. Je kan dit doen tijdens het tijdens en vooraf het slepen.<br />
-                Om een item te <strong>GEBRUIKEN</strong> sleep je de item naar het "GEBRUIKEN" handje.<br />
+
+                To move a full item stack, you need to make sure the "AMOUNT"-field is empty or greater than the full stack size.<br />
+                To adjust the amount you want to move, use the mouse wheel while hovering over the "AMOUNT"-field.<br />
+                To use an item, press the mouse wheel or drop the item on the "USE" button.<br />
             </p>
             <h3>Keybinds:</h3>
             <ul>
-                <li>Shift + Click: Stuurt de helft van de stack naar de andere inventory.</li>
-                <li>Ctrl + Click: Stuur het aantal ingevuld in "AANTAL" naar de andere inventory</li>
-                <li>Left Click: Item Slepen</li>
+                <li>Shift + Click: Move half of the stack to the other container.</li>
+                <li>Ctrl + Click: Move the amount that is specified in the "AMOUNT"-field to the other container.</li>
+                <li>Left Click: Move Item</li>
                 <li>Middle Click: Fast-Use Item</li>
                 <hr />
-                <li>C: Zet "AANTAL" leeg.</li>
-                <li>Ctrl + C: Kopieer item data</li>
+                <li>C: Clear "AMOUNT"-field.</li>
+                <li>Ctrl + C: Copy item data to clipboard</li>
             </ul>
-            <h3>Winkels:</h3>
-            <p>Zet het aantal dat je wilt kopen in "AANTAL" en sleep dan de item naar je inventory.</p>
+            <h3>Stores:</h3>
+            <p>Set the "AMOUNT"-field to the amount of the items you want to buy, then move the item to your characters container.</p>
             <h3>Crafting:</h3>
             <p>
-                Het is altijd handig om de benodigheden te onthouden.<br />
-                Bij het craften moet je het exacte aantal invoeren dat je kunt craften, als je meer wilt craften dan er in de crafting bench zit, zal het de maximale maken dat de crafting bench heeft.
+                Make sure to remember the requirements.<br />
+                When crafting, you must specify the exact amount you want to craft, if you want to craft more than the amount the crafting bench has available, it will craft the maximum amount of the crafting bench.<br />
             </p>
-            <h3>Item Levensduur:</h3>
+            <h3>Item Durability:</h3>
             <p>
-                Bijna alle items zullen rotten <i>(inclusief wapens)</i>.<br />
-                De balk onder elk item wordt langzaam kleiner naarmate het meer vergaat en uiteindelijk vervaagt tot een roodachtige kleur. Zodra een item volledig is vernietigd, zal de gehele slot een rode achtergrond hebben.
+                Almost all items will decay over time. <i>(weapons included)</i>.</br>
+                The current durability of an item is shown at the bottom of the item slot. It will slowly decrease in size until it fades into a red color, once a item is fully decayed, the entire slot will turn red.
             </p>
         </div>
     </div>

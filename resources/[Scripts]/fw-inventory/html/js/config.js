@@ -28,47 +28,47 @@ let HiddenMetadata = [
 
 let ItemI18n = {
     "id_card": {
-        citizenid: "BSN",
-        firstname: "Voornaam",
-        lastname: "Achternaam",
-        birthdate: "Geboortedag",
-        nationality: "Nationaliteit",
-        gender: "Geslacht",
+        citizenid: "State ID",
+        firstname: "Firstname",
+        lastname: "Lastname",
+        birthdate: "Date of Birth",
+        nationality: "Nationality",
+        gender: "Sex",
     },
     "driver_license": {
-        citizenid: "BSN",
-        birthdate: "Geboortedag",
-        lastname: "Achternaam",
-        firstname: "Voornaam",
-        type: "Rijbewijzen",
+        citizenid: "State ID",
+        birthdate: "Date of Birth",
+        lastname: "Lastname",
+        firstname: "Firstname",
+        type: "Licenses",
     },
     "identification-badge": {
-        Rang: "Functie",
-        Callsign: "Roepnummer",
-        Name: "Naam"
+        Rang: "Rang",
+        Callsign: "Callsign",
+        Name: "Name"
     },
     "burnerphone": {
-        PhoneNumber: "Telefoonnummer"
+        PhoneNumber: "Phone Number"
     },
     "filled_evidence_bag": {
         label: "Type",
-        street: "Straatnaam",
-        bloodtype: "Bloed Type",
-        fingerid: "Vingerafdruk",
+        street: "Street Name",
+        bloodtype: "Blood Type",
+        fingerid: "Fingerprint",
         slimeid: "DNA-code",
         hairid: "DNA-code",
         ammo: "Ammo",
         ammotype: "Ammo Type",
-        serie: "Serienummer"
+        serie: "Serialnumber"
     },
     "evidence": {
-        Serial: "Serienummer",
-        Fingerprint: "Vingerafdruk",
-        BloodType: "Bloed Type",
+        Serial: "Serialnumber",
+        Fingerprint: "Fingerprint",
+        BloodType: "Blood Type",
         BloodId: "DNA-code",
     },
     "polaroid-photo": {
-        Description: "Beschrijving",
+        Description: "Description",
     }
 }
 

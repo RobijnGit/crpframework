@@ -142,7 +142,7 @@ const BuildInventory = (InvContainer, InvType, Items, MaxSlots) => {
                 HTMLString += `
                     <div class="inventory-slot-name">${ItemData.Label}</div>
                     <div class="inventory-slot-image" style="background-image: url(${GetItemImage(Item.Item, Item.CustomType, Item.Info)})"></div>
-                    <div class="inventory-slot-price">€${ItemData.Price}</div>
+                    <div class="inventory-slot-price">$${ItemData.Price}</div>
                     <div style="margin-bottom: 2.2vh" class="inventory-slot-info">
                         <span class="inventory-slot-quantity">${Item.Amount}x</span>
                         <span class="inventory-slot-weight">${(ItemData.Weight * Item.Amount).toFixed(2)}</span>

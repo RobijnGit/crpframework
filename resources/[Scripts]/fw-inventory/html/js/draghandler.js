@@ -72,16 +72,16 @@ $(document).on('mousedown', '.inventory-box-slot', function(e) {
         if (FromInv == 'Crafting') return;
 
         if (ToInv != 'player' && (OtherInvData.Type == 'Store' || OtherInvData.Type == 'Crafting')) {
-            return InventoryLog("[Error]: Je kan hier geen items naar toe slepen.")
+            return InventoryLog("[Error]: You can't move any items to this container.")
         };
 
         if (ToInv != 'player' && OtherInvData.Type == 'Bag' && SlotData.IsBag) {
-            return InventoryLog("[Error]: Dit is geen Escape from Tarkov.")
+            return InventoryLog("[Error]: This item is not allowed in this container.")
         };
 
         const InvSpecificItems = GetInvSpecificItems(ToInv);
         if (InvSpecificItems && !InvSpecificItems.includes(SlotData.Item)) {
-            return InventoryLog('[Error]: Je kan deze item niet in deze inventory plaatsen.')
+            return InventoryLog('[Error]: This item is not allowed in this container.')
         };
 
         const ToSlot = FindSlot(ToInv == 'player' ? MyInventory : OtherInvData.Items, ToInv == 'player' ? MaxPlayerSlots : OtherInvData.Slots, SlotData)
@@ -89,7 +89,7 @@ $(document).on('mousedown', '.inventory-box-slot', function(e) {
         let MoveAmount = Number($('#inventory-move-amount').val()) || SlotData.Amount;
         if (window.event.shiftKey) MoveAmount = Math.ceil(SlotData.Amount / 2);
         if (MoveAmount > SlotData.Amount) MoveAmount = SlotData.Amount;
-        if (MoveAmount <= 0 || MoveAmount == undefined) return InventoryLog("[Error]: Je moet een aantal invullen.");
+        if (MoveAmount <= 0 || MoveAmount == undefined) return InventoryLog("[Error]: You need to fill in an amount.");
 
         const ToInvWeight = CalculateTotalInvWeight(ToInv == 'player' ? MyInventory : OtherInvData.Items);
         const FromItemData = GetItemData(SlotData.Item, SlotData.CustomType);
@@ -97,16 +97,16 @@ $(document).on('mousedown', '.inventory-box-slot', function(e) {
         // Check if inventory can hold the items.
         if (FromInv != 'player' && ToInv == 'player') {
             if ((FromItemData.Weight * MoveAmount) + ToInvWeight > MaxPlayerWeight) {
-                return InventoryLog("[Error]: Je bent te overgewicht.");
+                return InventoryLog("[Error]: This container can't hold any more items.");
             };
         } else if (FromInv == 'player' && ToInv != 'player') {
             if ((FromItemData.Weight * MoveAmount) + ToInvWeight > OtherInvData.Weight) {
-                return InventoryLog("[Error]: Inventory is vol.");
+                return InventoryLog("[Error]: This container can't hold any more items.");
             };
         };
 
         // Slot check
-        if (ToSlot == 0 || ToSlot > (ToInv == 'player' ? MaxPlayerSlots : OtherInvData.Slots)) return InventoryLog("[Error]: Inventory is vol.");
+        if (ToSlot == 0 || ToSlot > (ToInv == 'player' ? MaxPlayerSlots : OtherInvData.Slots)) return InventoryLog("[Error]: This container can't hold any more items.");
 
         const ToItem = ToInv == 'player' ? MyInventory[ToSlot] : OtherInvData.Items[ToSlot];
         UpdateInventorySlot(FromInv == 'player' ? $(`.inventory-box[inventory-name="player"]`) : $(`.inventory-box[inventory-name="other"]`), ToInv == 'player' ? $(`.inventory-box[inventory-name="player"]`) : $(`.inventory-box[inventory-name="other"]`), FromSlot, ToSlot, SlotData, ToItem, MoveAmount, "Move")
@@ -191,18 +191,18 @@ $(document).on('mouseup', 'body', async function(e) {
     const FromItemData = GetItemData(FromItem.Item, FromItem.CustomType);
 
     if (ToInv != 'player' && OtherInvData.Type == 'Bag' && FromItemData.IsBag) {
-        return InventoryLog("[Error]: Dit is geen Escape from Tarkov.")
+        return InventoryLog("[Error]: This item is not allowed in this container.")
     };
 
     const InvSpecificItems = GetInvSpecificItems(ToInv);
     if (InvSpecificItems && !InvSpecificItems.includes(FromItem.Item)) {
-        return InventoryLog('[Error]: Je kan deze item niet in deze inventory plaatsen.')
+        return InventoryLog('[Error]: This item is not allowed in this container.')
     }
 
     var MoveAmount = Number($("#inventory-move-amount").val());
     var MoveType = "Move";
 
-    if (DragData.FromInv != 'player' && (DragData.FromInv == 'Store' || DragData.FromInv == 'Crafting') && (MoveAmount <= 0 || MoveAmount == undefined)) return InventoryLog("[Error]: Je moet een aantal invullen.");
+    if (DragData.FromInv != 'player' && (DragData.FromInv == 'Store' || DragData.FromInv == 'Crafting') && (MoveAmount <= 0 || MoveAmount == undefined)) return InventoryLog("[Error]: You need to fill in an amount.");
 
     if (MoveAmount <= 0 || MoveAmount > FromItem.Amount) MoveAmount = FromItem.Amount;
     if (ToItem && FromItem.Item != ToItem.Item) MoveType = "Swap"; // If not the same item, swap.
@@ -215,24 +215,24 @@ $(document).on('mouseup', 'body', async function(e) {
     // Weight check.
     if (DragData.FromInv != 'player' && ToInv == 'player') {
         if ((FromItemData.Weight * MoveAmount) + ToInvWeight > MaxPlayerWeight) {
-            return InventoryLog("[Error]: Je bent te overgewicht.");
+            return InventoryLog("[Error]: This container can't hold any more items.");
         };
     } else if (DragData.FromInv == 'player' && ToInv != 'player') {
         if ((FromItemData.Weight * MoveAmount) + ToInvWeight > OtherInvData.Weight) {
-            return InventoryLog("[Error]: Inventory is vol.");
+            return InventoryLog("[Error]: This container can't hold any more items.");
         };
     };
 
     // Slot check
-    if (ToSlot == 0 || ToSlot > (ToInv == 'player' ? MaxPlayerSlots : OtherInvData.Slots)) return InventoryLog("[Error]: Inventory is vol.");
+    if (ToSlot == 0 || ToSlot > (ToInv == 'player' ? MaxPlayerSlots : OtherInvData.Slots)) return InventoryLog("[Error]: This container can't hold any more items.");
 
-    if (DragData.FromInv == 'Store' && FromItemData.Price * MoveAmount > PlayerCash) return InventoryLog("[Error]: Je hebt niet genoeg cash..");
+    if (DragData.FromInv == 'Store' && FromItemData.Price * MoveAmount > PlayerCash) return InventoryLog("[Error]: You don't have enough cash..");
     // if (DragData.FromInv == 'Store' && OtherInvData.Store == 'Ammunation' && FromItemData.Weapon && (!HasWeaponsLicense || !await CanBuyWeapon())) {
-    //     return InventoryLog("[Error]: Je hebt geen wapenvergunning, of je hebt vandaag al een wapen gekocht!")
+    //     return InventoryLog("[Error]: You do not own a Weapons License or you've reached your limit!")
     // };
 
     if (DragData.FromInv == 'Crafting' && !await HasCraftingItems(FromItem.Item, FromItem.CustomType, MoveAmount)) {
-        return InventoryLog("[Error]: Je hebt niet alle materialen om dit te maken.")
+        return InventoryLog("[Error]: You don't have all the requirements to craft this item.")
     };
 
     if (ToInv != 'player' && (OtherInvData.Type == 'Store' || OtherInvData.Type == 'Crafting')) return;

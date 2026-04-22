@@ -120,7 +120,7 @@ Citizen.CreateThread(function()
     end
 end)
 
-FW.AddKeybind("openInventory", 'Inventory', 'Openen', 'Tab', function(IsPressed)
+FW.AddKeybind("openInventory", 'Inventory', 'Open', 'Tab', function(IsPressed)
     if not IsPressed then return end
     if HotbarCooldown then return end
     if IsInventoryBusy then return end
@@ -147,7 +147,7 @@ FW.AddKeybind("openInventory", 'Inventory', 'Openen', 'Tab', function(IsPressed)
         MaxSlots, MaxWeight = 65, GetVehicleTrunkWeight(Vehicle)
     elseif NearContainer then
         local ContainerPos = GetEntityCoords(Container)
-        InvType = 'Robijn zijn Leven'
+        InvType = 'Dumpster'
         InvName = 'HiddenContainer-' .. math.floor(ContainerPos.x) .. '/' .. math.floor(ContainerPos.y)
         MaxSlots, MaxWeight = 200, 2000.0
     elseif CurrentDropId then
@@ -275,7 +275,7 @@ AddEventHandler('fw-inventory:Client:UseWeapon', function(ItemData)
     end
 
     if GetHashKey(WeaponName) == CurrentWeapon then
-        TriggerEvent('fw-inventory:Client:ShowActionBox', 'Gebruikt', WeaponName, 1)
+        TriggerEvent('fw-inventory:Client:ShowActionBox', 'Holstered', WeaponName, 1)
         local HolsterDict, HolsterAnim, AnimWait = "reaction@intimidation@1h", "outro", (GetAnimDuration("reaction@intimidation@1h", "outro") * 1000) - 2200
         local JobName = FW.Functions.GetPlayerData().job.name
         if (JobName == 'police' or JobName == 'storesecurity' or JobName == 'doc') and FW.Functions.GetPlayerData().job.onduty then
@@ -300,7 +300,7 @@ AddEventHandler('fw-inventory:Client:UseWeapon', function(ItemData)
 
     if WeaponName == "weapon_huntingrifle" and not exports['fw-jobmanager'].InsideHuntingZone() then return end
 
-    TriggerEvent('fw-inventory:Client:ShowActionBox', 'Gebruikt', WeaponName, 1)
+    TriggerEvent('fw-inventory:Client:ShowActionBox', 'Equipped', WeaponName, 1)
     local HolsterDict, HolsterAnim, AnimWait = "reaction@intimidation@1h", "intro", 900
     local JobName = FW.Functions.GetPlayerData().job.name
     if (JobName == 'police' or JobName == 'storesecurity' or JobName == 'doc') and FW.Functions.GetPlayerData().job.onduty then

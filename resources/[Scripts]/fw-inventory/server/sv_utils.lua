@@ -289,7 +289,7 @@ function AddItemToInventory(InvName, Item, Amount, Slot, Info, CustomType)
             Config.Drops[ClosestDropId].ItemCount = Config.Drops[ClosestDropId].ItemCount + 1
             TriggerClientEvent("fw-inventory:Client:SetDropItemCount", -1, tonumber(InvName:sub(6)), Config.Drops[tonumber(InvName:sub(6))].ItemCount)
 
-            Player.Functions.Notify("Items zijn op de grond gevallen..", "error")
+            Player.Functions.Notify("Some items fell on the ground..", "error")
         else
             return false
         end

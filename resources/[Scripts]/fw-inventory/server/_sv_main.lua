@@ -125,7 +125,7 @@ FW.RegisterServer("fw-inventory:Server:OpenInventory", function(Source, InvType,
     local OtherData = { Type = 'None', Name = 'None', Slots = 0, Weight = 0, Items = {} }
 
     if OpenInventories['ply-' .. Player.PlayerData.citizenid] then
-        return Player.Functions.Notify("Lijkt erop dat iemand al in je zakken zit..", "error")
+        return Player.Functions.Notify("Someone is already in your inventory..", "error")
     end
 
     if not InvName then
@@ -469,7 +469,7 @@ FW.RegisterServer("fw-inventory:Server:UseItem", function(Source, Slot, IgnoreSh
     if not ItemData then return end
 
     if CalculateQuality(Item.Item, Item.CreateDate) < 1.0 then
-        return Player.Functions.Notify("Item is kapot..", "error")
+        return Player.Functions.Notify("Item is broken..", "error")
     end
 
     if ItemData.Weapon then
@@ -511,11 +511,11 @@ FW.RegisterServer("fw-inventory:Server:StealMoney", function(Source, InvData)
     local Money = Target.PlayerData.money.cash
     if Money <= 0 then return end
 
-    if Target.Functions.RemoveMoney('cash', Money, Player.PlayerData.citizenid .. ' yoinked his money') then
+    if Target.Functions.RemoveMoney('cash', Money, Player.PlayerData.citizenid .. ' took his money') then
         if Player.PlayerData.job.name == 'police' then
             Player.Functions.AddItem('moneybag', 1, false, { Worth = Money }, true)
         else
-            Player.Functions.AddMoney('cash', Money, 'Money yoinked from ' .. Target.PlayerData.citizenid)
+            Player.Functions.AddMoney('cash', Money, 'Money taken from ' .. Target.PlayerData.citizenid)
         end
     end
 end)
