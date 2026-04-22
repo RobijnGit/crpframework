@@ -37,7 +37,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'pickup_wheelchair',
                 Icon = 'fas fa-wheelchair',
-                Label = 'Rolstoel Oppakken',
+                Label = 'Pickup Wheelchair',
                 EventType = 'Client',
                 EventName = 'fw-items:Client:PickupWheelchair',
                 EventParams = {},
@@ -57,7 +57,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'pickup_wheelchair',
                 Icon = 'fas fa-inbox-in',
-                Label = 'Scootmobiel Oppakken',
+                Label = 'Pickup Scootmobile',
                 EventType = 'Client',
                 EventName = 'fw-items:Client:PickupScootmobile',
                 EventParams = {},
@@ -76,7 +76,7 @@ AddEventHandler('fw-items:client:use:pakjesigaretten', function()
             DoingSomething = true
         exports["fw-inventory"]:SetBusyState(true)
             Citizen.SetTimeout(1000, function()
-                FW.Functions.Progressbar("pakje-sigaretten", "Pakje sigaretten openmaken...", 2500, false, true, {
+                FW.Functions.Progressbar("pakje-sigaretten", "Opening cigarettes...", 2500, false, true, {
                 disableMovement = false,
                 disableCarMovement = false,
                 disableMouse = false,
@@ -86,11 +86,11 @@ AddEventHandler('fw-items:client:use:pakjesigaretten', function()
                     exports["fw-inventory"]:SetBusyState(false)
                     FW.Functions.TriggerCallback('FW:RemoveItem', function() end, 'pakjesigaretten', 1, false)
                     FW.Functions.TriggerCallback('FW:AddItem', function() end, 'sigaret', 21, false)
-                    FW.Functions.Notify("Je pakje sigaretten is geopend, je hebt er sigaretten voor ontvangen.", "success")
+                    FW.Functions.Notify("You've opened your box of cigarettes, you've received 21 cigarettes.", "success")
                 end, function() -- Cancel
                     DoingSomething = false
                     exports["fw-inventory"]:SetBusyState(false)
-                    FW.Functions.Notify("Geannuleerd..", "error")
+                    FW.Functions.Notify("Canceled..", "error")
                 end)
             end)
         end
@@ -104,7 +104,7 @@ AddEventHandler('fw-items:client:use:nightvision', function()
             DoingSomething = true
             exports["fw-inventory"]:SetBusyState(true)
             Citizen.SetTimeout(1000, function()
-                FW.Functions.Progressbar("toggle-nightvision", "Nightvision (de-)activeren...", 2500, false, true, {
+                FW.Functions.Progressbar("toggle-nightvision", "Toggling Nightvision..", 2500, false, true, {
                 disableMovement = false,
                 disableCarMovement = false,
                 disableMouse = false,
@@ -116,7 +116,7 @@ AddEventHandler('fw-items:client:use:nightvision', function()
                 end, function() -- Cancel
                     DoingSomething = false
                     exports["fw-inventory"]:SetBusyState(false)
-                    FW.Functions.Notify("Geannuleerd..", "error")
+                    FW.Functions.Notify("Canceled..", "error")
                 end)
             end)
         end
@@ -130,7 +130,7 @@ AddEventHandler('fw-items:client:use:pack:paper', function()
             DoingSomething = true
         exports["fw-inventory"]:SetBusyState(true)
             Citizen.SetTimeout(1000, function()
-                FW.Functions.Progressbar("printer-pack-paper", "Pak papier uitpakken...", 2500, false, true, {
+                FW.Functions.Progressbar("printer-pack-paper", "Unboxing printing paper...", 2500, false, true, {
                 disableMovement = false,
                 disableCarMovement = false,
                 disableMouse = false,
@@ -140,11 +140,11 @@ AddEventHandler('fw-items:client:use:pack:paper', function()
                     exports["fw-inventory"]:SetBusyState(false)
                     FW.Functions.TriggerCallback('FW:RemoveItem', function() end, 'printer-pack-paper', 1, false)
                     FW.Functions.TriggerCallback('FW:AddItem', function() end, 'printer-paper', 10, false)
-                    FW.Functions.Notify("Het pak papier is geopend, je hebt hiervoor papiervellen ontvangen.", "success")
+                    FW.Functions.Notify("You've opened your box of printing paper, you've received 10 sheets.", "success")
                 end, function() -- Cancel
                     DoingSomething = false
                     exports["fw-inventory"]:SetBusyState(false)
-                    FW.Functions.Notify("Geannuleerd..", "error")
+                    FW.Functions.Notify("Canceled..", "error")
                 end)
             end)
         end
@@ -158,7 +158,7 @@ AddEventHandler('fw-items:client:use:welcome', function()
             DoingSomething = true
         exports["fw-inventory"]:SetBusyState(true)
             Citizen.SetTimeout(1000, function()
-                FW.Functions.Progressbar("welcome", "Openmaken...", 5000, false, true, {
+                FW.Functions.Progressbar("welcome", "Unboxing...", 5000, false, true, {
                 disableMovement = false,
                 disableCarMovement = false,
                 disableMouse = false,
@@ -169,12 +169,12 @@ AddEventHandler('fw-items:client:use:welcome', function()
                     local Removed = FW.SendCallback("FW:RemoveItem", 'welcome', 1, false)
                     if Removed then
                         TriggerServerEvent("fw-items:Server:WelcomeReward")
-                        FW.Functions.Notify("Je hebt je cadeautje uitgepakt, je hebt hiervoor verschillende spullen ontvangen!", "success")
+                        FW.Functions.Notify("You've unboxed your gift!", "success")
                     end
                 end, function() -- Cancel
                     DoingSomething = false
                     exports["fw-inventory"]:SetBusyState(false)
-                    FW.Functions.Notify("Geannuleerd..", "error")
+                    FW.Functions.Notify("Canceled..", "error")
                 end)
             end)
         end
@@ -188,7 +188,7 @@ AddEventHandler('fw-items:client:use:sigaret', function()
         DoingSomething = true
         exports["fw-inventory"]:SetBusyState(true)
             Citizen.SetTimeout(1000, function()
-                FW.Functions.Progressbar("smoke-sigaret", "Sigaret opsteken..", 2500, false, true, {
+                FW.Functions.Progressbar("smoke-sigaret", "Lighting cigarette..", 2500, false, true, {
                 disableMovement = false,
                 disableCarMovement = false,
                 disableMouse = false,
@@ -202,7 +202,7 @@ AddEventHandler('fw-items:client:use:sigaret', function()
                 end, function() -- Cancel
                     DoingSomething = false
                     exports["fw-inventory"]:SetBusyState(false)
-                    FW.Functions.Notify("Geannuleerd..", "error")
+                    FW.Functions.Notify("Canceled..", "error")
                 end)
             end)
         end
@@ -219,7 +219,7 @@ AddEventHandler('fw-items:client:drink', function(ItemName, PropName)
                 exports['fw-assets']:AddProp(PropName)
                 exports['fw-assets']:RequestAnimationDict("amb@world_human_drinking@coffee@male@idle_a")
                 TaskPlayAnim(PlayerPedId(), 'amb@world_human_drinking@coffee@male@idle_a', "idle_c", 8.0, 1.0, -1, 49, 0, 0, 0, 0)
-                FW.Functions.Progressbar("drink", "Drinken..", 6000, false, true, {
+                FW.Functions.Progressbar("drink", "Drinking..", 6000, false, true, {
                     disableMovement = false,
                     disableCarMovement = false,
                     disableMouse = false,
@@ -232,15 +232,13 @@ AddEventHandler('fw-items:client:drink', function(ItemName, PropName)
                         FW.Functions.TriggerCallback('FW:RemoveItem', function(DidRemove)
                             if DidRemove then
                                 TriggerServerEvent("FW:Server:SetMetaData", "thirst", FW.Functions.GetPlayerData().metadata["thirst"] + math.random(7, 12))
-                            else
-                                FW.Functions.Notify("Hmm volgensmij mis je het item..", "error")
                             end
                         end, ItemName, 1, false)
                     end, function()
                     DoingSomething = false
                     exports['fw-assets']:RemoveProp()
                     exports["fw-inventory"]:SetBusyState(false)
-                    FW.Functions.Notify("Geannuleerd..", "error")
+                    FW.Functions.Notify("Canceled..", "error")
                     StopAnimTask(PlayerPedId(), 'amb@world_human_drinking@coffee@male@idle_a', "idle_c", 1.0)
                 end)
             end)
@@ -258,7 +256,7 @@ AddEventHandler('fw-items:client:drink:slushy', function()
                 exports['fw-assets']:AddProp('Cup')
                 exports['fw-assets']:RequestAnimationDict("amb@world_human_drinking@coffee@male@idle_a")
                 TaskPlayAnim(PlayerPedId(), 'amb@world_human_drinking@coffee@male@idle_a', "idle_c", 8.0, 1.0, -1, 49, 0, 0, 0, 0)
-                FW.Functions.Progressbar("drink", "Drinken..", 6000, false, true, {
+                FW.Functions.Progressbar("drink", "Drinking..", 6000, false, true, {
                     disableMovement = false,
                     disableCarMovement = false,
                     disableMouse = false,
@@ -272,15 +270,13 @@ AddEventHandler('fw-items:client:drink:slushy', function()
                         FW.Functions.TriggerCallback('FW:RemoveItem', function(DidRemove)
                             if DidRemove then
                                 TriggerServerEvent("FW:Server:SetMetaData", "thirst", FW.Functions.GetPlayerData().metadata["thirst"] + math.random(7, 12))
-                            else
-                                FW.Functions.Notify("Hmm volgensmij mis je het item..", "error")
                             end
                         end, 'slushy', 1, false)
                 end, function()
                     DoingSomething = false
                     exports['fw-assets']:RemoveProp()
                     exports["fw-inventory"]:SetBusyState(false)
-                    FW.Functions.Notify("Geannuleerd..", "error")
+                    FW.Functions.Notify("Canceled..", "error")
                     StopAnimTask(PlayerPedId(), 'amb@world_human_drinking@coffee@male@idle_a', "idle_c", 1.0)
                 end)
             end)
@@ -298,7 +294,7 @@ AddEventHandler('fw-items:client:eat', function(ItemName, PropName)
                 exports['fw-assets']:AddProp(PropName)
                 exports['fw-assets']:RequestAnimationDict("mp_player_inteat@burger")
                 TaskPlayAnim(PlayerPedId(), 'mp_player_inteat@burger', 'mp_player_int_eat_burger', 8.0, 1.0, -1, 49, 0, 0, 0, 0)
-                FW.Functions.Progressbar("eat", "Eten..", 6000, false, true, {
+                FW.Functions.Progressbar("eat", "Eating..", 6000, false, true, {
                     disableMovement = false,
                     disableCarMovement = false,
                     disableMouse = false,
@@ -311,15 +307,13 @@ AddEventHandler('fw-items:client:eat', function(ItemName, PropName)
                         FW.Functions.TriggerCallback('FW:RemoveItem', function(DidRemove)
                             if DidRemove then
                                 TriggerServerEvent("FW:Server:SetMetaData", "hunger", FW.Functions.GetPlayerData().metadata["hunger"] + math.random(7, 12))
-                            else
-                                FW.Functions.Notify("Hmm volgensmij mis je het item..", "error")
                             end
                         end, ItemName, 1, false)
                     end, function()
                     DoingSomething = false
                     exports['fw-assets']:RemoveProp()
                     exports["fw-inventory"]:SetBusyState(false)
-                    FW.Functions.Notify("Geannuleerd..", "error")
+                    FW.Functions.Notify("Canceled..", "error")
                     StopAnimTask(PlayerPedId(), 'mp_player_inteat@burger', 'mp_player_int_eat_burger', 1.0)
                 end)
             end)
@@ -337,7 +331,7 @@ AddEventHandler('fw-items:client:mint', function(ItemName, PropName)
                 exports['fw-assets']:AddProp(PropName)
                 exports['fw-assets']:RequestAnimationDict("mp_suicide")
                 TaskPlayAnim(PlayerPedId(), 'mp_suicide', 'pill', 8.0, 1.0, -1, 49, 0, 0, 0, 0)
-                FW.Functions.Progressbar("mint", "Mintje slikken", 6000, false, true, {
+                FW.Functions.Progressbar("mint", "Taking a mint..", 6000, false, true, {
                     disableMovement = false,
                     disableCarMovement = false,
                     disableMouse = false,
@@ -350,15 +344,13 @@ AddEventHandler('fw-items:client:mint', function(ItemName, PropName)
                         FW.Functions.TriggerCallback('FW:RemoveItem', function(DidRemove)
                             if DidRemove then
                                 TriggerServerEvent("FW:Server:SetMetaData", "hunger", FW.Functions.GetPlayerData().metadata["hunger"] + math.random(11, 16))
-                            else
-                                FW.Functions.Notify("Hmm volgensmij mis je het item..", "error")
                             end
                         end, ItemName, 1, false)
                     end, function()
                     DoingSomething = false
                     exports['fw-assets']:RemoveProp()
                     exports["fw-inventory"]:SetBusyState(false)
-                    FW.Functions.Notify("Geannuleerd..", "error")
+                    FW.Functions.Notify("Canceled..", "error")
                     StopAnimTask(PlayerPedId(), 'mp_suicide', 'pill', 1.0)
                 end)
             end)
@@ -372,7 +364,7 @@ AddEventHandler('fw-items:client:use:armor', function(Item)
         local CurrentArmor = GetPedArmour(PlayerPedId())
 
         exports["fw-inventory"]:SetBusyState(true)
-        FW.Functions.Progressbar("vest", "Vest aantrekken..", 5000, false, true, {
+        FW.Functions.Progressbar("vest", "Putting on vest..", 5000, false, true, {
             disableMovement = false,
             disableCarMovement = false,
             disableMouse = false,
@@ -390,7 +382,7 @@ AddEventHandler('fw-items:client:use:armor', function(Item)
             end, Item, 1, false)
         end, function()
             exports["fw-inventory"]:SetBusyState(false)
-            FW.Functions.Notify("Geannuleerd..", "error")
+            FW.Functions.Notify("Canceled..", "error")
         end)
     end
 end)
@@ -421,7 +413,7 @@ AddEventHandler("fw-items:client:use:lighter", function()
         Citizen.Wait(1500)
         LigherIsHot = false
     else
-        FW.Functions.Notify("Wacht eem met die aansteker..", "error")
+        FW.Functions.Notify("Wait a little..", "error")
     end
 end)
 
@@ -433,7 +425,7 @@ AddEventHandler('fw-items:client:use:tirekit', function()
 
         if Vehicle ~= -1 then
             exports["fw-inventory"]:SetBusyState(true)
-            FW.Functions.Progressbar("repair_vehicle", "Banden verwisselen..", math.random(10000, 15000), false, true, {
+            FW.Functions.Progressbar("repair_vehicle", "Changing tyres..", math.random(10000, 15000), false, true, {
                 disableMovement = true,
                 disableCarMovement = true,
                 disableMouse = false,
@@ -458,7 +450,7 @@ AddEventHandler('fw-items:client:use:tirekit', function()
             end, function() -- Cancel
                 exports["fw-inventory"]:SetBusyState(false)
                 StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_player", 1.0)
-                FW.Functions.Notify("Mislukt!", "error")
+                FW.Functions.Notify("Failed!", "error")
             end, true)
         end
     end
@@ -523,7 +515,7 @@ AddEventHandler('fw-items:client:use:repairkit', function(IsAdvanced)
                     end
                 end
             else
-                FW.Functions.Notify("Geen voertuig?!?", "error")
+                FW.Functions.Notify("No Vehicle?!?", "error")
             end
         end    
     end
@@ -551,7 +543,7 @@ end)
 RegisterNetEvent('fw-items:Client:Used:Wheelchair')
 AddEventHandler('fw-items:Client:Used:Wheelchair', function()
     if not IsPedInAnyVehicle(PlayerPedId()) then
-        FW.Functions.Progressbar("remove-armor", "Rolstoel plaatsen..", 1500, false, false, {
+        FW.Functions.Progressbar("remove-armor", "Placing Wheelchair..", 1500, false, false, {
             disableMovement = true,
             disableCarMovement = false,
             disableMouse = false,
@@ -573,7 +565,7 @@ AddEventHandler('fw-items:Client:Used:Wheelchair', function()
             end, 'wheelchair', CoordTable, false, false)
             FW.Functions.TriggerCallback('FW:RemoveItem', function() end, 'wheelchair', 1, false)
         end, function() -- Cancel
-            FW.Functions.Notify("Mislukt!", "error")
+            FW.Functions.Notify("Canceled!", "error")
         end)
     end
 end)
@@ -594,17 +586,17 @@ AddEventHandler('fw-items:Client:PickupWheelchair', function(Data, Entity)
             FW.VSync.DeleteVehicle(Entity)
             TriggerServerEvent('fw-items:Server:ReturnWheelchair')
         end, function() -- Cancel
-            FW.Functions.Notify("Mislukt!", "error")
+            FW.Functions.Notify("Canceled!", "error")
         end)
     else
-        FW.Functions.Notify("er zit nog iemand in de rolstoel joh...", "error")
+        FW.Functions.Notify("How dare you take a wheelchair away from a cripled person...", "error")
     end
 end)
 
 RegisterNetEvent('fw-items:Client:Used:Scootmobile')
 AddEventHandler('fw-items:Client:Used:Scootmobile', function()
     if not IsPedInAnyVehicle(PlayerPedId()) then
-        FW.Functions.Progressbar("remove-armor", "Scootmobiel uitpakkenm..", 2000, false, false, {
+        FW.Functions.Progressbar("remove-armor", "Placing Scootmobile..", 2000, false, false, {
             disableMovement = true,
             disableCarMovement = false,
             disableMouse = false,
@@ -626,7 +618,7 @@ AddEventHandler('fw-items:Client:Used:Scootmobile', function()
             end, 'scootmobile', CoordTable, false, false)
             FW.Functions.TriggerCallback('FW:RemoveItem', function() end, 'scootmobile', 1, false)
         end, function() -- Cancel
-            FW.Functions.Notify("Mislukt!", "error")
+            FW.Functions.Notify("Canceled!", "error")
         end)
     end
 end)
@@ -634,7 +626,7 @@ end)
 RegisterNetEvent('fw-items:Client:PickupScootmobile')
 AddEventHandler('fw-items:Client:PickupScootmobile', function(Data, Entity)
     if IsVehicleSeatFree(Entity, -1) then
-        FW.Functions.Progressbar("remove-armor", "Scootmobiel inpakken..", 2500, false, false, {
+        FW.Functions.Progressbar("remove-armor", "Scootmobile inpakken..", 2500, false, false, {
             disableMovement = false,
             disableCarMovement = false,
             disableMouse = false,
@@ -647,10 +639,10 @@ AddEventHandler('fw-items:Client:PickupScootmobile', function(Data, Entity)
             FW.VSync.DeleteVehicle(Entity)
             TriggerServerEvent('fw-items:Server:ReturnScootmobile')
         end, function() -- Cancel
-            FW.Functions.Notify("Mislukt!", "error")
+            FW.Functions.Notify("Canceled!", "error")
         end)
     else
-        FW.Functions.Notify("Er zit nog iemand in de scootmobiel joh...", "error")
+        FW.Functions.Notify("Someones is still riding the scootmobile...", "error")
     end
 end)
 
@@ -658,7 +650,7 @@ RegisterNetEvent("fw-items:client:use:parachute")
 AddEventHandler("fw-items:client:use:parachute", function()
     exports['fw-assets']:RequestAnimationDict("clothingshirt")
     TaskPlayAnim(PlayerPedId(), "clothingshirt", "try_shirt_positive_d", 8.0, 1.0, -1, 49, 0, 0, 0, 0)
-    FW.Functions.Progressbar("use_parachute", "Parachute omdoen..", 5000, false, true, {
+    FW.Functions.Progressbar("use_parachute", "Putting on Parachute..", 5000, false, true, {
         disableMovement = false,
         disableCarMovement = false,
         disableMouse = false,
@@ -713,9 +705,9 @@ AddEventHandler('fw-items:client:coinflip', function()
     local CoinFlip = {}
     local Random = math.random(1,2)
     if Random <= 1 then
-        CoinFlip = 'Coinflip: ~g~Kop'
+        CoinFlip = 'Coinflip: ~g~Head'
     else
-        CoinFlip = 'Coinflip: ~y~Munt'
+        CoinFlip = 'Coinflip: ~y~Tails'
     end
     TriggerEvent('fw-items:client:dice:anim')
     Citizen.SetTimeout(1900, function()
@@ -766,13 +758,13 @@ RegisterNetEvent('fw-items:Client:SetMoneyCase')
 AddEventHandler('fw-items:Client:SetMoneyCase', function(Slot, IsAdv)
     local MaxWorth = IsAdv and 100000 or 50000
     local Result = exports['fw-ui']:CreateInput({
-        { Label = 'Geldbedrag', Icon = 'fas fa-dollar-sign', Name = 'Worth', Type = 'number' },
+        { Label = 'Balance', Icon = 'fas fa-dollar-sign', Name = 'Worth', Type = 'number' },
         { Label = 'Code (optioneel)', Icon = 'fas fa-ellipsis-h', Name = 'Code', Type = 'password' },
     })
 
     if Result then
-        if tonumber(Result.Worth) <= 0 then FW.Functions.Notify("Stop er ten minste een eurotje in, arme sloeber.", "error") return end
-        if tonumber(Result.Worth) > MaxWorth then FW.Functions.Notify("Rijke jongen jij, maar helaas past er maar €" .. (IsAdv and "100.000" or "50.000") .. " in..", "error") return end
+        if tonumber(Result.Worth) <= 0 then FW.Functions.Notify("You need to at least put $1 in.", "error") return end
+        if tonumber(Result.Worth) > MaxWorth then FW.Functions.Notify("You can only fit $" .. (IsAdv and "100.000" or "50.000") .. " in this case..", "error") return end
 
         TriggerServerEvent('fw-items:Server:GiveMoneyCase', Slot, IsAdv, tonumber(Result.Worth), Result.Code)
     end
@@ -826,7 +818,7 @@ function IsBackEngine(Vehicle)
 end
 
 function CreateRollText(Table, Sides)
-    local String = "~g~Gedobbeld~s~: "
+    local String = "~g~Rolled~s~: "
     local Total = 0
     for k, v in pairs(Table) do
         Total = Total + v
@@ -836,7 +828,7 @@ function CreateRollText(Table, Sides)
             String = String .. " | " .. v .. "/" .. Sides
         end
     end
-    String = String .. " | (Totaal: ~g~"..Total.."~s~)"
+    String = String .. " | (Total: ~g~"..Total.."~s~)"
     return String
 end
 

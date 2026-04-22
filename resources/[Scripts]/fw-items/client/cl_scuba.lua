@@ -13,7 +13,7 @@ AddEventHandler('fw-items:client:put:scuba:on', function(AirAmount)
             if not DoingSomething then
                 DoingSomething = true
                 exports["fw-inventory"]:SetBusyState(true)
-                FW.Functions.Progressbar("equip_gear", "Duikpak aantrekken..", 5000, false, true, {}, {}, {}, {}, function() -- Done
+                FW.Functions.Progressbar("equip_gear", "Equipping diving gear..", 5000, false, true, {}, {}, {}, {}, function() -- Done
                     CurrentAir = AirAmount
                     HasScubaOn = true
                     exports['fw-assets']:RequestModelHash(TankModel)
@@ -28,21 +28,19 @@ AddEventHandler('fw-items:client:put:scuba:on', function(AirAmount)
                     SetEnableScuba(PlayerPedId(), true)
                     FW.Functions.TriggerCallback('FW:RemoveItem', function() end, 'scuba-gear', 1, false)
                     exports["fw-inventory"]:SetBusyState(false)
-                    FW.Functions.Notify("Doe /duikpakuit om je duikpak uit tte doen", "error")
+                    FW.Functions.Notify("Use /scubaoff to take off your diving gear.", "error")
                     DoingSomething = false
                 end, function()
                 end, true)
             end
         end
-    else
-        FW.Functions.Notify("Actie niet mogelijk..", "error")
     end
 end)
 
 RegisterNetEvent('fw-items:client:takeoff:scuba')
 AddEventHandler('fw-items:client:takeoff:scuba', function()
     if HasScubaOn then
-        FW.Functions.Progressbar("remove_gear", "Duikpak uittrekken..", 5000, false, true, {}, {}, {}, {}, function() -- Done
+        FW.Functions.Progressbar("remove_gear", "Taking off diving gear..", 5000, false, true, {}, {}, {}, {}, function() -- Done
             for k, v in pairs(ScubaProps) do
                 NetworkRequestControlOfEntity(v)
                 SetEntityAsMissionEntity(v, true, true)
@@ -71,7 +69,7 @@ Citizen.CreateThread(function()
                     SetPedDiesInWater(PlayerPedId(), true)
                     SetEnableScuba(PlayerPedId(), false)
 
-                    FW.Functions.Notify("Je lucht tank is leeg je verdrinkt..", "error")
+                    FW.Functions.Notify("You're going to drown! Oxygen is running out..", "error")
                 end
             end
         end

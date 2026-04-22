@@ -8,7 +8,7 @@ AddEventHandler("fw-items:Client:FoodchainDrink", function(ItemName, ItemType, I
 
     exports['fw-assets']:AddProp(PropName)
 
-    local Finished = FW.Functions.CompactProgressbar(6000, "Drinken...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "amb@world_human_drinking@coffee@male@idle_a", anim = "idle_c", flags = 49 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(6000, "Drinking...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "amb@world_human_drinking@coffee@male@idle_a", anim = "idle_c", flags = 49 }, {}, {}, false)
     exports['fw-assets']:RemoveProp()
     exports['fw-inventory']:SetBusyState(false)
 
@@ -34,7 +34,7 @@ AddEventHandler("fw-items:Client:FoodchainAlcohol", function(ItemName, ItemType,
 
     exports['fw-assets']:AddProp(PropName)
 
-    local Finished = FW.Functions.CompactProgressbar(6000, "Drinken...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "amb@world_human_drinking@coffee@male@idle_a", anim = "idle_c", flags = 49 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(6000, "Drinking...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "amb@world_human_drinking@coffee@male@idle_a", anim = "idle_c", flags = 49 }, {}, {}, false)
     exports['fw-assets']:RemoveProp()
     exports['fw-inventory']:SetBusyState(false)
 
@@ -60,7 +60,7 @@ AddEventHandler("fw-items:Client:FoodchainFood", function(ItemName, ItemType, It
 
     exports['fw-assets']:AddProp(PropName)
 
-    local Finished = FW.Functions.CompactProgressbar(6000, "Eten...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "mp_player_inteat@burger", anim = "mp_player_int_eat_burger", flags = 49 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(6000, "Eating...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "mp_player_inteat@burger", anim = "mp_player_int_eat_burger", flags = 49 }, {}, {}, false)
     exports['fw-assets']:RemoveProp()
     exports['fw-inventory']:SetBusyState(false)
 
@@ -86,7 +86,7 @@ AddEventHandler("fw-items:Client:FoodchainSide", function(ItemName, ItemType, It
 
     exports['fw-assets']:AddProp(PropName)
 
-    local Finished = FW.Functions.CompactProgressbar(6000, "Eten...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "mp_player_inteat@burger", anim = "mp_player_int_eat_burger", flags = 49 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(6000, "Eating...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "mp_player_inteat@burger", anim = "mp_player_int_eat_burger", flags = 49 }, {}, {}, false)
     exports['fw-assets']:RemoveProp()
     exports['fw-inventory']:SetBusyState(false)
 
@@ -112,7 +112,7 @@ AddEventHandler("fw-items:Client:FoodchainDessert", function(ItemName, ItemType,
 
     exports['fw-assets']:AddProp(PropName)
 
-    local Finished = FW.Functions.CompactProgressbar(6000, "Eten...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "mp_player_inteat@burger", anim = "mp_player_int_eat_burger", flags = 49 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(6000, "Eating...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "mp_player_inteat@burger", anim = "mp_player_int_eat_burger", flags = 49 }, {}, {}, false)
     exports['fw-assets']:RemoveProp()
     exports['fw-inventory']:SetBusyState(false)
 
@@ -138,7 +138,7 @@ AddEventHandler("fw-items:Client:DrinkAlcohol", function(Item)
 
     exports['fw-assets']:AddProp(PropName)
 
-    local Finished = FW.Functions.CompactProgressbar(6000, "Drinken...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "amb@world_human_drinking@coffee@male@idle_a", anim = "idle_c", flags = 49 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(6000, "Drinking...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "amb@world_human_drinking@coffee@male@idle_a", anim = "idle_c", flags = 49 }, {}, {}, false)
     exports['fw-assets']:RemoveProp()
     exports['fw-inventory']:SetBusyState(false)
 

@@ -37,7 +37,7 @@ AddEventHandler("fw-inventory:Client:Cock", function()
         if not HasChain then
             DeleteObject(ChainObject)
             ChainObject, CurrentChain = nil, nil
-            FW.Functions.Notify("Daar gaat je ketting..", "error")
+            FW.Functions.Notify("You lost your chain..", "error")
         end
     end)
 end)
@@ -49,7 +49,7 @@ end)
 
 function SetPlayerChain(ChainId)
     local ChainData = ItemsToChain[ChainId]
-    if ChainData == nil then return FW.Functions.Notify("Wat een neppe ketting dit..", "error") end
+    if ChainData == nil then return FW.Functions.Notify("This doesn't seem like a nice chain..", "error") end
 
     TriggerEvent('fw-emotes:Client:PlayEmote', "adjusttie")
     Citizen.Wait(3000)

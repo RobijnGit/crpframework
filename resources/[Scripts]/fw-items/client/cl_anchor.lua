@@ -18,11 +18,11 @@ AddEventHandler('fw-items:use:item:anker', function(Source)
         if not exports['fw-progressbar']:GetTaskBarStatus() then
             exports["fw-inventory"]:SetBusyState(true)
             TriggerEvent("fw-misc:Client:PlaySoundEntity", 'vehicle.anchorDrop', NetworkGetNetworkIdFromEntity(Vehicle), true, nil)
-            FW.Functions.Progressbar("use_anker", "Anker uitgooien..", 5000, false, true, {}, {}, {}, {}, function() -- Done
+            FW.Functions.Progressbar("use_anker", "Using anchor..", 5000, false, true, {}, {}, {}, {}, function() -- Done
                 exports["fw-inventory"]:SetBusyState(false)
                 TriggerServerEvent('fw-items:server:sync:item:anchor', GetVehicleNumberPlateText(Vehicle), true)
                 TaskPlayAnim(PlayerPedId(), 'missfbi4prepp1', '_bag_drop_garbage_man', 8.0, -8, -1, 16, 0, 0, 0, 0);
-                FW.Functions.Notify('Het anker is uitgegooid..', 'success')
+                FW.Functions.Notify('You\'ve dropped the anchor.', 'success')
             end)
         end
     end
@@ -48,10 +48,10 @@ AddEventHandler('fw-items:use:item:anker:tilt', function()
     TriggerEvent("fw-misc:Client:PlaySoundEntity", 'vehicle.anchorRaise', NetworkGetNetworkIdFromEntity(Vehicle), true, nil)
     if not exports['fw-progressbar']:GetTaskBarStatus() then
         exports["fw-inventory"]:SetBusyState(true)
-        FW.Functions.Progressbar("use_anker", "Anker ophalen..", 5000, false, true, {}, {}, {}, {}, function() -- Done
+        FW.Functions.Progressbar("use_anker", "Tilting anchor..", 5000, false, true, {}, {}, {}, {}, function() -- Done
             exports["fw-inventory"]:SetBusyState(false)
             TriggerServerEvent('fw-items:server:sync:item:anchor', GetVehicleNumberPlateText(Vehicle), false)
-            FW.Functions.Notify('Het anker is opgehaald..', 'success')
+            FW.Functions.Notify('Anchor has been tilted..', 'success')
         end)
     end
 end)
@@ -89,7 +89,7 @@ Citizen.CreateThread(function()
                             
                         if not ShowedNotify then 
                             if Count == 2 then
-                                FW.Functions.Notify('Je kan pas weer varen als het anker opgehaald is', 'error')
+                                FW.Functions.Notify('Your anchor is still out!', 'error')
                                 ShowedNotify = true
                                 Count = 0
                             end

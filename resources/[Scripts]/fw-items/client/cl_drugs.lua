@@ -19,17 +19,17 @@ AddEventHandler("fw-inventory:Client:OnItemInsert", function(FromItem, ToItem)
   if ToItem.Item ~= 'bong' then return end
 
   if exports['fw-inventory']:CalculateQuality(FromItem.Item, FromItem.CreateDate) <= 0 then
-    return FW.Functions.Notify("Lekkere wiet wel gekkie..", "error")
+    return FW.Functions.Notify("This weed is fucked dude..", "error")
   end
 
-  if OnWeed then return FW.Functions.Notify("Je bent al high..", "error") end
+  if OnWeed then return FW.Functions.Notify("Fuck, i'm high as a kite..", "error") end
 
   local Quantity = FromItem.Amount
   if not Quantity then return end
 
   exports['fw-inventory']:SetBusyState(true)
   exports['fw-assets']:AddProp("Bong")
-  local Finished = FW.Functions.CompactProgressbar(3000, "Bong hitten...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, {
+  local Finished = FW.Functions.CompactProgressbar(3000, "Hitting bong...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, {
     animDict = "anim@safehouse@bong",
     anim = "bong_stage3",
     flags = 49,
@@ -40,7 +40,7 @@ AddEventHandler("fw-inventory:Client:OnItemInsert", function(FromItem, ToItem)
   if not Finished then return end
 
   local DidRemove = FW.SendCallback("FW:RemoveItem", "weed-bag-1g", 1)
-  if not DidRemove then return FW.Functions.Notify("Waar is je wiet heen dan??", "error") end
+  if not DidRemove then return FW.Functions.Notify("Did my weed go missing??", "error") end
 
   WeedTime, ArmorWeedTime = 15, 75
   TriggerServerEvent('fw-inventory:Server:DecayItem', "bong", ToItem.Slot, 3.0)
@@ -51,14 +51,14 @@ RegisterNetEvent('fw-items:client:use:joint')
 AddEventHandler('fw-items:client:use:joint', function(Item, Type)
   if exports['fw-progressbar']:GetTaskBarStatus() then return end
   if DoingSomething then return end
-  if OnWeed then return FW.Functions.Notify("Je bent al high..", "error") end
+  if OnWeed then return FW.Functions.Notify("Fuck, i'm high as a kite..", "error") end
 
   DoingSomething = true
   exports["fw-inventory"]:SetBusyState(true)
 
-  local ProgressText = "Joint aansteken.."
+  local ProgressText = "Lighting joint.."
   if Type == "spacecake" or Type == "hashbrownies" then
-    ProgressText = "Eten.."
+    ProgressText = "Eating.."
   end
 
   local Animation = {}
@@ -70,7 +70,7 @@ AddEventHandler('fw-items:client:use:joint', function(Item, Type)
   exports["fw-inventory"]:SetBusyState(false)
   DoingSomething = false
 
-  if not Finished then return FW.Functions.Notify("Geannuleerd..", "error") end
+  if not Finished then return FW.Functions.Notify("Canceled..", "error") end
 
   WeedTime = WeedTimers[Type][1]
   ArmorWeedTime = WeedTimers[Type][2]
@@ -106,7 +106,7 @@ AddEventHandler("fw-items:client:use:lsd", function()
             DoingSomething = true
             exports["fw-inventory"]:SetBusyState(true)
             Citizen.SetTimeout(1000, function()
-                FW.Functions.Progressbar("snort_coke", "Lekker Likken..", 3000, false, true, {
+                FW.Functions.Progressbar("snort_coke", "Lick that shit..", 3000, false, true, {
                     disableMovement = false,
                     disableCarMovement = false,
                     disableMouse = false,
@@ -125,7 +125,7 @@ AddEventHandler("fw-items:client:use:lsd", function()
                     DoingSomething = false
                     exports["fw-inventory"]:SetBusyState(false)
                     StopAnimTask(PlayerPedId(), "mp_suicide", "pill", 1.0)
-                    FW.Functions.Notify("Geannuleerd..", "error")
+                    FW.Functions.Notify("Canceled..", "error")
                 end, true)
             end)
         end
@@ -191,7 +191,7 @@ AddEventHandler("fw-items:client:use:spuit", function()
             DoingSomething = true
             exports["fw-inventory"]:SetBusyState(true)
             Citizen.SetTimeout(1000, function()
-                FW.Functions.Progressbar("snort_coke", "Vloeistof naar binnen spuiten..", 3000, false, true, {
+                FW.Functions.Progressbar("snort_coke", "Injecting..", 3000, false, true, {
                     disableMovement = false,
                     disableCarMovement = false,
                     disableMouse = false,
@@ -210,13 +210,13 @@ AddEventHandler("fw-items:client:use:spuit", function()
                   DoingSomething = false
                   exports["fw-inventory"]:SetBusyState(false)
                   StopAnimTask(PlayerPedId(), "anim@amb@business@weed@weed_inspecting_high_dry@", "weed_inspecting_high_base_inspector", 1.0)
-                  FW.Functions.Notify("Geannuleerd..", "error")
+                  FW.Functions.Notify("Canceled..", "error")
               end)
           end)
       end
   end
 else
-  FW.Functions.Notify('Er is niemand bij je in de buurt..', 'error', 2500)
+  FW.Functions.Notify('Nobody is near you..', 'error', 2500)
 end
 end)
 
@@ -246,7 +246,7 @@ AddEventHandler("fw-items:client:use:narcose", function()
             DoingSomething = true
             exports["fw-inventory"]:SetBusyState(true)
             Citizen.SetTimeout(1000, function()
-                FW.Functions.Progressbar("snort_coke", "Vloeistof naar binnen spuiten..", 3000, false, true, {
+                FW.Functions.Progressbar("snort_coke", "Injecting..", 3000, false, true, {
                     disableMovement = false,
                     disableCarMovement = false,
                     disableMouse = false,
@@ -265,13 +265,13 @@ AddEventHandler("fw-items:client:use:narcose", function()
                     DoingSomething = false
                     exports["fw-inventory"]:SetBusyState(false)
                     StopAnimTask(PlayerPedId(), "anim@amb@business@weed@weed_inspecting_high_dry@", "weed_inspecting_high_base_inspector", 1.0)
-                    FW.Functions.Notify("Geannuleerd..", "error")
+                    FW.Functions.Notify("Canceled..", "error")
                 end)
             end)
         end
     end
   else
-    FW.Functions.Notify('Er is niemand bij je in de buurt..', 'error', 2500)
+    FW.Functions.Notify('Nobody is near you..', 'error', 2500)
   end
 end)
 
