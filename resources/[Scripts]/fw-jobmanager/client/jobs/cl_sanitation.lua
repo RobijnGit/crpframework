@@ -75,7 +75,7 @@ AddEventHandler("fw-ui:Ready", function()
                 {
                     Name = 'sanitation_pickup_trash',
                     Icon = 'fas fa-circle',
-                    Label = 'Vuilniszak Pakken',
+                    Label = 'Grab Trash',
                     EventType = 'Client',
                     EventName = 'fw-jobmanager:Client:Sanitation:PickupTrash',
                     EventParams = '',
@@ -105,7 +105,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'exchange_recyclables',
                 Icon = 'fas fa-circle',
-                Label = 'Recyclebaar Materiaal Ruilen',
+                Label = 'Exchange Recycle Material',
                 EventType = 'Client',
                 EventName = 'fw-jobmanager:Client:Sanitation:ExchangeRecyclables',
                 EventParams = {},
@@ -132,7 +132,7 @@ AddEventHandler('fw-jobmanager:Client:SetupJob', function(IsLeader, Tasks, Data)
                 if #(GetEntityCoords(PlayerPedId()) - vector3(-353.10, -1546.22, 26.8)) < 1.5 then
                     if not ShowingInteraction then
                         ShowingInteraction = true
-                        exports['fw-ui']:ShowInteraction("[E] Vraag de werkgever om een voertuig.")
+                        exports['fw-ui']:ShowInteraction("[E] Ask the foreman for a vehicle.")
                     end
 
                     if IsControlJustPressed(0, 38) then
@@ -143,7 +143,7 @@ AddEventHandler('fw-jobmanager:Client:SetupJob', function(IsLeader, Tasks, Data)
                             ShowingInteraction = false
                             return
                         else
-                            FW.Functions.Notify("De werkgever kan je geen voertuig geven: er staat iets in de weg..", "error")
+                            FW.Functions.Notify("The foreman can't give you a vehicle, there's something in the way...", "error")
                         end
 
                     end
@@ -227,7 +227,7 @@ end)
 RegisterNetEvent("fw-jobmanager:Client:Sanitation:ThrowInTrash")
 AddEventHandler("fw-jobmanager:Client:Sanitation:ThrowInTrash", function(Data, Entity)
     if CurrentTaskId ~= 4 and CurrentTaskId ~= 6 then return end
-    if HasBag == false then FW.Functions.Notify("Welke vuilniszak wil jij weggooien dan?", "error") return end
+    if HasBag == false then FW.Functions.Notify("Which trash bag do you want to throw away?", "error") return end
     
     HasBag = false
     TaskTurnPedToFaceEntity(PlayerPedId(), Entity, -1)
@@ -258,14 +258,14 @@ AddEventHandler("fw-jobmanager:Client:Sanitation:ThrowInTrash", function(Data, E
 end)
 
 RegisterNetEvent('fw-jobmanager:Client:Sanitation:PickupTrash', function(Data, Entity)
-    if HasBag then FW.Functions.Notify("Je hebt al een vuilniszak vast..", "error") return end
+    if HasBag then FW.Functions.Notify("You are already holding a garbage bag..", "error") return end
 
     local IsEmpty = FW.SendCallback("fw-jobmanager:Server:Sanitation:IsDumpsterEmpty", NetworkGetNetworkIdFromEntity(Entity))
     if IsEmpty then
         if SingleBagDumpsters[GetEntityModel(Entity)] then
-            FW.Functions.Notify("Zie jij spook-vuilniszakken?", "error")
+            FW.Functions.Notify("Do you see ghost trash bags?", "error")
         else
-            FW.Functions.Notify("Deze container ziet er nogal leeg uit..", "error")
+            FW.Functions.Notify("This container looks quite empty...", "error")
         end
         return
     end

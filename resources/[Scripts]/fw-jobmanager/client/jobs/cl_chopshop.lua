@@ -3,20 +3,20 @@ local ScrapyardBlip = false
 local Scrapyard = nil
 
 local VehicleScrapBones = {
-    ['wheel_lf'] = { Text = "Band", Index = 0 },
-    ['wheel_rf'] = { Text = "Band", Index = 1 },
-    ['wheel_lm'] = { Text = "Band", Index = 2 },
-    ['wheel_rm'] = { Text = "Band", Index = 3 },
-    ['wheel_lr'] = { Text = "Band", Index = 4 },
-    ['wheel_rr'] = { Text = "Band", Index = 5 },
-    ['wheel_lm1'] = { Text = "Band", Index = 2 },
-    ['wheel_rm1'] = { Text = "Band", Index = 3 },
-    ['door_dside_f'] = { Text = 'Deur', Index = 0 },
-    ['door_pside_f'] = { Text = 'Deur', Index = 1 },
-    ['door_dside_r'] = { Text = 'Deur', Index = 2 },
-    ['door_pside_r'] = { Text = 'Deur', Index = 3 },
-    ['bonnet'] = { Text = 'Deur', Index = 4 },
-    ['boot'] = { Text = 'Deur', Index = 5 },
+    ['wheel_lf'] = { Text = "Wheel", Index = 0 },
+    ['wheel_rf'] = { Text = "Wheel", Index = 1 },
+    ['wheel_lm'] = { Text = "Wheel", Index = 2 },
+    ['wheel_rm'] = { Text = "Wheel", Index = 3 },
+    ['wheel_lr'] = { Text = "Wheel", Index = 4 },
+    ['wheel_rr'] = { Text = "Wheel", Index = 5 },
+    ['wheel_lm1'] = { Text = "Wheel", Index = 2 },
+    ['wheel_rm1'] = { Text = "Wheel", Index = 3 },
+    ['door_dside_f'] = { Text = 'Door', Index = 0 },
+    ['door_pside_f'] = { Text = 'Door', Index = 1 },
+    ['door_dside_r'] = { Text = 'Door', Index = 2 },
+    ['door_pside_r'] = { Text = 'Door', Index = 3 },
+    ['bonnet'] = { Text = 'Door', Index = 4 },
+    ['boot'] = { Text = 'Door', Index = 5 },
 }
 
 function GetValidBones(Vehicle)
@@ -25,7 +25,7 @@ function GetValidBones(Vehicle)
     for k, v in pairs(VehicleScrapBones) do
         local BoneIndex = GetEntityBoneIndexByName(Vehicle, k)
         if BoneIndex ~= -1 then
-            if v.Text == "Deur" and not IsVehicleDoorDamaged(Vehicle, v.Index) or v.Text == "Band" and not IsVehicleTyreBurst(Vehicle, v.Index, 1) then
+            if v.Text == "Door" and not IsVehicleDoorDamaged(Vehicle, v.Index) or v.Text == "Wheel" and not IsVehicleTyreBurst(Vehicle, v.Index, 1) then
                 Retval[#Retval + 1] = {
                     Text = v.Text,
                     Index = v.Index,
@@ -57,7 +57,7 @@ function GetClosestBone(Vehicle, Bones)
         BoneIndex = GetEntityBoneIndexByName(Vehicle, "bodyshell")
         BoneCoords = GetWorldPositionOfEntityBone(Vehicle, Bodyshell)
         BoneDistance = #(PedCoords - BoneCoords)
-        BoneData = { Text = 'Overblijfselen' }
+        BoneData = { Text = 'Remainders' }
         BoneData.Id = BoneIndex
     end
 
@@ -188,19 +188,19 @@ AddEventHandler("fw-jobmanager:Client:StartChopProcess", function(Data, Entity)
             end
 
             if BoneCoords then
-                if (BoneData.Text == "Band" and BoneDistance < 1.2) or (BoneData.Text == "Deur" and BoneDistance < 1.6) or (BoneData.Text == "Overblijfselen" and BoneDistance < 1.8) then
+                if (BoneData.Text == "Wheel" and BoneDistance < 1.2) or (BoneData.Text == "Door" and BoneDistance < 1.6) or (BoneData.Text == "Overblijfselen" and BoneDistance < 1.8) then
                     if not ShowingInteraction then
                         ShowingInteraction = true
-                        exports['fw-ui']:ShowInteraction("[E] Scrap Voertuig " .. BoneData.Text)
+                        exports['fw-ui']:ShowInteraction("[E] Scrap Vehicle " .. BoneData.Text)
                     end
                     
                     if IsControlJustPressed(0, 38) then
-                        if BoneData.Text == "Band" and not IsVehicleTyreBurst(Entity, BoneData.Index, 1) then
+                        if BoneData.Text == "Wheel" and not IsVehicleTyreBurst(Entity, BoneData.Index, 1) then
                             ShowingInteraction = false
                             exports['fw-ui']:HideInteraction()
                             TaskTurnPedToFaceCoord(PlayerPedId(), BoneCoords.x, BoneCoords.y, BoneCoords.z)
                             TaskPlayAnim(PlayerPedId(), "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer", 2.0, 2.0, -1, 1, 0, false, false, false)
-                            local Outcome = StartProgress(10000, "Band scrappen...", true)
+                            local Outcome = StartProgress(10000, "Scrapping Wheel...", true)
                             StopAnimTask(PlayerPedId(), "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer", 1.0)
                             if Outcome then
                                 if not IsVehicleTyreBurst(Entity, BoneData.Index, true) then
@@ -210,10 +210,10 @@ AddEventHandler("fw-jobmanager:Client:StartChopProcess", function(Data, Entity)
                             end
                             ShowingInteraction = false
                             exports['fw-ui']:HideInteraction()
-                        elseif BoneData.Text == "Deur" and not IsVehicleDoorDamaged(Entity, BoneData.Index) then
+                        elseif BoneData.Text == "Door" and not IsVehicleDoorDamaged(Entity, BoneData.Index) then
                             TaskTurnPedToFaceCoord(PlayerPedId(), BoneCoords.x, BoneCoords.y, BoneCoords.z)
                             TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_WELDING", 0, true)
-                            local Outcome = StartProgress(14000, "Deur scrappen...", true)
+                            local Outcome = StartProgress(14000, "Scrapping Door...", true)
                             ClearPedTasks(PlayerPedId())
                             if Outcome then
                                 if not IsVehicleDoorDamaged(Entity, BoneData.Index) then
@@ -221,12 +221,12 @@ AddEventHandler("fw-jobmanager:Client:StartChopProcess", function(Data, Entity)
                                     FW.VSync.SetVehicleDoorBroken(Entity, BoneData.Index, true)
                                 end
                             end
-                        elseif BoneData.Text == "Overblijfselen" then
+                        elseif BoneData.Text == "Remainders" then
                             ShowingInteraction = false
                             exports['fw-ui']:HideInteraction()
                             TaskTurnPedToFaceCoord(PlayerPedId(), BoneCoords.x, BoneCoords.y, BoneCoords.z)
                             TaskPlayAnim(PlayerPedId(), "mp_car_bomb", "car_bomb_mechanic", 2.0, 2.0, -1, 1, 0, false, false, false)
-                            local Outcome = StartProgress(25000, "Auto scrappen...", true)
+                            local Outcome = StartProgress(25000, "Scrapping Car...", true)
                             StopAnimTask(PlayerPedId(), "mp_car_bomb", "car_bomb_mechanic", 1.0)
                             if Outcome then
                                 if DoesEntityExist(Entity) then

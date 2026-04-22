@@ -1,27 +1,27 @@
 Config.JobTasks = {
     ["fishing"] = {
         Activity = {
-            Title = "Vissen",
+            Title = "Fishing",
             Timer = (60 * 1000) * 50,
         },
         Tasks = {
             {
-                Title = "Ga naar het ontmoetingspunt.",
+                Title = "Go to the meeting point.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Ga naar de vis plaats.",
+                Title = "Go to the fishing spot.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Verzamel vis.",
+                Title = "Collect fish.",
                 Progress = 0,
                 RequiredProgress = 30,
             },
             {
-                Title = 'Ga terug naar het ontmoetingspunt en vertel dat de plek goed is.',
+                Title = 'Go back to the meeting point and say that the spot is good.',
                 Progress = 0,
                 RequiredProgress = 1,
             },
@@ -29,32 +29,32 @@ Config.JobTasks = {
     },
     ["chopshop"] = {
         Activity = {
-            Title = "Voertuigen Scrappen",
+            Title = "Vehicle Scrap",
             Timer = (60 * 1000) * 50,
         },
         Tasks = {
             {
-                Title = "Ga naar de plek waar het voertuig voor het laatst is gezien.",
+                Title = "Go to the place where the vehicle was last seen.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Zoek en steel het voertuig.",
+                Title = "Find and steal the vehicle.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Ga naar de scrapyard.",
+                Title = "Go to the scrapyard.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Scrap de waardevolle delen.",
+                Title = "Scrap the valuable parts.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Verlaat het gebied.",
+                Title = "Leave the area.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
@@ -62,42 +62,42 @@ Config.JobTasks = {
     },
     ["sanitation"] = {
         Activity = {
-            Title = "Los Santos Vuilsnis",
+            Title = "Los Santos Sanitation",
             Timer = (60 * 1000) * 50,
         },
         Tasks = {
             {
-                Title = "Ga naar de werkgever.",
+                Title = "Go to the employer.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Stap in de vuilniswagen.",
+                Title = "Get into the garbage truck.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Ga naar de toegewezen zone (%s).",
+                Title = "Go to the assigned zone (%s).",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Verzamel afval.",
+                Title = "Collect trash.",
                 Progress = 0,
                 RequiredProgress = 15,
             },
             {
-                Title = "Ga naar de volgende zone (%s).",
+                Title = "Go to the next zone (%s).",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Verzamel afval.",
+                Title = "Collect trash.",
                 Progress = 0,
                 RequiredProgress = 15,
             },
             {
-                Title = "Breng het voertuig terug.",
+                Title = "Return the vehicle.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
@@ -110,22 +110,22 @@ Config.JobTasks = {
         },
         Tasks = {
             {
-                Title = "Ga in je flatbed.",
+                Title = "Get into your flatbed.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Ga naar het voertuig toe.",
+                Title = "Go to the vehicle.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Sleep het voertuig op je sleepwagen.",
+                Title = "Tow the vehicle onto your tow truck.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Zet het voertuig af bij het depot.",
+                Title = "Drop the vehicle off at the depot.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
@@ -133,22 +133,22 @@ Config.JobTasks = {
     },
     ["houses"] = {
         Activity = {
-            Title = "Huisoverval",
+            Title = "House Robbery",
             Timer = (60 * 1000) * 30,
         },
         Tasks = {
             {
-                Title = 'De baas heeft je gevraagd om naar het pand te gaan.',
+                Title = 'The boss has asked you to go to the premises.',
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Maak die deur open.",
+                Title = "Open that door.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Laad de goederen en ga daar weg.",
+                Title = "Load the goods and leave.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
@@ -156,32 +156,32 @@ Config.JobTasks = {
     },
     ["postop"] = {
         Activity = {
-            Title = "Post Op Medewerker",
+            Title = "Employee Post",
             Timer = (60 * 1000) * 50,
         },
         Tasks = {
             {
-                Title = "Ga naar de werkgever.",
+                Title = "Go to the employer.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Stap in het voertuig.",
+                Title = "Get into the vehicle.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Ga naar de toegewezen winkel.",
+                Title = "Go to the assigned store.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Goederen afgeven.",
+                Title = "Deliver goods.",
                 Progress = 0,
                 RequiredProgress = 3,
             },
             {
-                Title = "Breng het voertuig terug.",
+                Title = "Return the vehicle.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
@@ -189,37 +189,37 @@ Config.JobTasks = {
     },
     ["oxy"] = {
         Activity = {
-            Title = "\"Kranten\" Verkoper",
+            Title = "Newspapers Seller",
             Timer = (60 * 1000) * 50,
         },
         Tasks = {
             {
-                Title = "Zoek en steel een voertuig om als transportmiddel te gebruiken.",
+                Title = "Find and steal a vehicle to use as a means of transport.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Ga naar de leverancier en vraag om de goederen.",
+                Title = "Go to the supplier and ask for the goods.",
                 Progress = 0,
                 RequiredProgress = 10,
             },
             {
-                Title = "Rijd met het transportvoertuig naar de locatie toe.",
+                Title = "Drive the transport vehicle to the location.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Wacht op de klanten en geef de goederen af.",
+                Title = "Wait for the customers and deliver the goods.",
                 Progress = 0,
                 RequiredProgress = 5,
             },
             {
-                Title = "Rijd naar de volgende locatie toe.",
+                Title = "Drive to the next location.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Wacht op de klanten en geef de goederen af.",
+                Title = "Wait for the customers and deliver the goods.",
                 Progress = 0,
                 RequiredProgress = 5,
             },
@@ -227,27 +227,27 @@ Config.JobTasks = {
     },
     ["fooddelivery"] = {
         Activity = {
-            Title = "Voedsel Bezorgen",
+            Title = "Food Delivery",
             Timer = (60 * 1000) * 50,
         },
         Tasks = {
             {
-                Title = "Ga naar het toegewezen restaurant.",
+                Title = "Go to the assigned restaurant.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Verzamel de bestelling.",
+                Title = "Collect the order.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Ga naar de aflever locatie toe.",
+                Title = "Go to the delivery location.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Lever de bestelling in.",
+                Title = "Deliver the order.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
@@ -255,32 +255,32 @@ Config.JobTasks = {
     },
     ["construction"] = {
         Activity = {
-            Title = "Bouwvakker",
+            Title = "Construction Worker",
             Timer = (60 * 1000) * 50,
         },
         Tasks = {
             {
-                Title = "Ga naar de werkgever.",
+                Title = "Go to the employer.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Stap in het voertuig.",
+                Title = "Get into the vehicle.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Ga naar de bouwplaats.",
+                Title = "Go to the construction site.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Voltooi alle bouwtaken.",
+                Title = "Complete all construction tasks.",
                 Progress = 0,
                 RequiredProgress = 1,
             },
             {
-                Title = "Breng het voertuig terug.",
+                Title = "Return the vehicle.",
                 Progress = 0,
                 RequiredProgress = 1,
             },

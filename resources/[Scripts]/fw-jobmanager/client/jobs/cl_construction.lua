@@ -1,12 +1,12 @@
 local ObjectiveTypesLabel = {
-    ["shovel"] = "Scheppen",
-    ["jackhammer"] = "Drilboren",
-    ["drill"] = "Boren",
-    ["leanbar"] = "Berekeningen maken",
-    ["saw"] = "Zagen",
-    ["hammer"] = "Hameren",
-    ["planks"] = "Planken",
-    ["wheelbarrow"] = "Kruiwagen",
+    ["shovel"] = "Shovel",
+    ["jackhammer"] = "Jackhammer",
+    ["drill"] = "Drill",
+    ["leanbar"] = "Make Calculations",
+    ["saw"] = "Saw",
+    ["hammer"] = "Hammer",
+    ["planks"] = "Planks",
+    ["wheelbarrow"] = "Wheelbarrow",
 }
 
 local DoPfx = false
@@ -38,7 +38,7 @@ AddEventHandler('fw-jobmanager:Client:SetupJob', function(IsLeader, Tasks, Data)
 
                 if #(GetEntityCoords(PlayerPedId()) - vector3(1122.69, -1304.65, 33.72)) < 1.2 then
                     if not ShowingInteraction then
-                        exports['fw-ui']:ShowInteraction("[E] Vraag de werkgever om een voertuig.")
+                        exports['fw-ui']:ShowInteraction("[E] Ask the foreman for a vehicle.")
                         ShowingInteraction = true
                     end
 
@@ -50,7 +50,7 @@ AddEventHandler('fw-jobmanager:Client:SetupJob', function(IsLeader, Tasks, Data)
                             ShowingInteraction = false
                             return
                         else
-                            FW.Functions.Notify("De werkgever kan je geen voertuig geven: er staat iets in de weg..", "error")
+                            FW.Functions.Notify("The foreman can't give you a vehicle, there's something in the way...", "error")
                         end
                     end
                 elseif ShowingInteraction then
@@ -68,7 +68,7 @@ AddEventHandler('fw-jobmanager:Client:OnNextTask', function(IsLeader, TaskId)
     if MyJob.CurrentJob ~= 'construction' then return end
 
     if TaskId == 3 then
-        SetRouteBlip("Bouwplaats", vector3(CurrentSite.Center.x, CurrentSite.Center.y, CurrentSite.Center.z))
+        SetRouteBlip("Construction Site", vector3(CurrentSite.Center.x, CurrentSite.Center.y, CurrentSite.Center.z))
 
         if IsLeader then
             Citizen.CreateThread(function()
@@ -90,7 +90,7 @@ AddEventHandler('fw-jobmanager:Client:OnNextTask', function(IsLeader, TaskId)
             StartObjectivesLoop()
         end)
     elseif TaskId == 5 then
-        SetRouteBlip("Bouwbedrijf", vector3(1138.02, -1298.12, 34.63))
+        SetRouteBlip("Construction Business", vector3(1138.02, -1298.12, 34.63))
 
         if IsLeader then
             Citizen.CreateThread(function()
@@ -196,7 +196,7 @@ function StartObjectivesLoop()
         if CurrentObjective and not ShowingInteraction then
             ShowingInteraction = true
             if CurrentSite.Objectives[CurrentObjective].Type == "planks" or CurrentSite.Objectives[CurrentObjective].Type == "wheelbarrow" then
-                exports['fw-ui']:ShowInteraction("[E] " .. ObjectiveTypesLabel[CurrentSite.Objectives[CurrentObjective].Type] .. " verplaatsen")
+                exports['fw-ui']:ShowInteraction("[E] Move " .. ObjectiveTypesLabel[CurrentSite.Objectives[CurrentObjective].Type])
             else
                 exports['fw-ui']:ShowInteraction("[E] " .. ObjectiveTypesLabel[CurrentSite.Objectives[CurrentObjective].Type])
             end
@@ -279,7 +279,7 @@ function StartObjective(CurrentObjective)
         FW.TriggerServer('fw-jobmanager:Server:SetConstrucionObjective', MyJob.CurrentGroup.Id, Objective.Id, false, true)
     elseif Objective.Type == "leanbar" then
         TriggerEvent("fw-emotes:Client:PlayEmote", "leanbar2", nil, true)
-        local Finished = FW.Functions.CompactProgressbar(17000, "Berekenen...", false, true, {disableMovement = true, disableCarMovement = false, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+        local Finished = FW.Functions.CompactProgressbar(17000, "Doing calculations...", false, true, {disableMovement = true, disableCarMovement = false, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
         TriggerEvent("fw-emotes:Client:CancelEmote", true)
         BusyOnObjective = false
 
@@ -379,7 +379,7 @@ function CarryObject(Objective)
 
             if Dist <= 1.5 and not ShowingInteraction then
                 ShowingInteraction = true
-                exports['fw-ui']:ShowInteraction("[E] " .. ObjectiveTypesLabel[Objective.Type] .. " neerzetten")
+                exports['fw-ui']:ShowInteraction("[E] Put down " .. ObjectiveTypesLabel[Objective.Type])
             elseif Dist > 1.6 and ShowingInteraction then
                 ShowingInteraction = false
                 exports['fw-ui']:HideInteraction()
@@ -430,7 +430,7 @@ function CreateConstructionTasksBlips()
         SetBlipRouteColour(Blip, 5)
         SetBlipAsShortRange(Blip, true)
         BeginTextCommandSetBlipName("STRING")
-        AddTextComponentString("Bouwtaak")
+        AddTextComponentString("Construction Task")
         EndTextCommandSetBlipName(Blip)
 
         table.insert(ConstructionBlips, Blip)

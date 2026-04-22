@@ -15,7 +15,7 @@ AddEventHandler("baseevents:enteredVehicle", function(Vehicle, Seat, DisplayName
 
             if GetPedInVehicleSeat(Vehicle, -1) == PlayerPedId() then
                 if not HasOffer and not IsBusy then
-                    FW.Functions.Notify("Er is een werkopdracht beschikbaar, druk op Y om te accepteren of op N om te weigeren.", "primary", 7000)
+                    FW.Functions.Notify("A ride is available, press Y to accept or N to decline.", "primary", 7000)
                     GiveOffer()
                 end
             end
@@ -40,13 +40,13 @@ function GiveOffer()
     Citizen.CreateThread(function()
         while HasOffer do
             if IsControlJustPressed(0, 246) then -- Y
-                FW.Functions.Notify("Werkopdracht geaccepteerd! Zoek de reiziger op je kaart en haal hem op.")
+                FW.Functions.Notify("Ride accepted! Find the traveler on your map and pick them up.")
                 StartOffer()
                 HasOffer = false
             end
 
             if IsControlJustPressed(0, 306) then -- N
-                FW.Functions.Notify("Werkopdracht geweigerd!")
+                FW.Functions.Notify("Ride refused!")
                 HasOffer = false
             end
             Citizen.Wait(4)
@@ -82,7 +82,7 @@ function StartOffer()
                         TaskEnterVehicle(Ped, Vehicle, -1, SeatId, 1.0, 1, 0)
                         CreateTaxiBlip(Destination, 1, true)
                     else
-                        FW.Functions.Notify("Lijkt erop dat je geen ruimte hebt voor de reiziger..")
+                        FW.Functions.Notify("It looks like you don't have room for the traveler...")
                     end
                 end
             end

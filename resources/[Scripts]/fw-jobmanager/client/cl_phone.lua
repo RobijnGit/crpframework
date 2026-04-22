@@ -31,7 +31,7 @@ AddEventHandler("fw-jobmanager:Client:SignIn", function(JobId)
     local Job = FW.SendCallback("fw-jobmanager:Server:GetJobById", JobId)
     MyJob.CurrentJob = JobId
 
-    TriggerEvent("fw-phone:Client:Notification", "jobcenter-signin-" .. JobId, "fas fa-home", { "white", "rgb(38, 50, 56)" }, 'Uitzendbureau', "Ingeklokt als " .. Job.JobName)
+    TriggerEvent("fw-phone:Client:Notification", "jobcenter-signin-" .. JobId, "fas fa-home", { "white", "rgb(38, 50, 56)" }, 'Job Center', "Signed in as " .. Job.JobName)
     TriggerEvent("fw-phone:Client:SetJobData")
 end)
 

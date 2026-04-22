@@ -82,8 +82,8 @@ FW.Functions.CreateCallback("fw-jobmanager:Server:Oxy:DeliverGoods", function(So
     end
 
     --[[
-        markedbills €500
-        money-roll €280
+        markedbills $500
+        money-roll $280
     ]]
 
     if Player.Functions.RemoveItem('oxy-box', 1, false, true) then

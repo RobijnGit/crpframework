@@ -19,7 +19,7 @@ function InitFishing()
             {
                 Name = 'fishing_sell',
                 Icon = 'fas fa-dollar-sign',
-                Label = 'Verkopen',
+                Label = 'Sell Fish',
                 EventType = 'Server',
                 EventName = 'fw-jobmanager:Server:FishingSell',
                 EventParams = {},
@@ -44,7 +44,7 @@ function SetFishingBlip()
         SetBlipAsShortRange(FishingSpotBlip, true)
         SetBlipColour(FishingSpotBlip, 26)
         BeginTextCommandSetBlipName("STRING")
-        AddTextComponentSubstringPlayerName("Visplaats")
+        AddTextComponentSubstringPlayerName("Fishing Area")
         EndTextCommandSetBlipName(FishingSpotBlip)
     end
 end
@@ -100,17 +100,17 @@ end)
 RegisterNetEvent('fw-jobmanager:Client:Fishing:GrabRod')
 AddEventHandler('fw-jobmanager:Client:Fishing:GrabRod', function()
     if not NearFishingZone() then
-        FW.Functions.Notify("Het lijkt erop dat de vis bang is voor je lelijke kop en naar een andere plek is gezwommen..", "error")
+        FW.Functions.Notify("It looks like the fish is afraid of your ugly face and has swum to another spot...", "error")
         return
     end
 
     if HasRodAnim then
-        FW.Functions.Notify("Idioot, je hebt al een vis hengel in je klauwen..", "error")
+        FW.Functions.Notify("Idiot, you already have a fishing rod in your hands...", "error")
         return
     end
 
     if IsPedInAnyVehicle(PlayerPedId()) then
-        FW.Functions.Notify("Pak jij lekker een vis uit het water vanuit je auto, jij wel..", "error")
+        FW.Functions.Notify("You like catching a fish out of the water from your car, don't you?..", "error")
         return
     end
 
@@ -121,7 +121,7 @@ AddEventHandler('fw-jobmanager:Client:Fishing:GrabRod', function()
         local CalculatedFish = CalculateFish()
 
         if CalculatedFish == false then
-            FW.Functions.Notify("Helaas, geen vis...", "error")
+            FW.Functions.Notify("No fish this time...", "error")
             SetRodAnimation(false)
             return
         end
@@ -133,7 +133,7 @@ AddEventHandler('fw-jobmanager:Client:Fishing:GrabRod', function()
         local Outcome = exports['fw-ui']:StartSkillTest(SkillTimes, { 10, 15 }, { 3500, 5500 }, false)
         SetRodAnimation(false)
         if not Outcome then
-            FW.Functions.Notify("De vis zei 'blup' en zwom weg..", "error")
+            FW.Functions.Notify("The fish said 'blup' and swam away..", "error")
             return
         end
 

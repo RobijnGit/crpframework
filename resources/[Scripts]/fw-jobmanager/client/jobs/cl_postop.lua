@@ -15,7 +15,7 @@ AddEventHandler('fw-jobmanager:Client:SetupJob', function(IsLeader, Tasks, Data)
 
                 if #(GetEntityCoords(PlayerPedId()) - vector3(929.99, -1249.48, 25.5)) < 1.2 then
                     if not ShowingInteraction then
-                        exports['fw-ui']:ShowInteraction("[E] Vraag de werkgever om een voertuig.")
+                        exports['fw-ui']:ShowInteraction("[E] Ask the foreman for a vehicle.")
                         ShowingInteraction = true
                     end
 
@@ -27,7 +27,7 @@ AddEventHandler('fw-jobmanager:Client:SetupJob', function(IsLeader, Tasks, Data)
                             ShowingInteraction = false
                             return
                         else
-                            FW.Functions.Notify("De werkgever kan je geen voertuig geven: er staat iets in de weg..", "error")
+                            FW.Functions.Notify("The foreman can't give you a vehicle, there's something in the way...", "error")
                         end
                     end
                 elseif ShowingInteraction then
@@ -84,7 +84,7 @@ end)
 
 RegisterNetEvent("fw-jobmanager:Client:PostOp:GrabGoods")
 AddEventHandler("fw-jobmanager:Client:PostOp:GrabGoods", function()
-    if HasPackage then return FW.Functions.Notify("Je hebt al een pakketje vast..", "error") end
+    if HasPackage then return FW.Functions.Notify("You're already holding a package..", "error") end
 
     HasPackage = true
     exports['fw-assets']:AddProp('Box')
@@ -110,10 +110,10 @@ AddEventHandler("fw-jobmanager:Client:PostOP:DeliverGoods", function()
     if exports['fw-progressbar']:GetTaskBarStatus() then return end
 
     if not HasPackage then
-        return FW.Functions.Notify("Pak eerst een pakketje uit je busje..", "error")
+        return FW.Functions.Notify("Get a package from the van first..", "error")
     end
 
-    local Finished = FW.Functions.CompactProgressbar(math.random(700, 1300), "Pakketje afleveren...", false, false, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(math.random(700, 1300), "Delivering Package...", false, false, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
     if not Finished then return end
 
     if CurrentTaskId == 4 then

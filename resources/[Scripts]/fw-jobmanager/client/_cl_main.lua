@@ -76,7 +76,7 @@ function SetupPeds()
                 {
                     Name = 'sign_in',
                     Icon = 'fas fa-circle',
-                    Label = 'Inklokken',
+                    Label = 'Sign In',
                     EventType = 'Client',
                     EventName = 'fw-jobmanager:Client:SignIn',
                     EventParams = v.JobId,
@@ -90,7 +90,7 @@ function SetupPeds()
                 {
                     Name = 'sign_off',
                     Icon = 'fas fa-circle',
-                    Label = 'Uitklokken',
+                    Label = 'Sign Off',
                     EventType = 'Client',
                     EventName = 'fw-jobmanager:Client:SignOut',
                     EventParams = {},
@@ -105,7 +105,7 @@ function SetupPeds()
                 {
                     Name = 'get_paycheck',
                     Icon = 'fas fa-hand-holding-usd',
-                    Label = 'Salaris Ophalen',
+                    Label = 'Get Paycheck',
                     EventType = 'Server',
                     EventName = 'fw-jobmanager:Server:ReceivePaycheck',
                     EventParams = {},

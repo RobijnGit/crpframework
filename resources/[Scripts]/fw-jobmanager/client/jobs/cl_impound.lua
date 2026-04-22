@@ -78,25 +78,25 @@ AddEventHandler("fw-jobmanager:Client:TowVehicle", function(Data, Entity)
     if DoesEntityExist(TowingVehicle) then return end
 
     if GetEntityModel(Entity) ~= GetHashKey("flatbed") then
-        return FW.Functions.Notify("Dit is geen flatbed..")
+        return FW.Functions.Notify("This is no flatbed..")
     end
 
     local VehicleSpot = GetOffsetFromEntityInWorldCoords(Entity, 0.0, -8.5, -1.0)
     local Vehicle, Distance = FW.Functions.GetClosestVehicle(VehicleSpot)
 
     if not Vehicle or not DoesEntityExist(Vehicle) then
-        return FW.Functions.Notify("Je hebt geen voertuig achter je flatbed staan..")
+        return FW.Functions.Notify("You do not have a vehicle parked behind your flatbed..")
     end
 
     if MyJob.CurrentJob and MyJob.CurrentJob == 'impound' and DoesEntityExist(ImpoundVehicle) and Vehicle ~= ImpoundVehicle then
-        return FW.Functions.Notify("Dit is niet het voertuig die je moet wegslepen..")
+        return FW.Functions.Notify("This is not the vehicle you need to tow away..")
     end
 
-    local Finished = FW.Functions.CompactProgressbar(20000, "Haak aansluiten..", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "mini@repair", anim = "fixing_a_ped", flags = 0 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(20000, "Hooking up vehicle..", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "mini@repair", anim = "fixing_a_ped", flags = 0 }, {}, {}, false)
     if not Finished then return end
 
     TriggerEvent("fw-misc:Client:PlaySoundEntity", 'vehicle.flatbedTow', NetworkGetNetworkIdFromEntity(Entity), true, nil)
-    FW.Functions.CompactProgressbar(5000, "Voertuig aan het takelen..", false, false, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "mini@repair", anim = "fixing_a_ped", flags = 0 }, {}, {}, false)
+    FW.Functions.CompactProgressbar(5000, "Towing vehicle..", false, false, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "mini@repair", anim = "fixing_a_ped", flags = 0 }, {}, {}, false)
     StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
 
     TowingVehicle = Vehicle
@@ -117,11 +117,11 @@ RegisterNetEvent("fw-jobmanager:Client:UntowVehicle")
 AddEventHandler("fw-jobmanager:Client:UntowVehicle", function(Data, Entity)
     if not DoesEntityExist(TowingVehicle) then return print("no existy") end
 
-    local Finished = FW.Functions.CompactProgressbar(10000, "Haak afkoppelen..", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "mini@repair", anim = "fixing_a_ped", flags = 0 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(10000, "Disconnecting hook..", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "mini@repair", anim = "fixing_a_ped", flags = 0 }, {}, {}, false)
     if not Finished then return end
 
     TriggerEvent("fw-misc:Client:PlaySoundEntity", 'vehicle.flatbedTow', NetworkGetNetworkIdFromEntity(Entity), true, nil)
-    FW.Functions.CompactProgressbar(5000, "Voertuig aan het aftakelen..", false, false, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "mini@repair", anim = "fixing_a_ped", flags = 0 }, {}, {}, false)
+    FW.Functions.CompactProgressbar(5000, "Untowing Vehicle..", false, false, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { animDict = "mini@repair", anim = "fixing_a_ped", flags = 0 }, {}, {}, false)
     StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
 
     local VehicleSpot = GetOffsetFromEntityInWorldCoords(Entity, 0.0, -8.5, -1.0)
@@ -148,12 +148,12 @@ AddEventHandler("fw-jobmanager:Client:Impound:RentFlatbed", function()
     local Plate = ("FL" .. FW.Shared.RandomInt(3) .. FW.Shared.RandomStr(3)):upper()
     local Coords = vector4(1010.79, -2293.24, 30.6, 265.61)
     if not FW.Functions.IsSpawnPointClear(vector3(Coords.x, Coords.y, Coords.z), 1.85) then
-        return FW.Functions.Notify("Er staat een voertuig in de weg..", "error")
+        return FW.Functions.Notify("A vehicle is blocking the way...", "error")
     end
 
     local Paid = FW.SendCallback("FW:RemoveCash", 1500)
     if not Paid then
-        return FW.Functions.Notify("Niet genoeg cash..", "error")
+        return FW.Functions.Notify("Not enough cash..", "error")
     end
 
     local NetId = FW.SendCallback("FW:server:spawn:vehicle", "flatbed", { x = Coords.x, y = Coords.y, z = Coords.z - 1.0, a = Coords.w }, false, Plate)
@@ -208,7 +208,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = "grab",
                 Icon = "fas fa-truck-container",
-                Label = "Flatbed Huren (€1,500)",
+                Label = "Rent Flatbed ($1,500)",
                 EventType = "Client",
                 EventName = "fw-jobmanager:Client:Impound:RentFlatbed",
                 EventParams = {},
@@ -219,7 +219,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = "return",
                 Icon = "fas fa-sign-out-alt",
-                Label = "Flatbed Teruggeven",
+                Label = "Return Flatbed",
                 EventType = "Client",
                 EventName = "fw-jobmanager:Client:Impound:ReturnFlatbed",
                 EventParams = {},

@@ -44,20 +44,20 @@ AddEventHandler('fw-jobmanager:Client:Used:Pickaxe', function()
                         TriggerServerEvent('fw-jobmanager:Server:Mining:SetState', CurrentMiningSpot, 'Mined', true)
                         TriggerServerEvent('fw-jobmanager:Server:Mining:ReceiveGoods', AlreadyMined)
                     else
-                        FW.Functions.Notify("Pas op, dadelijk heb je nog je tenen aan je pikhouweel zitten..", 'error')
+                        FW.Functions.Notify("Watch out, you'll end up with your toes on your pickaxe...", 'error')
                     end
                     TriggerServerEvent('fw-jobmanager:Server:Mining:SetState', CurrentMiningSpot, 'Busy', false)
                     TriggerEvent('fw-jobmanager:Client:DoMiningAnimation', false)
                     NowMining = false
                 end)
             else
-                FW.Functions.Notify("Dit plekje ziet er uitgehakt uit..", 'error')
+                FW.Functions.Notify("This spot looks carved out..", 'error')
             end
         else
-            FW.Functions.Notify("Je bent al aan het mijnen!", 'error')
+            FW.Functions.Notify("You are already mining!", 'error')
         end
     else
-        FW.Functions.Notify("Dit ziet er niet zo intressant uit, misschien ergens anders kijken..", 'error')
+        FW.Functions.Notify("This doesn't look very interesting, maybe look somewhere else..", 'error')
     end
 end)
 
@@ -103,7 +103,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'grab_pickaxe',
                 Icon = 'fas fa-circle',
-                Label = 'Pikhouweel Pakken!',
+                Label = 'Grab Pickaxe',
                 EventType = 'Client',
                 EventName = 'fw-jobmanager:Client:MiningGrab',
                 EventParams = {},

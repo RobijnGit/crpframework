@@ -14,7 +14,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = 'oxy_collect',
                 Icon = 'fas fa-box',
-                Label = 'Goederen Pakken',
+                Label = 'Pickup Goods',
                 EventType = 'Client',
                 EventName = 'fw-jobmanager:Client:Oxy:CollectPackage',
                 EventParams = '',
@@ -44,7 +44,7 @@ AddEventHandler('fw-jobmanager:Client:OnNextTask', function(IsLeader, TaskId)
     if MyJob.CurrentJob ~= 'oxy' then return end
 
     if TaskId == 3 then
-        SetRouteBlip("Aflever Locatie", OxyData.FirstOxy.Coords)
+        SetRouteBlip("Delivery Location", OxyData.FirstOxy.Coords)
 
         if IsLeader then
             SetupOxyLocation(TaskId, OxyData.FirstOxy)
@@ -52,7 +52,7 @@ AddEventHandler('fw-jobmanager:Client:OnNextTask', function(IsLeader, TaskId)
             CurrentOxy = OxyData.FirstOxy
         end
     elseif TaskId == 5 then
-        SetRouteBlip("Aflever Locatie", OxyData.SecondOxy.Coords)
+        SetRouteBlip("Delivery Location", OxyData.SecondOxy.Coords)
 
         if IsLeader then
             SetupOxyLocation(TaskId, OxyData.SecondOxy)
@@ -96,8 +96,8 @@ end)
 
 RegisterNetEvent("fw-jobmanager:Client:Oxy:CollectPackage")
 AddEventHandler("fw-jobmanager:Client:Oxy:CollectPackage", function()
-    if CurrentTaskId ~= 2 then return FW.Functions.Notify("Wat moet je?", "error") end
-    if exports['fw-inventory']:HasEnoughOfItem('oxy-box', 1) then return FW.Functions.Notify("Je hebt al een doos, leg die maar eerst weg.", "error") end
+    if CurrentTaskId ~= 2 then return FW.Functions.Notify("Whats up?", "error") end
+    if exports['fw-inventory']:HasEnoughOfItem('oxy-box', 1) then return FW.Functions.Notify("You already have a box, just put that away first..", "error") end
     
     FW.TriggerServer('fw-jobmanager:Server:AddTaskProgress', MyJob.CurrentJob, MyJob.CurrentGroup.Id, MyJob.CurrentGroup.Activity.Id, 2, 1)
     TriggerServerEvent("fw-jobmanager:Server:Oxy:CollectPackage")
@@ -126,7 +126,7 @@ AddEventHandler("fw-jobmanager:Client:Oxy:SetOxyVehicle", function(Clear, PedNet
 
     Citizen.SetTimeout(30000, function()
         if OxyVehicle == Vehicle then
-            FW.Functions.Notify("Dud, honderd jaren plan met jou of wat?", "error")
+            FW.Functions.Notify("I got other plans too. Dickhead.", "error")
             TaskVehicleDriveWander(Ped, Vehicle, 30.0, 786603)
 
             Citizen.SetTimeout(15000, function()
@@ -182,7 +182,7 @@ function SetupOxyLocation(TaskId, Data)
             if #(GetEntityCoords(PlayerPedId()) - vector3(Data.Coords.x, Data.Coords.y, Data.Coords.z)) <= 20 then
                 if not Notified then
                     WaitMS, Notified = 60000, true
-                    FW.Functions.Notify("Blijf hier, wees niet verdacht..", "error")
+                    FW.Functions.Notify("Stay here, don't be suspicious..", "error")
                     exports['fw-assets']:SetDensity('Vehicle', 0.8)
                 end
 
@@ -191,7 +191,7 @@ function SetupOxyLocation(TaskId, Data)
                 end
             elseif Notified then
                 WaitMS, Notified = 50, false
-                FW.Functions.Notify("Je bent te ver weg, ga terug..", "error")
+                FW.Functions.Notify("You are too far away, go back..", "error")
                 exports['fw-assets']:SetDensity('Vehicle', 0.55)
             end
 

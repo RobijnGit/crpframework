@@ -63,7 +63,7 @@ end)
 RegisterNetEvent('fw-items:Client:Used:HuntingBait')
 AddEventHandler('fw-items:Client:Used:HuntingBait', function()
     if not InsideHuntingZone() then 
-        FW.Functions.Notify("Je zit niet in het jaaggebied..", 'error')
+        FW.Functions.Notify("You are not in the hunting area..", 'error')
         return 
     end
 
@@ -72,7 +72,7 @@ AddEventHandler('fw-items:Client:Used:HuntingBait', function()
         TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_GARDENER_PLANT", 0, true)
         exports['fw-inventory']:SetBusyState(true)
         
-        local Finished = FW.Functions.CompactProgressbar(5000, "Lokaas plaatsen...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+        local Finished = FW.Functions.CompactProgressbar(5000, "Placing bait...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
         if Finished then
             local DidRemove = FW.SendCallback("FW:RemoveItem", 'hunting-bait', 1, false, false)
             if DidRemove then
@@ -84,7 +84,7 @@ AddEventHandler('fw-items:Client:Used:HuntingBait', function()
         end
         exports['fw-inventory']:SetBusyState(false)
     else
-        FW.Functions.Notify("Je neus kan het nog niet hebben..", 'error')
+        FW.Functions.Notify("Your nose can't handle it yet..", 'error')
     end
 end)
 
@@ -107,10 +107,10 @@ AddEventHandler('fw-items:Client:Used:HuntingKnife', function()
         TriggerEvent('fw-inventory:Client:ResetWeapon')
         TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_GARDENER_PLANT", 0, true)
 
-        local Finished = FW.Functions.CompactProgressbar(5000, "Dier ontleden...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+        local Finished = FW.Functions.CompactProgressbar(5000, "Cutting up animal...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
         ClearPedTasks(PlayerPedId())
         if not Finished then
-            return FW.Functions.Notify("Ontleden geannuleerd..", "error")
+            return FW.Functions.Notify("Canceled..", "error")
         end
 
         if not exports['fw-police']:IsStatusAlreadyActive('huntbleed') then
@@ -126,7 +126,7 @@ AddEventHandler('fw-items:Client:Used:HuntingKnife', function()
         end
         TriggerServerEvent('fw-jobmanager:Server:HuntingReceiveGoods', AnimalName, BaitAnimal, IllegalAnimal)
     else
-        FW.Functions.Notify("Dat is geen dier dud..", 'error')
+        FW.Functions.Notify("That's not an animal?", 'error')
     end
 end)
 
@@ -139,7 +139,7 @@ Citizen.CreateThread(function()
     SetBlipAsShortRange(HuntingBlip, true)
     SetBlipColour(HuntingBlip, 26)
     BeginTextCommandSetBlipName("STRING")
-    AddTextComponentSubstringPlayerName("Jaaggebied")
+    AddTextComponentSubstringPlayerName("Hunting Area")
     EndTextCommandSetBlipName(HuntingBlip)
 
     local HuntingSales = AddBlipForCoord(569.4, 2796.63, 42.02)
@@ -149,7 +149,7 @@ Citizen.CreateThread(function()
     SetBlipAsShortRange(HuntingSales, true)
     SetBlipColour(HuntingSales, 26)
     BeginTextCommandSetBlipName("STRING")
-    AddTextComponentSubstringPlayerName("Jaag Verkoop")
+    AddTextComponentSubstringPlayerName("Hunting Sell")
     EndTextCommandSetBlipName(HuntingSales)
 
     local HuntingArea = AddBlipForRadius(Config.HuntingLocation, 700.0)        
@@ -170,7 +170,7 @@ Citizen.CreateThread(function()
             {
                 Name = 'hunting_sell',
                 Icon = 'fas fa-dollar-sign',
-                Label = 'Verkopen',
+                Label = 'Sell Animal Meat and Pelts',
                 EventType = 'Client',
                 EventName = 'fw-jobmanager:Client:HuntingSell',
                 EventParams = {},

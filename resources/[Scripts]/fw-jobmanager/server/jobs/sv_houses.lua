@@ -121,17 +121,17 @@ FW.RegisterServer('fw-jobmanager:Server:ConcealHouse', function(Source, HouseId)
     if Player.PlayerData.job.name ~= "police" and not Player.PlayerData.job.onduty then return end
 
     if not Config.Houses.Houses[HouseId].GroupId then
-        return Player.Functions.Notify("Deze deur kan je niet vergrendelen..", "error")
+        return Player.Functions.Notify("You cannot lock this door..", "error")
     end
 
     local Group = JobCenter.GetGroup("houses", Config.Houses.Houses[HouseId].GroupId)
     if not Group then
-        return Player.Functions.Notify("Deze deur kan je niet vergrendelen..", "error")
+        return Player.Functions.Notify("You cannot lock this door..", "error")
     end
 
     local GroupLeader = FW.Functions.GetPlayerByCitizenId(Group.Members[1].Cid)
     if not GroupLeader then
-        return Player.Functions.Notify("Deze deur kan je niet vergrendelen..", "error")
+        return Player.Functions.Notify("You cannot lock this door..", "error")
     end
 
     Player.Functions.Notify("De deur is vergrendeld.", "error")
