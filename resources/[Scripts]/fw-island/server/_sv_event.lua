@@ -35,16 +35,16 @@ AddEventHandler("fw-island:Server:Foodchain:PayRegister", function(Data)
     if Player.PlayerData.citizenid == PaymentData.Employee.Cid then return end
     if not PaymentData then return end
 
-    if (Data.PaymentType:lower() == 'cash' and Player.Functions.RemoveMoney('cash', PaymentData.Costs)) or (Data.PaymentType:lower() == 'bank' and exports['fw-financials']:RemoveMoneyFromAccount(PaymentData.Employee.Cid, PaymentData.Employee.Account, Player.PlayerData.charinfo.account, PaymentData.Costs, 'PURCHASE', 'Betaling zakelijke dienstverlening: ' .. PaymentData.Order, false)) then
+    if (Data.PaymentType:lower() == 'cash' and Player.Functions.RemoveMoney('cash', PaymentData.Costs)) or (Data.PaymentType:lower() == 'bank' and exports['fw-financials']:RemoveMoneyFromAccount(PaymentData.Employee.Cid, PaymentData.Employee.Account, Player.PlayerData.charinfo.account, PaymentData.Costs, 'PURCHASE', 'Payment for business services: ' .. PaymentData.Order, false)) then
         if Data.PaymentType:lower() == 'bank' then
-            TriggerClientEvent('fw-phone:Client:Notification', Src, "business-pay-" .. Data.Foodchain .. Data.Register, "fas fa-home", { "white" , "rgb(38, 50, 56)" }, Data.Foodchain, exports['fw-businesses']:NumberWithCommas(PaymentData.Costs) .. " afgeschreven van je bankrekening.")
+            TriggerClientEvent('fw-phone:Client:Notification', Src, "business-pay-" .. Data.Foodchain .. Data.Register, "fas fa-home", { "white" , "rgb(38, 50, 56)" }, Data.Foodchain, exports['fw-businesses']:NumberWithCommas(PaymentData.Costs) .. " has been deducted from your banking account.")
         end
-        TriggerClientEvent('fw-phone:Client:Notification', PaymentData.Employee.Source, "business-charge-" .. Data.Foodchain .. Data.Register, "fas fa-home", { "white" , "rgb(38, 50, 56)" }, Data.Foodchain, exports['fw-businesses']:NumberWithCommas(PaymentData.Costs) .. " is succesvol afgeschreven.")
-        exports['fw-financials']:AddMoneyToAccount(Player.PlayerData.citizenid, Player.PlayerData.charinfo.account, PaymentData.Employee.Account, PaymentData.OrgCosts, 'PURCHASE', 'Betaling zakelijke dienstverlening: ' .. PaymentData.Order)
+        TriggerClientEvent('fw-phone:Client:Notification', PaymentData.Employee.Source, "business-charge-" .. Data.Foodchain .. Data.Register, "fas fa-home", { "white" , "rgb(38, 50, 56)" }, Data.Foodchain, exports['fw-businesses']:NumberWithCommas(PaymentData.Costs) .. " has succesfully been paid.")
+        exports['fw-financials']:AddMoneyToAccount(Player.PlayerData.citizenid, Player.PlayerData.charinfo.account, PaymentData.Employee.Account, PaymentData.OrgCosts, 'PURCHASE', 'Payment for business services: ' .. PaymentData.Order)
         exports['fw-financials']:AddMoneyToAccount('1001', "1", "1", PaymentData.Costs - PaymentData.OrgCosts, 'TAX', ('Services Tax. (%s: %s)'):format(Data.Foodchain, exports['fw-businesses']:NumberWithCommas(PaymentData.Costs))) -- Tax to the state
 
         Config.ActiveIslandPayments[Data.Foodchain][Data.Register] = false
     else
-        TriggerClientEvent('FW:Notify', Src, 'Je hebt niet genoeg geld..', 'error')
+        TriggerClientEvent('FW:Notify', Src, 'You don\'t have enough money..', 'error')
     end
 end)

@@ -12,7 +12,7 @@ AddEventHandler("fw-island:Server:ToggleFlight", function(Data, Entity)
     -- end
 
     Config.AvailableFlights[Data.Flight] = not Config.AvailableFlights[Data.Flight]
-    Player.Functions.Notify("Vluchten " .. (Config.AvailableFlights[Data.Flight] and "geopend" or "gesloten") .. ".", Config.AvailableFlights[Data.Flight] and "success" or "error")
+    Player.Functions.Notify("Flights " .. (Config.AvailableFlights[Data.Flight] and "opened" or "closed") .. ".", Config.AvailableFlights[Data.Flight] and "success" or "error")
 end)
 
 RegisterNetEvent("fw-island:Server:BookFlight")
@@ -22,7 +22,7 @@ AddEventHandler("fw-island:Server:BookFlight", function(Data)
     if Player == nil then return end
 
     if not Player.Functions.RemoveMoney("cash", 5000) then
-        return Player.Functions.Notify("Skere tatta wel..", "error")
+        return Player.Functions.Notify("You don't have enough cash to pay this flight..", "error")
     end
 
     TriggerClientEvent("fw-island:Client:SpawnFlight", Source, Data.Flight)

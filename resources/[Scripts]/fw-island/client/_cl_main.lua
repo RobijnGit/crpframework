@@ -29,7 +29,7 @@ AddEventHandler("fw-island:Client:CheckFlights", function()
         MenuItems[#MenuItems + 1] = {
             Icon = 'plane',
             Title = "Los Santos -> Cayo Perico",
-            Desc = "Vliegticket prijs: (€5.000)",
+            Desc = "Flight Ticket: $5.000",
             Data = { Event = 'fw-island:Client:PurchaseFlight', Type = 'Client', Flight = "lsia_to_cayo", Label = "Los Santos -> Cayo Perico" },
             Disabled = not FW.SendCallback("fw-island:Server:IsFlightAvailable", "lsia_to_cayo")
         }
@@ -37,7 +37,7 @@ AddEventHandler("fw-island:Client:CheckFlights", function()
         MenuItems[#MenuItems + 1] = {
             Icon = 'plane',
             Title = "Cayo Perico -> Los Santos",
-            Desc = "Vliegticket prijs: (€5.000)",
+            Desc = "Flight Ticket: $5.000",
             Data = { Event = 'fw-island:Client:PurchaseFlight', Type = 'Client', Flight = "cayo_to_lsia", Label = "Cayo Perico -> Los Santos" },
             Disabled = not FW.SendCallback("fw-island:Server:IsFlightAvailable", "lsia_to_cayo")
         }
@@ -53,7 +53,7 @@ AddEventHandler("fw-island:Client:PurchaseFlight", function(Data)
     local MenuItems = {
         {
             Icon = 'exclamation-circle',
-            Title = "Vluchtticket Aankoop",
+            Title = "Purchase Flight",
             Desc = Data.Label,
             Data = { Event = '', Type = ''},
             CloseMenu = false,
@@ -62,13 +62,13 @@ AddEventHandler("fw-island:Client:PurchaseFlight", function(Data)
 
     MenuItems[#MenuItems + 1] = {
         Icon = 'check-square',
-        Title = "Aankoop Bevestigen (€5.000)",
+        Title = "Confirm Purchase ($5.000)",
         Data = { Event = 'fw-island:Server:BookFlight', Type = 'Server', Flight = Data.Flight },
     }
 
     MenuItems[#MenuItems + 1] = {
         Icon = 'times-square',
-        Title = "Aankoop Annuleren",
+        Title = "Cancel Purchase",
         CloseMenu = true,
     }
 
@@ -125,7 +125,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = "check_flights",
                 Icon = "fas fa-plane-departure",
-                Label = "Vluchten Bekijken",
+                Label = "View Flights",
                 EventType = "Client",
                 EventName = "fw-island:Client:CheckFlights",
                 EventParams = {},
@@ -136,7 +136,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = "toggle_flights",
                 Icon = "fas fa-plane",
-                Label = "Vluchten in-/uitschakelen van LSIA -> Cayo",
+                Label = "Disable Flights from LSIA -> Cayo",
                 EventType = "Server",
                 EventName = "fw-island:Server:ToggleFlight",
                 EventParams = { Flight = "lsia_to_cayo" },
@@ -159,7 +159,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = "check_flights",
                 Icon = "fas fa-plane-departure",
-                Label = "Vluchten Bekijken",
+                Label = "View Flights",
                 EventType = "Client",
                 EventName = "fw-island:Client:CheckFlights",
                 EventParams = {},
@@ -170,7 +170,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = "toggle_flights",
                 Icon = "fas fa-plane",
-                Label = "Vluchten in-/uitschakelen van LSIA -> Cayo",
+                Label = "Disable Flights from LSIA -> Cayo",
                 EventType = "Server",
                 EventName = "fw-island:Server:ToggleFlight",
                 EventParams = { Flight = "lsia_to_cayo" },

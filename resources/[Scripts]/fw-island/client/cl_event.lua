@@ -35,8 +35,8 @@ end)
 RegisterNetEvent("fw-island:Client:Foodchain:SetupPayment")
 AddEventHandler("fw-island:Client:Foodchain:SetupPayment", function(Data)
     local Result = exports['fw-ui']:CreateInput({
-        { Label = 'Kosten', Icon = 'fas fa-euro-sign', Name = 'Costs', Type = 'number' },
-        { Label = 'Bestelling', Icon = 'fas fa-pencil', Name = 'Comment' },
+        { Label = 'Price', Icon = 'fas fa-euro-sign', Name = 'Costs', Type = 'number' },
+        { Label = 'Comment', Icon = 'fas fa-pencil', Name = 'Comment' },
     })
 
     if Result then
@@ -56,13 +56,13 @@ AddEventHandler("fw-island:Client:Foodchain:GetPayments", function(Data)
             MainMenuItems = {
                 {
                     Icon = 'info-circle',
-                    Title = 'Restaurant Bestelling',
+                    Title = 'Food Order',
                     Desc = exports['fw-businesses']:NumberWithCommas(Payment.Costs) .. ' | ' .. Payment.Order, 
                     Data = { Event = '', Type = '' }
                 },
                 {
                     Icon = 'credit-card',
-                    Title = 'Betalen met Bank',
+                    Title = 'Pay with Card',
                     CloseMenu = true,
                     Data = {
                         Event = 'fw-island:Server:Foodchain:PayRegister',
@@ -74,7 +74,7 @@ AddEventHandler("fw-island:Client:Foodchain:GetPayments", function(Data)
                 },
                 {
                     Icon = 'money-bill',
-                    Title = 'Betalen met Cash',
+                    Title = 'Pay with Cash',
                     CloseMenu = true,
                     Data = {
                         Event = 'fw-island:Server:Foodchain:PayRegister',
