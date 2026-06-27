@@ -97,7 +97,7 @@
     <ModalContainer>
         <h1 style="color: white; text-align: center; text-shadow: 0 0 .5vh rgb(255, 255, 255); font-size: 2vh; font-family: 'Crimson Pro'; font-weight: 500; margin-bottom: 2vh;">Add Group Member</h1>
         <div style="width: 90%; margin: 0 auto;">
-            <TextField Title="BSN" Icon="id-card" style="width: 100%" bind:RealValue={MemberCid}/>
+            <TextField Title="State ID" Icon="id-card" style="width: 100%" bind:RealValue={MemberCid}/>
             <Button Color="green" style="width: calc(100% - 2vh); text-align: center; margin: 0;" click={() => {
                 SendEvent("Unknown/AddMember", { Cid: MemberCid })
                 AddingMember = false;

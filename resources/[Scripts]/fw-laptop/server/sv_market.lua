@@ -60,7 +60,7 @@ FW.Functions.CreateCallback("fw-laptop:Server:Market:PurchaseProducts", function
 
     if TotalGNE > 0 then
         if not Player.Functions.RemoveCrypto("GNE", TotalGNE) then
-            return Cb({Msg = "Je hebt niet genoeg GNE balans.."})
+            return Cb({Msg = "You don't have enough GNE.."})
         end
     end
 
@@ -77,14 +77,14 @@ FW.Functions.CreateCallback("fw-laptop:Server:Market:PurchaseProducts", function
         Listing = Listing .. "<br/>" .. v.SharedData.Label .. " voor <i class='fas fa-horse-head'></i> " .. v.price
     end
 
-    Listing = Listing .. "<br/> Totaal: <i class='fas fa-horse-head'></i> " .. TotalGNE
+    Listing = Listing .. "<br/> Total: <i class='fas fa-horse-head'></i> " .. TotalGNE
 
     Citizen.SetTimeout(10000, function()
         TriggerEvent(
             "fw-phone:Server:Mails:AddMail",
             "#U-4310",
-            "Je bestelling is gereed.",
-            "Je hebt recent een bestelling geplaatst op de Holle Bolle Market, deze bestelling is gereed om opgehaald te worden. Ga naar de Post Op om je bestelling op te halen.<br/><br/> Informatie over je bestelling:"..Listing,
+            "Your order is ready!",
+            "You recently placed an order at our market; this order is ready to be picked up. Go to the Post Op to collect your order.<br/><br/> Information about your order:"..Listing,
             Source
         )
 
@@ -105,7 +105,7 @@ FW.Functions.CreateCallback("fw-laptop:Server:Market:PurchaseProducts", function
 
     TriggerEvent('fw-logs:Server:Log', 'market', 'Product Purchased', ("User: [%s] - %s - %s %s\nData: ```json\n%s```"):format(Player.PlayerData.source, Player.PlayerData.citizenid, Player.PlayerData.charinfo.firstname, Player.PlayerData.charinfo.lastname, json.encode(Result, {indent=4})), 'green')
 
-    Cb({Msg = "Je bestelling is afgerond."})
+    Cb({Msg = "Your order has been placed."})
 end)
 
 FW.RegisterServer("fw-laptop:Server:Market:SellItem", function(Source, ItemLabel, ItemData, Price)
@@ -116,19 +116,19 @@ FW.RegisterServer("fw-laptop:Server:Market:SellItem", function(Source, ItemLabel
     -- and people won't sell broken stuff and shit
     local ItemsOnCid = exports['ghmattimysql']:executeSync("SELECT `id` FROM `laptop_market` WHERE `cid` = ? LIMIT 1", { Player.PlayerData.citizenid })
     if ItemsOnCid[1] ~= nil then
-        return Player.Functions.Notify("Je kan maximaal maar 1 item te koop hebben staan..", "error")
+        return Player.Functions.Notify("You can have a maximum of only 1 item for sale...", "error")
     end
 
     Price = math.ceil(tonumber(Price))
     if Price < 1 then
-        return Player.Functions.Notify("GNE kosten moet minstens 1 zijn.")
+        return Player.Functions.Notify("GNE price must be at least 1.")
     end
 
     local Item = Player.Functions.GetItemBySlot(ItemData.Slot)
-    if Item == nil then return Player.Functions.Notify("Je mist het item..", "error") end
-    if Item.Item ~= ItemData.Item then return Player.Functions.Notify("Je mist het item..", "error") end
-    if Item.CustomType ~= ItemData.CustomType then return Player.Functions.Notify("Je mist het item..", "error") end
-    if Item.Amount < 1 then return Player.Functions.Notify("Je mist het item..", "error") end
+    if Item == nil then return Player.Functions.Notify("You're missing the item..", "error") end
+    if Item.Item ~= ItemData.Item then return Player.Functions.Notify("You're missing the item..", "error") end
+    if Item.CustomType ~= ItemData.CustomType then return Player.Functions.Notify("You're missing the item..", "error") end
+    if Item.Amount < 1 then return Player.Functions.Notify("You're missing the item..", "error") end
 
     exports['ghmattimysql']:executeSync("INSERT INTO `laptop_market` (cid, item_data, price) VALUES (?, ?, ?)", {
         Player.PlayerData.citizenid,
@@ -149,8 +149,8 @@ FW.RegisterServer("fw-laptop:Server:Market:SellItem", function(Source, ItemLabel
     TriggerEvent(
         "fw-phone:Server:Mails:AddMail",
         "#U-4310",
-        "Je hebt een product verkocht op de markt.",
-        ("Je hebt een product op de Holle Bolle Markt geplaatst. Zodra het verkocht is ontvang je 85%% van de inkomsten. We houden 15%% om de servicekosten te dekken. <br/><br/> Informatie over het product:<br/>%s voor <i class='fas fa-horse-head'></i> %s"):format(ItemLabel, Price),
+        "You have sold a product at the market.",
+        ("You have listed a product on the market. As soon as it is sold, you will receive 85% of the proceeds. We keep 15% to cover the service fees. <br/><br/> Product information:<br/>%s for <i class='fas fa-horse-head'></i> %s"):format(ItemLabel, Price),
         Source
     )
 
@@ -164,11 +164,11 @@ AddEventHandler("fw-laptop:Server:Market:PickupItems", function()
     if Player == nil then return end
 
     if Pickups[Player.PlayerData.citizenid] == nil then
-        return Player.Functions.Notify("Er is geen bestelling voor jou..")
+        return Player.Functions.Notify("There is no order for you..")
     end
 
     if FW.Throttled('laptop-pickup-' .. Player.PlayerData.citizenid, 1000 * #Pickups[Player.PlayerData.citizenid]) then
-        return Player.Functions.Notify("Kom later terug..")
+        return Player.Functions.Notify("Come back later..")
     end
 
     for k, v in pairs(Pickups[Player.PlayerData.citizenid]) do
@@ -182,7 +182,7 @@ AddEventHandler("fw-laptop:Server:Market:PickupItems", function()
             v.item_data.CreateDate or 0,
         })
 
-        TriggerClientEvent('fw-inventory:Client:ShowActionBox', Source, 'Ontvangen', v.item_data.Item, 1, v.item_data.Item.CustomType)
+        TriggerClientEvent('fw-inventory:Client:ShowActionBox', Source, 'Added', v.item_data.Item, 1, v.item_data.Item.CustomType)
         Player.Functions.RefreshInventory()
         Citizen.Wait(100)
     end

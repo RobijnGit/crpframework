@@ -5,8 +5,8 @@ AddEventHandler("fw-laptop:Client:Market:SellItemsMenu", function()
     local MenuItems = {
         {
             Icon = 'store',
-            Title = "Holle Bolle Markt",
-            Desc = "De plek om makkelijk en anoniem je spullen te verkopen!"
+            Title = "Black Market",
+            Desc = "The place to sell your stuff easily and anonymously!"
         }
     }
 
@@ -15,11 +15,11 @@ AddEventHandler("fw-laptop:Client:Market:SellItemsMenu", function()
 
         MenuItems[#MenuItems + 1] = {
             Title = ItemData.Label,
-            Desc = "Slot " .. v.Slot .. "; Aantal: " .. v.Amount,
+            Desc = "Slot " .. v.Slot .. "; Amount: " .. v.Amount,
             SecondMenu = {
                 {
                     Icon = "coins",
-                    Title = "Verkopen op de Markt",
+                    Title = "Sell on Market",
                     Data = {
                         Event = "fw-laptop:Client:Market:SellItemToMarket",
                         ItemData = v,
@@ -88,7 +88,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = "sell",
                 Icon = "fas fa-laptop",
-                Label = "Items Verkopen",
+                Label = "Sell Items",
                 EventType = "Client",
                 EventName = "fw-laptop:Client:Market:SellItemsMenu",
                 EventParams = {},
@@ -117,7 +117,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = "sell",
                 Icon = "fas fa-boxes",
-                Label = "Items Ophalen",
+                Label = "Pickup Items",
                 EventType = "Server",
                 EventName = "fw-laptop:Server:Market:PickupItems",
                 EventParams = {},

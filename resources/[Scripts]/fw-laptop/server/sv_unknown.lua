@@ -192,7 +192,7 @@ FW.Functions.CreateCallback("fw-laptop:Server:Unknown:GetMessages", function(Sou
     for k, v in pairs(Result) do
         Chats[#Chats + 1] = {
             Sender = v.sender,
-            SenderName = FW.Functions.GetPlayerCharName(v.sender) or "Onbekend",
+            SenderName = FW.Functions.GetPlayerCharName(v.sender) or "Unknown",
             Message = v.message,
             Attachments = json.decode(v.attachments),
             Timestamp = v.timestamp
@@ -204,7 +204,7 @@ end)
 
 FW.Functions.CreateCallback("fw-laptop:Server:Unknown:SendMessage", function(Source, Cb, Data)
     local Player = FW.Functions.GetPlayer(Source)
-    if Player == nil then Cb({Success = false, Msg = "Ongeldige Speler"}) return end
+    if Player == nil then Cb({Success = false, Msg = "Invalid Player"}) return end
 
     local Gang = GetGangByPlayer(Player.PlayerData.citizenid)
     if not Gang then return end
