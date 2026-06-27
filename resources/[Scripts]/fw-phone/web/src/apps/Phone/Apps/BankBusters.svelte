@@ -13,11 +13,11 @@
         const Now = new Date();
         const ExpirationTime = new Date(Now.getTime() + Minutes * 1000);
         const TimeDiff = ExpirationTime.getTime() - Now.getTime();
-        if (TimeDiff <= 0) return "Verlopen";
+        if (TimeDiff <= 0) return "Expired";
 
         const HoursRemaining = Math.floor(TimeDiff / (1000 * 60 * 60));
         const MinutesRemaining = Math.floor((TimeDiff / (1000 * 60)) % 60);
-        return `Verloopt over: ${HoursRemaining}u ${MinutesRemaining}m`;
+        return `Expires in: ${HoursRemaining}u ${MinutesRemaining}m`;
     };
 
     onMount(() => {
@@ -37,7 +37,7 @@
                 Title={Data.Label}
                 Description={[
                     GetExpirationTime(Data.Time),
-                    GetExpirationTime(Data.Time) != "Verlopen" ? (Data.Claimers.includes($PlayerData.Cid) ? "Geclaimed" : "Beschikbaar") : ""
+                    GetExpirationTime(Data.Time) != "Expired" ? (Data.Claimers.includes($PlayerData.Cid) ? "Claimed" : "Available") : ""
                 ]}
                 HasActions={true}
             >
@@ -50,7 +50,7 @@
                             Inputs: [
                                 {
                                     Type: "Text",
-                                    Text: "Weet je het zeker?",
+                                    Text: "Are you sure?",
                                     Data: {
                                         style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;"
                                     },

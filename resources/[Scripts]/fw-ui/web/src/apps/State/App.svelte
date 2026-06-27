@@ -49,11 +49,11 @@
                 <div class="state-navbar" style="width: 25%">
                     <NavbarItem
                         Id="Taxes"
-                        Name="Belasting"
+                        Name="Taxes"
                     />
                     <NavbarItem
                         Id="Ballots"
-                        Name="Stembussen"
+                        Name="Ballots"
                     />
                 </div>
 

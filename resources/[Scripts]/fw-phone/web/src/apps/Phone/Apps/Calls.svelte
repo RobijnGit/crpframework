@@ -39,7 +39,7 @@
                     IsPhone: true,
                     ContactPicker: true,
                     Data: {
-                        Title: "Telefoonnummer",
+                        Title: "Phone Number",
                         Icon: "phone",
                         Value: Data.Phone,
                         Select: await GetContactsSelect(),
@@ -68,7 +68,7 @@
                     IsPhone: true,
                     ContactPicker: true,
                     Data: {
-                        Title: "Telefoonnummer",
+                        Title: "Phone Number",
                         Icon: "phone",
                         Value: Data.Phone,
                         Select: await GetContactsSelect(),
@@ -107,7 +107,7 @@
                     Id: "Name",
                     Type: "TextField",
                     Data: {
-                        Title: "Naam",
+                        Title: "Name",
                         Icon: "user",
                         Value: "",
                     },
@@ -117,7 +117,7 @@
                     Type: "TextField",
                     IsPhone: true,
                     Data: {
-                        Title: "Telefoonnummer",
+                        Title: "Phone Number",
                         Icon: "phone",
                         Type: "number",
                         Value: Data.Phone,
@@ -151,7 +151,7 @@
 <AppWrapper>
     <div class="phone-misc-icons">
         <i
-            data-tooltip="Bel Iemand"
+            data-tooltip="Call someone"
             data-position="left"
             class="fas fa-phone-alt"
             on:keyup
@@ -160,7 +160,7 @@
     </div>
 
     <TextField
-        Title="Zoeken"
+        Title="Search"
         Icon="search"
         SubSet={FilterCalls}
         class="phone-misc-input"
@@ -176,15 +176,17 @@
             >
                 <i on:keyup on:click={() => { CallContact(Data); }} data-tooltip="Bellen" class="fas fa-phone-alt" />
                 <i on:keyup on:click={() => { MessageContact(Data); }} data-tooltip="Berichten" class="fas fa-comment" />
+                <i on:keyup on:click={() => { CallContact(Data); }} data-tooltip="Call" class="fas fa-phone-alt" />
+                <i on:keyup on:click={() => { MessageContact(Data); }} data-tooltip="Message" class="fas fa-comment" />
                 {#if Data.Contact == FormatPhone(Data.Phone)}
-                    <i on:keyup on:click={() => { AddContact(Data); }} data-tooltip="Contact Toevoegen" class="fas fa-user-plus" />
+                    <i on:keyup on:click={() => { AddContact(Data); }} data-tooltip="Add Contact" class="fas fa-user-plus" />
                 {/if}
             </Paper>
         {/each}
 
         {#if FilteredCalls.length > ShowingLimit}
             <div style="display: flex; justify-content: center; width: 100%;">
-                <Button Color="success" on:click={LoadMore}>Laad Meer</Button>
+                <Button Color="success" on:click={LoadMore}>Load More</Button>
             </div>
         {/if}
     </PaperList>

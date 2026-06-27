@@ -36,11 +36,11 @@ AddEventHandler('fw-misc:Server:Try:Carry', function()
 
     if Carrying or Carried then return end
     if Player == -1 then
-        FW.Functions.Notify("Niemand in de buurt..", "error")
+        FW.Functions.Notify("No one around...", "error")
         return
     end
     if not IsPedInAnyVehicle(PlayerPedId()) and not IsPedInAnyVehicle(Player) then
-        FW.Functions.Notify("Druk E om de persoon op de grond te zetten.", "primary", 10000)
+        FW.Functions.Notify("Press E to put the person on the ground.", "primary", 10000)
         TriggerServerEvent('fw-misc:Server:Carry:Target', Player)
         exports['fw-ui']:ShowInteraction('[E] Drop')
         RequestCarryAnims(false)

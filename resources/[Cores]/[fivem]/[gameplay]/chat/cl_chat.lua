@@ -172,7 +172,7 @@ RegisterNUICallback('chatResult', function(data, cb)
         if not HasSpamFilter or (HasSpamFilter and not HasCooldown) then
             ExecuteCommand(data.message)
         else
-            FW.Functions.Notify("Je kan dit commando nog niet gebruiken..", "error")
+            FW.Functions.Notify("You cannot use this command yet..", "error")
         end
     end
     cb('ok')

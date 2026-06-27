@@ -98,8 +98,8 @@
                 title: "Selecteer type",
                 confirmText: scratchTime.done
                     ? "Vin scratch"
-                    : `Vin scratch beschikbaar over: <div>${scratchTime.time}</div>`,
-                cancelText: "Normale aflevering",
+                    : `Vin scratch available on: <div>${scratchTime.time}</div>`,
+                cancelText: "Normal delivery",
                 nextModal: "start",
                 onConfirm: async () => {
                     Data.Vin = true;
@@ -113,7 +113,7 @@
                         "fw-laptop",
                         "Boosting/StartContract",
                         { contract: Data, user: UserData },
-                        { success: true, message: "Contract gestart, instructies zijn naar je telefoon gestuurd." }
+                        { success: true, message: "Contract started, instructions have been sent to your phone." }
                     );
                     Data.Started = result.success;
                     addResultNotification("Boostin", result);
@@ -134,7 +134,7 @@
                         "fw-laptop",
                         "Boosting/DeclineContract",
                         { contract: Data },
-                        { success: true, message: "Contract geweigerd!" }
+                        { success: true, message: "Contract rejected!" }
                     );
                     addResultNotification("Boostin", result);
                     return true;
@@ -149,7 +149,7 @@
                         "fw-laptop",
                         "Boosting/CancelContract",
                         { contract: Data },
-                        { success: true, message: "Contract geannuleerd, je buy in wordt gerefund." }
+                        { success: true, message: "Contract canceled, your buy-in will be refunded." }
                     );
                     Data.Started = !result.success;
                     addResultNotification("Boostin", result);
@@ -162,7 +162,7 @@
                     if (!AuctioningStartBid || AuctioningStartBid < 1) {
                         addResultNotification("Boostin", {
                             success: false,
-                            message: "Geef een geldig startbod op!",
+                            message: "Enter a valid starting bid!",
                         });
                         return false;
                     }
@@ -175,7 +175,7 @@
                         },
                         {
                             success: true,
-                            message: "Contract succesvol geveild!",
+                            message: "Contract successfully auctioned!",
                         }
                     );
                     addResultNotification("Boostin", result);
@@ -188,7 +188,7 @@
                     if (!TransferingPlayer || TransferingPlayer < 1) {
                         addResultNotification("Boostin", {
                             success: false,
-                            message: "Geef een geldig ID op!",
+                            message: "Please provide a valid ID!",
                         });
                         return false;
                     }
@@ -201,7 +201,7 @@
                         },
                         {
                             success: true,
-                            message: "Contract succesvol overgedragen!",
+                            message: "Contract transferred successfully!",
                         }
                     );
                     addResultNotification("Boostin", result);
@@ -249,11 +249,11 @@
             {#if UserData.ContractsDone > 0}
                 {Data.BuyIn} {Data.Crypto}
             {:else}
-                <span style="color: green;">GRATIS</span>
+                <span style="color: green;">FREE</span>
             {/if}
         </p>
         <p class="boosting-card-text boosting-card-expire">
-            Verloopt over:
+            Expires in:
             <span style="display: block; color: {expires.color};">{expires.time}</span>
         </p>
 
@@ -267,7 +267,7 @@
                 class="boosting-card-buttons__btn {Data.Started && 'disabled'}"
             >
                 <p>
-                    {Data.Started ? "Contract actief" : "Contract starten"}
+                    {Data.Started ? "Contract Active" : "Start Contract"}
                 </p>
             </div>
             <div
@@ -278,7 +278,7 @@
                 }}
                 class="boosting-card-buttons__btn {Data.Started && 'disabled'}"
             >
-                <p>Contract overdragen</p>
+                <p>Transfer Contract</p>
             </div>
             <div
                 use:Ripple={{ surface: true, active: true }}
@@ -299,7 +299,7 @@
                     }}
                     class="boosting-card-buttons__btn"
                 >
-                    <p>Contract weigeren</p>
+                    <p>Reject Contract</p>
                 </div>
             {:else}
                 <div
@@ -310,7 +310,7 @@
                     }}
                     class="boosting-card-buttons__btn"
                 >
-                    <p>Contract annuleren</p>
+                    <p>Cancel Contract</p>
                 </div>
             {/if}
         </div>
@@ -323,9 +323,9 @@
         <div class="boosting-card-modal">
             <h1>{modals[currentModal].title}</h1>
             {#if currentModal == "vin"}
-                <p>Als je ervoor kiest om te vin scratchen, kost dit {Data.ScratchPrice} {Data.Crypto} extra om het voertuig op naam te zetten.</p>
+                <p>If you choose to vin scratch, it will cost you {Data.ScratchPrice} {Data.Crypto} extra to register the vehicle in your name.</p>
             {:else if currentModal == "start" && !Data.ScratchAllowed}
-                <p>Dit voertuig kan momenteel niet gescratched worden.</p>
+                <p>This vehicle can not be vin scratched right now.</p>
             {/if}
 
             <div class="boosting-card-buttons">
@@ -333,7 +333,7 @@
                     <div class="boosting-card-buttons__btn">
                         <input
                             bind:value={AuctioningStartBid}
-                            placeholder="Start bod {Data.Crypto}"
+                            placeholder="Starting Bid {Data.Crypto}"
                             type="number"
                             min="1"
                         />
@@ -359,7 +359,7 @@
                         {#if modals[currentModal].confirmText}
                             {@html modals[currentModal].confirmText}
                         {:else}
-                            Doorgaan
+                            Submit
                         {/if}
                     </p>
                 </div>
@@ -369,7 +369,7 @@
                     on:click={onCancel}
                     class="boosting-card-buttons__btn"
                 >
-                    <p>{modals[currentModal].cancelText ?? "Annuleren"}</p>
+                    <p>{modals[currentModal].cancelText ?? "Cancel"}</p>
                 </div>
             </div>
         </div>

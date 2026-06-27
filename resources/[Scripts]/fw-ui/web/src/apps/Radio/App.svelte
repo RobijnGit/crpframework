@@ -44,19 +44,19 @@
         <img src="./images/radio.png" alt="" />
     
         <div
-            data-tooltip="Aan- / Uitschakelen"
+            data-tooltip="On/Off"
             class="radio-toggle"
             on:keyup on:click={ToggleRadio}
         />
     
         <div
-            data-tooltip="Verbinden"
+            data-tooltip="Connect"
             class="radio-connect"
             on:keyup on:click={ConnectToFrequency}
         />
     
         <div
-            data-tooltip="Loskoppelen"
+            data-tooltip="Disconnect"
             class="radio-disconnect"
             on:keyup on:click={Disconnect}
         />
@@ -73,7 +73,7 @@
                 />
             {:else}
                 <input
-                    value="Uit"
+                    value="Off"
                     disabled={!IsRadioOn}
                 />
             {/if}

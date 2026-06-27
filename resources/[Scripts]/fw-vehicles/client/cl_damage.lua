@@ -3,7 +3,7 @@ local CurrentBodyEject, InEjectVehicle = 0, false
 local Stalled = false
 
 -- Seatbelt
-FW.AddKeybind("toggleBelt", "Voertuigen", "Gordel om/af doen", "G", function(IsPressed)
+FW.AddKeybind("toggleBelt", "Vehicles", "Seatbelt", "G", function(IsPressed)
     if not IsPressed then return end
 
     local Ped = PlayerPedId()
@@ -15,7 +15,7 @@ FW.AddKeybind("toggleBelt", "Voertuigen", "Gordel om/af doen", "G", function(IsP
 
     if VehicleClass ~= 8 and VehicleClass ~= 13 and VehicleClass ~= 14 and GetEntityModel(Vehicle) ~= GetHashKey("polmotor") then
         if HarnessLevel and HarnessLevel > 0.0 then
-            local Text = HasHarness and "Harnas uittrekken" or "Harnas aantrekken"
+            local Text = HasHarness and "Removing harness" or "Putting on harness"
             local Duration = HasHarness and 2000 or 5000
             if exports['fw-progressbar']:GetTaskBarStatus() then return end
 
@@ -51,7 +51,7 @@ Citizen.CreateThread(function()
             DisableControlAction(0, 75, true)
 
             if IsDisabledControlJustReleased(1, 75) then
-                FW.Functions.Notify("Misschien even je harnas losmaken?", "error")
+                FW.Functions.Notify("Maybe loosen your harness?", "error")
             end
 
             ::SkipLoop::
@@ -101,7 +101,7 @@ Citizen.CreateThread(function()
                             SetVehicleEngineHealth(Vehicle, CurrentMotorDamage - 100.0)
                             SetVehicleUndriveable(Vehicle, true)
                             SetVehicleEngineOn(Vehicle, false, true, true)
-                            FW.Functions.Notify("Motor is afgeslagen..", "error")
+                            FW.Functions.Notify("Engine stalled..", "error")
                             Stalled = true
 
                             local CurrentHarnessLevel = GetVehicleMeta(Vehicle, "Harness")

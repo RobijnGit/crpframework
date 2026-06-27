@@ -81,11 +81,11 @@ AddEventHandler("fw-misc:Client:PlaceBeehive", function()
     local RayHandle = StartExpensiveSynchronousShapeTestLosProbe(Coords.x, Coords.y, Coords.z, Coords.x, Coords.y, Coords.z - 2, 1, 0, 4)
     local _, Hit, _, _, MaterialHash, _ = GetShapeTestResultIncludingMaterial(RayHandle)
     if not Config.BeehivesMaterial[MaterialHash] then
-        return FW.Functions.Notify("Ik denk dit stuk grond niet geschikt is voor een bijenkorf..")
+        return FW.Functions.Notify("I don't think this piece of land is suitable for a beehive...")
     end
 
     TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_HAMMERING", 0, true)
-    local Finished = FW.Functions.CompactProgressbar(1500, "Bijenkorf opbouwen...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(1500, "Building a beehive...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
     ClearPedTasks(PlayerPedId())
 
     if not Finished then return end
@@ -105,8 +105,8 @@ AddEventHandler("fw-misc:Client:CheckHive", function(Data, Entity)
 
     MenuItems[#MenuItems + 1] = {
         Icon = 'info-circle',
-        Title = "Oogst Percentage: " .. string.format("%.1f", HivePercentage) .. "%",
-        Desc = "Bijen Koningin: " .. (HiveData.HasQueen and "Ja" or "Nee"),
+        Title = "Harvest Percentage: " .. string.format("%.1f", HivePercentage) .. "%",
+        Desc = "Bee Queen: " .. (HiveData.HasQueen and "And" or "Nee"),
         Data = { Event = '', Type = ''  },
         CloseMenu = false,
     }
@@ -114,8 +114,8 @@ AddEventHandler("fw-misc:Client:CheckHive", function(Data, Entity)
     if GetHiveStage(HivePercentage) < 2 and not HiveData.HasQueen then
         MenuItems[#MenuItems + 1] = {
             Icon = 'chess-queen',
-            Title = "Bijen Koningin toevoegen",
-            Desc = "Maak de bijenkorf blij.",
+            Title = "Add Queen Bee",
+            Desc = "Make the beehive happy.",
             Disabled = not exports['fw-inventory']:HasEnoughOfItem('bee-queen', 1),
             Data = { Event = 'fw-misc:Client:AddQueenToHive', Type = 'Client', HiveId = HiveData.Id },
         }
@@ -125,8 +125,8 @@ AddEventHandler("fw-misc:Client:CheckHive", function(Data, Entity)
     if HivePercentage >= 95 or (PlayerJob.name == "police" or PlayerJob.name == "judge") then
         MenuItems[#MenuItems + 1] = {
             Icon = 'trash',
-            Title = "Bijenkorf Slopen",
-            Desc = "Opgerot met die kut beesten..",
+            Title = "Destroy Hive",
+            Desc = "Fuck off with those shitty animals..",
             Data = { Event = 'fw-misc:Client:DestroyHive', Type = 'Client', HiveId = HiveData.Id },
         }
     end
@@ -144,7 +144,7 @@ AddEventHandler("fw-misc:Client:AddQueenToHive", function(Data)
     if not HiveData then return end
 
     TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_GARDENER_PLANT", 0, true)
-    local Finished = FW.Functions.CompactProgressbar(15000, "Bijen Koningin toevoegen...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(15000, "Adding Queen Bee...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, {}, {}, {}, false)
     ClearPedTasks(PlayerPedId())
     
     if not Finished then return end
@@ -161,7 +161,7 @@ AddEventHandler("fw-misc:Client:DestroyHive", function(Data)
     local HiveData = GetHiveById(Data.HiveId)
     if not HiveData then return end
 
-    local Finished = FW.Functions.CompactProgressbar(15000, "Slopen...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { anim = "plant_floor", animDict = "weapons@first_person@aim_rng@generic@projectile@thermal_charge@", flags = 48 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(15000, "Demolishing...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { anim = "plant_floor", animDict = "weapons@first_person@aim_rng@generic@projectile@thermal_charge@", flags = 48 }, {}, {}, false)
     StopAnimTask(PlayerPedId(), "weapons@first_person@aim_rng@generic@projectile@thermal_charge@", "plant_floor", 1.0)
     
     if not Finished then return end
@@ -176,10 +176,10 @@ AddEventHandler("fw-misc:Client:HarvestHive", function(Data, Entity)
     local HivePercentage = GetHivePercentage(HiveData)
 
     if HivePercentage < 100.0 or (GetCloudTimeAsInt() - HiveData.LastHarvest <= (180 * 60)) then
-        return FW.Functions.Notify("Ik denk dat de ik nog maar even moet wachten met oogsten..", "error")
+        return FW.Functions.Notify("You can't harvest just yet..", "error")
     end
 
-    local Finished = FW.Functions.CompactProgressbar(5000, "Oogsten...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { anim = "plant_floor", animDict = "weapons@first_person@aim_rng@generic@projectile@thermal_charge@", flags = 48 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(5000, "Harvesting...", false, true, {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true}, { anim = "plant_floor", animDict = "weapons@first_person@aim_rng@generic@projectile@thermal_charge@", flags = 48 }, {}, {}, false)
     StopAnimTask(PlayerPedId(), "weapons@first_person@aim_rng@generic@projectile@thermal_charge@", "plant_floor", 1.0)
 
     if not Finished then return end
@@ -209,7 +209,7 @@ function InitBeehives()
                 {
                     Name = 'check',
                     Icon = 'fas fa-archive',
-                    Label = 'Controleren',
+                    Label = 'Check',
                     EventType = 'Client',
                     EventName = 'fw-misc:Client:CheckHive',
                     EventParams = '',
@@ -220,7 +220,7 @@ function InitBeehives()
                 {
                     Name = 'harvest',
                     Icon = 'fas fa-hand-holding-water',
-                    Label = 'Oogsten',
+                    Label = 'Harvest',
                     EventType = 'Client',
                     EventName = 'fw-misc:Client:HarvestHive',
                     EventParams = '',

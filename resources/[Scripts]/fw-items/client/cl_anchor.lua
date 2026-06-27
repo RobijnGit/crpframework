@@ -48,10 +48,10 @@ AddEventHandler('fw-items:use:item:anker:tilt', function()
     TriggerEvent("fw-misc:Client:PlaySoundEntity", 'vehicle.anchorRaise', NetworkGetNetworkIdFromEntity(Vehicle), true, nil)
     if not exports['fw-progressbar']:GetTaskBarStatus() then
         exports["fw-inventory"]:SetBusyState(true)
-        FW.Functions.Progressbar("use_anker", "Tilting anchor..", 5000, false, true, {}, {}, {}, {}, function() -- Done
+        FW.Functions.Progressbar("use_anker", "Raising Anchor..", 5000, false, true, {}, {}, {}, {}, function() -- Done
             exports["fw-inventory"]:SetBusyState(false)
             TriggerServerEvent('fw-items:server:sync:item:anchor', GetVehicleNumberPlateText(Vehicle), false)
-            FW.Functions.Notify('Anchor has been tilted..', 'success')
+            FW.Functions.Notify('The anchor has been raised...', 'success')
         end)
     end
 end)

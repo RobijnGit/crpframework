@@ -119,7 +119,7 @@
         transition:fade={{ duration: 250 }}
     >
         <i class="fal fa-info-circle"/>
-        <p>Volledige restart bezig...</p>
+        <p>Full restart in progress...</p>
     </div>
 {/if}
 

@@ -6,11 +6,11 @@
 
 <p class="preferences-header">Radio</p>
 <Checkbox
-    Label="VoIP: Radiokliks (Uitgaand)"
+    Label="VoIP: Radio Clicks (Outgoing)"
     bind:Checked={$MyPreferences['Audio.RadioClicksOut']}
 />
 <Checkbox
-    Label="VoIP: Radiokliks (Inkomend)"
+    Label="VoIP: Radio Clicks (Incoming)"
     bind:Checked={$MyPreferences['Audio.RadioClicksIn']}
 />
 
@@ -26,7 +26,7 @@
         style="padding: 0px; margin: 0px;"
     />
     
-    <p style="font-family: Roboto; font-size: 1.5vh; color: white; margin: 0px;">Telefoon</p>
+    <p style="font-family: Roboto; font-size: 1.5vh; color: white; margin: 0px;">Phone</p>
     <Slider
         step={0.01}
         min={0.0}

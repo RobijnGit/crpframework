@@ -117,12 +117,12 @@
                         <div class="catalog-info-stats">
                             {#if VehicleStats}
                                 <div class="catalog-info-progress">
-                                    <div class="catalog-info-progress-name">Acceleratie</div>
+                                    <div class="catalog-info-progress-name">Acceleration</div>
                                     <div class="catalog-info-progress-grade">{VehicleStats.Acceleration.toFixed(1)}</div>
                                     <div class="catalog-info-progress-width" style="width: {VehicleStats.Acceleration * 10}%"></div>
                                 </div>
                                 <div class="catalog-info-progress">
-                                    <div class="catalog-info-progress-name">Snelheid</div>
+                                    <div class="catalog-info-progress-name">Speed</div>
                                     <div class="catalog-info-progress-grade">{VehicleStats.Speed.toFixed(1)}</div>
                                     <div class="catalog-info-progress-width" style="width: {VehicleStats.Speed * 10}%"></div>
                                 </div>
@@ -132,7 +132,7 @@
                                     <div class="catalog-info-progress-width" style="width: {VehicleStats.Handling * 10}%"></div>
                                 </div>
                                 <div class="catalog-info-progress">
-                                    <div class="catalog-info-progress-name">Remmen</div>
+                                    <div class="catalog-info-progress-name">Braking</div>
                                     <div class="catalog-info-progress-grade">{VehicleStats.Braking.toFixed(1)}</div>
                                     <div class="catalog-info-progress-width" style="width: {VehicleStats.Braking * 10}%"></div>
                                 </div>
@@ -145,7 +145,7 @@
 
                 <div class="catalog-key-container">
                     <div class="catalog-key">W</div>
-                    <div class="catalog-key-text">- Motorgeluid</div>
+                    <div class="catalog-key-text">- Engine Sound</div>
                 </div>
     
                 <div class="catelog-vehicles-amount">{CurrentVehicle + 1} / {Vehicles.length}</div>
@@ -181,12 +181,12 @@
                         on:keyup on:click={() => {
                             if (CurrentVehicle - 1 >= 0) SetCurrentVehicle(CurrentVehicle - 1);
                         }}
-                    >Vorige</p>
+                    >Previous</p>
                     <p
                         on:keyup on:click={() => {
                             if (CurrentVehicle + 1 < Vehicles.length) SetCurrentVehicle(CurrentVehicle + 1)
                         }}
-                    >Volgende</p>
+                    >Next</p>
                 </div>
             {/if}
         </div>

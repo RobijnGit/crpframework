@@ -20,7 +20,7 @@
 
 <Modal>
     <TextField
-        Title="Belasting Percentage na Tsunami"
+        Title="Tax Percentage after Tsunami"
         Icon="pencil-alt"
         Type="number"
         bind:RealValue={Value}
@@ -32,11 +32,11 @@
             Color="warning"
             style="margin: 0;"
             on:click={Cancel}
-        >Annuleren</Button>
+        >Cancel</Button>
         <Button
             Color="success"
             style="margin: 0;"
             on:click={Submit}
-        >Opslaan</Button>
+        >Save</Button>
     </div>
 </Modal>

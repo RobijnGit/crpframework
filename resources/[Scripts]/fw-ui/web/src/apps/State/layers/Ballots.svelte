@@ -50,9 +50,9 @@
 </script>
 
 <div class="new-ballot">
-    <Button Color="success" style="margin: 0;" on:click={CreateBallot}>Stemming Aanmaken</Button>
+    <Button Color="success" style="margin: 0;" on:click={CreateBallot}>Create Ballot</Button>
 </div>
-<p class="preferences-header">Actief / Aanstaande</p>
+<p class="preferences-header">Active / Upcoming</p>
 
 {#each ActiveBallots as Data, Key}
     <div class="ballot-container">

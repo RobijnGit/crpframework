@@ -71,7 +71,7 @@ FW.RegisterServer("fw-polaroid:Server:AddIntoPhotobook", async (Source: number, 
 
     const Binder = Player.Functions.GetItemByName("polaroid-binder");
     if (!Binder) {
-        return Player.Functions.Notify("Je hebt geen binder!", "error");
+        return Player.Functions.Notify("You don't have a binder!", "error");
     }
 
     const Photos = Binder.Info?.Photos || [];

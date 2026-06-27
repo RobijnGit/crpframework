@@ -8,7 +8,7 @@ FW.RegisterServer("fw-polaroid:Server:RechargeCamera", (Source: number, CameraSl
     if (!Player) return;
 
     exp['fw-inventory'].IncreaseQualityItemFromInventory(`ply-${Player.PlayerData.citizenid}`, 'polaroid-camera', CameraSlot, 100.0);
-    Player.Functions.Notify("Je Polaroid Camera is volledig opgeladen!", "success");
+    Player.Functions.Notify("Your Polaroid Camera is fully charged!", "success");
 });
 
 FW.RegisterServer("fw-polaroid:Server:ReceivePhoto", (Source: number, Url: string) => {

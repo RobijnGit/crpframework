@@ -1,4 +1,4 @@
-FW.AddKeybind("openDispatch", "Hulpdiensten", "Focus Meldingen", "", function(IsPressed)
+FW.AddKeybind("openDispatch", "Dispatch", "Open", "", function(IsPressed)
     if not IsPressed then return end
     if not LoggedIn then return end
 
@@ -85,7 +85,7 @@ AddEventHandler("fw-mdw:Client:AddAlert", function(AlertId, Data, IgnoreSound, H
             SetBlipAsShortRange(Blip, false)
             SetBlipDisplay(Blip, 2)
             BeginTextCommandSetBlipName("STRING")
-            AddTextComponentString("Radio Scanner signaal")
+            AddTextComponentString("Radio Scanner Signal")
             EndTextCommandSetBlipName(Blip)
     
             local Transition = 255

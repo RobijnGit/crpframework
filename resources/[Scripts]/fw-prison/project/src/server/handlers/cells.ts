@@ -29,15 +29,15 @@ onNet("fw-prison:Server:ClaimCell", async ({CellId}: {CellId: number}) => {
 
     // Is the current cell claimed?
     if (await IsCellClaimed(CellId)) {
-        return Player.Functions.Notify("Deze cel is al door iemand anders geclaimed..", "error");
+         return Player.Functions.Notify("This cell has already been claimed by someone else..", "error");
     };
 
     // Do I already have a claimed cell?
     const Result = await exp['ghmattimysql'].executeSync("SELECT COUNT(*) AS `amount` FROM `prison_cells` WHERE `claimee` = ?", [Player.PlayerData.citizenid]);
-    if (Result[0].amount > 0) return Player.Functions.Notify("Je hebt al een cel geclaimed..", "error");
+    if (Result[0].amount > 0) return Player.Functions.Notify("You have already claimed a cell...", "error");
 
     await exp['ghmattimysql'].executeSync("UPDATE `prison_cells` SET `claimee` = ?, `last_used` = ? WHERE `cell_id` = ?", [Player.PlayerData.citizenid, new Date().getTime(), CellId])
-    Player.Functions.Notify("Cel geclaimed!");
+    Player.Functions.Notify("Cell claimed!");
 });
 
 const IsCellClaimed = async (CellId: number): Promise<boolean> => {

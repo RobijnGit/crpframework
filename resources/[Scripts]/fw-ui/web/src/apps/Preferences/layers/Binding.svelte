@@ -50,7 +50,7 @@
 
 {#each ['F2', 'F3', 'F5', 'F6', 'F7', 'F9', 'F10'] as Data, Key}
     <TextField
-        Title="Animatie Naam ({Data})"
+        Title="Emote Name ({Data})"
         Icon={getRandomEmote()}
         IconColor="#ffcc33"
         bind:RealValue={$MyPreferences[`Binds.${Data}`]}

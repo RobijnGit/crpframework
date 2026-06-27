@@ -49,19 +49,19 @@ AddEventHandler("fw-misc:Client:OpenContainer", function(Data)
                     ContainerWeight = ContainerWeight + (ItemData.Weight * v)
                     table.insert(PromptOptions, {
                         Value = "Withdraw:" .. k,
-                        Text = "Opnemen: " .. ItemData.Label .. " - " .. v
+                        Text = "Withdraw: " .. ItemData.Label .. " - " .. v
                     })
                 end
             end
 
             local Result = exports['fw-ui']:CreateInput({
                 {
-                    Label = "Actie",
+                    Label = "Action",
                     Name = "Action",
                     Choices = PromptOptions,
                 },
                 {
-                    Label = "Aantal",
+                    Label = "Value",
                     Name = "Value"
                 }
             })
@@ -82,7 +82,7 @@ AddEventHandler("fw-misc:Client:OpenContainer", function(Data)
                         DepositWeight = DepositWeight + (ItemData.Weight * DepositQuantity)
 
                         if (ContainerWeight + DepositWeight) > MaxContainerWeight then
-                            return FW.Functions.Notify("Je kan maar maximaal 1000 kg aan materialen in deze container stoppen..", "error")
+                            return FW.Functions.Notify("You can only put a maximum of 1000 kg of materials in this container.", "error")
                         end
 
                         local DidRemove = FW.SendCallback("FW:RemoveItem", k, DepositQuantity)
@@ -131,7 +131,7 @@ AddEventHandler("fw-misc:Client:ChangePincode", function(Data)
     if ContainerData == nil then return end
 
     if not exports['fw-businesses']:HasRolePermission("Cortainer", "StashAccess") then
-        return FW.Functions.Notify("Geen toegang..", "error")
+        return FW.Functions.Notify("No access..", "error")
     end
     
     Citizen.SetTimeout(250, function()
@@ -232,7 +232,7 @@ function SetupContainers()
                 {
                     Name = 'open',
                     Icon = 'fas fa-box-open',
-                    Label = 'Container Openen',
+                    Label = 'Open Container',
                     EventType = 'Client',
                     EventName = 'fw-misc:Client:OpenContainer',
                     EventParams = { ContainerId = k },
@@ -243,7 +243,7 @@ function SetupContainers()
                 {
                     Name = 'change_pin',
                     Icon = 'fas fa-circle',
-                    Label = 'Pincode Veranderen',
+                    Label = 'Change PIN code',
                     EventType = 'Client',
                     EventName = 'fw-misc:Client:ChangePincode',
                     EventParams = { ContainerId = k },

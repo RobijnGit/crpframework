@@ -1,11 +1,11 @@
 {
   "partLabels": {
     "Engine": "Motor",
-    "Axle": "Aandrijfas",
-    "Transmission": "Transmissie",
-    "FuelInjectors": "Brandstof injectoren",
-    "Clutch": "Koppelingsplaat",
-    "Brakes": "Remschijven"
+    "Axle": "Axle",
+    "Transmission": "Transmission",
+    "FuelInjectors": "Fuel injectors",
+    "Clutch": "Clutch",
+    "Brakes": "Brakes"
   },
   "zones": [
     {

@@ -39,13 +39,13 @@
 {#if ShowingCash}
     <div out:fade={{duration: 500}} class="cash-flash">
         <div class="cash-flash-item player-cash">
-            <span class="cash-flash-dollar">€</span>
+            <span class="cash-flash-dollar">$</span>
             <span class="cash-flash-amount">{AddSpaces(MyCash)}</span>
         </div>
         {#each CashActions as Cash}
             <div out:fade={{duration: 500}} class="cash-flash-item cash-flash-{Cash.Id}">
                 <span class="cash-flash-icon">{Cash.Plus ? '+' : '-'}</span>
-                <span class="cash-flash-dollar" class:negative={!Cash.Plus}>€</span>
+                <span class="cash-flash-dollar" class:negative={!Cash.Plus}>$</span>
                 <span class="cash-flash-amount">{AddSpaces(Cash.Amount)}</span>
             </div>
         {/each}

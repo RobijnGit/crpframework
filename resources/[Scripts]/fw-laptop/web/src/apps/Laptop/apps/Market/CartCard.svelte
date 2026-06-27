@@ -16,7 +16,7 @@
         class="cart-button"
         on:keyup on:click
     >
-        Verwijderen van Winkelmandje
+        Remove from Cart
     </div>
 </div>
 

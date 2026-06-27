@@ -19,18 +19,14 @@
     })
 </script>
 
-{#if !(window).GetParentResourceName || (window).GetParentResourceName() == "fw-ui"}
-    {#if $DropdownData.Show}
-        <Dropdown Options={$DropdownData.Options} Positioning={{
-            Width: $DropdownData.Positioning?.Width,
-            Top: $DropdownData.Positioning?.Top,
-            Left: $DropdownData.Positioning?.Left
-        }}/>
-    {/if}
-
-    <div class="root">
-        <AppProvider />
-    </div>
-{:else}
-    <h6 style="width: 100%; text-align: center; font-size: 40vh; font-family: Roboto; color: red;">loser</h6>
+{#if $DropdownData.Show}
+    <Dropdown Options={$DropdownData.Options} Positioning={{
+        Width: $DropdownData.Positioning?.Width,
+        Top: $DropdownData.Positioning?.Top,
+        Left: $DropdownData.Positioning?.Left
+    }}/>
 {/if}
+
+<div class="root">
+    <AppProvider />
+</div>

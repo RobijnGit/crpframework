@@ -22,7 +22,7 @@ end)
 RegisterNUICallback("Cars/TestDrive", function(Data, Cb)
     Cb("Ok")
     if TestDrive or SpawningTestDrive then
-        return FW.Functions.Notify("Je hebt al een testrit buiten staan..", "error")
+        return FW.Functions.Notify("You already have a test drive outside..", "error")
     end
 
     SpawningTestDrive = true
@@ -30,7 +30,7 @@ RegisterNUICallback("Cars/TestDrive", function(Data, Cb)
     local IsLockdown = exports['fw-cityhall']:IsLockdownActive("business-" .. CurrentNetwork)
     if IsLockdown and not exports['fw-cityhall']:IsGov() then
         SpawningTestDrive = false
-        return FW.Functions.Notify("Bedrijf is in lockdown..", "error")
+        return FW.Functions.Notify("Business is in lockdown..", "error")
     end
 
     TriggerServerEvent("fw-businesses:Server:VehicleShop:TestDrive", CurrentNetwork, Data.Vehicle, false)
@@ -92,7 +92,7 @@ RegisterNUICallback("Cars/Sell", function(Data, Cb)
     local IsLockdown = exports['fw-cityhall']:IsLockdownActive("business-" .. CurrentNetwork)
     if IsLockdown and not exports['fw-cityhall']:IsGov() then
         Cb("Ok")
-        return FW.Functions.Notify("Bedrijf is in lockdown..", "error")
+        return FW.Functions.Notify("Business is in lockdown..", "error")
     end
 
     TriggerServerEvent("fw-businesses:Server:VehicleShop:SellVehicle", TestDrive, Data, VehToNet(TestDrive.Entity))

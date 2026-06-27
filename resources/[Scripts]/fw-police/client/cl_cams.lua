@@ -5,9 +5,9 @@ AddEventHandler('fw-police:Client:ShowCameraInput', function()
 	local PlayerData = FW.Functions.GetPlayerData()
     if (PlayerData.job.name ~= "police" and PlayerData.job.name ~= "storesecurity") or not PlayerData.job.onduty then return end
 
-	if InsideCam then
-		return FW.Functions.Notify("Je zit al in een camera..", "error")
-	end
+    if InsideCam then
+        return FW.Functions.Notify("You are already in a camera.", "error")
+    end
 
 	Citizen.Wait(100)
 
@@ -17,11 +17,10 @@ AddEventHandler('fw-police:Client:ShowCameraInput', function()
 
     if Result then
         if Config.SecurityCams[tonumber(Result.CamId)] ~= nil then
-			TriggerEvent('fw-police:Client:OpenCamera', tonumber(Result.CamId))
-		else
-			FW.Functions.Notify("Deze camera bestaat niet..", 'error')
-			-- TriggerEvent('fw-police:Client:OpenCamera', tonumber(Result.CamId))
-		end
+            TriggerEvent('fw-police:Client:OpenCamera', tonumber(Result.CamId))
+        else
+            FW.Functions.Notify("This camera does not exist.", 'error')
+        end
     end
 end)
 
@@ -49,8 +48,8 @@ AddEventHandler("fw-police:Client:OpenCamera", function(CamId)
 
     InsideCam = true
 
-	exports['fw-ui']:ShowInteraction('[ESC/BACKSPACE] Camera afsluiten', 'error')
-	exports['fw-assets']:AddProp('Tablet')
+    exports['fw-ui']:ShowInteraction('[ESC/BACKSPACE] Close camera', 'error')
+    exports['fw-assets']:AddProp('Tablet')
     exports['fw-assets']:RequestAnimationDict('amb@code_human_in_bus_passenger_idles@female@tablet@base')
     TaskPlayAnim(PlayerPedId(), "amb@code_human_in_bus_passenger_idles@female@tablet@base", "base", 3.0, 3.0, -1, 49, 0, 0, 0, 0)
 

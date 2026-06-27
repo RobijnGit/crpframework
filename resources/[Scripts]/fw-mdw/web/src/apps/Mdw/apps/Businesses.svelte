@@ -53,14 +53,14 @@
 
 <MdwPanel class="filled" style="width: 50%">
     <MdwPanelHeader>
-        <h6>Bedrijvengids</h6>
-        <TextField Title='Zoeken' Icon='search' SubSet={FilterBusinesses} />
+        <h6>Business Directory</h6>
+        <TextField Title='Search' Icon='search' SubSet={FilterBusinesses} />
     </MdwPanelHeader>
 
     <MdwPanelList>
         {#each FilteredBusinesses as Data, Key}
             <MdwCard on:click={() => { FetchById(Data.id) }} Information={[
-                [Data.business_name, Data.business_account ? `Bankrekening: ${Data.business_account}` : ""],
+                [Data.business_name, Data.business_account ? `Account: ${Data.business_account}` : ""],
                 [""]
             ]} />
         {/each}
@@ -69,15 +69,15 @@
 
 <MdwPanel class="filled" style="width: 50%">
     <MdwPanelHeader>
-        <h6>Medewerkerslijst ({$CurrentBusiness.Employees.length})</h6>
-        <TextField Title='Zoeken' Icon='search' SubSet={FilterEmployees} />
+        <h6>Employee List ({$CurrentBusiness.Employees.length})</h6>
+        <TextField Title='Search' Icon='search' SubSet={FilterEmployees} />
     </MdwPanelHeader>
 
     <MdwPanelList>
         {#each FilteredEmployees as Data, Key}
             <MdwCard Information={[
                 [Data.Name, `Rol: ${Data.Role}`],
-                [`BSN: ${Data.Cid}`]
+                [`State ID: ${Data.Cid}`]
             ]} />
         {/each}
     </MdwPanelList>

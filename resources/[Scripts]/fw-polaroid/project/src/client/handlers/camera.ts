@@ -22,13 +22,13 @@ on("fw-inventory:Client:OnItemInsert", async (FromItem: any, ToItem: any) => {
     if (ToItem.Item != "polaroid-camera") return;
 
     const Quality = await exp['fw-inventory'].CalculateQuality(ToItem.Item, ToItem.CreateDate);
-    if (Quality >= 20.0) return FW.Functions.Notify("Je Polaroid Camera is al opgeladen..", "error");
+    if (Quality >= 20.0) return FW.Functions.Notify("Your Polaroid Camera is already charged..", "error");
 
     exp['fw-inventory'].SetBusyState(true);
 
     await Delay(200);
 
-    const Finished = await FW.Functions.CompactProgressbar(5000, "Batterijen vervangen..", false, true, {
+    const Finished = await FW.Functions.CompactProgressbar(5000, "Changing Batteries..", false, true, {
         disableMovement: false, disableCarMovement: false, disableMouse: false, disableCombat: true
     }, {
         animDict: 'amb@world_human_hang_out_street@female_hold_arm@idle_a',
@@ -50,7 +50,7 @@ on("fw-inventory:Client:OnItemInsert", async (FromItem: any, ToItem: any) => {
 
 onNet("fw-polaroid:Client:OpenCamera", async () => {
     if (!exp['fw-inventory'].HasEnoughOfItem("polaroid-paper", 1)) {
-        return FW.Functions.Notify("Je hebt Polaroid Film nodig om een foto te kunnen maken..");
+        return FW.Functions.Notify("You need Polaroid Film to take a photo..");
     };
 
     if (SnappingPhoto) return;
@@ -108,7 +108,7 @@ CameraThread.addHook("active", async () => {
                     return {
                         Icon: "image-polaroid",
                         Title: Val.Label,
-                        Desc: "Klik om de filter te selecteren.",
+                        Desc: "Click to select the filter.",
                         Data: { Event: 'fw-polaroid:Client:ChangeTimecycle', Type: 'Client', Timecycle: Val.Timecycle }
                     }
                 })
@@ -138,7 +138,7 @@ CameraThread.addHook("active", async () => {
 
         CameraThread.stop();
 
-        const Finished = await FW.Functions.CompactProgressbar(12000, "Printen..", false, false, {
+        const Finished = await FW.Functions.CompactProgressbar(12000, "Printing..", false, false, {
             disableMovement: false, disableCarMovement: false, disableMouse: false, disableCombat: true
         }, {
             animDict: 'friends@fra@ig_1',

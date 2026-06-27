@@ -76,8 +76,8 @@
                 {/if}
 
                 <div>
-                    <Button Color="success" on:click={() => WalkmanMaximized = !WalkmanMaximized}>{WalkmanMaximized ? "Minimaliseren" : "Maximaliseren"}</Button>
-                    <Button Color="warning" on:click={CloseWalkman} style="margin-right: 0;">Sluiten</Button>
+                    <Button Color="success" on:click={() => WalkmanMaximized = !WalkmanMaximized}>{WalkmanMaximized ? "Minimize" : "Maximize"}</Button>
+                    <Button Color="warning" on:click={CloseWalkman} style="margin-right: 0;">Close</Button>
                 </div>
             </div>
         </div>

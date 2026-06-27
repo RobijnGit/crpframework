@@ -233,7 +233,7 @@ RegisterNetEvent('fw-menu:Client:ToggleVisor', function()
     local Texture = GetPedPropTextureIndex(PlayerPedId(), 0)
     local NewProp = Variations.Visor[Gender][Current]
     if NewProp == nil then
-        FW.Functions.Notify("Deze helm heeft geen visier..", "error")
+        FW.Functions.Notify("This helmet has no visor..", "error")
         return
     end
 
@@ -254,7 +254,7 @@ RegisterNetEvent('fw-menu:Client:ToggleBag', function()
     local NewProp = Variations.Bags[Gender][Current]
     print(Current, Texture, NewProp)
     if NewProp == nil then
-        FW.Functions.Notify("Deze rugzak doet niet zo veel..", "error")
+        FW.Functions.Notify("This backpack doesn't do much...", "error")
         return
     end
 
@@ -279,7 +279,7 @@ RegisterNetEvent('fw-menu:Client:ToggleGloves', function()
             NewProp = OriginalGloves.Draw
             Texture = OriginalGloves.Txt
         else
-            FW.Functions.Notify("Deze handschoenen lijken wel vast te zitten..", "error")
+            FW.Functions.Notify("These gloves seem to be stuck...", "error")
             return
         end
     else
