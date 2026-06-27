@@ -1,11 +1,11 @@
 FW = exports['fw-core']:GetCoreObject()
 
-FW.Commands.Add("dutyon", "Ga in dienst.", {}, false, function(Source, Args)
+FW.Commands.Add("duty", "Go on duty.", {}, false, function(Source, Args)
     local Player = FW.Functions.GetPlayer(Source)
     if Player == nil then return end
 
     if Player.PlayerData.job.name ~= 'ems' and Player.PlayerData.job.name ~= 'police' and Player.PlayerData.job.name ~= 'storesecurity' and Player.PlayerData.job.name ~= 'doc' then
-        return Player.Functions.Notify("Ze herkennen je niet..", "error")
+        return Player.Functions.Notify("They don't recognize you...", "error")
     end
 
     local JobsToMdw = {

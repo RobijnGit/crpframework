@@ -70,9 +70,8 @@ local MenuOpen, Focus = false, false
 
 function IsPlayerAdmin()
     local Promise = promise:new()
-    Citizen.SetTimeout(50, function() -- Is nodig, anders gaat het te snel en doet hij 't niet
+    Citizen.SetTimeout(50, function() -- It's necessary, otherwise it goes too fast and it won't work
         FW.Functions.TriggerCallback('fw-admin:Server:IsPlayerAdmin', function(IsAdmin)
-            print("isAdmin", isAdmin)
             Promise:resolve(IsAdmin)
         end)
     end)
@@ -117,6 +116,8 @@ AddEventHandler('fw-admin:Client:Try:Open:Menu', function()
                 end
             end)
         end)
+    else
+        FW.Functions.Notify("Well, I guess you're not as god-like as you think you are...", "error")
     end
 end)
 

@@ -81,7 +81,7 @@ AddEventHandler("fw-cityhall:Server:SetLicense", function(Cid, License)
     NewLicenses[License] = not NewLicenses[License]
 
     if NewLicenses[License] then
-        Player.Functions.Notify("Certificate [" .. License .. "] issued", "success")
+        Player.Functions.Notify("License [" .. License .. "] issued", "success")
     
         local Date = os.date("*t", os.time())
         TriggerEvent('fw-phone:Server:Documents:AddDocument', '1001', {

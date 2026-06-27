@@ -58,7 +58,7 @@ AddEventHandler('fw-vehicles:Client:Switch:Seat', function(SeatNumber)
     if IsVehicleSeatFree(Vehicle, SeatNumber) then
         TaskWarpPedIntoVehicle(PlayerPedId(), Vehicle, SeatNumber)
     else
-        FW.Functions.Notify("Hier zit al iemand met z'n dikke reet..", "error")
+        FW.Functions.Notify("There's already someone sitting here with his fat ass...", "error")
     end
 end)
 
@@ -71,7 +71,7 @@ RegisterNetEvent('fw-vehicle:client:clean:vehicle', function()
         if #(pos - vehpos) < 3.0 and not IsPedInAnyVehicle(ped) then
             CleanVehicle(vehicle)
         else
-            FW.Functions.Notify("Je staat niet in de buurt van een voertuig en/of zit in een voertuig...", "error")
+            FW.Functions.Notify("You are not standing near a vehicle and/or sitting in a vehicle...", "error")
         end
     end
 end)
@@ -80,7 +80,7 @@ function CleanVehicle(vehicle)
     local ped = PlayerPedId()
     local pos = GetEntityCoords(ped)
     TaskStartScenarioInPlace(ped, "WORLD_HUMAN_MAID_CLEAN", 0, true)
-    FW.Functions.Progressbar("cleaning_vehicle", "Voertuig poetsen...", math.random(10000, 20000), false, true, {
+    FW.Functions.Progressbar("cleaning_vehicle", "Cleaning Vehicle...", math.random(10000, 20000), false, true, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
@@ -92,9 +92,9 @@ function CleanVehicle(vehicle)
         FW.Functions.TriggerCallback('FW:RemoveItem', function() end, 'car-polish', 1, false)
         ClearAllPedProps(ped)
         ClearPedTasks(ped)
-        FW.Functions.Notify("Je hebt je voertuig schoon gemaakt...", "success")
+        FW.Functions.Notify("You've cleaned your vehicle...", "success")
     end, function() -- Cancel
-        FW.Functions.Notify("Geannuleerd..", "error")
+        FW.Functions.Notify("Canceled..", "error")
         ClearAllPedProps(ped)
         ClearPedTasks(ped)
     end)
@@ -217,14 +217,14 @@ AddEventHandler('fw-vehicles:client:carry:bicycle', function(Nothing, Entity)
     if not Carrying then
         local PlayerBone = GetPedBoneIndex(PlayerPedId(), 0xE5F3)
         NetworkRequestControlOfEntity(Entity)
-        exports['fw-ui']:ShowInteraction('[E] Fiets Droppen', 'primary')
+        exports['fw-ui']:ShowInteraction('[E] Drop Bicycle', 'primary')
         AttachEntityToEntity(Entity, PlayerPedId(), PlayerBone, 0.0, 0.24, 0.10, 340.0, 330.0, 330.0, true, true, false, true, 1, true)
         exports['fw-assets']:RequestAnimationDict("anim@heists@box_carry@")
         TaskPlayAnim(PlayerPedId(), 'anim@heists@box_carry@', 'idle', 2.0, 2.0, -1, 51, 0, false, false, false)
         AttatchedEntity = Entity
         Carrying = true
     else
-        FW.Functions.Notify('Je hebt al wat in je handen..', 'error', 5500)
+        FW.Functions.Notify('You already have something in your hands...', 'error', 5500)
     end
 end)
 
@@ -257,7 +257,7 @@ AddEventHandler("fw-vehicles:Client:StealRim", function(Data, Entity)
         TriggerServerEvent("fw-mdw:Server:SendAlert:Oxy", GetEntityCoords(PlayerPedId()), FW.Functions.GetStreetLabel())
     end
 
-    local Finished = FW.Functions.CompactProgressbar(30000, "Zwieber niet stelen...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", anim = "machinic_loop_mechandplayer", flags = 1 }, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(30000, "Unmounting...", false, true, {disableMovement = false, disableCarMovement = false, disableMouse = false, disableCombat = true}, { animDict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", anim = "machinic_loop_mechandplayer", flags = 1 }, {}, {}, false)
     StopAnimTask(PlayerPedId(), "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer", 1.0)
     if not Finished then return end
 
@@ -271,7 +271,7 @@ AddEventHandler('fw-vehicles:Client:InspectVIN', function(Data, Entity)
     local VIN = FW.SendCallback("fw-vehicles:Server:GetVIN", GetVehicleNumberPlateText(Entity))
 
     if not VIN then
-        return FW.Functions.Notify("Het VIN lijkt doorgekrast te zijn..", "error")
+        return FW.Functions.Notify("The VIN appears to be scratched out.", "error")
     end
 
     FW.Functions.Notify("VIN: " .. VIN)

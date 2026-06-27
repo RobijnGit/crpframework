@@ -63,17 +63,17 @@ end)
 
 FW.Functions.CreateCallback("fw-misc:Server:CanPluckBananas", function(Source, Cb)
     if isBananaTreeWaterLevel <= 25 then
-        Cb({Success = false, Msg = "De boom is te droog, geef het wat water.."})
+        Cb({Success = false, Msg = "The tree is too dry, give it some water.."})
         return
     end
 
     if GetGameTimer() <= lastBananaPluck then
-        Cb({Success = false, Msg = "De bananen zijn nog niet rijp.."})
+        Cb({Success = false, Msg = "The bananas are not ripe yet.."})
         return
     end
 
     if bananaPool <= 0 then
-        Cb({Success = false, Msg = "De bananen moeten nog groeien.."})
+        Cb({Success = false, Msg = "The bananas still have to grow.."})
         return
     end
 
@@ -140,7 +140,7 @@ FW.RegisterServer("fw-misc:Server:PurchaseWeaponBody", function(Source, BodyType
     local Amount = math.min(math.floor(Amount), 100)
 
     if not Player.Functions.RemoveMoney('cash', WeaponPrices[BodyType] * Amount) then
-        return Player.Functions.Notify("Niet genoeg cash..", "error")
+        return Player.Functions.Notify("Not enough cash...", "error")
     end
 
     local Item = ""
@@ -204,7 +204,7 @@ FW.RegisterServer("fw-misc:Server:CreateSandstone", function(Source)
 
     local DidFind = math.random() > 0.25
     if not DidFind then
-        return Player.Functions.Notify("Lijkt erop dat je niks kon vinden..", "error")
+        return Player.Functions.Notify("Looks like you couldn't find anything...", "error")
     end
 
     if Player.PlayerData.job.name ~= 'police' or Player.PlayerData.metadata.department ~= 'BCSO' then
@@ -270,7 +270,7 @@ AddEventHandler("fw-misc:Server:SellSomething", function()
         --     TriggerClientEvent('fw-inventory:Client:ShowActionBox', Source, 'Verkocht', k, v, '')
         -- end
 
-        Player.Functions.Notify("Goederen verkocht.")
+        Player.Functions.Notify("Goods sold.")
         Player.Functions.AddMoney("cash", TotalReceive, "Sells illegal items")
     end
 
@@ -287,7 +287,7 @@ FW.RegisterServer("fw-misc:Server:AFKKick", function(Source)
     local Player = FW.Functions.GetPlayer(Source)
     if Player == nil then return end
 
-    DropPlayer(Player.PlayerData.source, 'Je werd gekickt van de server, reden:\nJe was geflagged als AFK.\n\n🔸 Indien je vragen hebt maak een ticket aan in onze discord: discord.gg/clarityrp')
+    DropPlayer(Player.PlayerData.source, 'You were kicked from the server, reason:\nYou were flagged as AFK.\n\n🔸 If you have any questions, create a ticket in our discord: discord.gg/clarityrp')
 end)
 
 function UpdateWeaponPartsPrices()

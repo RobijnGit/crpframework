@@ -37,7 +37,7 @@ AddEventHandler("fw-island:Server:Foodchain:PayRegister", function(Data)
 
     if (Data.PaymentType:lower() == 'cash' and Player.Functions.RemoveMoney('cash', PaymentData.Costs)) or (Data.PaymentType:lower() == 'bank' and exports['fw-financials']:RemoveMoneyFromAccount(PaymentData.Employee.Cid, PaymentData.Employee.Account, Player.PlayerData.charinfo.account, PaymentData.Costs, 'PURCHASE', 'Payment for business services: ' .. PaymentData.Order, false)) then
         if Data.PaymentType:lower() == 'bank' then
-            TriggerClientEvent('fw-phone:Client:Notification', Src, "business-pay-" .. Data.Foodchain .. Data.Register, "fas fa-home", { "white" , "rgb(38, 50, 56)" }, Data.Foodchain, exports['fw-businesses']:NumberWithCommas(PaymentData.Costs) .. " has been deducted from your banking account.")
+            TriggerClientEvent('fw-phone:Client:Notification', Src, "business-pay-" .. Data.Foodchain .. Data.Register, "fas fa-home", { "white" , "rgb(38, 50, 56)" }, Data.Foodchain, exports['fw-businesses']:NumberWithCommas(PaymentData.Costs) .. " debited from your bank account.")
         end
         TriggerClientEvent('fw-phone:Client:Notification', PaymentData.Employee.Source, "business-charge-" .. Data.Foodchain .. Data.Register, "fas fa-home", { "white" , "rgb(38, 50, 56)" }, Data.Foodchain, exports['fw-businesses']:NumberWithCommas(PaymentData.Costs) .. " has succesfully been paid.")
         exports['fw-financials']:AddMoneyToAccount(Player.PlayerData.citizenid, Player.PlayerData.charinfo.account, PaymentData.Employee.Account, PaymentData.OrgCosts, 'PURCHASE', 'Payment for business services: ' .. PaymentData.Order)

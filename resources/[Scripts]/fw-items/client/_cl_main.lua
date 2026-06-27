@@ -76,7 +76,7 @@ AddEventHandler('fw-items:client:use:pakjesigaretten', function()
             DoingSomething = true
         exports["fw-inventory"]:SetBusyState(true)
             Citizen.SetTimeout(1000, function()
-                FW.Functions.Progressbar("pakje-sigaretten", "Opening cigarettes...", 2500, false, true, {
+                FW.Functions.Progressbar("open-pack-cigs", "Opening a pack of cigarettes...", 2500, false, true, {
                 disableMovement = false,
                 disableCarMovement = false,
                 disableMouse = false,
@@ -86,7 +86,7 @@ AddEventHandler('fw-items:client:use:pakjesigaretten', function()
                     exports["fw-inventory"]:SetBusyState(false)
                     FW.Functions.TriggerCallback('FW:RemoveItem', function() end, 'pakjesigaretten', 1, false)
                     FW.Functions.TriggerCallback('FW:AddItem', function() end, 'sigaret', 21, false)
-                    FW.Functions.Notify("You've opened your box of cigarettes, you've received 21 cigarettes.", "success")
+                    FW.Functions.Notify("You've opened your pack of cigarettes, you've received 21 cigarettes.", "success")
                 end, function() -- Cancel
                     DoingSomething = false
                     exports["fw-inventory"]:SetBusyState(false)
@@ -130,7 +130,7 @@ AddEventHandler('fw-items:client:use:pack:paper', function()
             DoingSomething = true
         exports["fw-inventory"]:SetBusyState(true)
             Citizen.SetTimeout(1000, function()
-                FW.Functions.Progressbar("printer-pack-paper", "Unboxing printing paper...", 2500, false, true, {
+                FW.Functions.Progressbar("printer-pack-paper", "Unpacking a pack of paper...", 2500, false, true, {
                 disableMovement = false,
                 disableCarMovement = false,
                 disableMouse = false,
@@ -140,7 +140,7 @@ AddEventHandler('fw-items:client:use:pack:paper', function()
                     exports["fw-inventory"]:SetBusyState(false)
                     FW.Functions.TriggerCallback('FW:RemoveItem', function() end, 'printer-pack-paper', 1, false)
                     FW.Functions.TriggerCallback('FW:AddItem', function() end, 'printer-paper', 10, false)
-                    FW.Functions.Notify("You've opened your box of printing paper, you've received 10 sheets.", "success")
+                    FW.Functions.Notify("The pack of paper has been opened, you have received paper sheets for this.", "success")
                 end, function() -- Cancel
                     DoingSomething = false
                     exports["fw-inventory"]:SetBusyState(false)
@@ -158,7 +158,7 @@ AddEventHandler('fw-items:client:use:welcome', function()
             DoingSomething = true
         exports["fw-inventory"]:SetBusyState(true)
             Citizen.SetTimeout(1000, function()
-                FW.Functions.Progressbar("welcome", "Unboxing...", 5000, false, true, {
+                FW.Functions.Progressbar("welcome", "Unwrapping...", 5000, false, true, {
                 disableMovement = false,
                 disableCarMovement = false,
                 disableMouse = false,
@@ -169,7 +169,7 @@ AddEventHandler('fw-items:client:use:welcome', function()
                     local Removed = FW.SendCallback("FW:RemoveItem", 'welcome', 1, false)
                     if Removed then
                         TriggerServerEvent("fw-items:Server:WelcomeReward")
-                        FW.Functions.Notify("You've unboxed your gift!", "success")
+                        FW.Functions.Notify("You have unwrapped your present, you have received various items for this!", "success")
                     end
                 end, function() -- Cancel
                     DoingSomething = false
@@ -573,7 +573,7 @@ end)
 RegisterNetEvent('fw-items:Client:PickupWheelchair')
 AddEventHandler('fw-items:Client:PickupWheelchair', function(Data, Entity)
     if IsVehicleSeatFree(Entity, -1) then
-        FW.Functions.Progressbar("remove-armor", "Rolstoel Oppakken..", 1500, false, false, {
+        FW.Functions.Progressbar("remove-armor", "Picking up Wheelchair..", 1500, false, false, {
             disableMovement = false,
             disableCarMovement = false,
             disableMouse = false,
@@ -626,7 +626,7 @@ end)
 RegisterNetEvent('fw-items:Client:PickupScootmobile')
 AddEventHandler('fw-items:Client:PickupScootmobile', function(Data, Entity)
     if IsVehicleSeatFree(Entity, -1) then
-        FW.Functions.Progressbar("remove-armor", "Scootmobile inpakken..", 2500, false, false, {
+        FW.Functions.Progressbar("remove-armor", "Picking up Scootmobile..", 2500, false, false, {
             disableMovement = false,
             disableCarMovement = false,
             disableMouse = false,

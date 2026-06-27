@@ -35,7 +35,7 @@ export const SendMessageModal = async () => {
                 IsPhone: true,
                 ContactPicker: true,
                 Data: {
-                    Title: "Telefoonnummer",
+                    Title: "Phone Number",
                     Icon: "phone",
                     Select: await GetContactsSelect(),
                     SearchSelect: true,
@@ -45,7 +45,7 @@ export const SendMessageModal = async () => {
                 Id: "Message",
                 Type: "TextArea",
                 Data: {
-                    Title: "Bericht",
+                    Title: "Message",
                 },
             },
         ],

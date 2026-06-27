@@ -1,6 +1,6 @@
 FW = exports['fw-core']:GetCoreObject()
 
-FW.Commands.Add("neon", "Zet je Neonlampen aan of uit.", {}, false, function(source, args)
+FW.Commands.Add("neon", "Turn your neon lights on or off.", {}, false, function(source, args)
     TriggerClientEvent("fw-bennys:Client:ToggleNeon", source)
 end)
 

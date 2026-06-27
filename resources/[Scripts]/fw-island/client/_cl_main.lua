@@ -18,7 +18,7 @@ AddEventHandler("fw-island:Client:CheckFlights", function()
     local MenuItems = {
         {
             Icon = 'exclamation-circle',
-            Title = "Actuele Beschikbare Vluchten",
+            Title = "Current Available Flights",
             Desc = "",
             Data = { Event = '', Type = ''},
             CloseMenu = false,
@@ -136,7 +136,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = "toggle_flights",
                 Icon = "fas fa-plane",
-                Label = "Disable Flights from LSIA -> Cayo",
+                Label = "Enable/disable flights from LSIA -> Cayo",
                 EventType = "Server",
                 EventName = "fw-island:Server:ToggleFlight",
                 EventParams = { Flight = "lsia_to_cayo" },
@@ -170,7 +170,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = "toggle_flights",
                 Icon = "fas fa-plane",
-                Label = "Disable Flights from LSIA -> Cayo",
+                Label = "Enable/disable flights from LSIA -> Cayo",
                 EventType = "Server",
                 EventName = "fw-island:Server:ToggleFlight",
                 EventParams = { Flight = "lsia_to_cayo" },

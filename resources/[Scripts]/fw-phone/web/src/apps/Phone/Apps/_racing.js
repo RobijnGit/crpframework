@@ -87,7 +87,7 @@ export const CreateRace = (Data) => {
                 Id: "Name",
                 Type: "TextField",
                 Data: {
-                    Title: "Event Naam",
+                    Title: "Event Name",
                     Icon: "user",
                     Value: "",
                 },
@@ -106,7 +106,7 @@ export const CreateRace = (Data) => {
                 Id: "Class",
                 Type: "TextField",
                 Data: {
-                    Title: "Voertuig Klasse",
+                    Title: "Vehicle Class",
                     Value: "Open",
                     Select: [
                         { Text: "Open" },
@@ -134,7 +134,7 @@ export const CreateRace = (Data) => {
                 Id: "Amount",
                 Type: "TextField",
                 Data: {
-                    Title: "Aantal",
+                    Title: "Amount",
                     Icon: "dollar-sign",
                     Value: "",
                     Type: "number"
@@ -144,7 +144,7 @@ export const CreateRace = (Data) => {
                 Id: "Countdown",
                 Type: "TextField",
                 Data: {
-                    Title: "Countdown tot Start",
+                    Title: "Countdown to Start",
                     Icon: "stopwatch-20",
                     Value: "",
                     Type: "number"
@@ -154,7 +154,7 @@ export const CreateRace = (Data) => {
                 Id: "DNFPosition",
                 Type: "TextField",
                 Data: {
-                    Title: "DNF Positie",
+                    Title: "DNF Position",
                     Icon: "sad-cry",
                     Value: "",
                     Type: "number"
@@ -174,7 +174,7 @@ export const CreateRace = (Data) => {
                 Id: "CheckpointPenalty",
                 Type: "TextField",
                 Data: {
-                    Title: "Checkpoint Hit Straftijd",
+                    Title: "Checkpoint Hit Penalty",
                     Icon: "car-crash",
                     Value: "",
                     Type: "number"
@@ -188,11 +188,11 @@ export const CreateRace = (Data) => {
                     Value: "None",
                     RealValue: "Geen",
                     Select: [
-                        { Value: "None", Text: "Geen" },
-                        { Value: "30", Text: "30 Seconden" },
-                        { Value: "60", Text: "60 Seconden" },
-                        { Value: "90", Text: "90 Seconden" },
-                        { Value: "Full", Text: "Volledig" },
+                        { Value: "None", Text: "None" },
+                        { Value: "30", Text: "30 Seconds" },
+                        { Value: "60", Text: "60 Seconds" },
+                        { Value: "90", Text: "90 Seconds" },
+                        { Value: "Full", Text: "Full Race" },
                     ]
                 },
             },
@@ -200,7 +200,7 @@ export const CreateRace = (Data) => {
                 Id: "Password",
                 Type: "TextField",
                 Data: {
-                    Title: "Wachtwoord",
+                    Title: "Password",
                     Icon: "key",
                     Value: "",
                     Type: "password"
@@ -210,7 +210,7 @@ export const CreateRace = (Data) => {
                 Id: "Reverse",
                 Type: "Checkbox",
                 Data: {
-                    Title: "Omgekeerd",
+                    Title: "Reversed",
                     Value: false,
                 },
             },
@@ -218,7 +218,7 @@ export const CreateRace = (Data) => {
                 Id: "ShowPosition",
                 Type: "Checkbox",
                 Data: {
-                    Title: "Toon Positie",
+                    Title: "Show Position",
                     Value: false,
                 },
             },
@@ -226,7 +226,7 @@ export const CreateRace = (Data) => {
                 Id: "SendNotification",
                 Type: "Checkbox",
                 Data: {
-                    Title: "Stuur Notificatie",
+                    Title: "Send Notification",
                     Value: false,
                 },
             },
@@ -234,7 +234,7 @@ export const CreateRace = (Data) => {
                 Id: "ForceFPP",
                 Type: "Checkbox",
                 Data: {
-                    Title: "Forceer FPP",
+                    Title: "Force FPP",
                     Value: false,
                 },
             },
@@ -242,7 +242,7 @@ export const CreateRace = (Data) => {
                 Id: "AllowNitrous",
                 Type: "Checkbox",
                 Data: {
-                    Title: "Nitrous Toestaan",
+                    Title: "Allow Nitrous",
                     Value: true,
                 },
             },
@@ -250,7 +250,7 @@ export const CreateRace = (Data) => {
                 Id: "FreezeStart",
                 Type: "Checkbox",
                 Data: {
-                    Title: "Freeze tijdens Countdown",
+                    Title: "Freeze during Countdown",
                     Value: false,
                 },
             },
@@ -265,7 +265,7 @@ export const CreateRace = (Data) => {
                 Id: "Name",
                 Type: "TextField",
                 Data: {
-                    Title: "Event Naam",
+                    Title: "Event Name",
                     Icon: "user",
                     Value: "",
                 },
@@ -284,7 +284,7 @@ export const CreateRace = (Data) => {
                 Id: "Countdown",
                 Type: "TextField",
                 Data: {
-                    Title: "Countdown tot Start",
+                    Title: "Countdown to Start",
                     Icon: "stopwatch-20",
                     Value: "",
                     Type: "number"
@@ -294,7 +294,7 @@ export const CreateRace = (Data) => {
                 Id: "CheckpointPenalty",
                 Type: "TextField",
                 Data: {
-                    Title: "Checkpoint Hit Strafrijd",
+                    Title: "Checkpoint Hit Penalty",
                     Icon: "car-crash",
                     Value: "",
                     Type: "number"
@@ -308,11 +308,11 @@ export const CreateRace = (Data) => {
                     Value: "None",
                     RealValue: "Geen",
                     Select: [
-                        { Value: "None", Text: "Geen" },
-                        { Value: "30", Text: "30 Seconden" },
-                        { Value: "60", Text: "60 Seconden" },
-                        { Value: "90", Text: "90 Seconden" },
-                        { Value: "Full", Text: "Volledig" },
+                        { Value: "None", Text: "None" },
+                        { Value: "30", Text: "30 Seconds" },
+                        { Value: "60", Text: "60 Seconds" },
+                        { Value: "90", Text: "90 Seconds" },
+                        { Value: "Full", Text: "Full Race" },
                     ]
                 },
             },
@@ -320,7 +320,7 @@ export const CreateRace = (Data) => {
                 Id: "Reverse",
                 Type: "Checkbox",
                 Data: {
-                    Title: "Omgekeerd",
+                    Title: "Reversed",
                     Value: false,
                 },
             },
@@ -328,7 +328,7 @@ export const CreateRace = (Data) => {
                 Id: "ForceFPP",
                 Type: "Checkbox",
                 Data: {
-                    Title: "Forceer FPP",
+                    Title: "Force FPP",
                     Value: false,
                 },
             },
@@ -336,7 +336,7 @@ export const CreateRace = (Data) => {
                 Id: "FreezeStart",
                 Type: "Checkbox",
                 Data: {
-                    Title: "Freeze tijdens Countdown",
+                    Title: "Freeze during Countdown",
                     Value: false,
                 },
             },

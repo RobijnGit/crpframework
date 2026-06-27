@@ -265,7 +265,7 @@ AddEventHandler('fw-emotes:Client:OpenEmotes', function()
 
                 if GetResourceKvpInt('emotes-showHelp') ~= 1 then
                     local Coords = GetEntityCoords(PlayerPedId())
-                    DrawText3D(Coords + vector3(0, 0, 0.42), "Press ~g~Arrow Left~s~ amd ~g~Arrow Right~s~ to scroll pages")
+                    DrawText3D(Coords + vector3(0, 0, 0.42), "Press ~g~Arrow Left~s~ and ~g~Arrow Right~s~ to scroll pages")
                     DrawText3D(Coords + vector3(0, 0, 0.28), "Press ~g~Arrow Up~s~ and ~g~Arrown Down~s~ too navigate")
                     DrawText3D(Coords + vector3(0, 0, 0.14), "Press ~g~Enter~s~ to play emote")
                     DrawText3D(Coords - vector3(0, 0, 0.0), "Press ~g~Backspace~s~ to close the menu")

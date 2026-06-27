@@ -12,7 +12,7 @@ local WeaponValues = {
 RegisterNetEvent('FW:Client:OnPlayerLoaded')
 AddEventHandler('FW:Client:OnPlayerLoaded', function()
     LoggedIn = true
-    FW.AddKeybind("fireMode", "Wapens", "Verander vuurwapen modus", "", function(IsPressed)
+    FW.AddKeybind("fireMode", "Weapons", "Change fire-mode", "", function(IsPressed)
         if not LoggedIn then return end
         if not IsPressed or not HasFireMode then return end
     
@@ -239,13 +239,13 @@ AddEventHandler("fw-weapons:Client:AddAmmo", function(AmmoType, AmmoName)
     if WeaponBullets == Config.Weapons[Weapon].MaxAmmo then return end
 
     exports['fw-inventory']:SetBusyState(true)
-    local Finished = FW.Functions.CompactProgressbar(3000, "Herladen...", false, true, {}, {}, {}, {}, false)
+    local Finished = FW.Functions.CompactProgressbar(3000, "Reloading...", false, true, {}, {}, {}, {}, false)
 
     exports['fw-inventory']:SetBusyState(false)
     if Finished then
         local DidRemove = FW.SendCallback("FW:RemoveItem", "ammo", 1, false, AmmoName)
         if not DidRemove then
-            return FW.Functions.Notify("Volgensmij mis je een item daap..", "error")
+            return
         end
 
         local NewAmmo = (WeaponBullets + Config.Weapons[Weapon].AddAmmo)
@@ -267,7 +267,7 @@ AddEventHandler("fw-inventory:Client:Cock", function()
         local Item = Config.Weapons[Weapon].WeaponID
         if not exports['fw-inventory']:HasEnoughOfItem(Item, 1) then
             TriggerEvent('fw-inventory:Client:ResetWeapon')
-            FW.Functions.Notify("Je wapen is kapot..", "error")
+            FW.Functions.Notify("Your weapon is broken...", "error")
         end
     end)
 end)

@@ -59,7 +59,7 @@ Citizen.CreateThread(function()
             return
         end
 
-        exports['fw-ui']:ShowInteraction("[E] Openbare Databank")
+        exports['fw-ui']:ShowInteraction("[E] Public Records")
         Citizen.CreateThread(function()
             while InsidePublicRecords do
                 if IsControlJustReleased(0, 38) then
@@ -84,7 +84,7 @@ function SetGlobalData(Type)
     Data.IsGov = (PlayerJob.name == 'police' or PlayerJob.name == 'ems') and PlayerJob.onduty
     Data.IsEms = PlayerJob.name == 'ems' and PlayerJob.onduty
     Data.IsJudge = PlayerJob.name == 'judge' or PlayerJob.name == 'mayor'
-    Data.IsHighcommand = (PlayerJob.grade.name == 'Leidinggevende' or PlayerJob.grade.name == 'Chief of Justice')
+    Data.IsHighcommand = (PlayerJob.grade.name == 'Command' or PlayerJob.grade.name == 'Chief of Justice')
     Data.Profile = StaffProfile
     IsHighCommand = Data.IsHighcommand
 

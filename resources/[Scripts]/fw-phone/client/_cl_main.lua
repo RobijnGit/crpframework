@@ -49,6 +49,8 @@ NotificationsIds, IsPhoneOpen, UsingBurner, InCamera = {}, false, false, false
 Citizen.CreateThread(function()
     FW.AddKeybind("openMobile", "Telefoon", "Openen", "M", OpenPhone)
     FW.AddKeybind("phoneAnwser", "Telefoon", "Opnemen", "", function(IsPressed)
+    FW.AddKeybind("openMobile", "Phone", "Open", "M", OpenPhone)
+    FW.AddKeybind("phoneAnwser", "Phone", "Answer", "", function(IsPressed)
         if not IsPressed then return end
 
         local PlayerData = FW.Functions.GetPlayerData()
@@ -58,7 +60,7 @@ Citizen.CreateThread(function()
         TriggerServerEvent('fw-phone:Server:Contacts:AnswerContact', {CallId = CallData.CallId})
     end)
 
-    FW.AddKeybind("phoneDecline", "Telefoon", "Ophangen", "", function(IsPressed)
+    FW.AddKeybind("phoneDecline", "Phone", "Hang Up", "", function(IsPressed)
         if not IsPressed then return end
 
         local PlayerData = FW.Functions.GetPlayerData()
@@ -239,7 +241,7 @@ function InitPhone(Crashed)
     local HasUnreadConversations = FW.SendCallback("fw-phone:Server:HasUnreadConversations")
     if HasUnreadConversations then
         SetAppUnread("messages")
-        FW.Functions.Notify("Je hebt ongelezen berichten.")
+        FW.Functions.Notify("You have unread messages.")
     end
 
     if Crashed then

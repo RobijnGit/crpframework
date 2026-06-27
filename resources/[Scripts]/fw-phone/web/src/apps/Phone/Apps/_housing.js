@@ -11,7 +11,7 @@ export const IsNearHouse = async HouseId => {
             Inputs: [
                 {
                     Type: "Text",
-                    Text: "Je moet in de buurt zijn van het eigendom om dit te kunnen doen!",
+                    Text: "You must be near the property to do this!",
                     Data: {
                         style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;"
                     },
@@ -39,7 +39,7 @@ export const IsNearAnyHouse = async () => {
             Inputs: [
                 {
                     Type: "Text",
-                    Text: "Je moet in de buurt zijn van het eigendom om dit te kunnen doen!",
+                    Text: "You must be near the property to do this!",
                     Data: {
                         style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;"
                     },
@@ -65,7 +65,7 @@ export const PurchaseHouse = async HouseId => {
         Inputs: [
             {
                 Type: "Text",
-                Text: "Weet je het zeker?",
+                Text: "Are you sure?",
                 Data: {
                     style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;"
                 },
@@ -116,7 +116,7 @@ export const CheckCurrentLocation = async () => {
             Inputs: [
                 {
                     Type: "Text",
-                    Text: "Geen eigendom gevonden op huidige locatie.",
+                    Text: "No property found at current location.",
                     Data: {
                         style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;",
                     },
@@ -220,7 +220,7 @@ export const AddKeyholder = (HouseId, Cid, AmountOfKeyholders) => {
             Inputs: [
                 {
                     Type: "Text",
-                    Text: "Maximum aantal sleutels bereikt.",
+                    Text: "Maximum number of keys reached.",
                     Data: {
                         style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;",
                     },
@@ -265,7 +265,7 @@ export const SellHousing = async () => {
                 Id: "Commission",
                 Type: "TextField",
                 Data: {
-                    Title: "Commissie (Bijvoorbeeld: 20, geen 0.3 etc)",
+                    Title: "Commission (For example: 20, not 0.3 etc)",
                     Icon: "highlighter",
                     Type: "number"
                 },
@@ -280,7 +280,7 @@ export const SellHousing = async () => {
                     Inputs: [
                         {
                             Type: "Text",
-                            Text: "Commissie kan niet hoger dan 15% zijn.",
+                            Text: "Commission cannot exceed 15%.",
                             Data: {
                                 style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;",
                             },
@@ -364,9 +364,9 @@ export const EditHousing = async () => {
                 Type: "TextField",
                 IsCurrency: true,
                 Data: {
-                    Title: "Prijs",
+                    Title: "Price",
                     Icon: "sign",
-                    Sub: "€ 0,00",
+                    Sub: "$ 0,00",
                     Type: "number"
                 },
             },
@@ -391,7 +391,7 @@ export const DeleteHousing = async () => {
         Inputs: [
             {
                 Type: "Text",
-                Text: "Weet je het zeker?",
+                Text: "Are you sure?",
                 Data: {
                     style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;"
                 },
